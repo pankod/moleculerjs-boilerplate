@@ -5,44 +5,43 @@ import { Accept, BodyOptions, Path, POST } from 'typescript-rest';
 import { Example, IsInt, Produces, Response, Tags } from 'typescript-rest-swagger';
 //#endregion Global Imports
 
-
 //#region Local Imports
 import { } from '@Repositories';
 import { CacheService } from '@Services';
-import { FireRepository } from '@Repositories';
+import { PlanetRepository } from '@Repositories';
 //#endregion Local Imports
 
 //#region Interface Imports
 import { } from '@Interfaces';
 //#endregion Interface Imports
-@Path('fire')
+@Path('planet')
 @Accept('application/json; charset=utf-8')
 @Produces('application/json; charset=utf-8')
 @BodyOptions({ extended: true, type: 'application/json; charset=utf-8' })
-@Tags('FireServices')
-export class FireService extends BaseSchema {
+@Tags('PlanetServices')
+export class PlanetService extends BaseSchema {
 
-	public name: string = 'fire';
+	public name: string = 'planet';
 
 	@Action({
 		params: {
 			damage: 'number'
 		}
 	})
-	public async Fire(ctx: Context<any>): Promise<object> {
-		const response = await this.FireMethod();
+	public async Defend(ctx: Context<any>): Promise<string> {
+		const response = await this.DefendMethod(ctx.params.damage);
 
 		return response;
 	}
 
 	@Method
 	@POST
-	public async FireMethod(): Promise<object> {
-		const result = await FireRepository.Fire();
+	public async DefendMethod(damage: number): Promise<string> {
+		const result = await PlanetRepository.Defend(damage);
 
 		return result;
 	}
 
 }
 
-module.exports = new FireService();
+module.exports = new PlanetService();

@@ -2,8 +2,8 @@ import sequelize from 'sequelize';
 
 export module Database {
 	const sequelizeInstance = new sequelize('test', 'test', 'asdasd', {
-		host: '',
-		dialect: '',
+		host: 'test',
+		dialect: 'postgres',
 		operatorsAliases: false
 	});
 

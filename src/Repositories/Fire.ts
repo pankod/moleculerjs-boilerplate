@@ -4,7 +4,7 @@ import { Weapon } from '@Repositories/Models';
 export module FireRepository {
 	export const Fire = async (): Promise<any> => {
 		const model = await Weapon.Model();
-
+		console.log('attact');
 		return 'ATTACK!';
 	};
 }

@@ -1,2 +1,2 @@
-export { FriendService } from './friend.service';
 export { FireService } from './fire.service';
+export { PlanetService } from './planet.service';
