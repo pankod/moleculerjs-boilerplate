@@ -29,16 +29,16 @@ export class FireService extends BaseSchema {
 			damage: 'number'
 		}
 	})
-	public async Fire(ctx: Context<any>): Promise<object> {
-		const response = await this.FireMethod();
+	public async Fire(ctx: Context<any>): Promise<string> {
+		const response = await this.FireMethod(ctx.params.damage);
 
 		return response;
 	}
 
 	@Method
 	@POST
-	public async FireMethod(): Promise<object> {
-		const result = await FireRepository.Fire();
+	public async FireMethod(damage: number): Promise<string> {
+		const result = await FireRepository.Fire(damage);
 
 		return result;
 	}

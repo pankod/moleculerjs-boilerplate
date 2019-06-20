@@ -1,2 +1,1 @@
-export { JobMeta } from '@Meta/JobMeta';
-
+export { CalculateMeta } from '@Meta/CalculateMeta';

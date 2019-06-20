@@ -17,7 +17,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"type": "object"
+							"type": "string"
 						}
 					}
 				},
@@ -28,7 +28,18 @@
 				"consumes": [
 					"application/json; charset=utf-8"
 				],
-				"parameters": []
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "damage",
+						"required": true,
+						"schema": {
+							"type": "number"
+						},
+						"format": "double"
+					}
+				]
 			}
 		},
 		"/planet": {
@@ -41,7 +52,8 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"type": "string"
+							"type": "number",
+							"format": "double"
 						}
 					}
 				},

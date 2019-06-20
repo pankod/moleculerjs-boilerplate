@@ -1,0 +1,17 @@
+{
+    "DEATHSTAR": {
+        "attacks": [
+            {
+                "id": 0,
+                "name": "default attack",
+                "damage": 1000
+            }
+        ],
+        "ammo": 100000
+    },
+    "PLANET": {
+        "name": "alderaan",
+        "shield": 9000
+    },
+    "logs": []
+}

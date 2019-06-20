@@ -14,13 +14,21 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        type: object
+                        type: string
             description: ""
             tags:
                 - FireServices
             consumes:
                 - 'application/json; charset=utf-8'
-            parameters: []
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: damage
+                    required: true
+                    schema:
+                        type: number
+                    format: double
     /planet:
         post:
             operationId: PlanetServiceDefendMethod
@@ -30,7 +38,8 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        type: string
+                        type: number
+                        format: double
             description: ""
             tags:
                 - PlanetServices

@@ -28,7 +28,7 @@ export class PlanetService extends BaseSchema {
 			damage: 'number'
 		}
 	})
-	public async Defend(ctx: Context<any>): Promise<string> {
+	public async Defend(ctx: Context<any>): Promise<number> {
 		const response = await this.DefendMethod(ctx.params.damage);
 
 		return response;
@@ -36,7 +36,7 @@ export class PlanetService extends BaseSchema {
 
 	@Method
 	@POST
-	public async DefendMethod(damage: number): Promise<string> {
+	public async DefendMethod(damage: number): Promise<number> {
 		const result = await PlanetRepository.Defend(damage);
 
 		return result;
