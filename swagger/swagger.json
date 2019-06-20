@@ -1,0 +1,909 @@
+{
+	"basePath": "/api",
+	"definitions": {
+		"FriendsOfOnlineUserOutDto": {
+			"description": "",
+			"properties": {
+				"OnlineFriends": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"OnlineFriends"
+			]
+		},
+		"ContextFriendsOfOnlineUserInDto": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"ContextFriendListInDto": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"UpdateResultOutDto": {
+			"description": "",
+			"properties": {
+				"Success": {
+					"type": "boolean",
+					"description": ""
+				},
+				"Reason": {
+					"type": "string",
+					"description": ""
+				},
+				"ReasonId": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"Success"
+			]
+		},
+		"ContextFriendInDto": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"Photo": {
+			"description": "",
+			"properties": {
+				"Id": {
+					"type": "string",
+					"description": ""
+				},
+				"Url": {
+					"type": "string",
+					"description": ""
+				},
+				"State": {
+					"type": "string",
+					"description": ""
+				},
+				"PhotoName": {
+					"type": "string",
+					"description": ""
+				},
+				"CreateDate": {
+					"type": "string",
+					"format": "date-time",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"Id",
+				"Url",
+				"State",
+				"PhotoName"
+			]
+		},
+		"BasicProfile": {
+			"description": "",
+			"properties": {
+				"Age": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"Id": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"IsOnline": {
+					"type": "boolean",
+					"description": ""
+				},
+				"IsHot": {
+					"type": "boolean",
+					"description": ""
+				},
+				"Photo": {
+					"$ref": "#/definitions/Photo"
+				},
+				"Gender": {
+					"type": "string",
+					"enum": [
+						"1",
+						"2"
+					],
+					"description": ""
+				},
+				"GhostMode": {
+					"type": "boolean",
+					"description": ""
+				},
+				"InvalidEmail": {
+					"type": "boolean",
+					"description": ""
+				},
+				"Job": {
+					"type": "string",
+					"description": ""
+				},
+				"JobId": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"LastSeenOn": {
+					"type": "string",
+					"format": "date-time",
+					"description": ""
+				},
+				"Location": {
+					"type": "string",
+					"description": ""
+				},
+				"TownName": {
+					"type": "string",
+					"description": ""
+				},
+				"State": {
+					"type": "string",
+					"enum": [
+						"1",
+						"2",
+						"3",
+						"4"
+					],
+					"description": ""
+				},
+				"StatusMessage": {
+					"type": "string",
+					"description": ""
+				},
+				"Username": {
+					"type": "string",
+					"description": ""
+				},
+				"MembershipType": {
+					"type": "string",
+					"enum": [
+						"1",
+						"3"
+					],
+					"description": ""
+				},
+				"Latitude": {
+					"type": "string",
+					"description": ""
+				},
+				"Longitude": {
+					"type": "string",
+					"description": ""
+				},
+				"Zodiac": {
+					"type": "string",
+					"description": ""
+				},
+				"ZodiacId": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"MaritalStatus": {
+					"type": "string",
+					"description": ""
+				},
+				"MaritalStatusId": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"CreateDate": {
+					"type": "string",
+					"format": "date-time",
+					"description": ""
+				},
+				"IsFriend": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"Age",
+				"Id",
+				"IsHot",
+				"Photo",
+				"Gender",
+				"GhostMode",
+				"InvalidEmail",
+				"Job",
+				"LastSeenOn",
+				"Location",
+				"TownName",
+				"State",
+				"StatusMessage",
+				"Username",
+				"MembershipType",
+				"Latitude",
+				"Longitude",
+				"Zodiac",
+				"MaritalStatus",
+				"CreateDate"
+			]
+		},
+		"InteractionOutDto": {
+			"description": "",
+			"properties": {
+				"Id": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"IsSeen": {
+					"type": "boolean",
+					"description": ""
+				},
+				"Profile": {
+					"$ref": "#/definitions/BasicProfile"
+				},
+				"Date": {
+					"type": "string",
+					"description": ""
+				},
+				"IsFriend": {
+					"type": "boolean",
+					"description": ""
+				},
+				"Extra": {
+					"type": "string",
+					"description": ""
+				},
+				"UserNote": {
+					"type": "string",
+					"description": ""
+				},
+				"IsHidden": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"Profile"
+			]
+		},
+		"FriendsOutDto": {
+			"description": "",
+			"properties": {
+				"Count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"Enabled": {
+					"type": "boolean",
+					"description": ""
+				},
+				"Success": {
+					"type": "boolean",
+					"description": ""
+				},
+				"Interactions": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/InteractionOutDto"
+					},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"Success",
+				"Interactions"
+			]
+		},
+		"FriendsInDto": {
+			"description": "",
+			"properties": {
+				"UserId": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"Page": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"PageSize": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"UserId",
+				"Page",
+				"PageSize"
+			]
+		},
+		"ContextFriendsInDto": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"UnFriendOutDto": {
+			"description": "",
+			"properties": {
+				"Success": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"Success"
+			]
+		},
+		"UnFriendInDto": {
+			"description": "",
+			"properties": {
+				"UserId": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"Users": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"UserId",
+				"Users"
+			]
+		},
+		"ContextUnFriendInDto": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"IsFriendOutDto": {
+			"description": "",
+			"properties": {
+				"IsFriend": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"IsFriend"
+			]
+		},
+		"ContextIsFriendInDto": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"IsBannedOutDto": {
+			"description": "",
+			"properties": {
+				"IsBanned": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"IsBanned"
+			]
+		},
+		"ContextIsBannedInDto": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"BansOutDto": {
+			"description": "",
+			"properties": {
+				"Count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"Enabled": {
+					"type": "boolean",
+					"description": ""
+				},
+				"Success": {
+					"type": "boolean",
+					"description": ""
+				},
+				"Interactions": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/InteractionOutDto"
+					},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"Success",
+				"Interactions"
+			]
+		},
+		"ContextBansInDto": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"BanOutDto": {
+			"description": "",
+			"properties": {
+				"Success": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"Success"
+			]
+		},
+		"ContextBanInDto": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"UnBanInDto": {
+			"description": "",
+			"properties": {
+				"UserId": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"Users": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"UserId",
+				"Users"
+			]
+		},
+		"ContextUnBanInDto": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"CoinCostOutDto": {
+			"description": "",
+			"properties": {
+				"Cost": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"Cost"
+			]
+		},
+		"ContextCoinCostInDto": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"HotOrNotUpdateOutDto": {
+			"description": "",
+			"properties": {
+				"Success": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"Success"
+			]
+		},
+		"ContextHotOrNotUpdateInDto": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		}
+	},
+	"info": {
+		"description": "My Moleculer microservices project",
+		"title": "moleculerjs-boilerplate",
+		"version": "1.0.0"
+	},
+	"paths": {
+		"/friend": {
+			"post": {
+				"operationId": "FriendServiceFriendMethod",
+				"produces": [
+					"application/json; charset=utf-8"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/UpdateResultOutDto"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"FriendServices"
+				],
+				"consumes": [
+					"application/json; charset=utf-8"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "ctx",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ContextFriendInDto"
+						}
+					}
+				]
+			}
+		},
+		"/friend/Friends": {
+			"post": {
+				"operationId": "FriendServiceFriendsMethod",
+				"produces": [
+					"application/json; charset=utf-8"
+				],
+				"responses": {
+					"200": {
+						"description": "Fetch friends data",
+						"schema": {
+							"$ref": "#/definitions/FriendsInDto"
+						},
+						"examples": {
+							"application/json": {
+								"Success": true,
+								"Count": 10,
+								"Enabled": true,
+								"Interactions": []
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"FriendServices"
+				],
+				"consumes": [
+					"application/json; charset=utf-8"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "ctx",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ContextFriendsInDto"
+						}
+					}
+				]
+			}
+		},
+		"/friend/Unfriend": {
+			"post": {
+				"operationId": "FriendServiceUnFriendMethod",
+				"produces": [
+					"application/json; charset=utf-8"
+				],
+				"responses": {
+					"200": {
+						"description": "Unfriend with user/users",
+						"schema": {
+							"$ref": "#/definitions/UnFriendInDto"
+						},
+						"examples": {
+							"application/json": {
+								"Success": true
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"FriendServices"
+				],
+				"consumes": [
+					"application/json; charset=utf-8"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "ctx",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ContextUnFriendInDto"
+						}
+					}
+				]
+			}
+		},
+		"/friend/IsFriend": {
+			"post": {
+				"operationId": "FriendServiceIsFriendMethod",
+				"produces": [
+					"application/json; charset=utf-8"
+				],
+				"responses": {
+					"200": {
+						"description": "Fetch is a user friend b",
+						"schema": {
+							"$ref": "#/definitions/IsFriendOutDto"
+						},
+						"examples": {
+							"application/json": {
+								"UserId": 48,
+								"With": 50
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"FriendServices"
+				],
+				"consumes": [
+					"application/json; charset=utf-8"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "ctx",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ContextIsFriendInDto"
+						}
+					}
+				]
+			}
+		},
+		"/ban/Get": {
+			"post": {
+				"operationId": "BanServiceUnBanMethod",
+				"produces": [
+					"application/json; charset=utf-8"
+				],
+				"responses": {
+					"200": {
+						"description": "Fetch Banned User Status",
+						"schema": {
+							"$ref": "#/definitions/UnBanInDto"
+						}
+					},
+					"204": {
+						"description": "No content",
+						"examples": {
+							"application/json": {
+								"Success": true
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"BanServices"
+				],
+				"consumes": [
+					"application/json; charset=utf-8"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "ctx",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ContextUnBanInDto"
+						}
+					}
+				]
+			}
+		},
+		"/ban/Bans": {
+			"post": {
+				"operationId": "BanServiceBansMethod",
+				"produces": [
+					"application/json; charset=utf-8"
+				],
+				"responses": {
+					"200": {
+						"description": "Fetch Banned User Status",
+						"schema": {
+							"$ref": "#/definitions/BansOutDto"
+						},
+						"examples": {
+							"application/json": {
+								"Page": 0,
+								"PageSize": 25,
+								"UserId": 1
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"BanServices"
+				],
+				"consumes": [
+					"application/json; charset=utf-8"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "ctx",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ContextBansInDto"
+						}
+					}
+				]
+			}
+		},
+		"/ban/Ban": {
+			"post": {
+				"operationId": "BanServiceBanMethod",
+				"produces": [
+					"application/json; charset=utf-8"
+				],
+				"responses": {
+					"200": {
+						"description": "Ban User",
+						"schema": {
+							"$ref": "#/definitions/BanOutDto"
+						},
+						"examples": {
+							"application/json": {
+								"Success": true
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"BanServices"
+				],
+				"consumes": [
+					"application/json; charset=utf-8"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "ctx",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ContextBanInDto"
+						}
+					}
+				]
+			}
+		},
+		"/coin/CoinCost": {
+			"post": {
+				"operationId": "CoinServiceCoinCostMethod",
+				"produces": [
+					"application/json; charset=utf-8"
+				],
+				"responses": {
+					"200": {
+						"description": "Fetch Coin Cost",
+						"schema": {
+							"$ref": "#/definitions/CoinCostOutDto"
+						},
+						"examples": {
+							"application/json": {
+								"Type": 1
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"CoinServices"
+				],
+				"consumes": [
+					"application/json; charset=utf-8"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "ctx",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ContextCoinCostInDto"
+						}
+					}
+				]
+			}
+		},
+		"/hotornot/Update": {
+			"post": {
+				"operationId": "HotOrNotServiceUpdateMethod",
+				"produces": [
+					"application/json; charset=utf-8"
+				],
+				"responses": {
+					"200": {
+						"description": "Update hot or not data",
+						"schema": {
+							"$ref": "#/definitions/HotOrNotUpdateOutDto"
+						},
+						"examples": {
+							"application/json": {
+								"UserId": 1,
+								"With": 2
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"HotOrNotServices"
+				],
+				"consumes": [
+					"application/json; charset=utf-8"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "ctx",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ContextHotOrNotUpdateInDto"
+						}
+					}
+				]
+			}
+		}
+	},
+	"swagger": "2.0",
+	"securityDefinitions": {
+		"api_key": {
+			"type": "apiKey",
+			"name": "access_token",
+			"in": "query"
+		},
+		"tsoa_auth": {
+			"type": "oauth2",
+			"authorizationUrl": "http://swagger.io/api/oauth/dialog",
+			"flow": "implicit",
+			"scopes": {
+				"write:pets": "modify things",
+				"read:pets": "read things"
+			}
+		}
+	},
+	"host": "localhost:3000"
+}

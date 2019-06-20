@@ -1,0 +1,53 @@
+//#region Global Imports
+import { Context } from 'moleculer';
+import { Action, BaseSchema, Method } from 'moleculer-decorators';
+{{#isPrivate}}
+import { Accept, BodyOptions, Path, POST } from 'typescript-rest';
+import { Example, IsInt, Produces, Response, Tags } from 'typescript-rest-swagger';
+{{/isPrivate}}
+//#endregion Global Imports
+
+
+//#region Local Imports
+import { CacheHelper } from '@Helper';
+import { } from '@Repositories';
+import { CacheService } from '@Services';
+//#endregion Local Imports
+
+//#region Interface Imports
+import { } from '@Interfaces';
+//#endregion Interface Imports
+{{#isPrivate}}
+@Path('{{fileName}}')
+@Accept('application/json; charset=utf-8')
+@Produces('application/json; charset=utf-8')
+@BodyOptions({ extended: true, type: 'application/json; charset=utf-8' })
+@Tags('{{upperFileName}}Services')
+{{/isPrivate}}
+export class {{upperFileName}}Service extends BaseSchema {
+
+	public name: string = '{{fileName}}';
+
+	@Action({
+		params: {
+
+		}
+	})
+	public async methodName(ctx: Context<>): Promise<> {
+		const response = await this.methodName());
+
+		return response;
+	}
+
+	@Method
+	{{#isPrivate}}
+	@Path('methodName')
+	@Response<>(200, '')
+	@Example<>({ '' })
+	{{/isPrivate}}
+	public async methodName(): Promise<> {
+	}
+
+}
+
+module.exports = new {{upperFileName}}Service();

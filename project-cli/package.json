@@ -1,0 +1,28 @@
+{
+  "name": "microservices-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "node ./dist/index.js a",
+    "watch": "tsc -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "clear": "^0.1.0",
+    "commander": "^2.20.0",
+    "figlet": "^1.2.1",
+    "inquirer": "^6.3.1",
+    "log-symbols": "^3.0.0",
+    "mustache": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^11.13.6",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.3"
+  }
+}

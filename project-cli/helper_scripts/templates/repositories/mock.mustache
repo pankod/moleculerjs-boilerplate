@@ -1,0 +1,26 @@
+import sequelize = require('sequelize');
+
+import { {{fileName}}Sql } from '@Interfaces';
+import { {{fileName}} as Real{{fileName}}} from '../{{fileName}}';
+
+export module {{fileName}} {
+	let ModelInstance: sequelize.Model<{}, {{fileName}}Sql> = null;
+	export const Model = async () => {
+		if (!ModelInstance) {
+			ModelInstance = await {{fileName}}Like.Model();
+
+			await ModelInstance.sync();
+
+			await ModelInstance.destroy({
+				truncate: true,
+				where: {}
+			});
+
+		/* 	await ModelInstance.create({
+				
+			}); */
+		}
+
+		return ModelInstance;
+	};
+}

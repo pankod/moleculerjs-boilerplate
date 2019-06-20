@@ -1,0 +1,40 @@
+import sequelize from 'sequelize';
+
+import { {{fileName}}Sql } from '@Interfaces';
+import { Database } from '@Repositories/Database';
+
+export module {{fileName}} {
+	let ModelInstance: sequelize.Model<{}, {{fileName}}Sql> = null;
+
+	export const Model = async () => {
+		if (!ModelInstance) {
+			ModelInstance = (await Database.instance()).define(
+				'tableName',
+				{
+				/* 	id: {
+						allowNull: false,
+						primaryKey: true,
+						type: sequelize.INTEGER
+					},
+					touserid: {
+						allowNull: false,
+						type: sequelize.INTEGER
+					},
+					fromuserid: {
+						type: sequelize.INTEGER
+					},
+					date: {
+						allowNull: false,
+						type: sequelize.DATE(6)
+					} */
+				},
+				{ ...Database.defaultTableConfig }
+			);
+			if (ModelInstance.removeAttribute) {
+				ModelInstance.removeAttribute('id');
+			}
+		}
+
+		return ModelInstance;
+	};
+}

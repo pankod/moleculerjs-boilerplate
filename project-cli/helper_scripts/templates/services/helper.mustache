@@ -1,0 +1,13 @@
+// Global Imports
+import { Context } from 'moleculer';
+
+// Local Imports
+import { } from '@Interfaces';
+
+export module {{upperFileName}}Helper {
+
+	const prefix: string = '{{fileName}}';
+
+	export const methodName = async (ctx: Context, params: ): Promise<> => await ctx.call(`${prefix}.methodName`, params);
+
+}

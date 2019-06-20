@@ -1,0 +1,68 @@
+version: "3.0"
+
+services:
+
+  api:
+    build: .
+    image: 
+    env_file: docker-compose.env
+    environment:
+      SERVICES: api,metrics.prometheus
+      PORT: 3000
+    links:
+      - amqp
+    depends_on:
+      - amqp
+    labels:
+        kompose.service.type: LoadBalancer
+    ports:
+      - "3000:3000"
+      - "3030:3030"
+
+  math:
+    build: .
+    image: 
+    env_file: docker-compose.env
+    environment:
+      SERVICES: math
+    links:
+      - amqp
+    depends_on:
+      - amqp
+
+  db:
+    build: .
+    image: 
+    env_file: docker-compose.env
+    environment:
+      SERVICES: db
+    links:
+      - postgres
+    depends_on:
+      - postgres
+      - amqp
+
+  profile:
+    build: .
+    image: 
+    env_file: docker-compose.env
+    environment:
+      SERVICES: profile
+    links:
+      - db
+    depends_on:
+      - db
+      - amqp
+
+  amqp:
+    image: rabbitmq:3
+    ports:
+      - "5672:5672"
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 'postgres'

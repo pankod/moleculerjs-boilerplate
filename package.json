@@ -1,0 +1,101 @@
+{
+	"name": "moleculerjs-boilerplate",
+	"version": "1.0.0",
+	"description": "My Moleculer microservices project",
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc --watch",
+		"dev": "ts-node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js --hot --repl --config moleculer.config.ts services/**/*.service.ts & npm run swagger-run",
+		"cli": "moleculer connect  --config moleculer.config.ts services/**/*.service.ts",
+		"start": "node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js services",
+		"ci": "jest --watch",
+		"test": "jest --coverage --runInBand",
+		"lint": "tslint -p tsconfig.json",
+		"dc:up": "docker-compose up --build -d",
+		"dc:down": "docker-compose down",
+		"swagger-run": "npm run swagger & npm run ui",
+		"swagger": "swaggerGen -c ./swaggerConfig.json -p ./tsconfig.json",
+		"ui": "node ./swagger/index.js"
+	},
+	"keywords": [
+		"microservices",
+		"moleculer"
+	],
+	"author": "",
+	"devDependencies": {
+		"@types/bluebird": "^3.5.24",
+		"@types/jest": "^23.1.1",
+		"@types/node": "^10.12.12",
+		"@types/pg": "^7.4.13",
+		"@types/redis": "^2.8.10",
+		"@types/semver": "^6.0.0",
+		"@types/sequelize": "^4.27.39",
+		"jest": "^23.6.0",
+		"jest-cli": "^23.6.0",
+		"jest-teamcity": "^1.4.0",
+		"moleculer-repl": "^0.5.3",
+		"redis-mock": "^0.43.0",
+		"sqlite3": "^4.0.6",
+		"swagger-ui-express": "^4.0.2",
+		"ts-jest": "^23.10.5",
+		"ts-node": "^7.0.1",
+		"tsconfig-paths": "^3.8.0",
+		"tslint": "^5.11.0",
+		"typescript": "^3.3.3333",
+		"typescript-rest": "^2.0.0",
+		"typescript-rest-swagger": "0.0.24"
+	},
+	"dependencies": {
+		"blueimp-md5": "^2.10.0",
+		"cors": "^2.8.5",
+		"enum-values": "^1.2.1",
+		"express": "^4.16.4",
+		"lodash": "^4.17.11",
+		"moleculer": "^0.13.0",
+		"moleculer-db": "^0.7.7",
+		"moleculer-db-adapter-sequelize": "^0.1.11",
+		"moleculer-decorators": "^1.0.21",
+		"moleculer-elastic-apm": "0.0.2",
+		"moleculer-prometheus": "^0.2.0",
+		"moleculer-web": "^0.8.0",
+		"moleculer-zipkin": "^0.2.0",
+		"moment": "^2.24.0",
+		"nats": "^1.2.2",
+		"pg": "^7.8.1",
+		"redis": "^2.8.0",
+		"semver": "^6.0.0"
+	},
+	"engines": {
+		"node": ">= 8.x.x"
+	},
+	"jest": {
+		"testResultsProcessor": "jest-teamcity",
+		"coverageDirectory": "<rootDir>/coverage",
+		"testEnvironment": "node",
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js"
+		],
+		"moduleNameMapper": {
+			"^@(Repositories.*).*/(Database)$": "<rootDir>/src/Repositories/Mocks/$2",
+			"^@(Models.*).*/([^/]*)$": "<rootDir>/src/Repositories/$1/Mocks/$2",
+			"^@MicroServices": "<rootDir>/services/index.ts",
+			"^@([A-Z].*)$": "<rootDir>/src/$1"
+		},
+		"transform": {
+			"^.+\\.(ts|tsx)$": "ts-jest"
+		},
+		"testMatch": [
+			"**/*.spec.(ts|js)"
+		],
+		"setupFiles": [
+			"<rootDir>/test/unit/mock.setup.js"
+		],
+		"globals": {
+			"ts-jest": {
+				"tsConfig": "tsconfig.json"
+			}
+		}
+	}
+}

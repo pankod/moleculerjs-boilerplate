@@ -1,0 +1,29 @@
+// Global Imports
+import { ServiceBroker } from 'moleculer';
+
+// Local Imports
+import { {{upperFileName}}Helper } from '@Helper';
+import { } from '@Interfaces';
+
+const {{upperFileName}} = require('../../../services/{{fileName}}.service');
+
+describe('Test {{upperFileName}} service', () => {
+
+	const broker = new ServiceBroker({ logger: false });
+	broker.createService({{upperFileName}});
+
+	beforeAll(() => broker.start());
+	afterAll(() => broker.stop());
+
+	describe('Test {{upperFileName}} service actions', async () => {
+
+		it('', async () => {
+			const data = {
+				// params
+			};
+
+			await {{upperFileName}}Helper.methodName(broker as any, data);
+		});
+	});
+
+});
