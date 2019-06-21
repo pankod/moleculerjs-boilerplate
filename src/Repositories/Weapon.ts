@@ -1,16 +1,17 @@
 import { CalculateMeta } from '@Meta';
-import { FireResult } from '@Interfaces';
+import { WeaponSql, PlanetSql } from '@Interfaces';
 
-import * as fs from 'fs';
-import * as path from 'path';
-
-const db = JSON.parse(fs.readFileSync(path.resolve('src/', 'db.json'), 'utf8'));
+import { Weapon, Planet } from './Models';
 
 export module WeaponRepository {
-	export const Fire = async (): Promise<FireResult> => {
+	export const Fire = async (): Promise<{ deathStar: WeaponSql, alderaan: PlanetSql }> => {
 
-		const getDeathStarAttack = await CalculateMeta.getDeathStarAttack();
+		const weaponModel = await Weapon.Model();
+		const planetModel = await Planet.Model()
 
-		return getDeathStarAttack;
+		const deathStar: any = await weaponModel.findOne({ where: { name: 'Death Star' } })
+		const alderaan: any = await planetModel.findOne({ where: { name: "Alderaan" } })
+
+		return { deathStar, alderaan }
 	};
 }
