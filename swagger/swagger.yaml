@@ -24,7 +24,7 @@ info:
 paths:
     /deathstar:
         post:
-            operationId: DeathStarServiceFireMethod
+            operationId: WeaponServiceFireMethod
             produces:
                 - 'application/json; charset=utf-8'
             responses:
