@@ -1,33 +1,16 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import { Planet, Weapon } from "@Repositories/Models";
+
+import { PlanetSql } from "@Interfaces";
+import { WeaponSql } from "@Interfaces";
 
 export module CalculateMeta {
-	const db = JSON.parse(fs.readFileSync(path.resolve('src/', 'db.json'), 'utf8'));
+	export const Damage = async (weapon: WeaponSql, planet: PlanetSql): Promise<{ remainingAmmo: number, remainingShield: number }> => {
+		const { ammo, damage } = weapon;
+		const { shield } = planet;
 
-	export const Damage = (damage: number): number => {
+		const remainingAmmo: number = ammo - 1;
+		const remainingShield: number = shield - damage;
 
-		const currentAmmo = db.DEATHSTAR.ammo;
-		const currentShield = db.PLANET.shield;
-
-		db.DEATHSTAR.ammo = currentAmmo - damage;
-		db.PLANET.shield = currentShield - damage;
-
-		fs.writeFile(path.resolve('src/', 'db.json'), JSON.stringify(db, null, 4), (err) => {
-			if (err) return console.log(err);
-		});
-
-		return db.PLANET.shield;
+		return { remainingAmmo, remainingShield };
 	};
-
-	export const getDeathStarAttack = () => {
-
-		const data = {
-			ammo: db.DEATHSTAR.ammo,
-			damage: db.DEATHSTAR.attacks[0].damage,
-			shield: db.PLANET.shield
-		};
-
-		return data;
-	};
-
 }
