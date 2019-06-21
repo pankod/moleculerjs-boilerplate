@@ -1,13 +1,13 @@
 import sequelize = require('sequelize');
 
-import { WeaponSql } from '@Interfaces';
-import { Weapon as RealWeapon } from '../Weapon';
+import { DeathStarSql } from '@Interfaces';
+import { DeathStar as RealDeathStar } from './DeathStar';
 
 export module Weapon {
-	let ModelInstance: sequelize.Model<{}, WeaponSql> = null;
+	let ModelInstance: sequelize.Model<{}, DeathStarSql> = null;
 	export const Model = async () => {
 		if (!ModelInstance) {
-			ModelInstance = await RealWeapon.Model();
+			ModelInstance = await RealDeathStar.Model();
 
 			await ModelInstance.sync();
 

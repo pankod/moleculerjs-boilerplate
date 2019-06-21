@@ -1,2 +1,2 @@
-export { FireRepository } from '@Repositories/Fire';
+export { DeathStarRepository } from '@Repositories/DeathStar';
 export { PlanetRepository } from '@Repositories/Planet';

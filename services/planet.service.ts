@@ -37,6 +37,7 @@ export class PlanetService extends BaseSchema {
 	@Method
 	@POST
 	public async DefendMethod(damage: number): Promise<number> {
+
 		const result = await PlanetRepository.Defend(damage);
 
 		return result;

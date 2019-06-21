@@ -1,34 +1,50 @@
 basePath: /api
-definitions: {}
+definitions:
+    WarMessageOutDto:
+        description: ""
+        properties:
+            deathStar:
+                type: string
+                description: ""
+            planet:
+                type: string
+                description: ""
+        type: object
+        required:
+            - deathStar
+            - planet
+    ContextDamageInDto:
+        description: ""
+        properties: {}
+        type: object
 info:
     description: 'My Moleculer microservices project'
     title: moleculerjs-boilerplate
     version: 1.0.0
 paths:
-    /fire:
+    /deathstar:
         post:
-            operationId: FireServiceFireMethod
+            operationId: DeathStarServiceFireMethod
             produces:
                 - 'application/json; charset=utf-8'
             responses:
                 '200':
                     description: Ok
                     schema:
-                        type: string
+                        $ref: '#/definitions/WarMessageOutDto'
             description: ""
             tags:
-                - FireServices
+                - DeathStarServices
             consumes:
                 - 'application/json; charset=utf-8'
             parameters:
                 -
                     description: ""
                     in: body
-                    name: damage
+                    name: ctx
                     required: true
                     schema:
-                        type: number
-                    format: double
+                        $ref: '#/definitions/ContextDamageInDto'
     /planet:
         post:
             operationId: PlanetServiceDefendMethod

@@ -1,4 +1,4 @@
-export interface WeaponSql {
+export interface DeathStarSql {
     id: number;
     name: string;
 	damage: number;

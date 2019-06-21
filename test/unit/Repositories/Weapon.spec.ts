@@ -1,12 +1,12 @@
-import { FireRepository } from '../../../src/Repositories/Fire';
+import { DeathStarRepository } from '../../../src/Repositories/DeathStar';
 
 describe('Test WeaponRepository constructor', () => {
 	it('should create an empty options', () => {
-		expect(FireRepository).toBeDefined();
+		expect(DeathStarRepository).toBeDefined();
 	});
 
 	it('should work (fire method)', async () => {
-		const result = await FireRepository.Fire();
+		const result = await DeathStarRepository.Fire();
 		expect(result).toEqual('ATTACK!');
 	});
 });

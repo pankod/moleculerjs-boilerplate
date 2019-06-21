@@ -13,7 +13,7 @@ export module CalculateMeta {
 		db.PLANET.shield = currentShield - damage;
 
 		fs.writeFile(path.resolve('src/', 'db.json'), JSON.stringify(db, null, 4), (err) => {
-		if (err) return console.log(err);
+			if (err) return console.log(err);
 		});
 
 		return db.PLANET.shield;
@@ -23,7 +23,8 @@ export module CalculateMeta {
 
 		const data = {
 			ammo: db.DEATHSTAR.ammo,
-			damage: db.DEATHSTAR.attacks[0].damage
+			damage: db.DEATHSTAR.attacks[0].damage,
+			shield: db.PLANET.shield
 		};
 
 		return data;

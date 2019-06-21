@@ -1,7 +1,7 @@
 import sequelize = require('sequelize');
 
 import { PlanetSql } from '@Interfaces';
-import { Planet as RealPlanet } from '../Planet';
+import { Planet as RealPlanet } from './Planet';
 
 export module Planet {
 	let ModelInstance: sequelize.Model<{}, PlanetSql> = null;
