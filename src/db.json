@@ -7,11 +7,11 @@
                 "damage": 1000
             }
         ],
-        "ammo": 98000
+        "ammo": 90000
     },
     "PLANET": {
         "name": "alderaan",
-        "shield": 8000
+        "shield": 10000
     },
     "logs": []
 }

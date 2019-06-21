@@ -20,7 +20,7 @@ import { PlanetHelper } from '@Helper';
 @Tags('DeathStarServices')
 export class WeaponService extends BaseSchema {
 
-	public name: string = 'fire';
+	public name: string = 'weapon';
 
 	@Action({
 		params: {

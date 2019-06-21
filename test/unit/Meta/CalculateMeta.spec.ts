@@ -7,7 +7,7 @@ describe('Test CalculateMeta constructor', () => {
 });
 
 describe('Test CalculateMeta functions', () => {
-	it('should calculate shield', async () => {
+	it('should calculate remaining shield', async () => {
 		const params = {
             damage: 1000
         };
@@ -15,5 +15,12 @@ describe('Test CalculateMeta functions', () => {
 		const result = await CalculateMeta.Damage(params.damage);
 
 		expect(result).toEqual(9000);
+	});
+
+	it('should return current values', async () => {
+
+		const result = await CalculateMeta.getDeathStarAttack();
+
+		expect(result.ammo).toBeDefined();
 	});
 });

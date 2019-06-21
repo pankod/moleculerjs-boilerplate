@@ -10,7 +10,7 @@ describe('planet Service Helper Constructor', () => {
 });
 
 describe('planet helpers', () => {
-	it('', async () => {
+	it('should trigger Defend method', async () => {
 		const data = {
 			damage: 1000
 		};
