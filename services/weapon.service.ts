@@ -6,7 +6,7 @@ import { Example, IsInt, Produces, Response, Tags } from 'typescript-rest-swagge
 //#endregion Global Imports
 
 //#region Local Imports
-import { DeathStarRepository } from '@Repositories';
+import { WeaponRepository } from '@Repositories';
 //#endregion Local Imports
 
 //#region Interface Imports
@@ -18,7 +18,7 @@ import { PlanetHelper } from '@Helper';
 @Produces('application/json; charset=utf-8')
 @BodyOptions({ extended: true, type: 'application/json; charset=utf-8' })
 @Tags('DeathStarServices')
-export class DeathStarService extends BaseSchema {
+export class WeaponService extends BaseSchema {
 
 	public name: string = 'fire';
 
@@ -36,7 +36,7 @@ export class DeathStarService extends BaseSchema {
 	@Method
 	@POST
 	public async FireMethod(ctx: Context<DamageInDto>): Promise<WarMessageOutDto> {
-		const result = await DeathStarRepository.Fire();
+		const result = await WeaponRepository.Fire();
 
 		const message = {
 			deathStar: `Attacked with ${ctx.params.damage} damage`,
@@ -46,7 +46,7 @@ export class DeathStarService extends BaseSchema {
 		if (result.shield > 0) {
 			PlanetHelper.Defend(ctx, { damage: ctx.params.damage});
 		} else {
-			message.planet = 'Planet shield ruined! war lost!';
+			message.planet = 'Planet shield ruined! war is lost!';
 		}
 
 		return message;
@@ -54,4 +54,4 @@ export class DeathStarService extends BaseSchema {
 
 }
 
-module.exports = new DeathStarService();
+module.exports = new WeaponService();

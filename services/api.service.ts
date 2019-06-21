@@ -11,9 +11,7 @@ const ApiService: ServiceSchema = {
 		port: process.env.PORT || 3000,
 
 		routes: [{
-			aliases: {
-				'POST profile/insert': 'profile.insert'
-			},
+			aliases: {},
 			cors: {
 				credentials: true,
 				methods: ['GET', 'OPTIONS', 'POST'],

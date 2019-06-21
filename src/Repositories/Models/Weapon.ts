@@ -1,10 +1,10 @@
 import sequelize from 'sequelize';
 
-import { DeathStarSql } from '@Interfaces';
+import { WeaponSql } from '@Interfaces';
 import { Database } from '@Repositories/Database';
 
-export module DeathStar {
-	let ModelInstance: sequelize.Model<{}, DeathStarSql> = null;
+export module Weapon {
+	let ModelInstance: sequelize.Model<{}, WeaponSql> = null;
 
 	export const Model = async () => {
 		if (!ModelInstance) {

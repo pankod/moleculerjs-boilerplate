@@ -1,2 +1,2 @@
-export { DeathStarService } from './deathstar.service';
+export { WeaponService } from './weapon.service';
 export { PlanetService } from './planet.service';
