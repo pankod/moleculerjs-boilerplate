@@ -36,18 +36,21 @@ export class WeaponService extends BaseSchema {
 	@Method
 	@POST
 	public async FireMethod(ctx: Context<DamageInDto>): Promise<WarMessageOutDto> {
-		const result = await WeaponRepository.Fire();
+		const { deathStar, alderaan } = await WeaponRepository.Fire();
 
-		const message = {
-			deathStar: `Attacked with ${ctx.params.damage} damage`,
-			planet: `Remaining shield: ${result.shield}`
-		};
+		let message;
+		let remainingShield;
 
-		if (result.shield > 0) {
-			PlanetHelper.Defend(ctx, { damage: ctx.params.damage});
+		if (alderaan.shield > 0) {
+			remainingShield = await PlanetHelper.Defend(ctx, { damage: deathStar.damage });
 		} else {
 			message.planet = 'Planet shield ruined! war is lost!';
 		}
+
+		message = {
+			deathStar: `Attacked with ${deathStar.damage} damage`,
+			planet: `Remaining shield: ${alderaan.shield}`
+		};
 
 		return message;
 	}
