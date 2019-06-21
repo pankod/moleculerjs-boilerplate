@@ -9,7 +9,7 @@ export module Weapon {
 	export const Model = async () => {
 		if (!ModelInstance) {
 			ModelInstance = (await Database.instance()).define(
-				'tableName',
+				'Weapons',
 				{
 					id: {
 						allowNull: false,

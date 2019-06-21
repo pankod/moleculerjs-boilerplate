@@ -9,18 +9,19 @@ export module Planet {
 	export const Model = async () => {
 		if (!ModelInstance) {
 			ModelInstance = (await Database.instance()).define(
-				'tableName',
+				'Planets',
 				{
 					id: {
 						allowNull: false,
 						primaryKey: true,
 						type: sequelize.INTEGER
 					},
-					damage: {
+					name: {
 						allowNull: false,
-						type: sequelize.INTEGER
+						type: sequelize.STRING
 					},
 					shield: {
+						allowNull: false,
 						type: sequelize.INTEGER
 					}
 				},

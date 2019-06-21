@@ -3,7 +3,7 @@ import sequelize from 'sequelize';
 export module Database {
 	const sequelizeInstance = new sequelize('', '', '', {
 		dialect: 'sqlite',
-		host: '.testdb',
+		storage: 'db.test.sqlite',
 		logging: false
 	});
 
