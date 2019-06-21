@@ -4,6 +4,7 @@ import { ServiceBroker } from 'moleculer';
 // Local Imports
 import { PlanetHelper } from '@Helper';
 import { } from '@Interfaces';
+import { CalculateMeta } from '@Meta';
 
 const Planet = require('../../../services/planet.service');
 
@@ -22,7 +23,10 @@ describe('Test Planet service', () => {
 				damage: 1000
 			};
 
-			await PlanetHelper.Defend(broker as any, data);
+			const result = await PlanetHelper.Defend(broker as any, data);
+			const deathStarAttack = await CalculateMeta.getDeathStarAttack();
+
+			expect(result).toEqual(deathStarAttack.shield);
 		});
 	});
 

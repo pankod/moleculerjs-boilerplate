@@ -4,9 +4,9 @@ import { Context } from 'moleculer';
 // Local Imports
 import { FireInDto, FireOutDto } from '@Interfaces';
 
-export module DeathStarHelper {
+export module WeaponHelper {
 
-	const prefix: string = 'deathstar';
+	const prefix: string = 'weapon';
 
 	export const Fire = async (ctx: Context, params: FireInDto): Promise<FireOutDto> => await ctx.call(`${prefix}.Fire`, params);
 

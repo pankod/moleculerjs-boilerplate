@@ -10,7 +10,7 @@ describe('fire Service Helper Constructor', () => {
 });
 
 describe('fire helpers', () => {
-	it('', async () => {
+	it('should trigger fire method', async () => {
 		const data: FireInDto = {
 			name: 'default attack',
 			damage: 1000,

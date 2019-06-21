@@ -2,12 +2,12 @@
 import { ServiceBroker } from 'moleculer';
 
 // Local Imports
-import { FireHelper } from '@Helper';
+import { WeaponHelper } from '@Helper';
 import { } from '@Interfaces';
 
-const Fire = require('../../../services/fire.service');
+const Fire = require('../../../services/weapon.service');
 
-describe('Test Fire service', () => {
+describe('Test weapon service', () => {
 
 	const broker = new ServiceBroker({ logger: false });
 	broker.createService(Fire);
@@ -17,12 +17,16 @@ describe('Test Fire service', () => {
 
 	describe('Test Fire service actions', async () => {
 
-		it('', async () => {
+		it('should work fire method', async () => {
 			const data = {
-				// params
+				damage: 1000
 			};
 
-			await FireHelper.methodName(broker as any, data);
+			const result = await WeaponHelper.Fire(broker as any, data);
+
+			console.log(result);
+
+			expect(result).toBeTruthy();
 		});
 	});
 

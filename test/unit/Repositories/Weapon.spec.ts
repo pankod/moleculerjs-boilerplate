@@ -7,6 +7,6 @@ describe('Test WeaponRepository constructor', () => {
 
 	it('should work (fire method)', async () => {
 		const result = await WeaponRepository.Fire();
-		expect(result).toEqual('ATTACK!');
+		expect(result.damage).toEqual(1000);
 	});
 });
