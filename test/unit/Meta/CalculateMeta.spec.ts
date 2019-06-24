@@ -1,4 +1,7 @@
 import { CalculateMeta } from '../../../src/Meta/CalculateMeta';
+import { Weapon } from '@Models/Weapon';
+import { Planet } from '@Models/Planet';
+import { WeaponSql, PlanetSql } from '@Interfaces';
 
 describe('Test CalculateMeta constructor', () => {
 	it('should create an empty options', () => {
@@ -8,19 +11,21 @@ describe('Test CalculateMeta constructor', () => {
 
 describe('Test CalculateMeta functions', () => {
 	it('should calculate remaining shield', async () => {
-		const params = {
-            damage: 1000
-        };
+		const damage: number = 1000
 
-		const result = await CalculateMeta.Damage(params.damage);
+		const weaponModel = await Weapon.Model()
+		const weapon = await weaponModel.findOne({ where: { name: "Death Star" } }) as WeaponSql
 
-		expect(result).toEqual(9000);
-	});
+		const planetModel = await Planet.Model()
+		const planet = await planetModel.findOne({ where: { name: "Alderaan" } }) as PlanetSql
 
-	it('should return current values', async () => {
+		const result = await CalculateMeta.Damage(weapon, planet, damage);
 
-		const result = await CalculateMeta.getDeathStarAttack();
+		const expected = {
+			remainingAmmo: weapon.ammo - 1,
+			remainingShield: planet.shield - damage
+		}
 
-		expect(result.ammo).toBeDefined();
+		expect(result).toEqual(expected);
 	});
 });
