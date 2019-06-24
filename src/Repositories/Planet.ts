@@ -1,5 +1,6 @@
 import { PlanetSql, WeaponSql } from '@Interfaces';
-import { Planet, Weapon } from '@Models';
+import { Planet } from '@Models/Planet';
+import { Weapon } from '@Models/Weapon'
 import { CalculateMeta } from '@Meta';
 
 export namespace PlanetRepository {

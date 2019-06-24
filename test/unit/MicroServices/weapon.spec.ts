@@ -24,8 +24,6 @@ describe('Test weapon service', () => {
 
 			const result = await WeaponHelper.Fire(broker as any, data);
 
-			console.log(result);
-
 			expect(result).toBeTruthy();
 		});
 	});

@@ -65,3 +65,4 @@ typings/
 
 # sqlite
 db.sqlite
+test/db.test.sqlite
