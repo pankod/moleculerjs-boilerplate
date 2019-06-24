@@ -3,7 +3,7 @@ import sequelize from 'sequelize';
 export namespace Database {
 	const sequelizeInstance = new sequelize('', '', '', {
 		dialect: 'sqlite',
-		storage: 'db.test.sqlite',
+		storage: './test/db.test.sqlite',
 		logging: false,
 	});
 
