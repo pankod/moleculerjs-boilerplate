@@ -4,7 +4,7 @@ import { WeaponSql, PlanetSql } from '@Interfaces';
 import { Weapon, Planet } from './Models';
 
 export module WeaponRepository {
-	export const Fire = async (): Promise<{ deathStar: WeaponSql, alderaan: PlanetSql }> => {
+	export const Fire = async (): Promise<{ damage: number, shield: number }> => {
 
 		const weaponModel = await Weapon.Model();
 		const planetModel = await Planet.Model()
@@ -12,6 +12,6 @@ export module WeaponRepository {
 		const deathStar: any = await weaponModel.findOne({ where: { name: 'Death Star' } })
 		const alderaan: any = await planetModel.findOne({ where: { name: "Alderaan" } })
 
-		return { deathStar, alderaan }
+		return { damage: deathStar.damage, shield: alderaan.shield }
 	};
 }
