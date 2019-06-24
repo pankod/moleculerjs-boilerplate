@@ -55,10 +55,10 @@
 				"src/Meta"
 			],
 			"@Models/*": [
-				"src/Repositories/Models/*"
+				"src/Models/*"
 			],
 			"@Models": [
-				"src/Repositories/Models"
+				"src/Models"
 			]
 		}
 	},

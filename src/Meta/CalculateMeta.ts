@@ -1,7 +1,6 @@
-import { Planet, Weapon } from "@Repositories/Models";
+import { Planet, Weapon } from "@Models";
 
-import { PlanetSql } from "@Interfaces";
-import { WeaponSql } from "@Interfaces";
+import { PlanetSql, WeaponSql } from "@Interfaces";
 
 export module CalculateMeta {
 	export const Damage = async (weapon: WeaponSql, planet: PlanetSql, damage: number): Promise<{ remainingAmmo: number, remainingShield: number }> => {

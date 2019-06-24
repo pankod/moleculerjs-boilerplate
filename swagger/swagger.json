@@ -23,6 +23,73 @@
 			"description": "",
 			"properties": {},
 			"type": "object"
+		},
+		"WeaponSql": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"damage": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"ammo": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"damage",
+				"ammo"
+			]
+		},
+		"PlanetSql": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"shield": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"shield"
+			]
+		},
+		"DefendOutDto": {
+			"description": "",
+			"properties": {
+				"deathStar": {
+					"$ref": "#/definitions/WeaponSql"
+				},
+				"alderaan": {
+					"$ref": "#/definitions/PlanetSql"
+				}
+			},
+			"type": "object",
+			"required": [
+				"deathStar",
+				"alderaan"
+			]
 		}
 	},
 	"info": {
@@ -75,8 +142,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"type": "number",
-							"format": "double"
+							"$ref": "#/definitions/DefendOutDto"
 						}
 					}
 				},

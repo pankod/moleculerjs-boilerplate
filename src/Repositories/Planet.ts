@@ -1,5 +1,5 @@
 import { PlanetSql, WeaponSql } from '@Interfaces';
-import { Planet, Weapon } from '@Repositories/Models';
+import { Planet, Weapon } from '@Models';
 import { CalculateMeta } from '@Meta';
 
 export module PlanetRepository {
@@ -7,8 +7,8 @@ export module PlanetRepository {
 		const weaponModel = await Weapon.Model();
 		const planetModel = await Planet.Model()
 
-		const deathStar: any = await weaponModel.findOne({ where: { name: 'Death Star' } })
-		const alderaan: any = await planetModel.findOne({ where: { name: "Alderaan" } })
+		const deathStar: any = await weaponModel.findOne({ where: { name: 'Death Star' } });
+		const alderaan: any = await planetModel.findOne({ where: { name: "Alderaan" } });
 
 		const { remainingAmmo, remainingShield } = await CalculateMeta.Damage(deathStar, alderaan, damage);
 

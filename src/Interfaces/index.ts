@@ -5,3 +5,4 @@ export { PlanetSql } from '@Interfaces/planet/PlanetSql';
 export { DamageInDto } from '@Interfaces/Fire/DamageInDto';
 export { WarMessageOutDto } from '@Interfaces/Fire/WarMessageOutDto';
 export { FireResult } from '@Interfaces/Fire/FireResult';
+export { DefendOutDto } from '@Interfaces/Planet/DefendOutDto';

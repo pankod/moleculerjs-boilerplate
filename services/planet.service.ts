@@ -12,7 +12,7 @@ import { PlanetRepository } from '@Repositories';
 //#endregion Local Imports
 
 //#region Interface Imports
-import { } from '@Interfaces';
+import { DefendOutDto } from '@Interfaces';
 //#endregion Interface Imports
 @Path('planet')
 @Accept('application/json; charset=utf-8')
@@ -28,7 +28,7 @@ export class PlanetService extends BaseSchema {
 			damage: 'number'
 		}
 	})
-	public async Defend(ctx: Context<any>): Promise<number> {
+	public async Defend(ctx: Context<any>): Promise<DefendOutDto> {
 		const response = await this.DefendMethod(ctx.params.damage);
 
 		return response;
@@ -36,7 +36,7 @@ export class PlanetService extends BaseSchema {
 
 	@Method
 	@POST
-	public async DefendMethod(damage: number): Promise<number> {
+	public async DefendMethod(damage: number): Promise<DefendOutDto> {
 
 		const result = await PlanetRepository.Defend(damage);
 
