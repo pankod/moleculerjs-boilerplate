@@ -7,8 +7,8 @@ const path = require("path");
 exports.Config = {
     repositoriesDir: '../src/Repositories',
     interfaceDir: '../src/Interfaces',
-    modelDir: '../src/Repositories/Models',
-    mockModelDir: '../src/Repositories/Models/Mocks',
+    modelDir: '../src/Models',
+    mockModelDir: '../src//Models',
     repositoriesTestDir: '../test/unit/Repositories',
     servicesDir: '../services',
     servicesHelperDir: '../src/Helper',
@@ -47,7 +47,7 @@ exports.Helper = {
     createInterface: (answers) => {
         const templatePath = './helper_scripts/templates/interfaces/interface.mustache';
         const indexInterfaceTemplate = './helper_scripts/templates/interfaces/index.mustache';
-        const templateProps = { fileName: answers.fileName };
+        const templateProps = { fileName: answers.fileName, upperFileName: answers.upperFileName };
         const interfaceFilePath = `${exports.Config.interfaceDir}/${answers.upperFileName}/${answers.upperFileName}.d.ts`;
         const interfaceDirPath = `${exports.Config.interfaceDir}/${answers.upperFileName}`;
         const writeFileProps = {
@@ -86,7 +86,7 @@ exports.Helper = {
         const templateProps = { fileName: answers.fileName };
         const indexTemplate = './helper_scripts/templates/repositories/mock_index.mustache';
         const writeFileProps = {
-            dirPath: `${exports.Config.mockModelDir}/${answers.fileName}.ts`,
+            dirPath: `${exports.Config.mockModelDir}/${answers.fileName}.mock.ts`,
             getFileContent: () => exports.Helper.getTemplate(templatePath, templateProps),
             message: 'Added new Mock Model Instance.'
         };
@@ -137,7 +137,8 @@ exports.Helper = {
     createModel: (answers) => {
         const templatePath = './helper_scripts/templates/repositories/repository.mustache';
         const templateProps = {
-            fileName: answers.fileName
+            fileName: answers.fileName,
+            upperFileName: answers.upperFileName
         };
         const indexTemplate = './helper_scripts/templates/repositories/repo_index.mustache';
         const addIndexParams = {

@@ -1,13 +1,13 @@
-import sequelize = require('sequelize');
+import sequelize from 'sequelize';
 
 import { {{fileName}}Sql } from '@Interfaces';
-import { {{fileName}} as Real{{fileName}}} from '../{{fileName}}';
+import { {{fileName}} as Real{{fileName}}} from './{{fileName}}';
 
 export module {{fileName}} {
 	let ModelInstance: sequelize.Model<{}, {{fileName}}Sql> = null;
 	export const Model = async () => {
 		if (!ModelInstance) {
-			ModelInstance = await {{fileName}}Like.Model();
+			ModelInstance = await {{fileName}}.Model();
 
 			await ModelInstance.sync();
 

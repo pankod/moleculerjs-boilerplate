@@ -1,4 +1,4 @@
-import sequelize = require('sequelize');
+import sequelize from 'sequelize';
 
 import { WeaponSql } from '@Interfaces';
 import { Weapon as RealWeapon } from './Weapon';
