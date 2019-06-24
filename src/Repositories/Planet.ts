@@ -10,7 +10,7 @@ export module PlanetRepository {
 		const deathStar: any = await weaponModel.findOne({ where: { name: 'Death Star' } })
 		const alderaan: any = await planetModel.findOne({ where: { name: "Alderaan" } })
 
-		const { remainingAmmo, remainingShield } = await CalculateMeta.Damage(deathStar, alderaan);
+		const { remainingAmmo, remainingShield } = await CalculateMeta.Damage(deathStar, alderaan, damage);
 
 		deathStar.update({ ammo: remainingAmmo })
 		alderaan.update({ shield: remainingShield })

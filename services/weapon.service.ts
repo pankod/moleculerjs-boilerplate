@@ -36,7 +36,8 @@ export class WeaponService extends BaseSchema {
 	@Method
 	@POST
 	public async FireMethod(ctx: Context<DamageInDto>): Promise<WarMessageOutDto> {
-		const { damage, shield } = await WeaponRepository.Fire();
+		const { shield } = await WeaponRepository.Fire();
+		const { damage } = ctx.params
 
 		let response;
 		let message;
