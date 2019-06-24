@@ -1,3 +1,3 @@
 export interface DamageInDto {
-    damage: number;
+	damage: number;
 }

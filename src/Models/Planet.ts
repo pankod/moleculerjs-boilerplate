@@ -3,7 +3,7 @@ import sequelize from 'sequelize';
 import { PlanetSql } from '@Interfaces';
 import { Database } from '@Repositories/Database';
 
-export module Planet {
+export namespace Planet {
 	let ModelInstance: sequelize.Model<{}, PlanetSql> = null;
 
 	export const Model = async () => {
@@ -14,18 +14,18 @@ export module Planet {
 					id: {
 						allowNull: false,
 						primaryKey: true,
-						type: sequelize.INTEGER
+						type: sequelize.INTEGER,
 					},
 					name: {
 						allowNull: false,
-						type: sequelize.STRING
+						type: sequelize.STRING,
 					},
 					shield: {
 						allowNull: false,
-						type: sequelize.INTEGER
-					}
+						type: sequelize.INTEGER,
+					},
 				},
-				{ ...Database.defaultTableConfig }
+				{ ...Database.defaultTableConfig },
 			);
 		}
 

@@ -3,7 +3,7 @@ import sequelize from 'sequelize';
 import { WeaponSql } from '@Interfaces';
 import { Database } from '@Repositories/Database';
 
-export module Weapon {
+export namespace Weapon {
 	let ModelInstance: sequelize.Model<{}, WeaponSql> = null;
 
 	export const Model = async () => {
@@ -14,22 +14,22 @@ export module Weapon {
 					id: {
 						allowNull: false,
 						primaryKey: true,
-						type: sequelize.INTEGER
+						type: sequelize.INTEGER,
 					},
 					name: {
 						allowNull: false,
-						type: sequelize.STRING
+						type: sequelize.STRING,
 					},
 					damage: {
 						allowNull: false,
-						type: sequelize.INTEGER
+						type: sequelize.INTEGER,
 					},
 					ammo: {
 						allowNull: false,
-						type: sequelize.INTEGER
-					}
+						type: sequelize.INTEGER,
+					},
 				},
-				{ ...Database.defaultTableConfig }
+				{ ...Database.defaultTableConfig },
 			);
 		}
 

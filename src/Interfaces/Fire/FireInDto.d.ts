@@ -1,3 +1,3 @@
 export interface FireInDto {
-    damage: number;
+	damage: number;
 }

@@ -1,9 +1,11 @@
-import { Planet, Weapon } from "@Models";
+import { PlanetSql, WeaponSql } from '@Interfaces';
 
-import { PlanetSql, WeaponSql } from "@Interfaces";
-
-export module CalculateMeta {
-	export const Damage = async (weapon: WeaponSql, planet: PlanetSql, damage: number): Promise<{ remainingAmmo: number, remainingShield: number }> => {
+export namespace CalculateMeta {
+	export const Damage = async (
+		weapon: WeaponSql,
+		planet: PlanetSql,
+		damage: number,
+	): Promise<{ remainingAmmo: number; remainingShield: number }> => {
 		const { ammo } = weapon;
 		const { shield } = planet;
 

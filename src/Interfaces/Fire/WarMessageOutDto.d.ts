@@ -1,4 +1,4 @@
 export interface WarMessageOutDto {
-    deathStar: string;
+	deathStar: string;
 	planet: string;
 }

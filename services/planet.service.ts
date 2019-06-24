@@ -2,12 +2,10 @@
 import { Context } from 'moleculer';
 import { Action, BaseSchema, Method } from 'moleculer-decorators';
 import { Accept, BodyOptions, Path, POST } from 'typescript-rest';
-import { Example, IsInt, Produces, Response, Tags } from 'typescript-rest-swagger';
+import { Produces, Tags } from 'typescript-rest-swagger';
 //#endregion Global Imports
 
 //#region Local Imports
-import { } from '@Repositories';
-import { CacheService } from '@Services';
 import { PlanetRepository } from '@Repositories';
 //#endregion Local Imports
 
@@ -20,13 +18,12 @@ import { DefendOutDto } from '@Interfaces';
 @BodyOptions({ extended: true, type: 'application/json; charset=utf-8' })
 @Tags('PlanetServices')
 export class PlanetService extends BaseSchema {
-
 	public name: string = 'planet';
 
 	@Action({
 		params: {
-			damage: 'number'
-		}
+			damage: 'number',
+		},
 	})
 	public async Defend(ctx: Context<any>): Promise<DefendOutDto> {
 		const response = await this.DefendMethod(ctx.params.damage);
@@ -37,12 +34,10 @@ export class PlanetService extends BaseSchema {
 	@Method
 	@POST
 	public async DefendMethod(damage: number): Promise<DefendOutDto> {
-
 		const result = await PlanetRepository.Defend(damage);
 
 		return result;
 	}
-
 }
 
 module.exports = new PlanetService();
