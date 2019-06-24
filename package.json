@@ -10,7 +10,8 @@
 		"start": "node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js services",
 		"ci": "jest --watch",
 		"test": "jest --coverage --runInBand",
-		"lint": "tslint -p tsconfig.json",
+		"lint": "eslint -c .eslintrc.js --ext .ts,.tsx {services,src}/**",
+		"format": "eslint -c .eslintrc.js --ext .ts,.tsx --fix {services,src}/**",
 		"dc:up": "docker-compose up --build -d",
 		"dc:down": "docker-compose down",
 		"swagger-run": "npm run swagger & npm run ui",
@@ -41,10 +42,16 @@
 		"ts-jest": "^23.10.5",
 		"ts-node": "^7.0.1",
 		"tsconfig-paths": "^3.8.0",
-		"tslint": "^5.11.0",
 		"typescript": "^3.3.3333",
 		"typescript-rest": "^2.0.0",
-		"typescript-rest-swagger": "0.0.24"
+		"typescript-rest-swagger": "0.0.24",
+		"eslint": "^5.16.0",
+		"eslint-config-prettier": "^4.3.0",
+		"eslint-plugin-prettier": "^3.1.0",
+		"eslint-plugin-react": "^7.13.0",
+		"@typescript-eslint/eslint-plugin": "^1.9.0",
+		"@typescript-eslint/parser": "^1.9.0",
+		"prettier": "^1.17.1"
 	},
 	"dependencies": {
 		"blueimp-md5": "^2.10.0",
