@@ -4,7 +4,7 @@ import { PlanetSql } from '@Interfaces';
 import { Database } from '@Repositories/Database';
 
 export namespace Planet {
-	let ModelInstance: sequelize.Model<{}, PlanetSql> = null;
+	let ModelInstance: sequelize.Model<{}, {}> = null;
 
 	export const Model = async () => {
 		if (!ModelInstance) {
