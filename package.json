@@ -15,7 +15,8 @@
 		"dc:down": "docker-compose down",
 		"swagger-run": "npm run swagger & npm run ui",
 		"swagger": "swaggerGen -c ./swaggerConfig.json -p ./tsconfig.json",
-		"ui": "node ./swagger/index.js"
+		"ui": "node ./swagger/index.js",
+		"setup-db": "cp db.sqlite.example db.sqlite"
 	},
 	"keywords": [
 		"microservices",

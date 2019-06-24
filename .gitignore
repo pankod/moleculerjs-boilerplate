@@ -62,3 +62,6 @@ typings/
 
 # history
 .history
+
+# sqlite
+db.sqlite
