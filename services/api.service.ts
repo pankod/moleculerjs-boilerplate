@@ -10,15 +10,17 @@ const ApiService: ServiceSchema = {
 	settings: {
 		port: process.env.PORT || 3000,
 
-		routes: [{
-			aliases: {},
-			cors: {
-				credentials: true,
-				methods: ['GET', 'OPTIONS', 'POST'],
-				origin: ['*']
+		routes: [
+			{
+				aliases: {},
+				cors: {
+					credentials: true,
+					methods: ['GET', 'OPTIONS', 'POST'],
+					origin: ['*'],
+				},
+				path: '/api',
 			},
-			path: '/api'
-		}],
+		],
 
 		// Serve assets from 'public' folder
 		assets: {

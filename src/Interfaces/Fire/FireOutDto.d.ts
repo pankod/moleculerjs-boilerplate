@@ -1,3 +1,3 @@
 export interface FireOutDto {
-    message: string;
+	message: string;
 }

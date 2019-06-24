@@ -1,8 +1,7 @@
 // Global Imports
 import { Context, Endpoint, ServiceBroker } from 'moleculer';
 
-export module DummyContext {
-
+export namespace DummyContext {
 	const broker = new ServiceBroker({ logger: false, maxCallLevel: 5 });
 
 	const endpoint: Endpoint = {
@@ -10,14 +9,13 @@ export module DummyContext {
 		id: 'server-123',
 		node: {},
 		local: true,
-		state: false
+		state: false,
 	};
 
 	export const getCall = (data: object = {}) => {
-		let ctx = Context.create(broker, endpoint, data);
-		ctx.call = jest.fn(() => (broker.Promise as any).resolve({}));
+		const ctx = Context.create(broker, endpoint, data);
+		ctx.call = jest.fn(async () => (broker.Promise as any).resolve({}));
 
 		return ctx;
 	};
-
 }

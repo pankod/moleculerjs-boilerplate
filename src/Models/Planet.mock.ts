@@ -3,7 +3,7 @@ import sequelize = require('sequelize');
 import { PlanetSql } from '@Interfaces';
 import { Planet as RealPlanet } from './Planet';
 
-export module Planet {
+export namespace Planet {
 	let ModelInstance: sequelize.Model<{}, PlanetSql> = null;
 	export const Model = async () => {
 		if (!ModelInstance) {
@@ -13,13 +13,13 @@ export module Planet {
 
 			await ModelInstance.destroy({
 				truncate: true,
-				where: {}
+				where: {},
 			});
 
 			await ModelInstance.create({
 				id: 1,
 				damage: 1000,
-				shield: 4000
+				shield: 4000,
 			});
 		}
 

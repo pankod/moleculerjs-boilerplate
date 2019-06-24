@@ -1,20 +1,18 @@
 //#region Global Imports
-import redis, { Commands } from 'redis';
+import redis from 'redis';
 import { promisify } from 'util';
 //#endregion Global Imports
 
 //#region Local Imports
-import { CacheHelper } from '@Helper';
-import { CacheStore } from '@Interfaces';
 //#endregion Local Imports
 
 //#region Interface Imports
 //#endregion Interface Imports
 
-export module CacheService {
+export namespace CacheService {
 	export const client = redis.createClient({
 		host: '',
-		db: 0
+		db: 0,
 	});
 
 	const getAsync = promisify(client.get).bind(client);
@@ -38,9 +36,9 @@ export module CacheService {
 	};
 
 	export const Set = async (key: string, data: any, expiryMin: number = 0): Promise<boolean> => {
-		const response = await (expiryMin > 0 ?
-			setAsync(key, JSON.stringify(data), 'EX', expiryMin * 60000) :
-			setAsync(key, JSON.stringify(data)));
+		const response = await (expiryMin > 0
+			? setAsync(key, JSON.stringify(data), 'EX', expiryMin * 60000)
+			: setAsync(key, JSON.stringify(data)));
 
 		return true;
 	};
@@ -52,12 +50,15 @@ export module CacheService {
 	};
 
 	export const PopItemToQueue = async <T>(cacheStore: string): Promise<T> => {
-		const result = await lpopAsync(cacheStore) as string;
+		const result = (await lpopAsync(cacheStore)) as string;
 
 		return JSON.parse(result) as T;
 	};
 
-	export const SetItemsToSortedSet = async (cacheStore: string, items: Array<string>): Promise<Array<boolean>> => {
+	export const SetItemsToSortedSet = async (
+		cacheStore: string,
+		items: string[],
+	): Promise<boolean[]> => {
 		const results = [];
 
 		for (const item of items) {
@@ -68,7 +69,10 @@ export module CacheService {
 		return results;
 	};
 
-	export const SortedSetContainedValues = async (cacheStore: string, items: Array<string>): Promise<Array<string>> => {
+	export const SortedSetContainedValues = async (
+		cacheStore: string,
+		items: string[],
+	): Promise<string[]> => {
 		const containedValues = [];
 
 		for (const item of items) {
@@ -83,7 +87,6 @@ export module CacheService {
 	};
 
 	export const Exists = async (cacheKey: string): Promise<boolean> => {
-
 		const result = await getExistsAsync(cacheKey);
 
 		if (result) {
@@ -93,13 +96,13 @@ export module CacheService {
 		return false;
 	};
 
-	export const SortedSetStoreIntersect = async (set: string, sets: Array<string>): Promise<number> => {
+	export const SortedSetStoreIntersect = async (set: string, sets: string[]): Promise<number> => {
 		const result = await getZInterAsync(set, 1, ...sets);
 
 		return result;
 	};
 
-	export const SortedSetAllItems = async (cacheKey: string): Promise<Array<string>> => {
+	export const SortedSetAllItems = async (cacheKey: string): Promise<string[]> => {
 		const result = await getZRangeAsync(cacheKey, 0, -1);
 
 		return result;
@@ -122,13 +125,21 @@ export module CacheService {
 		return result;
 	};
 
-	export const AddFriend = async (UserId: number, With: number, AddToOnlineFriends: boolean): Promise<void> => {
+	export const AddFriend = async (
+		UserId: number,
+		With: number,
+		AddToOnlineFriends: boolean,
+	): Promise<void> => {
 		const trans = client.multi();
 
 		trans.zadd(CacheHelper.Key(CacheStore.SortedSet_Friends, UserId.toString()), 0, With);
 
 		if (AddToOnlineFriends) {
-			trans.zadd(CacheHelper.Key(CacheStore.SortedSet_OnlineFriends, UserId.toString()), 0, With);
+			trans.zadd(
+				CacheHelper.Key(CacheStore.SortedSet_OnlineFriends, UserId.toString()),
+				0,
+				With,
+			);
 		}
 
 		trans.exec();
@@ -139,5 +150,4 @@ export module CacheService {
 
 		return result;
 	};
-
 }

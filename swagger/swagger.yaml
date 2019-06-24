@@ -1,22 +1,5 @@
 basePath: /api
 definitions:
-    WarMessageOutDto:
-        description: ""
-        properties:
-            deathStar:
-                type: string
-                description: ""
-            planet:
-                type: string
-                description: ""
-        type: object
-        required:
-            - deathStar
-            - planet
-    ContextDamageInDto:
-        description: ""
-        properties: {}
-        type: object
     WeaponSql:
         description: ""
         properties:
@@ -56,6 +39,25 @@ definitions:
         required:
             - id
             - shield
+    FireMethodOutDto:
+        description: ""
+        properties:
+            weapon:
+                $ref: '#/definitions/WeaponSql'
+            planet:
+                $ref: '#/definitions/PlanetSql'
+            message:
+                type: string
+                description: ""
+        type: object
+        required:
+            - weapon
+            - planet
+            - message
+    ContextDamageInDto:
+        description: ""
+        properties: {}
+        type: object
     DefendOutDto:
         description: ""
         properties:
@@ -81,7 +83,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/WarMessageOutDto'
+                        $ref: '#/definitions/FireMethodOutDto'
             description: ""
             tags:
                 - DeathStarServices

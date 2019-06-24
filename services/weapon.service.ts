@@ -2,7 +2,7 @@
 import { Context } from 'moleculer';
 import { Action, BaseSchema, Method } from 'moleculer-decorators';
 import { Accept, BodyOptions, Path, POST } from 'typescript-rest';
-import { Example, IsInt, Produces, Response, Tags } from 'typescript-rest-swagger';
+import { Produces, Tags } from 'typescript-rest-swagger';
 //#endregion Global Imports
 
 //#region Local Imports
@@ -12,6 +12,7 @@ import { WeaponRepository } from '@Repositories';
 //#region Interface Imports
 import { DamageInDto, WarMessageOutDto } from '@Interfaces';
 import { PlanetHelper } from '@Helper';
+import { FireMethodOutDto } from '@Interfaces/Fire/FireMethodOutDto';
 //#endregion Interface Imports
 @Path('deathstar')
 @Accept('application/json; charset=utf-8')
@@ -19,15 +20,14 @@ import { PlanetHelper } from '@Helper';
 @BodyOptions({ extended: true, type: 'application/json; charset=utf-8' })
 @Tags('DeathStarServices')
 export class WeaponService extends BaseSchema {
-
 	public name: string = 'weapon';
 
 	@Action({
 		params: {
-			damage: 'number'
-		}
+			damage: 'number',
+		},
 	})
-	public async Fire(ctx: Context<DamageInDto>): Promise<WarMessageOutDto> {
+	public async Fire(ctx: Context<DamageInDto>): Promise<FireMethodOutDto> {
 		const response = await this.FireMethod(ctx);
 
 		return response;
@@ -35,30 +35,28 @@ export class WeaponService extends BaseSchema {
 
 	@Method
 	@POST
-	public async FireMethod(ctx: Context<DamageInDto>): Promise<WarMessageOutDto> {
+	public async FireMethod(ctx: Context<DamageInDto>): Promise<FireMethodOutDto> {
 		const { shield } = await WeaponRepository.Fire();
-		const { damage } = ctx.params
-
-		let response;
-		let message;
+		const { damage } = ctx.params;
 
 		const { deathStar, alderaan } = await PlanetHelper.Defend(ctx, { damage });
 
+		let message;
+
 		if (shield > 0) {
-			message = `Planet took ${damage} damage and has ${alderaan.shield} shield left.`
+			message = `Planet took ${damage} damage and has ${alderaan.shield} shield left.`;
 		} else {
 			message = 'Planet shield ruined! war is lost!';
 		}
 
-		response = {
+		const response: FireMethodOutDto = {
 			weapon: deathStar,
 			planet: alderaan,
-			message
+			message,
 		};
 
 		return response;
 	}
-
 }
 
 module.exports = new WeaponService();

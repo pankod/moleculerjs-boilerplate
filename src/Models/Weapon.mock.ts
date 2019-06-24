@@ -3,7 +3,7 @@ import sequelize = require('sequelize');
 import { WeaponSql } from '@Interfaces';
 import { Weapon as RealWeapon } from './Weapon';
 
-export module Weapon {
+export namespace Weapon {
 	let ModelInstance: sequelize.Model<{}, WeaponSql> = null;
 
 	export const Model = async () => {
@@ -14,14 +14,14 @@ export module Weapon {
 
 			await ModelInstance.destroy({
 				truncate: true,
-				where: {}
+				where: {},
 			});
 
 			await ModelInstance.create({
 				id: 1,
 				name: 'default attack',
 				damage: 1000,
-				ammo: 10000
+				ammo: 10000,
 			});
 		}
 

@@ -1,3 +1,6 @@
-import { PlanetSql, WeaponSql } from "@Interfaces";
+import { PlanetSql, WeaponSql } from '@Interfaces';
 
-export interface DefendOutDto { deathStar: WeaponSql; alderaan: PlanetSql; }
+export interface DefendOutDto {
+	deathStar: WeaponSql;
+	alderaan: PlanetSql;
+}

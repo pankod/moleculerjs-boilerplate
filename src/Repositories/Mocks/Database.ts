@@ -1,10 +1,10 @@
 import sequelize from 'sequelize';
 
-export module Database {
+export namespace Database {
 	const sequelizeInstance = new sequelize('', '', '', {
 		dialect: 'sqlite',
 		storage: 'db.test.sqlite',
-		logging: false
+		logging: false,
 	});
 
 	export const instance = async (): Promise<sequelize.Sequelize> => {

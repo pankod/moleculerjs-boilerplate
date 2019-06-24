@@ -1,4 +1,4 @@
 export interface PlanetSql {
-    id: number;
-    shield: number;
+	id: number;
+	shield: number;
 }
