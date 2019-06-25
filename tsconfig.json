@@ -27,9 +27,6 @@
 			"@Services": [
 				"src/Services"
 			],
-			"@Services/*": [
-				"src/Services/*"
-			],
 			"@Interfaces/*": [
 				"src/Interfaces/*"
 			],
@@ -59,6 +56,12 @@
 			],
 			"@Models": [
 				"src/Models"
+			],
+			"@Entities/*": [
+				"src/Entities/*"
+			],
+			"@Entities": [
+				"src/Entities"
 			]
 		}
 	},
