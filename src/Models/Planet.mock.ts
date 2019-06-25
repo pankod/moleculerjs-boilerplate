@@ -18,8 +18,8 @@ export namespace Planet {
 
 			await ModelInstance.create({
 				id: 1,
-				damage: 1000,
-				shield: 4000,
+				name: 'Alderaan',
+				shield: 100000,
 			});
 		}
 
