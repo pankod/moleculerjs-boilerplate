@@ -6,8 +6,8 @@ import * as program from 'commander';
 import * as figlet from 'figlet';
 import * as inquirer from 'inquirer';
 
-import { modelQuestion } from './helper_scripts/definations/model';
-import { serviceQuestion } from './helper_scripts/definations/service';
+import { modelQuestion } from './helper_scripts/definitions/model';
+import { serviceQuestion } from './helper_scripts/definitions/service';
 
 clear();
 
