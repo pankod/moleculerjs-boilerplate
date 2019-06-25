@@ -1,5 +1,6 @@
 "use strict";
 import { BrokerOptions, Errors } from "moleculer";
+import 'reflect-metadata'
 
 /**
  * Moleculer ServiceBroker configuration file
