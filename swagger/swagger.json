@@ -40,6 +40,10 @@
 					"format": "double",
 					"description": ""
 				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
 				"shield": {
 					"type": "number",
 					"format": "double",
@@ -49,6 +53,7 @@
 			"type": "object",
 			"required": [
 				"id",
+				"name",
 				"shield"
 			]
 		},

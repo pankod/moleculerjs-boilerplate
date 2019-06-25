@@ -4,7 +4,7 @@ import { WeaponSql } from '@Interfaces';
 import { Weapon as RealWeapon } from './Weapon';
 
 export namespace Weapon {
-	let ModelInstance: sequelize.Model<{}, WeaponSql> = null;
+	let ModelInstance: sequelize.Model<{}, {}> = null;
 
 	export const Model = async () => {
 		if (!ModelInstance) {
@@ -19,7 +19,7 @@ export namespace Weapon {
 
 			await ModelInstance.create({
 				id: 1,
-				name: 'default attack',
+				name: 'Death Star',
 				damage: 1000,
 				ammo: 10000,
 			});
