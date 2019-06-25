@@ -74,7 +74,7 @@ export const Helper = {
 		const indexInterfaceTemplate = './helper_scripts/templates/interfaces/index.mustache';
 
 		const templateProps = { fileName: answers.fileName, upperFileName: answers.upperFileName };
-		const interfaceFilePath = `${Config.interfaceDir}/${answers.upperFileName}/${answers.upperFileName}.d.ts`;
+		const interfaceFilePath = `${Config.interfaceDir}/${answers.upperFileName}/I${answers.upperFileName}.d.ts`;
 		const interfaceDirPath = `${Config.interfaceDir}/${answers.upperFileName}`;
 
 		const writeFileProps: DefinationsModel.IWriteFile = {
@@ -126,14 +126,7 @@ export const Helper = {
 			message: 'Added new Mock Model Instance.'
 		};
 
-		const addIndexParams: DefinationsModel.IAddIndex = {
-			dirPath: `${Config.mockModelDir}/index.ts`,
-			getFileContent: () => Helper.getTemplate(indexTemplate, templateProps),
-			message: 'Mock Model added to index.ts.'
-		};
-
 		Helper.writeFile(writeFileProps);
-		Helper.addToIndex(addIndexParams);
 	},
 
 	createTest: (options: DefinationsModel.ICreateTest): void => {

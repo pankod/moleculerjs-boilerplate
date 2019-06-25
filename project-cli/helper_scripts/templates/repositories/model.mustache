@@ -4,7 +4,7 @@ import { I{{fileName}} } from '@Interfaces';
 import { Database } from '@Repositories/Database';
 
 export module {{fileName}} {
-	let ModelInstance: sequelize.Model<{}, {{fileName}}Sql> = null;
+	let ModelInstance: sequelize.Model<{}, I{{fileName}}> = null;
 
 	export const Model = async () => {
 		if (!ModelInstance) {
