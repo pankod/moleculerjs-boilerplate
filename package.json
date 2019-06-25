@@ -70,8 +70,10 @@
 		"moment": "^2.24.0",
 		"nats": "^1.2.2",
 		"pg": "^7.8.1",
+		"reflect-metadata": "^0.1.13",
 		"semver": "^6.0.0",
-		"sequelize": "^4.44.0"
+		"sequelize": "^4.44.0",
+		"typeorm": "^0.2.18"
 	},
 	"engines": {
 		"node": ">= 8.x.x"
