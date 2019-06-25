@@ -11,20 +11,20 @@ describe('Test CalculateMeta constructor', () => {
 
 describe('Test CalculateMeta functions', () => {
 	it('should calculate remaining shield', async () => {
-		const damage: number = 1000
+		const damage: number = 1000;
 
-		const weaponModel = await Weapon.Model()
-		const weapon = await weaponModel.findOne({ where: { name: "Death Star" } }) as WeaponSql
+		const weaponModel = await Weapon.Model();
+		const weapon = (await weaponModel.findOne({ where: { name: 'Death Star' } })) as WeaponSql;
 
-		const planetModel = await Planet.Model()
-		const planet = await planetModel.findOne({ where: { name: "Alderaan" } }) as PlanetSql
+		const planetModel = await Planet.Model();
+		const planet = (await planetModel.findOne({ where: { name: 'Alderaan' } })) as PlanetSql;
 
 		const result = await CalculateMeta.Damage(weapon, planet, damage);
 
 		const expected = {
 			remainingAmmo: weapon.ammo - 1,
-			remainingShield: planet.shield - damage
-		}
+			remainingShield: planet.shield - damage,
+		};
 
 		expect(result).toEqual(expected);
 	});
