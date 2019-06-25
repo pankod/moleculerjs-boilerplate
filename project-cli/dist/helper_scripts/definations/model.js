@@ -30,6 +30,7 @@ exports.modelQuestion = {
         ];
         const answers = yield inquirer.prompt(questions);
         answers.fileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
+        answers.upperFileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
         helper_1.Helper.createModel(answers);
     })
 };
