@@ -3,9 +3,6 @@ import { BrokerOptions, Errors } from "moleculer";
 import 'reflect-metadata'
 import { connectionInstance } from "./src/Connection"
 
-// Invoke TypeORM connection
-connectionInstance()
-
 /**
  * Moleculer ServiceBroker configuration file
  *
@@ -141,7 +138,8 @@ const brokerConfig: BrokerOptions = {
 
 	// Called after broker created.
 	created(broker) {
-
+		// Invoke TypeORM connection
+		connectionInstance()
 	},
 
 	// Called after broker starte.
