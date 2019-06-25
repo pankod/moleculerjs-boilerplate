@@ -1,1 +1,3 @@
-/* jest.mock('sequelize', () => require('sequelize-mocking')); */
+const connectionInstance = require('./Connection');
+
+connectionInstance();
