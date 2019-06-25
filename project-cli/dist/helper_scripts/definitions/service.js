@@ -9,28 +9,35 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const inquirer = require("inquirer");
+const config_1 = require("../../config");
 const helper_1 = require("./helper");
-exports.modelQuestion = {
+exports.serviceQuestion = {
     showQuestions: () => __awaiter(this, void 0, void 0, function* () {
         const questions = [
             {
-                message: 'Enter model name',
+                message: 'Enter service name',
                 name: 'fileName',
                 type: 'input',
                 validate(val) {
                     if (val.length) {
-                        if (helper_1.Helper.isAlreadyExist(helper_1.Config.repositoriesDir, val, true)) {
-                            return 'Already added use new model name';
+                        if (helper_1.Helper.isServiceAlreadyExist(config_1.Config.servicesDir, val)) {
+                            return 'Already added use new service name';
                         }
                         return true;
                     }
                     return 'Cannot be empty';
                 }
-            }
+            },
+            {
+                default: true,
+                message: 'Is service open to outside ?',
+                name: 'isPrivate',
+                type: 'confirm'
+            },
         ];
         const answers = yield inquirer.prompt(questions);
-        answers.fileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
-        helper_1.Helper.createModel(answers);
+        answers.upperFileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
+        helper_1.Helper.createService(answers);
     })
 };
-//# sourceMappingURL=model.1.js.map
+//# sourceMappingURL=service.js.map

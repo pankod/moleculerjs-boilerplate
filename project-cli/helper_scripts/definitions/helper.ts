@@ -2,20 +2,8 @@ import * as fs from 'fs';
 import * as logSymbols from 'log-symbols';
 import * as mustache from 'mustache';
 import * as path from 'path';
-
-import { DefinationsModel } from './Defination';
-
-export const Config = {
-	repositoriesDir: '../src/Repositories',
-	interfaceDir: '../src/Interfaces',
-	modelDir: '../src/Repositories/Models',
-	mockModelDir: '../src/Repositories/Models/Mocks',
-	repositoriesTestDir: '../test/unit/Repositories',
-	servicesDir: '../services',
-	servicesHelperDir: '../src/Helper',
-	servicesTestDir: '../test/unit/MicroServices',
-	serviceHelperTestDir: '../test/unit/Helper'
-};
+import { Config } from '../../config';
+import { DefinitionsModel } from './Definition';
 
 export const Helper = {
 
@@ -35,10 +23,10 @@ export const Helper = {
 		return fs.existsSync(path.resolve('', _path));
 	},
 
-	getTemplate: (templatePath: string, templateProps: DefinationsModel.ITemplateProps): string => (
+	getTemplate: (templatePath: string, templateProps: DefinitionsModel.ITemplateProps): string => (
 
 		mustache.render(
-			fs.readFileSync(path.resolve('', templatePath), 'utf8'),
+			fs.readFileSync(path.resolve('project-cli', templatePath), 'utf8'),
 			templateProps
 		)
 	),
@@ -47,7 +35,7 @@ export const Helper = {
 		fs.mkdirSync(path.resolve('', dirPath));
 	},
 
-	writeFile: (params: DefinationsModel.IWriteFile) => {
+	writeFile: (params: DefinitionsModel.IWriteFile) => {
 		fs.writeFile(
 			path.resolve('', params.dirPath),
 			params.getFileContent(),
@@ -58,7 +46,7 @@ export const Helper = {
 		);
 	},
 
-	addToIndex: (params: DefinationsModel.IAddIndex): void => {
+	addToIndex: (params: DefinitionsModel.IAddIndex): void => {
 		fs.appendFile(
 			path.resolve('', params.dirPath),
 			`${params.getFileContent()}\n`,
@@ -69,21 +57,21 @@ export const Helper = {
 		);
 	},
 
-	createInterface: (answers: DefinationsModel.IAnswers) => {
+	createInterface: (answers: DefinitionsModel.IAnswers) => {
 		const templatePath = './helper_scripts/templates/interfaces/interface.mustache';
 		const indexInterfaceTemplate = './helper_scripts/templates/interfaces/index.mustache';
 
-		const templateProps = { fileName: answers.fileName };
-		const interfaceFilePath = `${Config.interfaceDir}/${answers.upperFileName}/${answers.upperFileName}.d.ts`;
+		const templateProps = { fileName: answers.fileName, upperFileName: answers.upperFileName };
+		const interfaceFilePath = `${Config.interfaceDir}/${answers.upperFileName}/I${answers.upperFileName}.d.ts`;
 		const interfaceDirPath = `${Config.interfaceDir}/${answers.upperFileName}`;
 
-		const writeFileProps: DefinationsModel.IWriteFile = {
+		const writeFileProps: DefinitionsModel.IWriteFile = {
 			dirPath: interfaceFilePath,
 			getFileContent: () => Helper.getTemplate(templatePath, templateProps),
 			message: 'Created new interface file.'
 		};
 
-		const addIndexParams: DefinationsModel.IAddIndex = {
+		const addIndexParams: DefinitionsModel.IAddIndex = {
 			dirPath: `${Config.interfaceDir}/index.ts`,
 			getFileContent: () => Helper.getTemplate(indexInterfaceTemplate, templateProps),
 			message: 'Interface added to index.ts.'
@@ -94,18 +82,18 @@ export const Helper = {
 		Helper.addToIndex(addIndexParams);
 	},
 
-	createModelInstance: (answers: DefinationsModel.IAnswers) => {
+	createModelInstance: (answers: DefinitionsModel.IAnswers) => {
 		const templatePath = './helper_scripts/templates/repositories/model.mustache';
 		const templateProps = { fileName: answers.fileName };
 		const indexTemplate = './helper_scripts/templates/repositories/model_index.mustache';
 
-		const writeFileProps: DefinationsModel.IWriteFile = {
+		const writeFileProps: DefinitionsModel.IWriteFile = {
 			dirPath: `${Config.modelDir}/${answers.fileName}.ts`,
 			getFileContent: () => Helper.getTemplate(templatePath, templateProps),
 			message: 'Added new Model Instance.'
 		};
 
-		const addIndexParams: DefinationsModel.IAddIndex = {
+		const addIndexParams: DefinitionsModel.IAddIndex = {
 			dirPath: `${Config.modelDir}/index.ts`,
 			getFileContent: () => Helper.getTemplate(indexTemplate, templateProps),
 			message: 'Model added to index.ts.'
@@ -115,30 +103,23 @@ export const Helper = {
 		Helper.addToIndex(addIndexParams);
 	},
 
-	createMockModel: (answers: DefinationsModel.IAnswers) => {
+	createMockModel: (answers: DefinitionsModel.IAnswers) => {
 		const templatePath = './helper_scripts/templates/repositories/mock.mustache';
 		const templateProps = { fileName: answers.fileName };
 		const indexTemplate = './helper_scripts/templates/repositories/mock_index.mustache';
 
-		const writeFileProps: DefinationsModel.IWriteFile = {
-			dirPath: `${Config.mockModelDir}/${answers.fileName}.ts`,
+		const writeFileProps: DefinitionsModel.IWriteFile = {
+			dirPath: `${Config.mockModelDir}/${answers.fileName}.mock.ts`,
 			getFileContent: () => Helper.getTemplate(templatePath, templateProps),
 			message: 'Added new Mock Model Instance.'
 		};
 
-		const addIndexParams: DefinationsModel.IAddIndex = {
-			dirPath: `${Config.mockModelDir}/index.ts`,
-			getFileContent: () => Helper.getTemplate(indexTemplate, templateProps),
-			message: 'Mock Model added to index.ts.'
-		};
-
 		Helper.writeFile(writeFileProps);
-		Helper.addToIndex(addIndexParams);
 	},
 
-	createTest: (options: DefinationsModel.ICreateTest): void => {
+	createTest: (options: DefinitionsModel.ICreateTest): void => {
 
-		const writeFileProps: DefinationsModel.IWriteFile = {
+		const writeFileProps: DefinitionsModel.IWriteFile = {
 			dirPath: options.dirPath,
 			getFileContent: () => Helper.getTemplate(options.templatePath, options.templateProps),
 			message: options.successMessage
@@ -147,7 +128,7 @@ export const Helper = {
 		Helper.writeFile(writeFileProps);
 	},
 
-	createServiceHelper: (answers: DefinationsModel.IAnswers): void => {
+	createServiceHelper: (answers: DefinitionsModel.IAnswers): void => {
 		const templatePath = './helper_scripts/templates/services/helper.mustache';
 		const indexTemplate = './helper_scripts/templates/services/helper_index.mustache';
 
@@ -156,13 +137,13 @@ export const Helper = {
 			upperFileName: answers.upperFileName
 		};
 
-		const writeFileProps: DefinationsModel.IWriteFile = {
+		const writeFileProps: DefinitionsModel.IWriteFile = {
 			dirPath: `${Config.servicesHelperDir}/${answers.upperFileName}Helper.ts`,
 			getFileContent: () => Helper.getTemplate(templatePath, templateProps),
 			message: 'Added new Service Helper'
 		};
 
-		const addIndexParams: DefinationsModel.IAddIndex = {
+		const addIndexParams: DefinitionsModel.IAddIndex = {
 			dirPath: `${Config.servicesHelperDir}/index.ts`,
 			getFileContent: () => Helper.getTemplate(indexTemplate, templateProps),
 			message: 'Service Helper added to index.ts.'
@@ -181,22 +162,23 @@ export const Helper = {
 		Helper.createTest(serviceHelperTestParams);
 	},
 
-	createModel: (answers: DefinationsModel.IAnswers): void => {
+	createModel: (answers: DefinitionsModel.IAnswers): void => {
 		const templatePath = './helper_scripts/templates/repositories/repository.mustache';
 
 		const templateProps = {
-			fileName: answers.fileName
+			fileName: answers.fileName,
+			upperFileName: answers.upperFileName
 		};
 
 		const indexTemplate = './helper_scripts/templates/repositories/repo_index.mustache';
 
-		const addIndexParams: DefinationsModel.IAddIndex = {
+		const addIndexParams: DefinitionsModel.IAddIndex = {
 			dirPath: `${Config.repositoriesDir}/index.ts`,
 			getFileContent: () => Helper.getTemplate(indexTemplate, templateProps),
 			message: 'Repository added to index.ts.'
 		};
 
-		const writeFileProps: DefinationsModel.IWriteFile = {
+		const writeFileProps: DefinitionsModel.IWriteFile = {
 			dirPath: `${Config.repositoriesDir}/${answers.fileName}.ts`,
 			getFileContent: () => Helper.getTemplate(templatePath, templateProps),
 			message: 'Added new Repository.'
@@ -222,7 +204,7 @@ export const Helper = {
 		Helper.createTest(repositoryTestParams);
 	},
 
-	createService: (answers: DefinationsModel.IAnswers): void => {
+	createService: (answers: DefinitionsModel.IAnswers): void => {
 		const templatePath = './helper_scripts/templates/services/service.mustache';
 		const templateProps = {
 			fileName: answers.fileName,
@@ -232,13 +214,13 @@ export const Helper = {
 
 		const indexTemplate = './helper_scripts/templates/services/index.mustache';
 
-		const addIndexParams: DefinationsModel.IAddIndex = {
+		const addIndexParams: DefinitionsModel.IAddIndex = {
 			dirPath: `${Config.servicesDir}/index.ts`,
 			getFileContent: () => Helper.getTemplate(indexTemplate, templateProps),
 			message: 'Service added to index.ts.'
 		};
 
-		const writeFileProps: DefinationsModel.IWriteFile = {
+		const writeFileProps: DefinitionsModel.IWriteFile = {
 			dirPath: `${Config.servicesDir}/${answers.fileName}.service.ts`,
 			getFileContent: () => Helper.getTemplate(templatePath, templateProps),
 			message: 'Added new Service.'

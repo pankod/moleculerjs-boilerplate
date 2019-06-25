@@ -14,8 +14,8 @@ const clear = require("clear");
 const program = require("commander");
 const figlet = require("figlet");
 const inquirer = require("inquirer");
-const model_1 = require("./helper_scripts/definations/model");
-const service_1 = require("./helper_scripts/definations/service");
+const model_1 = require("./helper_scripts/definitions/model");
+const service_1 = require("./helper_scripts/definitions/service");
 clear();
 console.log(chalk.default(figlet.textSync('microservice-cli')));
 const questions = [

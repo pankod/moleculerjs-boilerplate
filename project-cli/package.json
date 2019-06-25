@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "node ./dist/index.js a",
+    "generate": "node ./dist/index.js a",
     "watch": "tsc -w"
   },
   "author": "",

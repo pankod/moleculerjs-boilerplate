@@ -1,6 +1,7 @@
 import * as inquirer from 'inquirer';
-import { DefinationsModel } from './Defination';
-import { Config, Helper  } from './helper';
+import { Config } from '../../config';
+import { DefinitionsModel } from './Definition';
+import { Helper } from './helper';
 
 export const modelQuestion = {
 	showQuestions: async (): Promise<void> => {
@@ -29,10 +30,10 @@ export const modelQuestion = {
 			}
 		];
 
-		const answers: DefinationsModel.IAnswers = await inquirer.prompt<{ fileName: string}>(questions);
+		const answers: DefinitionsModel.IAnswers = await inquirer.prompt<{ fileName: string}>(questions);
 
 		answers.fileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
-
+		answers.upperFileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
 		Helper.createModel(answers);
 
 	}

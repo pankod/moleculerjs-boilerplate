@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const inquirer = require("inquirer");
+const config_1 = require("../../config");
 const helper_1 = require("./helper");
 exports.modelQuestion = {
     showQuestions: () => __awaiter(this, void 0, void 0, function* () {
@@ -19,7 +20,7 @@ exports.modelQuestion = {
                 type: 'input',
                 validate(val) {
                     if (val.length) {
-                        if (helper_1.Helper.isAlreadyExist(helper_1.Config.repositoriesDir, val, true)) {
+                        if (helper_1.Helper.isAlreadyExist(config_1.Config.repositoriesDir, val, true)) {
                             return 'Already added use new model name';
                         }
                         return true;
@@ -30,6 +31,7 @@ exports.modelQuestion = {
         ];
         const answers = yield inquirer.prompt(questions);
         answers.fileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
+        answers.upperFileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
         helper_1.Helper.createModel(answers);
     })
 };

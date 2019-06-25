@@ -1,4 +1,4 @@
-import sequelize = require('sequelize');
+import sequelize from 'sequelize';
 
 import { PlanetSql } from '@Interfaces';
 import { Planet as RealPlanet } from './Planet';
