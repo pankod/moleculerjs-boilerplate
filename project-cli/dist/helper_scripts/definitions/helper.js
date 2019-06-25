@@ -4,18 +4,6 @@ const fs = require("fs");
 const logSymbols = require("log-symbols");
 const mustache = require("mustache");
 const path = require("path");
-/* export const Config = {
-    repositoriesDir: '../src/Repositories',
-    interfaceDir: '../src/Interfaces',
-    modelDir: '../src/Models',
-    mockModelDir: '../src//Models',
-    repositoriesTestDir: '../test/unit/Repositories',
-    servicesDir: '../services',
-    servicesHelperDir: '../src/Helper',
-    servicesTestDir: '../test/unit/MicroServices',
-    serviceHelperTestDir: '../test/unit/Helper'
-};
- */
 const config_1 = require("../../config");
 exports.Helper = {
     isAlreadyExist: (startPath, val, isFile) => {

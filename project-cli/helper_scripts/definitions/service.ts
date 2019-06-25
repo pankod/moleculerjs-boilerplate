@@ -1,7 +1,8 @@
 import * as inquirer from 'inquirer';
+import { Config } from '../../config';
 import { DefinitionsModel } from './Definition';
 import { Helper } from './helper';
-import { Config } from '../../config';
+
 export const serviceQuestion = {
 	showQuestions: async (): Promise<void> => {
 		const questions = [
