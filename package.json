@@ -23,7 +23,7 @@
 		"microservices",
 		"moleculer"
 	],
-	"author": "",
+	"author": "Pankod <info@pankod.com>",
 	"devDependencies": {
 		"@types/bluebird": "^3.5.24",
 		"@types/jest": "^23.1.1",

@@ -16,23 +16,13 @@ export module {{fileName}} {
 						primaryKey: true,
 						type: sequelize.INTEGER
 					},
-					touserid: {
+					name: {
 						allowNull: false,
-						type: sequelize.INTEGER
-					},
-					fromuserid: {
-						type: sequelize.INTEGER
-					},
-					date: {
-						allowNull: false,
-						type: sequelize.DATE(6)
+						type: sequelize.STRING
 					} */
 				},
 				{ ...Database.defaultTableConfig }
 			);
-			if (ModelInstance.removeAttribute) {
-				ModelInstance.removeAttribute('id');
-			}
 		}
 
 		return ModelInstance;
