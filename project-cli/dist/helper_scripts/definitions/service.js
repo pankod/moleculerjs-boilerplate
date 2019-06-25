@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const inquirer = require("inquirer");
 const helper_1 = require("./helper");
+const config_1 = require("../../config");
 exports.serviceQuestion = {
     showQuestions: () => __awaiter(this, void 0, void 0, function* () {
         const questions = [
@@ -19,7 +20,7 @@ exports.serviceQuestion = {
                 type: 'input',
                 validate(val) {
                     if (val.length) {
-                        if (helper_1.Helper.isServiceAlreadyExist(helper_1.Config.servicesDir, val)) {
+                        if (helper_1.Helper.isServiceAlreadyExist(config_1.Config.servicesDir, val)) {
                             return 'Already added use new service name';
                         }
                         return true;

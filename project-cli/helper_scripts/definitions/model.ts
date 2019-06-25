@@ -1,6 +1,7 @@
 import * as inquirer from 'inquirer';
 import { DefinitionsModel } from './Definition';
-import { Config, Helper  } from './helper';
+import { Helper } from './helper';
+import { Config } from '../../config';
 
 export const modelQuestion = {
 	showQuestions: async (): Promise<void> => {

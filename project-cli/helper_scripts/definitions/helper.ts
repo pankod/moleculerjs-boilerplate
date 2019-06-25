@@ -5,7 +5,7 @@ import * as path from 'path';
 
 import { DefinitionsModel } from './Definition';
 
-export const Config = {
+/* export const Config = {
 	repositoriesDir: '../src/Repositories',
 	interfaceDir: '../src/Interfaces',
 	modelDir: '../src/Models',
@@ -16,6 +16,8 @@ export const Config = {
 	servicesTestDir: '../test/unit/MicroServices',
 	serviceHelperTestDir: '../test/unit/Helper'
 };
+ */
+import { Config } from '../../config';
 
 export const Helper = {
 
@@ -38,7 +40,7 @@ export const Helper = {
 	getTemplate: (templatePath: string, templateProps: DefinitionsModel.ITemplateProps): string => (
 
 		mustache.render(
-			fs.readFileSync(path.resolve('', templatePath), 'utf8'),
+			fs.readFileSync(path.resolve('project-cli', templatePath), 'utf8'),
 			templateProps
 		)
 	),
