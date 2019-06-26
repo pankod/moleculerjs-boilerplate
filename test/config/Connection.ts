@@ -4,7 +4,7 @@ const connectionInstance = async () =>
 	await createConnection({
 		type: 'sqlite',
 		name: 'default',
-		database: './db.test.sqlite',
+		database: './test/db.test.sqlite',
 		entities: [__dirname + '../../src/Entities/*.ts'],
 		synchronize: true,
 	});
