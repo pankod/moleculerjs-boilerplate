@@ -131,7 +131,7 @@ class Index extends React.Component {
 					{
 						content:
 							'Pankod boilerplate is shipped with a CLI tool to streamline the creation of new components.',
-						image: `${baseUrl}img/boilerplate-cli.gif`,
+						image: `${baseUrl}img/cli.gif`,
 						imageAlign: 'right',
 						title: 'Built-in Project CLI',
 					},
