@@ -3,8 +3,8 @@ import { ServiceBroker } from 'moleculer';
 
 // Local Imports
 import { WeaponHelper } from '@Helper';
-import { PlanetSql } from '@Interfaces';
-import { Planet } from '@Models/Planet';
+import { Planet } from '@Entities/Planet';
+import { getManager } from 'typeorm'
 
 const FireService = require('../../../services/weapon.service');
 const PlanetService = require('../../../services/planet.service');
@@ -22,10 +22,9 @@ describe('Test weapon service', () => {
 
 	describe('Test Fire service actions', async () => {
 		it('should return correct message when shield is up', async () => {
-			const planetModel = await Planet.Model();
-			const planet = (await planetModel.findOne({
-				where: { name: 'Alderaan' },
-			})) as PlanetSql;
+			const entityManager = getManager()
+
+			const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
 
 			const damage = 1000;
 
