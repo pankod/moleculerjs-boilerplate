@@ -1,5 +1,6 @@
 import { WeaponRepository } from '../../../src/Repositories/Weapon';
-import { Weapon } from '@Models';
+import { Weapon } from '@Entities/Weapon';
+import { getManager } from 'typeorm'
 
 describe('Test WeaponRepository constructor', () => {
 	it('should create an empty options', () => {
@@ -7,8 +8,9 @@ describe('Test WeaponRepository constructor', () => {
 	});
 
 	it('should work (fire method)', async () => {
-		const weaponModel = await Weapon.Model();
-		const deathStar: any = await weaponModel.findOne({ where: { name: 'Death Star' } });
+		const entityManager = getManager();
+
+		const deathStar = await entityManager.findOne(Weapon, { name: 'Death Star' });
 
 		const expected = deathStar.damage;
 
