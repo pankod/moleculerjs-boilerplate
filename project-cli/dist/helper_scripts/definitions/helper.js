@@ -174,7 +174,7 @@ exports.Helper = {
             templateProps,
             answers,
             dirPath: `${config_1.Config.servicesTestDir}/${answers.fileName}.spec.ts`,
-            successMessage: 'Added new Micro Service test.'
+            successMessage: 'Added new Micro Service test.\n'
         };
         exports.Helper.writeFile(writeFileProps);
         exports.Helper.addToIndex(addIndexParams);
