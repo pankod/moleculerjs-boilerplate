@@ -52,6 +52,7 @@ This boilerplate make it easier to get started with a well-structured Node.js mi
 
 This boilerplate includes the latest powerfull tools.
 
+* **Moleculer** - Moleculer is a fast, modern and powerful microservices framework for Node.js.
 * **Typescript** - Superset of JavaScript which primarily provides optional static typing, classes and interfaces. path support(allias)
 * **Built-in Project CLI**- Create services, models, interfaces, and tests with one command by using built-in cli.
 * **Docker** - A tool designed to make it easier to create, deploy, and run applications by using containers.
