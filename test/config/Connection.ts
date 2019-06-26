@@ -5,7 +5,7 @@ const connectionInstance = async () =>
 		type: 'sqlite',
 		name: 'default',
 		database: './test/db.test.sqlite',
-		entities: [__dirname + '../../src/Entities/*.ts'],
+		entities: ['./src/Entities/*.ts'],
 		synchronize: true,
 		dropSchema: true,
 	});
