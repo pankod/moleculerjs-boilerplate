@@ -1,10 +1,7 @@
-[![Moleculer](https://badgen.net/badge/Powered%20by/Moleculer/0e83cd)](https://moleculer.services)
-
-
-<img src="banner.png" alt="Performance oriented Next.js application boilerplate with Redux, Typescript, Express.js and Sass." align="center" />
+<img src="banner.png" alt="Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Clients, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects." align="center" />
 
 <br/>
-<div align="center" >A well-structured Moleculer JS Boilerplate with Typescript, CLI, Service Clients, Swagger, Jest support and everything you'll ever need to deploy rock solid projects.
+<div align="center" >Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Clients, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects..
 </div>
 <br/>
 
@@ -59,7 +56,7 @@ This boilerplate includes the latest powerfull tools.
 * **Eslint** - The pluggable linting utility.
 * **Swagger** - A framework backed by a large ecosystem of tools that helps developers design, build, document, and consume RESTful Web services.
 * **Jest** - Javascript testing framework , created by developers who created react
-* **TypeORM** - An ORM that converts data between JavaScript / TypeScript to a variety of databases: MySQL / MariaDB / Postgres / SQLite / Microsoft SQL Server / Oracle / sql.js.
+* **TypeORM** - TypeORM is specifically an ORM that converts data between JavaScript / TypeScript to a variety of databases.
 * **Service Clients** - Her servisin nasıl kullanılacağına dair protocal yayınlar.
 <br/>
 
@@ -96,95 +93,6 @@ After answering questions it generates files in miliseconds.
 
 <br/>
 
-## Tree
-
- ***You should end up with something similar to this:***
- 
- <br/>
-
-```
-.
-├── project-cli
-├── public
-│   ├── banner.png
-│   ├── favicon.ico
-│   └── index.html
-├── services
-│   ├── api.service.ts
-│   ├── index.ts
-│   ├── planet.service.ts
-│   └── weapon.service.ts
-├── src
-│   ├── Helper
-│   │   ├── Mocks
-│   │   │   └── Context.ts
-│   │   ├── PlanetHelper.ts
-│   │   ├── WeaponHelper.ts
-│   │   └── index.ts
-│   ├── Interfaces
-│   │   ├── Fire
-│   │   │   ├── DamageInDto.d.ts
-│   │   │   ├── FireInDto.d.ts
-│   │   │   ├── FireMethodOutDto.ts
-│   │   │   ├── FireOutDto.d.ts
-│   │   │   ├── FireResult.d.ts
-│   │   │   └── WarMessageOutDto.d.ts
-│   │   ├── Planet
-│   │   │   ├── DefendOutDto.d.ts
-│   │   │   └── PlanetSql.d.ts
-│   │   ├── Weapon
-│   │   │   └── WeaponSql.d.ts
-│   │   └── index.ts
-│   ├── Meta
-│   │   ├── CalculateMeta.ts
-│   │   └── index.ts
-│   ├── Models
-│   │   ├── Planet.mock.ts
-│   │   ├── Planet.ts
-│   │   ├── Weapon.mock.ts
-│   │   ├── Weapon.ts
-│   │   └── index.ts
-│   └── Repositories
-│       ├── Database.ts
-│       ├── Planet.ts
-│       ├── Weapon.ts
-│       └── index.ts
-├── swagger
-│   ├── index.js
-│   ├── package.json
-│   ├── swagger.json
-│   └── swagger.yaml
-├── swagger.json
-├── swaggerConfig.json
-├── test
-│   ├── config
-│   │   ├── Database.ts
-│   │   └── mock.setup.js
-│   └── unit
-│       ├── Helper
-│       │   ├── PlanetHelper.spec.ts
-│       │   └── WeaponHelper.spec.ts
-│       ├── Meta
-│       │   └── CalculateMeta.spec.ts
-│       ├── MicroServices
-│       │   ├── planet.spec.ts
-│       │   └── weapon.spec.ts
-│       └── Repositories
-│           ├── Planet.spec.ts
-│           └── Weapon.spec.ts
-├── Dockerfile
-├── LICENSE
-├── README.md
-├── db.sqlite.example
-├── docker-compose.env
-├── docker-compose.yml
-├── moleculer.config.ts
-├── package-lock.json
-├── package.json
-├── tsconfig.json
-└── tsoa.json
-
-```
  
 ## License
 
