@@ -1,6 +1,6 @@
 import { PlanetRepository } from '../../../src/Repositories/Planet';
-import { Planet } from '@Models/Planet';
-import { PlanetSql } from '@Interfaces';
+import { Planet } from '@Entities/Planet';
+import { getManager } from 'typeorm'
 
 describe('Test PlanetRepository constructor', () => {
 	it('should create an empty options', () => {
@@ -8,8 +8,9 @@ describe('Test PlanetRepository constructor', () => {
 	});
 
 	it('should work Defend method', async () => {
-		const planetModel = await Planet.Model();
-		const planet = (await planetModel.findOne({ where: { name: 'Alderaan' } })) as PlanetSql;
+		const entityManager = getManager();
+
+		const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
 
 		const damage = 1000;
 
