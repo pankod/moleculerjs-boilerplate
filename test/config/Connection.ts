@@ -1,4 +1,4 @@
-const { createConnection } = require('typeorm');
+import { createConnection } from 'typeorm'
 
 const connectionInstance = async () =>
 	await createConnection({
@@ -10,4 +10,4 @@ const connectionInstance = async () =>
 		dropSchema: true,
 	});
 
-module.exports = connectionInstance;
+export default connectionInstance

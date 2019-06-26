@@ -99,7 +99,7 @@
 			"**/*.spec.(ts|js)"
 		],
 		"setupFiles": [
-			"<rootDir>/test/config/mock.setup.js"
+			"<rootDir>/test/config/mock.setup.ts"
 		],
 		"globals": {
 			"ts-jest": {
