@@ -5,6 +5,11 @@ import { ServiceBroker } from 'moleculer';
 import { WeaponHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
 import { getManager } from 'typeorm'
+import connectionInstance from '../../config/Connection';
+
+beforeAll(async () => {
+	await connectionInstance()
+})
 
 const FireService = require('../../../services/weapon.service');
 const PlanetService = require('../../../services/planet.service');

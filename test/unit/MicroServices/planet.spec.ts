@@ -5,8 +5,13 @@ import { ServiceBroker } from 'moleculer';
 import { PlanetHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
 import { getManager } from 'typeorm'
+import connectionInstance from '../../config/Connection';
 
 const PlanetService = require('../../../services/planet.service');
+
+beforeAll(async () => {
+	await connectionInstance()
+})
 
 describe('Test Planet service', () => {
 	const broker = new ServiceBroker({ logger: false });

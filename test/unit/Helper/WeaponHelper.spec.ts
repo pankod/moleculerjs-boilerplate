@@ -2,6 +2,11 @@
 import { WeaponHelper } from '@Helper';
 import { DummyContext } from '@Helper/Mocks/Context';
 import { FireInDto } from '@Interfaces';
+import connectionInstance from '../../config/Connection';
+
+beforeAll(async () => {
+	await connectionInstance()
+})
 
 describe('Weapon Helper Service Helper Constructor', () => {
 	it('should module exist', async () => {

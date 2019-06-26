@@ -1,7 +1,11 @@
 // Local Imports
 import { PlanetHelper } from '@Helper';
 import { DummyContext } from '@Helper/Mocks/Context';
-import {} from '@Interfaces';
+import connectionInstance from '../../config/Connection';
+
+beforeAll(async () => {
+	await connectionInstance()
+})
 
 describe('planet Service Helper Constructor', () => {
 	it('should module exist', async () => {

@@ -2,6 +2,11 @@ import { CalculateMeta } from '../../../src/Meta/CalculateMeta';
 import { Weapon } from '@Entities/Weapon';
 import { Planet } from '@Entities/Planet';
 import { getManager } from 'typeorm'
+import connectionInstance from '../../config/Connection';
+
+beforeAll(async () => {
+	await connectionInstance()
+})
 
 describe('Test CalculateMeta constructor', () => {
 	it('should create an empty options', () => {

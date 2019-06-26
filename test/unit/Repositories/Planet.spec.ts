@@ -1,6 +1,11 @@
 import { PlanetRepository } from '../../../src/Repositories/Planet';
 import { Planet } from '@Entities/Planet';
 import { getManager } from 'typeorm'
+import connectionInstance from '../../config/Connection';
+
+beforeAll(async () => {
+	await connectionInstance()
+})
 
 describe('Test PlanetRepository constructor', () => {
 	it('should create an empty options', () => {

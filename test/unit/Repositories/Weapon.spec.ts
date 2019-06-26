@@ -1,6 +1,11 @@
 import { WeaponRepository } from '../../../src/Repositories/Weapon';
 import { Weapon } from '@Entities/Weapon';
 import { getManager } from 'typeorm'
+import connectionInstance from '../../config/Connection';
+
+beforeAll(async () => {
+	await connectionInstance()
+})
 
 describe('Test WeaponRepository constructor', () => {
 	it('should create an empty options', () => {
