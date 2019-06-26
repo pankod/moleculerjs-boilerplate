@@ -1,7 +1,7 @@
 import { CalculateMeta } from '../../../src/Meta/CalculateMeta';
-import { Weapon } from '@Models/Weapon';
-import { Planet } from '@Models/Planet';
-import { WeaponSql, PlanetSql } from '@Interfaces';
+import { Weapon } from '@Entities/Weapon';
+import { Planet } from '@Entities/Planet';
+import { getManager } from 'typeorm'
 
 describe('Test CalculateMeta constructor', () => {
 	it('should create an empty options', () => {
@@ -13,11 +13,10 @@ describe('Test CalculateMeta functions', () => {
 	it('should calculate remaining shield', async () => {
 		const damage: number = 1000;
 
-		const weaponModel = await Weapon.Model();
-		const weapon = (await weaponModel.findOne({ where: { name: 'Death Star' } })) as WeaponSql;
+		const entityManager = getManager();
 
-		const planetModel = await Planet.Model();
-		const planet = (await planetModel.findOne({ where: { name: 'Alderaan' } })) as PlanetSql;
+		const weapon = await entityManager.findOne(Weapon, { name: 'Death Star' });
+		const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
 
 		const result = await CalculateMeta.Damage(weapon, planet, damage);
 
