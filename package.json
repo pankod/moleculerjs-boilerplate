@@ -14,8 +14,8 @@
 		"generate": "npm run run-cli",
 		"ci": "jest --watch",
 		"test": "jest --coverage --runInBand",
-		"lint": "eslint -c .eslintrc.js --ext .ts,.tsx {services,src,test}/**",
-		"format": "eslint -c .eslintrc.js --ext .ts,.tsx --fix {services,src,test}/**",
+		"lint": "eslint -c .eslintrc.js --ext .ts {services,src,test}/**",
+		"format": "eslint -c .eslintrc.js --ext .ts --fix {services,src,test}/**",
 		"dc:up": "docker-compose up --build -d",
 		"dc:down": "docker-compose down",
 		"swagger-run": "npm run swagger & npm run ui",
@@ -84,7 +84,6 @@
 		"testEnvironment": "node",
 		"moduleFileExtensions": [
 			"ts",
-			"tsx",
 			"js"
 		],
 		"moduleNameMapper": {
@@ -93,17 +92,17 @@
 			"^@([A-Z].*)$": "<rootDir>/src/$1"
 		},
 		"transform": {
-			"^.+\\.(ts|tsx)$": "ts-jest"
+			"^.+\\.(ts)$": "ts-jest"
 		},
 		"testMatch": [
-			"**/*.spec.(ts|js)"
+			"**/*.spec.(ts)"
 		],
 		"setupFiles": [
 			"<rootDir>/test/config/mock.setup.ts"
 		],
 		"globals": {
 			"ts-jest": {
-				"tsConfig": "tsconfig.json"
+				"tsConfig": "<rootDir>/tsconfig.json"
 			}
 		}
 	}
