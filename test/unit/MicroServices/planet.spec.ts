@@ -3,10 +3,8 @@ import { ServiceBroker } from 'moleculer';
 
 // Local Imports
 import { PlanetHelper } from '@Helper';
-import { WeaponSql, PlanetSql } from '@Interfaces';
-import { CalculateMeta } from '@Meta';
-import { Planet } from '@Models/Planet';
-import { Weapon } from '@Models/Weapon';
+import { Planet } from '@Entities/Planet';
+import { getManager } from 'typeorm'
 
 const PlanetService = require('../../../services/planet.service');
 
@@ -19,10 +17,8 @@ describe('Test Planet service', () => {
 
 	describe('Test Planet service actions', async () => {
 		it('should run defend method', async () => {
-			const planetModel = await Planet.Model();
-			const planet = (await planetModel.findOne({
-				where: { name: 'Alderaan' },
-			})) as PlanetSql;
+			const entityManager = getManager()
+			const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
 
 			const damage = 1000;
 
