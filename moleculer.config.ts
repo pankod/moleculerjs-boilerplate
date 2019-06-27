@@ -1,5 +1,7 @@
 "use strict";
 import { BrokerOptions, Errors } from "moleculer";
+import 'reflect-metadata'
+import { connectionInstance } from "./src/Connection"
 
 /**
  * Moleculer ServiceBroker configuration file
@@ -103,7 +105,7 @@ const brokerConfig: BrokerOptions = {
 		check: (err: Errors.MoleculerRetryableError) => err && err.code >= 500,
 	},
 
-    // Settings of bulkhead feature. More info: https://moleculer.services/docs/0.13/fault-tolerance.html#Bulkhead
+	// Settings of bulkhead feature. More info: https://moleculer.services/docs/0.13/fault-tolerance.html#Bulkhead
 	bulkhead: {
 		// Enable feature.
 		enabled: false,
@@ -136,7 +138,8 @@ const brokerConfig: BrokerOptions = {
 
 	// Called after broker created.
 	created(broker) {
-
+		// Invoke TypeORM connection
+		connectionInstance()
 	},
 
 	// Called after broker starte.

@@ -13,9 +13,9 @@
 		"g": "npm run run-cli",
 		"generate": "npm run run-cli",
 		"ci": "jest --watch",
-		"test": "jest --coverage --runInBand",
-		"lint": "eslint -c .eslintrc.js --ext .ts,.tsx {services,src}/**",
-		"format": "eslint -c .eslintrc.js --ext .ts,.tsx --fix {services,src}/**",
+		"test": "jest --coverage",
+		"lint": "eslint -c .eslintrc.js --ext .ts {services,src,test}/**",
+		"format": "eslint -c .eslintrc.js --ext .ts --fix {services,src,test}/**",
 		"dc:up": "docker-compose up --build -d",
 		"dc:down": "docker-compose down",
 		"swagger-run": "npm run swagger & npm run ui",
@@ -34,7 +34,6 @@
 		"@types/node": "^10.12.12",
 		"@types/pg": "^7.4.13",
 		"@types/semver": "^6.0.0",
-		"@types/sequelize": "^4.27.39",
 		"@typescript-eslint/eslint-plugin": "^1.9.0",
 		"@typescript-eslint/parser": "^1.9.0",
 		"eslint": "^5.16.0",
@@ -70,8 +69,9 @@
 		"moment": "^2.24.0",
 		"nats": "^1.2.2",
 		"pg": "^7.8.1",
+		"reflect-metadata": "^0.1.13",
 		"semver": "^6.0.0",
-		"sequelize": "^4.44.0"
+		"typeorm": "^0.2.18"
 	},
 	"engines": {
 		"node": ">= 8.x.x"
@@ -82,27 +82,25 @@
 		"testEnvironment": "node",
 		"moduleFileExtensions": [
 			"ts",
-			"tsx",
 			"js"
 		],
 		"moduleNameMapper": {
-			"^@(Repositories.*).*/(Database)$": "<rootDir>/test/config/$2",
-			"^@(Models.*).*/([^/]*)$": "<rootDir>/src/$1/$2.mock.ts",
+			"^@TestUtils": "<rootDir>/test/utils",
 			"^@MicroServices": "<rootDir>/services/index.ts",
 			"^@([A-Z].*)$": "<rootDir>/src/$1"
 		},
 		"transform": {
-			"^.+\\.(ts|tsx)$": "ts-jest"
+			"^.+\\.(ts)$": "ts-jest"
 		},
 		"testMatch": [
-			"**/*.spec.(ts|js)"
+			"**/*.spec.(ts)"
 		],
 		"setupFiles": [
-			"<rootDir>/test/config/mock.setup.js"
+			"<rootDir>/test/config/mock.setup.ts"
 		],
 		"globals": {
 			"ts-jest": {
-				"tsConfig": "tsconfig.json"
+				"tsConfig": "<rootDir>/tsconfig.json"
 			}
 		}
 	}

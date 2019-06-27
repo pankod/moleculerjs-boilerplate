@@ -1,23 +1,37 @@
-import { PlanetRepository } from '../../../src/Repositories/Planet';
-import { Planet } from '@Models/Planet';
-import { PlanetSql } from '@Interfaces';
+// Global Imports
+import { getManager, getConnection } from 'typeorm';
 
-describe('Test PlanetRepository constructor', () => {
+// Local Imports
+import setupDatabase from '../../config/SetupDatabase';
+import { PlanetRepository } from '@Repositories';
+import { Planet } from '@Entities';
 
-	it('should create an empty options', () => {
+beforeEach(async () => {
+	await setupDatabase();
+});
+
+afterEach(async () => {
+	await getConnection().close();
+});
+
+describe('Planet Repository Constructor', () => {
+	it('should be defined', () => {
 		expect(PlanetRepository).toBeDefined();
 	});
+});
 
-	it('should work Defend method', async () => {
-		const planetModel = await Planet.Model()
-		const planet = await planetModel.findOne({ where: { name: 'Alderaan' } }) as PlanetSql
+describe('Planet Repository Methods', () => {
+	it('should defend', async () => {
+		const entityManager = getManager();
 
-		const damage = 1000
+		const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
 
-		const expected: number = planet.shield - damage
+		const damage = 1000;
+
+		const expected: number = planet.shield - damage;
 
 		const params = {
-			damage
+			damage,
 		};
 
 		const { alderaan } = await PlanetRepository.Defend(params.damage);

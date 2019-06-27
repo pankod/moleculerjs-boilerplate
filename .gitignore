@@ -65,7 +65,6 @@ typings/
 
 # sqlite
 db.sqlite
-test/db.test.sqlite
 
 # macos
 .DS_Store

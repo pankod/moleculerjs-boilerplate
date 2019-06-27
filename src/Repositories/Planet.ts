@@ -1,17 +1,16 @@
-import { PlanetSql, WeaponSql } from '@Interfaces';
-import { Planet } from '@Models/Planet';
-import { Weapon } from '@Models/Weapon'
+import { Planet } from '@Entities/Planet';
+import { Weapon } from '@Entities/Weapon';
+import { getManager } from 'typeorm';
 import { CalculateMeta } from '@Meta';
 
 export namespace PlanetRepository {
 	export const Defend = async (
 		damage: number,
-	): Promise<{ deathStar: WeaponSql; alderaan: PlanetSql }> => {
-		const weaponModel = await Weapon.Model();
-		const planetModel = await Planet.Model();
+	): Promise<{ deathStar: Weapon; alderaan: Planet }> => {
+		const entityManager = getManager();
 
-		const deathStar: any = await weaponModel.findOne({ where: { name: 'Death Star' } });
-		const alderaan: any = await planetModel.findOne({ where: { name: 'Alderaan' } });
+		const deathStar = await entityManager.findOne(Weapon, { name: 'Death Star' });
+		const alderaan = await entityManager.findOne(Planet, { name: 'Alderaan' });
 
 		const { remainingAmmo, remainingShield } = await CalculateMeta.Damage(
 			deathStar,
@@ -19,8 +18,11 @@ export namespace PlanetRepository {
 			damage,
 		);
 
-		deathStar.update({ ammo: remainingAmmo });
-		alderaan.update({ shield: remainingShield });
+		deathStar.ammo = remainingAmmo;
+		alderaan.shield = remainingShield;
+
+		await entityManager.save(deathStar);
+		await entityManager.save(alderaan);
 
 		return { deathStar, alderaan };
 	};

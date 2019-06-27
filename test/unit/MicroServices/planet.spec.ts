@@ -1,34 +1,39 @@
 // Global Imports
 import { ServiceBroker } from 'moleculer';
+import { getManager, getConnection } from 'typeorm';
 
 // Local Imports
+import setupDatabase from '../../config/SetupDatabase';
 import { PlanetHelper } from '@Helper';
-import { WeaponSql, PlanetSql } from '@Interfaces';
-import { CalculateMeta } from '@Meta';
-import { Planet } from '@Models/Planet';
-import { Weapon } from '@Models/Weapon';
+import { Planet } from '@Entities/Planet';
 
 const PlanetService = require('../../../services/planet.service');
 
+const broker = new ServiceBroker({ logger: false });
+broker.createService(PlanetService);
+
+beforeEach(async () => {
+	await setupDatabase();
+	broker.start();
+});
+
+afterEach(async () => {
+	await getConnection().close();
+	broker.stop();
+});
+
 describe('Test Planet service', () => {
-
-	const broker = new ServiceBroker({ logger: false });
-	broker.createService(PlanetService);
-
-	beforeAll(() => broker.start());
-	afterAll(() => broker.stop());
-
-	describe('Test Planet service actions', async () => {
+	describe('Defend method', async () => {
 		it('should run defend method', async () => {
-			const planetModel = await Planet.Model()
-			const planet = await planetModel.findOne({ where: { name: 'Alderaan' } }) as PlanetSql
+			const entityManager = getManager();
+			const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
 
-			const damage = 1000
+			const damage = 1000;
 
-			const expected: number = planet.shield - damage
+			const expected: number = planet.shield - damage;
 
 			const params = {
-				damage
+				damage,
 			};
 
 			const { alderaan } = await PlanetHelper.Defend(broker as any, params);
@@ -36,5 +41,4 @@ describe('Test Planet service', () => {
 			expect(alderaan.shield).toEqual(expected);
 		});
 	});
-
 });

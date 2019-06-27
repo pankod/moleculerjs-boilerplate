@@ -1,15 +1,30 @@
-import { WeaponRepository } from '../../../src/Repositories/Weapon';
-import { Weapon } from '@Models';
+// Global Imports
+import { getManager, getConnection } from 'typeorm';
+
+// Local Imports
+import setupDatabase from '../../config/SetupDatabase';
+import { WeaponRepository } from '@Repositories';
+import { Weapon } from '@Entities';
+
+beforeEach(async () => {
+	await setupDatabase();
+});
+
+afterEach(async () => {
+	await getConnection().close();
+});
 
 describe('Test WeaponRepository constructor', () => {
-
-	it('should create an empty options', () => {
+	it('should be defined', () => {
 		expect(WeaponRepository).toBeDefined();
 	});
+});
 
-	it('should work (fire method)', async () => {	
-		const weaponModel = await Weapon.Model();
-		const deathStar: any = await weaponModel.findOne({ where: { name: 'Death Star' } });
+describe('Weapon Repository Methods', () => {
+	it('should fire', async () => {
+		const entityManager = getManager();
+
+		const deathStar = await entityManager.findOne(Weapon, { name: 'Death Star' });
 
 		const expected = deathStar.damage;
 

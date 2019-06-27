@@ -1,21 +1,21 @@
 // Local Imports
 import { WeaponHelper } from '@Helper';
-import { DummyContext } from '@Helper/Mocks/Context';
+import { DummyContext } from '@TestUtils';
 import { FireInDto } from '@Interfaces';
 
-describe('Weapon Helper Service Helper Constructor', () => {
-	it('should module exist', async () => {
+describe('Weapon helper service helper constructor', () => {
+	it('should be defined', async () => {
 		expect(WeaponHelper).toBeDefined();
 	});
 });
 
-describe('fire helpers', () => {
-	it('should trigger fire method', async () => {
-		const data: FireInDto = {
+describe('Weapon service helpers', () => {
+	it('should trigger Fire method', async () => {
+		const params: FireInDto = {
 			damage: 1000,
 		};
 
-		const result = await WeaponHelper.Fire(DummyContext.getCall(data), data);
+		const result = await WeaponHelper.Fire(DummyContext.getCall(params), params);
 
 		expect(result).toBeDefined();
 	});

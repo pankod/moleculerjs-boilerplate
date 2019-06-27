@@ -1,30 +1,40 @@
-import { CalculateMeta } from '../../../src/Meta/CalculateMeta';
-import { Weapon } from '@Models/Weapon';
-import { Planet } from '@Models/Planet';
-import { WeaponSql, PlanetSql } from '@Interfaces';
+// Global Imports
+import { getManager, getConnection } from 'typeorm';
 
-describe('Test CalculateMeta constructor', () => {
-	it('should create an empty options', () => {
+// Local Imports
+import setupDatabase from '../../config/SetupDatabase';
+import { CalculateMeta } from '@Meta';
+import { Planet, Weapon } from '@Entities';
+
+describe('CalculateMeta constructor', () => {
+	it('should be defined', () => {
 		expect(CalculateMeta).toBeDefined();
 	});
 });
 
-describe('Test CalculateMeta functions', () => {
+describe('CalculateMeta functions', () => {
+	beforeEach(async () => {
+		await setupDatabase();
+	});
+
+	afterEach(async () => {
+		await getConnection().close();
+	});
+
 	it('should calculate remaining shield', async () => {
-		const damage: number = 1000
+		const damage: number = 1000;
 
-		const weaponModel = await Weapon.Model()
-		const weapon = await weaponModel.findOne({ where: { name: "Death Star" } }) as WeaponSql
+		const entityManager = getManager();
 
-		const planetModel = await Planet.Model()
-		const planet = await planetModel.findOne({ where: { name: "Alderaan" } }) as PlanetSql
+		const weapon = await entityManager.findOne(Weapon, { name: 'Death Star' });
+		const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
 
 		const result = await CalculateMeta.Damage(weapon, planet, damage);
 
 		const expected = {
 			remainingAmmo: weapon.ammo - 1,
-			remainingShield: planet.shield - damage
-		}
+			remainingShield: planet.shield - damage,
+		};
 
 		expect(result).toEqual(expected);
 	});
