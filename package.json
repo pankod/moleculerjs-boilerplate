@@ -34,7 +34,6 @@
 		"@types/node": "^10.12.12",
 		"@types/pg": "^7.4.13",
 		"@types/semver": "^6.0.0",
-		"@types/sequelize": "^4.27.39",
 		"@typescript-eslint/eslint-plugin": "^1.9.0",
 		"@typescript-eslint/parser": "^1.9.0",
 		"eslint": "^5.16.0",
@@ -72,7 +71,6 @@
 		"pg": "^7.8.1",
 		"reflect-metadata": "^0.1.13",
 		"semver": "^6.0.0",
-		"sequelize": "^4.44.0",
 		"typeorm": "^0.2.18"
 	},
 	"engines": {
