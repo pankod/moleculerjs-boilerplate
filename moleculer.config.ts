@@ -33,7 +33,7 @@ const brokerConfig: BrokerOptions = {
 
 	// Define transporter.
 	// More info: https://moleculer.services/docs/0.13/networking.html
-	transporter: "nats://localhost:4222",
+	transporter: "nats://localhost:32773",
 
 	// Define a serializer.
 	// Available values: "JSON", "Avro", "ProtoBuf", "MsgPack", "Notepack", "Thrift".

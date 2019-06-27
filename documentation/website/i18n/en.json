@@ -25,6 +25,10 @@
         "title": "Environment Variables",
         "sidebar_label": "Overview"
       },
+      "example-app": {
+        "title": "Example App",
+        "sidebar_label": "Example App"
+      },
       "features": {
         "title": "What's included?"
       },
