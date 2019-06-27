@@ -7,10 +7,10 @@ import setupDatabase from '../../config/SetupDatabase';
 import { PlanetHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
 
-const PlanetService = require('../../../services/planet.service');
+const DefendService = require('../../../services/defend.service');
 
 const broker = new ServiceBroker({ logger: false });
-broker.createService(PlanetService);
+broker.createService(DefendService);
 
 beforeEach(async () => {
 	await setupDatabase();
@@ -22,7 +22,7 @@ afterEach(async () => {
 	broker.stop();
 });
 
-describe('Test Planet service', () => {
+describe('Test Defend service', () => {
 	describe('Defend method', async () => {
 		it('should run defend method', async () => {
 			const entityManager = getManager();

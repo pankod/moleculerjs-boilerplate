@@ -8,12 +8,12 @@ import { WeaponHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
 
 const FireService = require('../../../services/weapon.service');
-const PlanetService = require('../../../services/planet.service');
+const DefendService = require('../../../services/defend.service');
 
 const broker = new ServiceBroker({ logger: false });
 
 broker.createService(FireService);
-broker.createService(PlanetService);
+broker.createService(DefendService);
 
 beforeEach(async () => {
 	await setupDatabase();
