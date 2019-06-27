@@ -1,6 +1,6 @@
 // Local Imports
 import { WeaponHelper } from '@Helper';
-import { DummyContext } from '../../helpers/DummyContext';
+import { DummyContext } from '@TestUtils';
 import { FireInDto } from '@Interfaces';
 
 describe('Weapon helper service helper constructor', () => {

@@ -1,6 +1,6 @@
 // Local Imports
 import { PlanetHelper } from '@Helper';
-import { DummyContext } from '../../helpers/DummyContext';
+import { DummyContext } from "@TestUtils"
 
 describe('Planet service helper constructor', () => {
 	it('should be defined', async () => {
