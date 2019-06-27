@@ -13,7 +13,7 @@
 		"g": "npm run run-cli",
 		"generate": "npm run run-cli",
 		"ci": "jest --watch",
-		"test": "jest --coverage --runInBand",
+		"test": "jest --coverage",
 		"lint": "eslint -c .eslintrc.js --ext .ts {services,src,test}/**",
 		"format": "eslint -c .eslintrc.js --ext .ts --fix {services,src,test}/**",
 		"dc:up": "docker-compose up --build -d",
