@@ -1,30 +1,20 @@
 // Local Imports
 import { PlanetHelper } from '@Helper';
 import { DummyContext } from '@Helper/Mocks/Context';
-import { getManager, getConnection } from 'typeorm'
-import setupDatabase from '../../config/SetupDatabase';
 
-beforeEach(async () => {
-	await setupDatabase()
-})
-
-afterEach(async () => {
-	await getConnection().close()
-})
-
-describe('planet Service Helper Constructor', () => {
-	it('should module exist', async () => {
+describe('Planet service helper constructor', () => {
+	it('should be defined', async () => {
 		expect(PlanetHelper).toBeDefined();
 	});
 });
 
-describe('planet helpers', () => {
+describe('Planet service helpers', () => {
 	it('should trigger Defend method', async () => {
-		const data = {
+		const params = {
 			damage: 1000,
 		};
 
-		const result = await PlanetHelper.Defend(DummyContext.getCall(data), data);
+		const result = await PlanetHelper.Defend(DummyContext.getCall(params), params);
 
 		expect(result).toBeDefined();
 	});

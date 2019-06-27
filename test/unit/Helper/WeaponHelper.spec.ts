@@ -2,30 +2,20 @@
 import { WeaponHelper } from '@Helper';
 import { DummyContext } from '@Helper/Mocks/Context';
 import { FireInDto } from '@Interfaces';
-import { getManager, getConnection } from 'typeorm'
-import setupDatabase from '../../config/SetupDatabase';
 
-beforeEach(async () => {
-	await setupDatabase()
-})
-
-afterEach(async () => {
-	await getConnection().close()
-})
-
-describe('Weapon Helper Service Helper Constructor', () => {
-	it('should module exist', async () => {
+describe('Weapon helper service helper constructor', () => {
+	it('should be defined', async () => {
 		expect(WeaponHelper).toBeDefined();
 	});
 });
 
-describe('fire helpers', () => {
-	it('should trigger fire method', async () => {
-		const data: FireInDto = {
+describe('Weapon service helpers', () => {
+	it('should trigger Fire method', async () => {
+		const params: FireInDto = {
 			damage: 1000,
 		};
 
-		const result = await WeaponHelper.Fire(DummyContext.getCall(data), data);
+		const result = await WeaponHelper.Fire(DummyContext.getCall(params), params);
 
 		expect(result).toBeDefined();
 	});
