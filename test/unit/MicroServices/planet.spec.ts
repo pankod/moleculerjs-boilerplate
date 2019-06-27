@@ -1,30 +1,29 @@
 // Global Imports
 import { ServiceBroker } from 'moleculer';
+import { getManager, getConnection } from 'typeorm'
 
 // Local Imports
+import setupDatabase from '../../config/SetupDatabase';
 import { PlanetHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
-import { getManager, getConnection } from 'typeorm'
-import setupDatabase from '../../config/SetupDatabase';
 
 const PlanetService = require('../../../services/planet.service');
 
+const broker = new ServiceBroker({ logger: false });
+broker.createService(PlanetService);
+
 beforeEach(async () => {
 	await setupDatabase()
+	broker.start()
 })
 
 afterEach(async () => {
 	await getConnection().close()
+	broker.stop()
 })
 
 describe('Test Planet service', () => {
-	const broker = new ServiceBroker({ logger: false });
-	broker.createService(PlanetService);
-
-	beforeEach(() => broker.start());
-	afterAll(() => broker.stop());
-
-	describe('Test Planet service actions', async () => {
+	describe('Defend method', async () => {
 		it('should run defend method', async () => {
 			const entityManager = getManager()
 			const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
