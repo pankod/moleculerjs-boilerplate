@@ -1,7 +1,10 @@
-import { WeaponRepository } from '../../../src/Repositories/Weapon';
-import { Weapon } from '@Entities/Weapon';
+// Global Imports
 import { getManager, getConnection } from 'typeorm'
+
+// Local Imports
 import setupDatabase from '../../config/SetupDatabase';
+import { WeaponRepository } from '@Repositories';
+import { Weapon } from '@Entities';
 
 beforeEach(async () => {
 	await setupDatabase()
@@ -12,11 +15,13 @@ afterEach(async () => {
 })
 
 describe('Test WeaponRepository constructor', () => {
-	it('should create an empty options', () => {
+	it('should be defined', () => {
 		expect(WeaponRepository).toBeDefined();
 	});
+});
 
-	it('should work (fire method)', async () => {
+describe('Weapon Repository Methods', () => {
+	it('should fire', async () => {
 		const entityManager = getManager();
 
 		const deathStar = await entityManager.findOne(Weapon, { name: 'Death Star' });
@@ -27,4 +32,4 @@ describe('Test WeaponRepository constructor', () => {
 
 		expect(result.damage).toEqual(expected);
 	});
-});
+})

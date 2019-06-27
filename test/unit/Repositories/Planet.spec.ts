@@ -1,7 +1,10 @@
-import { PlanetRepository } from '../../../src/Repositories/Planet';
-import { Planet } from '@Entities/Planet';
+// Global Imports
 import { getManager, getConnection } from 'typeorm'
+
+// Local Imports
 import setupDatabase from '../../config/SetupDatabase';
+import { PlanetRepository } from '@Repositories';
+import { Planet } from '@Entities';
 
 beforeEach(async () => {
 	await setupDatabase()
@@ -11,12 +14,14 @@ afterEach(async () => {
 	await getConnection().close()
 })
 
-describe('Test PlanetRepository constructor', () => {
-	it('should create an empty options', () => {
+describe('Planet Repository Constructor', () => {
+	it('should be defined', () => {
 		expect(PlanetRepository).toBeDefined();
 	});
+});
 
-	it('should work Defend method', async () => {
+describe('Planet Repository Methods', () => {
+	it('should defend', async () => {
 		const entityManager = getManager();
 
 		const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
@@ -33,4 +38,4 @@ describe('Test PlanetRepository constructor', () => {
 
 		expect(alderaan.shield).toEqual(expected);
 	});
-});
+})
