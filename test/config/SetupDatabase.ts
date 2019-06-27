@@ -2,11 +2,11 @@ import { createConnection, getManager } from 'typeorm'
 import { Weapon } from '@Entities/Weapon';
 import { Planet } from '@Entities/Planet';
 
-const connectionInstance = async () => {
+const setupDatabase = async () => {
 	await createConnection({
 		type: 'sqlite',
 		name: 'default',
-		database: './test/db.test.sqlite',
+		database: ':memory:',
 		entities: ['./src/Entities/*.ts'],
 		synchronize: true,
 		dropSchema: true,
@@ -25,4 +25,4 @@ const connectionInstance = async () => {
 	)
 }
 
-export default connectionInstance
+export default setupDatabase
