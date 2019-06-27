@@ -87,7 +87,6 @@
 			"js"
 		],
 		"moduleNameMapper": {
-			"^@(Models.*).*/([^/]*)$": "<rootDir>/src/$1/$2.mock.ts",
 			"^@MicroServices": "<rootDir>/services/index.ts",
 			"^@([A-Z].*)$": "<rootDir>/src/$1"
 		},
