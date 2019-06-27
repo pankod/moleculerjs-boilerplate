@@ -1,3 +1,4 @@
 export interface FireOutDto {
-	message: string;
+	planetMessage: string
+	weaponMessage: string
 }

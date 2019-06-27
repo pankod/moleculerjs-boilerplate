@@ -1,4 +1,4 @@
-export interface FireInDto {
+export interface DefendInDto {
 	planetName: 'string'
 	weaponName: 'string'
 }

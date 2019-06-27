@@ -10,7 +10,7 @@ import { WeaponRepository } from '@Repositories';
 //#endregion Local Imports
 
 //#region Interface Imports
-import { DamageInDto, WarMessageOutDto } from '@Interfaces';
+import { DamageInDto, WarMessageOutDto, FireInDto, FireOutDto } from '@Interfaces';
 import { PlanetHelper } from '@Helper';
 import { FireMethodOutDto } from '@Interfaces/Fire/FireMethodOutDto';
 //#endregion Interface Imports
@@ -24,10 +24,11 @@ export class AttackService extends BaseSchema {
 
 	@Action({
 		params: {
-			damage: 'number',
+			weaponName: 'string',
+			planetName: 'string'
 		},
 	})
-	public async Fire(ctx: Context<DamageInDto>): Promise<FireMethodOutDto> {
+	public async Fire(ctx: Context<FireInDto>): Promise<FireOutDto> {
 		const response = await this.FireMethod(ctx);
 
 		return response;
@@ -35,27 +36,28 @@ export class AttackService extends BaseSchema {
 
 	@Method
 	@POST
-	public async FireMethod(ctx: Context<DamageInDto>): Promise<FireMethodOutDto> {
-		const { shield } = await WeaponRepository.Fire();
-		const { damage } = ctx.params;
+	public async FireMethod(ctx: Context<FireInDto>): Promise<FireOutDto> {
+		const { planetName, weaponName } = ctx.params;
 
-		const { deathStar, alderaan } = await PlanetHelper.Defend(ctx, { damage });
+		const weapon = await WeaponRepository.Get(weaponName);
 
-		let message;
-
-		if (shield > 0) {
-			message = `Planet took ${damage} damage and has ${alderaan.shield} shield left.`;
-		} else {
-			message = 'Planet shield ruined! war is lost!';
+		if (weapon.ammo === 0) {
+			return {
+				planetMessage: 'Planet took no damage',
+				weaponMessage: 'This weapon has no ammo',
+			}
 		}
 
-		const response: FireMethodOutDto = {
-			weapon: deathStar,
-			planet: alderaan,
-			message,
-		};
+		const { remainingAmmo } = await WeaponRepository.Fire(weaponName)
 
-		return response;
+		const { planetMessage } = await PlanetHelper.Defend(ctx, { weaponName, planetName });
+
+		const weaponMessage = `${weapon.name} did ${weapon.damage} damage and left ${remainingAmmo} ammo.`
+
+		return {
+			planetMessage,
+			weaponMessage,
+		}
 	}
 }
 
