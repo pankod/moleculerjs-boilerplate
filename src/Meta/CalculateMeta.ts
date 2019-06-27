@@ -1,16 +1,12 @@
-import { PlanetSql, WeaponSql } from '@Interfaces';
-import { Weapon } from '@Entities/Weapon';
-import { Planet } from '@Entities/Planet';
+import { Planet, Weapon } from '@Entities';
+import { DamageMetaOutDto } from '@Interfaces';
 
 export namespace CalculateMeta {
-	export const Damage = async (
-		weapon: Weapon,
-		planet: Planet,
-	): Promise<{ damage: number, remainingShield: number }> => {
+	export const Damage = async (weapon: Weapon, planet: Planet): Promise<DamageMetaOutDto> => {
 		const { damage: weaponDamage } = weapon;
 		const { shield } = planet;
 
-		const damage = Math.floor(Math.random() * (weaponDamage * 100))
+		const damage = Math.floor(Math.random() * weaponDamage)
 
 		const remainingShield: number = shield - damage;
 

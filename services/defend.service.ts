@@ -10,8 +10,7 @@ import { PlanetRepository } from '@Repositories';
 //#endregion Local Imports
 
 //#region Interface Imports
-import { DefendOutDto } from '@Interfaces';
-import { DefendInDto } from '@Interfaces/DefendInDto';
+import { DefendInDto, DefendOutDto } from '@Interfaces';
 //#endregion Interface Imports
 @Path('planet')
 @Accept('application/json; charset=utf-8')

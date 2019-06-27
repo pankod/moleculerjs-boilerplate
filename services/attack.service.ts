@@ -10,15 +10,16 @@ import { WeaponRepository } from '@Repositories';
 //#endregion Local Imports
 
 //#region Interface Imports
-import { DamageInDto, WarMessageOutDto, FireInDto, FireOutDto } from '@Interfaces';
+import { AttackInDto, AttackOutDto } from '@Interfaces';
 import { PlanetHelper } from '@Helper';
-import { FireMethodOutDto } from '@Interfaces/Fire/FireMethodOutDto';
 //#endregion Interface Imports
+
 @Path('deathstar')
 @Accept('application/json; charset=utf-8')
 @Produces('application/json; charset=utf-8')
 @BodyOptions({ extended: true, type: 'application/json; charset=utf-8' })
 @Tags('DeathStarServices')
+
 export class AttackService extends BaseSchema {
 	public name: string = 'weapon';
 
@@ -28,7 +29,7 @@ export class AttackService extends BaseSchema {
 			planetName: 'string'
 		},
 	})
-	public async Fire(ctx: Context<FireInDto>): Promise<FireOutDto> {
+	public async Fire(ctx: Context<AttackInDto>): Promise<AttackOutDto> {
 		const response = await this.FireMethod(ctx);
 
 		return response;
@@ -36,7 +37,7 @@ export class AttackService extends BaseSchema {
 
 	@Method
 	@POST
-	public async FireMethod(ctx: Context<FireInDto>): Promise<FireOutDto> {
+	public async FireMethod(ctx: Context<AttackInDto>): Promise<AttackOutDto> {
 		const { planetName, weaponName } = ctx.params;
 
 		const weapon = await WeaponRepository.Get(weaponName);

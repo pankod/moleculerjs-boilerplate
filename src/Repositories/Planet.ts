@@ -2,10 +2,10 @@ import { Planet } from '@Entities/Planet';
 import { Weapon } from '@Entities/Weapon';
 import { getManager } from 'typeorm';
 import { CalculateMeta } from '@Meta';
-import { DefendRepoOutDto } from '@Interfaces/DefendRepoOutDto';
+import { DefendRepoOutDto } from '@Interfaces';
 
 export namespace PlanetRepository {
-	export const Defend = async (weaponName, planetName): Promise<DefendRepoOutDto> => {
+	export const Defend = async (weaponName: string, planetName: string): Promise<DefendRepoOutDto> => {
 		const entityManager = getManager();
 
 		const weapon = await entityManager.findOne(Weapon, { name: weaponName });

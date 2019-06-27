@@ -2,11 +2,11 @@
 import { Context } from 'moleculer';
 
 // Local Imports
-import { FireInDto, FireOutDto } from '@Interfaces';
+import { AttackInDto, AttackOutDto } from '@Interfaces';
 
 export namespace WeaponHelper {
 	const prefix: string = 'weapon';
 
-	export const Fire = async (ctx: Context, params: FireInDto): Promise<FireOutDto> =>
+	export const Fire = async (ctx: Context, params: AttackInDto): Promise<AttackOutDto> =>
 		await ctx.call(`${prefix}.Fire`, params);
 }
