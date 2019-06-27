@@ -4,11 +4,15 @@ import { ServiceBroker } from 'moleculer';
 // Local Imports
 import { WeaponHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
-import { getManager } from 'typeorm'
-import connectionInstance from '../../config/Connection';
+import { getManager, getConnection } from 'typeorm'
+import setupDatabase from '../../config/SetupDatabase';
 
-beforeAll(async () => {
-	await connectionInstance()
+beforeEach(async () => {
+	await setupDatabase()
+})
+
+afterEach(async () => {
+	await getConnection().close()
 })
 
 const FireService = require('../../../services/weapon.service');
@@ -22,7 +26,7 @@ describe('Test weapon service', () => {
 	broker.createService(FireService);
 	broker.createService(PlanetService);
 
-	beforeAll(() => broker.start());
+	beforeEach(() => broker.start());
 	afterAll(() => broker.stop());
 
 	describe('Test Fire service actions', async () => {

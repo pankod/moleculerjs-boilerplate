@@ -4,20 +4,24 @@ import { ServiceBroker } from 'moleculer';
 // Local Imports
 import { PlanetHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
-import { getManager } from 'typeorm'
-import connectionInstance from '../../config/Connection';
+import { getManager, getConnection } from 'typeorm'
+import setupDatabase from '../../config/SetupDatabase';
 
 const PlanetService = require('../../../services/planet.service');
 
-beforeAll(async () => {
-	await connectionInstance()
+beforeEach(async () => {
+	await setupDatabase()
+})
+
+afterEach(async () => {
+	await getConnection().close()
 })
 
 describe('Test Planet service', () => {
 	const broker = new ServiceBroker({ logger: false });
 	broker.createService(PlanetService);
 
-	beforeAll(() => broker.start());
+	beforeEach(() => broker.start());
 	afterAll(() => broker.stop());
 
 	describe('Test Planet service actions', async () => {

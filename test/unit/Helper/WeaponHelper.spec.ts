@@ -2,10 +2,15 @@
 import { WeaponHelper } from '@Helper';
 import { DummyContext } from '@Helper/Mocks/Context';
 import { FireInDto } from '@Interfaces';
-import connectionInstance from '../../config/Connection';
+import { getManager, getConnection } from 'typeorm'
+import setupDatabase from '../../config/SetupDatabase';
 
-beforeAll(async () => {
-	await connectionInstance()
+beforeEach(async () => {
+	await setupDatabase()
+})
+
+afterEach(async () => {
+	await getConnection().close()
 })
 
 describe('Weapon Helper Service Helper Constructor', () => {
