@@ -231,7 +231,7 @@ export const Helper = {
 			templateProps,
 			answers,
 			dirPath: `${Config.servicesTestDir}/${answers.fileName}.spec.ts`,
-			successMessage: 'Added new Micro Service test.'
+			successMessage: 'Added new Micro Service test.\n'
 		};
 
 		Helper.writeFile(writeFileProps);
