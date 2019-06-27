@@ -1,2 +1,2 @@
-export { WeaponService } from './weapon.service';
+export { AttackService } from './attack.service';
 export { DefendService } from './defend.service';

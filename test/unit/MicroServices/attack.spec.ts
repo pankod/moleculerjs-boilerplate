@@ -7,12 +7,12 @@ import setupDatabase from '../../config/SetupDatabase';
 import { WeaponHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
 
-const FireService = require('../../../services/weapon.service');
+const AttackService = require('../../../services/attack.service');
 const DefendService = require('../../../services/defend.service');
 
 const broker = new ServiceBroker({ logger: false });
 
-broker.createService(FireService);
+broker.createService(AttackService);
 broker.createService(DefendService);
 
 beforeEach(async () => {
@@ -28,7 +28,7 @@ afterEach(async () => {
 const expectedMessage = (damage: number, shield: number): string =>
 	`Planet took ${damage} damage and has ${shield} shield left.`;
 
-describe('Test weapon service', () => {
+describe('Test attack service', () => {
 	describe('Fire method', async () => {
 		it('should return correct message when shield is up', async () => {
 			const entityManager = getManager();

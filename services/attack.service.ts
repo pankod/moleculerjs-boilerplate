@@ -19,7 +19,7 @@ import { FireMethodOutDto } from '@Interfaces/Fire/FireMethodOutDto';
 @Produces('application/json; charset=utf-8')
 @BodyOptions({ extended: true, type: 'application/json; charset=utf-8' })
 @Tags('DeathStarServices')
-export class WeaponService extends BaseSchema {
+export class AttackService extends BaseSchema {
 	public name: string = 'weapon';
 
 	@Action({
@@ -59,4 +59,4 @@ export class WeaponService extends BaseSchema {
 	}
 }
 
-module.exports = new WeaponService();
+module.exports = new AttackService();
