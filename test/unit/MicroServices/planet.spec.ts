@@ -1,6 +1,6 @@
 // Global Imports
 import { ServiceBroker } from 'moleculer';
-import { getManager, getConnection } from 'typeorm'
+import { getManager, getConnection } from 'typeorm';
 
 // Local Imports
 import setupDatabase from '../../config/SetupDatabase';
@@ -13,19 +13,19 @@ const broker = new ServiceBroker({ logger: false });
 broker.createService(PlanetService);
 
 beforeEach(async () => {
-	await setupDatabase()
-	broker.start()
-})
+	await setupDatabase();
+	broker.start();
+});
 
 afterEach(async () => {
-	await getConnection().close()
-	broker.stop()
-})
+	await getConnection().close();
+	broker.stop();
+});
 
 describe('Test Planet service', () => {
 	describe('Defend method', async () => {
 		it('should run defend method', async () => {
-			const entityManager = getManager()
+			const entityManager = getManager();
 			const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
 
 			const damage = 1000;

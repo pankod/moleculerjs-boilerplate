@@ -1,5 +1,5 @@
 // Global Imports
-import { getManager, getConnection } from 'typeorm'
+import { getManager, getConnection } from 'typeorm';
 
 // Local Imports
 import setupDatabase from '../../config/SetupDatabase';
@@ -7,12 +7,12 @@ import { WeaponRepository } from '@Repositories';
 import { Weapon } from '@Entities';
 
 beforeEach(async () => {
-	await setupDatabase()
-})
+	await setupDatabase();
+});
 
 afterEach(async () => {
-	await getConnection().close()
-})
+	await getConnection().close();
+});
 
 describe('Test WeaponRepository constructor', () => {
 	it('should be defined', () => {
@@ -32,4 +32,4 @@ describe('Weapon Repository Methods', () => {
 
 		expect(result.damage).toEqual(expected);
 	});
-})
+});

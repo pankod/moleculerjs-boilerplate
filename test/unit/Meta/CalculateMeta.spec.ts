@@ -1,5 +1,5 @@
 // Global Imports
-import { getManager, getConnection } from 'typeorm'
+import { getManager, getConnection } from 'typeorm';
 
 // Local Imports
 import setupDatabase from '../../config/SetupDatabase';
@@ -14,12 +14,12 @@ describe('CalculateMeta constructor', () => {
 
 describe('CalculateMeta functions', () => {
 	beforeEach(async () => {
-		await setupDatabase()
-	})
+		await setupDatabase();
+	});
 
 	afterEach(async () => {
-		await getConnection().close()
-	})
+		await getConnection().close();
+	});
 
 	it('should calculate remaining shield', async () => {
 		const damage: number = 1000;

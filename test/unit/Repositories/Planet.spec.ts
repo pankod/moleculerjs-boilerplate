@@ -1,5 +1,5 @@
 // Global Imports
-import { getManager, getConnection } from 'typeorm'
+import { getManager, getConnection } from 'typeorm';
 
 // Local Imports
 import setupDatabase from '../../config/SetupDatabase';
@@ -7,12 +7,12 @@ import { PlanetRepository } from '@Repositories';
 import { Planet } from '@Entities';
 
 beforeEach(async () => {
-	await setupDatabase()
-})
+	await setupDatabase();
+});
 
 afterEach(async () => {
-	await getConnection().close()
-})
+	await getConnection().close();
+});
 
 describe('Planet Repository Constructor', () => {
 	it('should be defined', () => {
@@ -38,4 +38,4 @@ describe('Planet Repository Methods', () => {
 
 		expect(alderaan.shield).toEqual(expected);
 	});
-})
+});

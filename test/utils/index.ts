@@ -1,1 +1,1 @@
-export { DummyContext } from "./DummyContext"
+export { DummyContext } from './DummyContext';

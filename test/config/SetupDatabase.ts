@@ -2,9 +2,9 @@ import Seeder from './Seeder';
 import CreateConnection from './CreateConnection';
 
 const setupDatabase = async (): Promise<void> => {
-	await CreateConnection()
+	await CreateConnection();
 
-	await Seeder.seed()
-}
+	await Seeder.seed();
+};
 
-export default setupDatabase
+export default setupDatabase;

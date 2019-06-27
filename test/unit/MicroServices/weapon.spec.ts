@@ -1,6 +1,6 @@
 // Global Imports
 import { ServiceBroker } from 'moleculer';
-import { getManager, getConnection } from 'typeorm'
+import { getManager, getConnection } from 'typeorm';
 
 // Local Imports
 import setupDatabase from '../../config/SetupDatabase';
@@ -16,14 +16,14 @@ broker.createService(FireService);
 broker.createService(PlanetService);
 
 beforeEach(async () => {
-	await setupDatabase()
-	broker.start()
-})
+	await setupDatabase();
+	broker.start();
+});
 
 afterEach(async () => {
-	await getConnection().close()
-	broker.stop()
-})
+	await getConnection().close();
+	broker.stop();
+});
 
 const expectedMessage = (damage: number, shield: number): string =>
 	`Planet took ${damage} damage and has ${shield} shield left.`;
@@ -31,7 +31,7 @@ const expectedMessage = (damage: number, shield: number): string =>
 describe('Test weapon service', () => {
 	describe('Fire method', async () => {
 		it('should return correct message when shield is up', async () => {
-			const entityManager = getManager()
+			const entityManager = getManager();
 
 			const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
 
