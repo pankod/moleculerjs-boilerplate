@@ -1,28 +1,10 @@
-import { createConnection, getManager } from 'typeorm'
-import { Weapon } from '@Entities/Weapon';
-import { Planet } from '@Entities/Planet';
+import Seeder from './Seeder';
+import CreateConnection from './CreateConnection';
 
-const setupDatabase = async () => {
-	await createConnection({
-		type: 'sqlite',
-		name: 'default',
-		database: ':memory:',
-		entities: ['./src/Entities/*.ts'],
-		synchronize: true,
-		dropSchema: true,
-	});
+const setupDatabase = async (): Promise<void> => {
+	await CreateConnection()
 
-	const entityManager = getManager()
-
-	await entityManager.insert(
-		Weapon,
-		{ name: 'Death Star', damage: 1000, ammo: 1000 }
-	)
-
-	await entityManager.insert(
-		Planet,
-		{ name: 'Alderaan', shield: 100000 }
-	)
+	await Seeder.seed()
 }
 
 export default setupDatabase
