@@ -8,7 +8,7 @@ export namespace CalculateMeta {
 
 		const damage = Math.floor(Math.random() * weaponDamage)
 
-		const remainingShield: number = shield - damage;
+		const remainingShield = shield - damage;
 
 		return { damage, remainingShield };
 	};
