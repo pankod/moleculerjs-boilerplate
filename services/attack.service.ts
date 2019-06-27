@@ -41,7 +41,7 @@ export class AttackService extends BaseSchema {
 
 		const weapon = await WeaponRepository.Get(weaponName);
 
-		if (weapon.ammo === 0) {
+		if (weapon.ammo <= 0) {
 			return {
 				planetMessage: 'Planet took no damage',
 				weaponMessage: 'This weapon has no ammo',
@@ -50,9 +50,9 @@ export class AttackService extends BaseSchema {
 
 		const { remainingAmmo } = await WeaponRepository.Fire(weaponName)
 
-		const { planetMessage } = await PlanetHelper.Defend(ctx, { weaponName, planetName });
+		const { damage, planetMessage } = await PlanetHelper.Defend(ctx, { weaponName, planetName });
 
-		const weaponMessage = `${weapon.name} did ${weapon.damage} damage and left ${remainingAmmo} ammo.`
+		const weaponMessage = `${weapon.name} did ${damage} damage and left ${remainingAmmo} ammo.`
 
 		return {
 			planetMessage,

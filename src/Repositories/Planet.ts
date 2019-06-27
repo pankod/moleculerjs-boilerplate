@@ -11,7 +11,7 @@ export namespace PlanetRepository {
 		const weapon = await entityManager.findOne(Weapon, { name: weaponName });
 		const planet = await entityManager.findOne(Planet, { name: planetName });
 
-		const { remainingShield } = await CalculateMeta.Damage(
+		const { damage, remainingShield } = await CalculateMeta.Damage(
 			weapon,
 			planet,
 		);
@@ -20,6 +20,6 @@ export namespace PlanetRepository {
 
 		await entityManager.save(planet);
 
-		return { damage: weapon.damage, remainingShield };
+		return { damage, remainingShield };
 	};
 }

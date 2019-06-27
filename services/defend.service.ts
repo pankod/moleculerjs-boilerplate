@@ -47,7 +47,7 @@ export class DefendService extends BaseSchema {
 			message = 'Planet shield ruined! war is lost!';
 		}
 
-		return { planetMessage: message };
+		return { damage, planetMessage: message };
 	}
 }
 

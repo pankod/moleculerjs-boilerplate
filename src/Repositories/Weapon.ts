@@ -18,7 +18,7 @@ export namespace WeaponRepository {
 	export const Fire = async (weaponName: string): Promise<{ remainingAmmo: number }> => {
 		const weapon = await getWeapon(weaponName)
 
-		weapon.ammo = weapon.ammo - 1
+		weapon.ammo = weapon.ammo - 100
 
 		getManager().save(weapon)
 

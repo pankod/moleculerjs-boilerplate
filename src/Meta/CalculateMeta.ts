@@ -6,12 +6,14 @@ export namespace CalculateMeta {
 	export const Damage = async (
 		weapon: Weapon,
 		planet: Planet,
-	): Promise<{ remainingShield: number }> => {
-		const { damage } = weapon;
+	): Promise<{ damage: number, remainingShield: number }> => {
+		const { damage: weaponDamage } = weapon;
 		const { shield } = planet;
+
+		const damage = Math.floor(Math.random() * (weaponDamage * 100))
 
 		const remainingShield: number = shield - damage;
 
-		return { remainingShield };
+		return { damage, remainingShield };
 	};
 }
