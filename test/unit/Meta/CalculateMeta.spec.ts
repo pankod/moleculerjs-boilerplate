@@ -1,24 +1,26 @@
-import { CalculateMeta } from '../../../src/Meta/CalculateMeta';
-import { Weapon } from '@Entities/Weapon';
-import { Planet } from '@Entities/Planet';
+// Global Imports
 import { getManager, getConnection } from 'typeorm'
+
+// Local Imports
 import setupDatabase from '../../config/SetupDatabase';
+import { CalculateMeta } from '@Meta';
+import { Planet, Weapon } from '@Entities';
 
-beforeEach(async () => {
-	await setupDatabase()
-})
-
-afterEach(async () => {
-	await getConnection().close()
-})
-
-describe('Test CalculateMeta constructor', () => {
-	it('should create an empty options', () => {
+describe('CalculateMeta constructor', () => {
+	it('should be defined', () => {
 		expect(CalculateMeta).toBeDefined();
 	});
 });
 
-describe('Test CalculateMeta functions', () => {
+describe('CalculateMeta functions', () => {
+	beforeEach(async () => {
+		await setupDatabase()
+	})
+
+	afterEach(async () => {
+		await getConnection().close()
+	})
+
 	it('should calculate remaining shield', async () => {
 		const damage: number = 1000;
 
