@@ -22,20 +22,13 @@ describe('CalculateMeta functions', () => {
 	});
 
 	it('should calculate remaining shield', async () => {
-		const damage: number = 1000;
-
 		const entityManager = getManager();
 
 		const weapon = await entityManager.findOne(Weapon, { name: 'Death Star' });
 		const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
 
-		const result = await CalculateMeta.Damage(weapon, planet, damage);
+		const { damage, remainingShield } = await CalculateMeta.Damage(weapon, planet);
 
-		const expected = {
-			remainingAmmo: weapon.ammo - 1,
-			remainingShield: planet.shield - damage,
-		};
-
-		expect(result).toEqual(expected);
+		expect(remainingShield).toEqual(planet.shield - damage);
 	});
 });
