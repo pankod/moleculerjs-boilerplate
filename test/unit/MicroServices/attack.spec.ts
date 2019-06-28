@@ -38,21 +38,11 @@ describe('Test attack service', () => {
 	}
 
 	describe('Fire method', async () => {
-		it('when shield is up', async () => {
+		it('when ammo is up', async () => {
 			const { planetMessage, weaponMessage } = await AttackHelper.Fire(broker as any, params);
 
-			expect(planetMessage).toContain("Planet took");
+			expect(planetMessage).toContain("Planet took")
 			expect(weaponMessage).toContain("Death Star did")
-		});
-
-		it('when shield is down', async () => {
-			getManager().update(Planet, { name: 'Alderaan' }, { shield: 1 })
-
-			// First fire to break shield entirely
-			await AttackHelper.Fire(broker as any, params);
-			const { planetMessage } = await AttackHelper.Fire(broker as any, params);
-
-			expect(planetMessage).toEqual('Planet shield ruined! war is lost!')
 		});
 
 		it('when ammo is empty', async () => {
