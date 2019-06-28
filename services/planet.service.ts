@@ -17,7 +17,7 @@ import { DefendInDto, DefendOutDto } from '@Interfaces';
 @Produces('application/json; charset=utf-8')
 @BodyOptions({ extended: true, type: 'application/json; charset=utf-8' })
 @Tags('PlanetServices')
-export class DefendService extends BaseSchema {
+export class PlanetService extends BaseSchema {
 	public name: string = 'planet';
 
 	@Action({
@@ -50,4 +50,4 @@ export class DefendService extends BaseSchema {
 	}
 }
 
-module.exports = new DefendService();
+module.exports = new PlanetService();

@@ -7,10 +7,10 @@ import setupDatabase from '../../config/SetupDatabase';
 import { PlanetHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
 
-const DefendService = require('../../../services/defend.service');
+const PlanetService = require('../../../services/planet.service');
 
 const broker = new ServiceBroker({ logger: false });
-broker.createService(DefendService);
+broker.createService(PlanetService);
 
 beforeEach(async () => {
 	await setupDatabase();

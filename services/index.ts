@@ -1,2 +1,2 @@
 export { AttackService } from './attack.service';
-export { DefendService } from './defend.service';
+export { PlanetService } from './planet.service';
