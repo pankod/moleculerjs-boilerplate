@@ -1,8 +1,7 @@
 export const Config = {
 	repositoriesDir: './src/Repositories',
 	interfaceDir: './src/Interfaces',
-	modelDir: './src/Models',
-	mockModelDir: './src/Models',
+	modelDir: './src/Entities',
 	repositoriesTestDir: './test/unit/Repositories',
 	servicesDir: './services',
 	servicesHelperDir: './src/Helper',

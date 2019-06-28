@@ -58,8 +58,8 @@ export const Helper = {
 	},
 
 	createInterface: (answers: DefinitionsModel.IAnswers) => {
-		const templatePath = './helper_scripts/templates/interfaces/interface.mustache';
-		const indexInterfaceTemplate = './helper_scripts/templates/interfaces/index.mustache';
+		const templatePath = './helper_scripts/Templates/Interfaces/Interface.mustache';
+		const indexInterfaceTemplate = './helper_scripts/Templates/Interfaces/index.mustache';
 
 		const templateProps = { fileName: answers.fileName, upperFileName: answers.upperFileName };
 		const interfaceFilePath = `${Config.interfaceDir}/${answers.upperFileName}/I${answers.upperFileName}.d.ts`;
@@ -82,40 +82,27 @@ export const Helper = {
 		Helper.addToIndex(addIndexParams);
 	},
 
-	createModelInstance: (answers: DefinitionsModel.IAnswers) => {
-		const templatePath = './helper_scripts/templates/repositories/model.mustache';
+	createEntityInstance: (answers: DefinitionsModel.IAnswers) => {
+		const templatePath = './helper_scripts/Templates/Repositories/Entity.mustache';
 		const templateProps = { fileName: answers.fileName };
-		const indexTemplate = './helper_scripts/templates/repositories/model_index.mustache';
+		const indexTemplate = './helper_scripts/Templates/Repositories/EntityIndex.mustache';
 
 		const writeFileProps: DefinitionsModel.IWriteFile = {
 			dirPath: `${Config.modelDir}/${answers.fileName}.ts`,
 			getFileContent: () => Helper.getTemplate(templatePath, templateProps),
-			message: 'Added new Model Instance.'
+			message: 'Added new Entity Instance.'
 		};
 
 		const addIndexParams: DefinitionsModel.IAddIndex = {
 			dirPath: `${Config.modelDir}/index.ts`,
 			getFileContent: () => Helper.getTemplate(indexTemplate, templateProps),
-			message: 'Model added to index.ts.'
+			message: 'Entity added to index.ts.'
 		};
 
 		Helper.writeFile(writeFileProps);
 		Helper.addToIndex(addIndexParams);
 	},
 
-	createMockModel: (answers: DefinitionsModel.IAnswers) => {
-		const templatePath = './helper_scripts/templates/repositories/mock.mustache';
-		const templateProps = { fileName: answers.fileName };
-		const indexTemplate = './helper_scripts/templates/repositories/mock_index.mustache';
-
-		const writeFileProps: DefinitionsModel.IWriteFile = {
-			dirPath: `${Config.mockModelDir}/${answers.fileName}.mock.ts`,
-			getFileContent: () => Helper.getTemplate(templatePath, templateProps),
-			message: 'Added new Mock Model Instance.'
-		};
-
-		Helper.writeFile(writeFileProps);
-	},
 
 	createTest: (options: DefinitionsModel.ICreateTest): void => {
 
@@ -129,8 +116,8 @@ export const Helper = {
 	},
 
 	createServiceHelper: (answers: DefinitionsModel.IAnswers): void => {
-		const templatePath = './helper_scripts/templates/services/helper.mustache';
-		const indexTemplate = './helper_scripts/templates/services/helper_index.mustache';
+		const templatePath = './helper_scripts/Templates/Services/Helper.mustache';
+		const indexTemplate = './helper_scripts/Templates/Services/HelperIndex.mustache';
 
 		const templateProps = {
 			fileName: answers.fileName,
@@ -150,7 +137,7 @@ export const Helper = {
 		};
 
 		const serviceHelperTestParams = {
-			templatePath: './helper_scripts/templates/tests/serviceHelper.mustache',
+			templatePath: './helper_scripts/Templates/Tests/ServiceHelper.mustache',
 			templateProps,
 			answers,
 			dirPath: `${Config.serviceHelperTestDir}/${answers.fileName}.spec.ts`,
@@ -163,14 +150,14 @@ export const Helper = {
 	},
 
 	createModel: (answers: DefinitionsModel.IAnswers): void => {
-		const templatePath = './helper_scripts/templates/repositories/repository.mustache';
+		const templatePath = './helper_scripts/Templates/Repositories/Repository.mustache';
 
 		const templateProps = {
 			fileName: answers.fileName,
 			upperFileName: answers.upperFileName
 		};
 
-		const indexTemplate = './helper_scripts/templates/repositories/repo_index.mustache';
+		const indexTemplate = './helper_scripts/Templates/Repositories/RepoIndex.mustache';
 
 		const addIndexParams: DefinitionsModel.IAddIndex = {
 			dirPath: `${Config.repositoriesDir}/index.ts`,
@@ -185,7 +172,7 @@ export const Helper = {
 		};
 
 		const repositoryTestParams = {
-			templatePath: './helper_scripts/templates/tests/repository.mustache',
+			templatePath: './helper_scripts/Templates/Tests/Repository.mustache',
 			templateProps,
 			answers,
 			dirPath: `${Config.repositoriesTestDir}/${answers.fileName}.spec.ts`,
@@ -199,20 +186,19 @@ export const Helper = {
 			Helper.createInterface(answers);
 		}
 
-		Helper.createModelInstance(answers);
-		Helper.createMockModel(answers);
+		Helper.createEntityInstance(answers);
 		Helper.createTest(repositoryTestParams);
 	},
 
 	createService: (answers: DefinitionsModel.IAnswers): void => {
-		const templatePath = './helper_scripts/templates/services/service.mustache';
+		const templatePath = './helper_scripts/Templates/Services/Service.mustache';
 		const templateProps = {
 			fileName: answers.fileName,
 			upperFileName: answers.upperFileName,
 			isPrivate: answers.isPrivate
 		};
 
-		const indexTemplate = './helper_scripts/templates/services/index.mustache';
+		const indexTemplate = './helper_scripts/Templates/Services/index.mustache';
 
 		const addIndexParams: DefinitionsModel.IAddIndex = {
 			dirPath: `${Config.servicesDir}/index.ts`,
@@ -227,11 +213,11 @@ export const Helper = {
 		};
 
 		const serviceTestParams = {
-			templatePath: './helper_scripts/templates/tests/service.mustache',
+			templatePath: './helper_scripts/Templates/Tests/Service.mustache',
 			templateProps,
 			answers,
 			dirPath: `${Config.servicesTestDir}/${answers.fileName}.spec.ts`,
-			successMessage: 'Added new Micro Service test.\n'
+			successMessage: 'Added new Microservice test.\n'
 		};
 
 		Helper.writeFile(writeFileProps);
