@@ -2,17 +2,9 @@
 import { getManager, getConnection } from 'typeorm';
 
 // Local Imports
-import setupDatabase from '../../config/SetupDatabase';
+import setupDatabase from '@Test/Config/SetupDatabase';
 import { PlanetRepository } from '@Repositories';
 import { Planet } from '@Entities';
-
-beforeEach(async () => {
-	await setupDatabase();
-});
-
-afterEach(async () => {
-	await getConnection().close();
-});
 
 describe('Planet Repository Constructor', () => {
 	it('should be defined', () => {
@@ -21,21 +13,26 @@ describe('Planet Repository Constructor', () => {
 });
 
 describe('Planet Repository Methods', () => {
-	it('should defend', async () => {
+	beforeEach(async () => {
+		await setupDatabase();
+	});
+
+	afterEach(async () => {
+		await getConnection().close();
+	});
+
+	it('Defend', async () => {
 		const entityManager = getManager();
 
 		const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
 
-		const damage = 1000;
+		const planetName = 'Alderaan'
+		const weaponName = 'Death Star'
 
-		const expected: number = planet.shield - damage;
+		const { damage, remainingShield } = await PlanetRepository.Defend(weaponName, planetName);
 
-		const params = {
-			damage,
-		};
+		const expectedShield = planet.shield - damage
 
-		const { alderaan } = await PlanetRepository.Defend(params.damage);
-
-		expect(alderaan.shield).toEqual(expected);
+		expect(remainingShield).toEqual(expectedShield);
 	});
 });

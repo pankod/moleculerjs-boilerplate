@@ -2,28 +2,24 @@ import { Planet } from '@Entities/Planet';
 import { Weapon } from '@Entities/Weapon';
 import { getManager } from 'typeorm';
 import { CalculateMeta } from '@Meta';
+import { DefendRepoOutDto } from '@Interfaces';
 
 export namespace PlanetRepository {
-	export const Defend = async (
-		damage: number,
-	): Promise<{ deathStar: Weapon; alderaan: Planet }> => {
+	export const Defend = async (weaponName: string, planetName: string): Promise<DefendRepoOutDto> => {
 		const entityManager = getManager();
 
-		const deathStar = await entityManager.findOne(Weapon, { name: 'Death Star' });
-		const alderaan = await entityManager.findOne(Planet, { name: 'Alderaan' });
+		const weapon = await entityManager.findOne(Weapon, { name: weaponName });
+		const planet = await entityManager.findOne(Planet, { name: planetName });
 
-		const { remainingAmmo, remainingShield } = await CalculateMeta.Damage(
-			deathStar,
-			alderaan,
-			damage,
+		const { damage, remainingShield } = await CalculateMeta.Damage(
+			weapon,
+			planet,
 		);
 
-		deathStar.ammo = remainingAmmo;
-		alderaan.shield = remainingShield;
+		planet.shield = remainingShield;
 
-		await entityManager.save(deathStar);
-		await entityManager.save(alderaan);
+		await entityManager.save(planet);
 
-		return { deathStar, alderaan };
+		return { damage, remainingShield };
 	};
 }

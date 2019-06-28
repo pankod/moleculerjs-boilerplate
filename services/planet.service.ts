@@ -10,7 +10,7 @@ import { PlanetRepository } from '@Repositories';
 //#endregion Local Imports
 
 //#region Interface Imports
-import { DefendOutDto } from '@Interfaces';
+import { DefendInDto, DefendOutDto } from '@Interfaces';
 //#endregion Interface Imports
 @Path('planet')
 @Accept('application/json; charset=utf-8')
@@ -22,21 +22,31 @@ export class PlanetService extends BaseSchema {
 
 	@Action({
 		params: {
-			damage: 'number',
+			planetName: 'string',
+			weaponName: 'string'
 		},
 	})
-	public async Defend(ctx: Context<any>): Promise<DefendOutDto> {
-		const response = await this.DefendMethod(ctx.params.damage);
+	public async Defend(ctx: Context<DefendInDto>): Promise<DefendOutDto> {
+		const response = await this.DefendMethod(ctx);
 
 		return response;
 	}
 
 	@Method
 	@POST
-	public async DefendMethod(damage: number): Promise<DefendOutDto> {
-		const result = await PlanetRepository.Defend(damage);
+	public async DefendMethod(ctx: Context<DefendInDto>): Promise<DefendOutDto> {
+		const { planetName, weaponName } = ctx.params
+		const { damage, remainingShield } = await PlanetRepository.Defend(weaponName, planetName);
 
-		return result;
+		let message;
+
+		if (remainingShield > 0) {
+			message = `Planet took ${damage} damage and has ${remainingShield} shield left.`;
+		} else {
+			message = 'Planet shield ruined! war is lost!';
+		}
+
+		return { damage, planetMessage: message };
 	}
 }
 
