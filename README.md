@@ -7,14 +7,14 @@
 
 <div align="center">
   <!-- CodeClimate -->
-  <a href="https://codeclimate.com/github/pankod/next-boilerplate/maintainability">
+  <a href="https://codeclimate.com/github/pankod/moleculerjs-boilerplate/maintainability">
     <img src="https://api.codeclimate.com/v1/badges/077c02d5cb9ec7d8a654/maintainability" />
   </a>
   <!-- CodeCoverave -->
-  <a href="https://codeclimate.com/github/pankod/next-boilerplate/test_coverage"><img src="https://api.codeclimate.com/v1/badges/077c02d5cb9ec7d8a654/test_coverage" /></a>
+  <a href="https://codeclimate.com/github/pankod/moleculerjs-boilerplate/test_coverage"><img src="https://api.codeclimate.com/v1/badges/077c02d5cb9ec7d8a654/test_coverage" /></a>
   <!-- Build Status -->
-  <a href="https://travis-ci.org/pankod/next-boilerplate">
-    <img src="https://travis-ci.org/pankod/next-boilerplate.svg?branch=master" alt="Build Status" />
+  <a href="https://travis-ci.org/pankod/moleculerjs-boilerplate">
+    <img src="https://travis-ci.org/pankod/moleculerjs-boilerplate.svg?branch=master" alt="Build Status" />
   </a>
   <!-- Dependency Status -->
   <a href="https://david-dm.org/pankod/moleculerjs-boilerplate">
@@ -63,10 +63,10 @@ This boilerplate includes the latest powerfull tools.
 
 ## Setup & Documentation
 
-Please refer to our [setup guide](https://pankod.github.io/next-boilerplate/docs/setup) to create a new app. 
+Please refer to our [setup guide](https://pankod.github.io/moleculerjs-boilerplate/docs/setup) to create a new app. 
 
 
-For more detailed documentation, check out https://pankod.github.io/next-boilerplate/
+For more detailed documentation, check out https://pankod.github.io/moleculerjs-boilerplate/
 
 <br/>
 
