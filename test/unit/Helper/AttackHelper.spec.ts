@@ -1,6 +1,6 @@
 // Local Imports
 import { AttackHelper } from '@Helper';
-import { DummyContext } from '@TestUtils';
+import { DummyContext } from '@Test/utils';
 
 describe('Weapon helper service helper constructor', () => {
 	it('should be defined', async () => {

@@ -63,11 +63,11 @@
 			"@Entities": [
 				"src/Entities"
 			],
-			"@TestUtils/*": [
-				"test/utils/*"
+			"@Test/*": [
+				"test/*"
 			],
-			"@TestUtils": [
-				"test/utils"
+			"@Test": [
+				"test/"
 			]
 		}
 	},

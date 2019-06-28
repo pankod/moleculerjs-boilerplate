@@ -85,7 +85,7 @@
 			"js"
 		],
 		"moduleNameMapper": {
-			"^@TestUtils": "<rootDir>/test/utils",
+			"^@Test": "<rootDir>/test",
 			"^@MicroServices": "<rootDir>/services/index.ts",
 			"^@([A-Z].*)$": "<rootDir>/src/$1"
 		},
