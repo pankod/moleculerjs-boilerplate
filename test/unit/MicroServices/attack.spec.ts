@@ -31,21 +31,15 @@ const expectedMessage = (damage: number, shield: number): string =>
 describe('Test attack service', () => {
 	describe('Fire method', async () => {
 		it('should return correct message when shield is up', async () => {
-			const entityManager = getManager();
-
-			const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
-
-			const damage = 1000;
-
-			const expectedShield = planet.shield - damage;
-
 			const params = {
-				damage,
+				planetName: 'Alderaan',
+				weaponName: 'Death Star'
 			};
 
-			const { message } = await AttackHelper.Fire(broker as any, params);
+			const { planetMessage, weaponMessage } = await AttackHelper.Fire(broker as any, params);
 
-			expect(message).toEqual(expectedMessage(params.damage, expectedShield));
+			expect(planetMessage).toContain("Planet took");
+			expect(weaponMessage).toContain("Death Star did")
 		});
 
 		it('should return different message when shield is down', async () => {
