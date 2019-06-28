@@ -1,11 +1,10 @@
 // Local Imports
-import { WeaponHelper } from '@Helper';
+import { AttackHelper } from '@Helper';
 import { DummyContext } from '@TestUtils';
-import { FireInDto } from '@Interfaces';
 
 describe('Weapon helper service helper constructor', () => {
 	it('should be defined', async () => {
-		expect(WeaponHelper).toBeDefined();
+		expect(AttackHelper).toBeDefined();
 	});
 });
 
@@ -15,7 +14,7 @@ describe('Weapon service helpers', () => {
 			damage: 1000,
 		};
 
-		const result = await WeaponHelper.Fire(DummyContext.getCall(params), params);
+		const result = await AttackHelper.Fire(DummyContext.getCall(params), params);
 
 		expect(result).toBeDefined();
 	});

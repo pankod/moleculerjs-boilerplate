@@ -4,7 +4,7 @@ import { getManager, getConnection } from 'typeorm';
 
 // Local Imports
 import setupDatabase from '../../config/SetupDatabase';
-import { WeaponHelper } from '@Helper';
+import { AttackHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
 
 const AttackService = require('../../../services/attack.service');
@@ -43,7 +43,7 @@ describe('Test attack service', () => {
 				damage,
 			};
 
-			const { message } = await WeaponHelper.Fire(broker as any, params);
+			const { message } = await AttackHelper.Fire(broker as any, params);
 
 			expect(message).toEqual(expectedMessage(params.damage, expectedShield));
 		});
@@ -56,8 +56,8 @@ describe('Test attack service', () => {
 			};
 
 			// First fire to break shield entirely
-			await WeaponHelper.Fire(broker as any, params);
-			const { message } = await WeaponHelper.Fire(broker as any, params);
+			await AttackHelper.Fire(broker as any, params);
+			const { message } = await AttackHelper.Fire(broker as any, params);
 
 			expect(message).toEqual('Planet shield ruined! war is lost!');
 		});
