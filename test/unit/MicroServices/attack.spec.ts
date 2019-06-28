@@ -5,7 +5,7 @@ import { getManager, getConnection } from 'typeorm';
 // Local Imports
 import setupDatabase from '../../config/SetupDatabase';
 import { AttackHelper } from '@Helper';
-import { Planet } from '@Entities/Planet';
+import { Planet, Weapon } from '@Entities';
 
 const AttackService = require('../../../services/attack.service');
 const PlanetService = require('../../../services/planet.service');
@@ -17,43 +17,45 @@ broker.createService(PlanetService);
 
 beforeEach(async () => {
 	await setupDatabase();
-	broker.start();
+	await broker.start();
 });
 
 afterEach(async () => {
+	await broker.stop();
 	await getConnection().close();
-	broker.stop();
 });
 
-const expectedMessage = (damage: number, shield: number): string =>
-	`Planet took ${damage} damage and has ${shield} shield left.`;
-
 describe('Test attack service', () => {
-	describe('Fire method', async () => {
-		it('should return correct message when shield is up', async () => {
-			const params = {
-				planetName: 'Alderaan',
-				weaponName: 'Death Star'
-			};
+	const params = {
+		planetName: 'Alderaan',
+		weaponName: 'Death Star'
+	}
 
+	describe('Fire method', async () => {
+		it('when shield is up', async () => {
 			const { planetMessage, weaponMessage } = await AttackHelper.Fire(broker as any, params);
 
 			expect(planetMessage).toContain("Planet took");
 			expect(weaponMessage).toContain("Death Star did")
 		});
 
-		it('should return different message when shield is down', async () => {
-			const damage = 100000;
-
-			const params = {
-				damage,
-			};
+		it('when shield is down', async () => {
+			getManager().update(Planet, { name: 'Alderaan' }, { shield: 1 })
 
 			// First fire to break shield entirely
 			await AttackHelper.Fire(broker as any, params);
-			const { message } = await AttackHelper.Fire(broker as any, params);
+			const { planetMessage } = await AttackHelper.Fire(broker as any, params);
 
-			expect(message).toEqual('Planet shield ruined! war is lost!');
+			expect(planetMessage).toEqual('Planet shield ruined! war is lost!')
 		});
+
+		it('when ammo is empty', async () => {
+			getManager().update(Weapon, { name: 'Death Star' }, { ammo: 0 })
+
+			const { planetMessage, weaponMessage } = await AttackHelper.Fire(broker as any, params)
+
+			expect(planetMessage).toEqual('Planet took no damage')
+			expect(weaponMessage).toEqual('This weapon has no ammo')
+		})
 	});
 });
