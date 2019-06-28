@@ -3,7 +3,7 @@ import { ServiceBroker } from 'moleculer';
 import { getManager, getConnection } from 'typeorm';
 
 // Local Imports
-import setupDatabase from '../../config/SetupDatabase';
+import setupDatabase from '@Test/Config/SetupDatabase';
 import { AttackHelper } from '@Helper';
 import { Planet, Weapon } from '@Entities';
 

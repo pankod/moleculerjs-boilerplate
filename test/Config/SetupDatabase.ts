@@ -1,4 +1,4 @@
-import Seeder from '../Seeder';
+import Seeder from '@Test/Seeder';
 import CreateConnection from './CreateConnection';
 
 const setupDatabase = async (): Promise<void> => {

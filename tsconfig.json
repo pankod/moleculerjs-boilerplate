@@ -67,7 +67,7 @@
 				"test/*"
 			],
 			"@Test": [
-				"test/"
+				"test"
 			]
 		}
 	},
