@@ -15,15 +15,21 @@ const broker = new ServiceBroker({ logger: false });
 broker.createService(AttackService);
 broker.createService(PlanetService);
 
+beforeAll(async () => {
+	await broker.start();
+})
+
 beforeEach(async () => {
 	await setupDatabase();
-	await broker.start();
 });
 
 afterEach(async () => {
-	await broker.stop();
 	await getConnection().close();
 });
+
+afterAll(async () => {
+	await broker.stop();
+})
 
 describe('Test attack service', () => {
 	const params = {
