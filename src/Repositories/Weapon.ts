@@ -3,15 +3,15 @@ import { Weapon } from '@Entities/Weapon';
 import { getManager } from 'typeorm';
 import { FireRepoOutDto } from '@Interfaces';
 
-const getWeapon = async (weaponName): Promise<Weapon> => {
-	const entityManager = getManager();
-
-	const weapon = await entityManager.findOne(Weapon, { name: weaponName });
-
-	return weapon;
-}
-
 export namespace WeaponRepository {
+	const getWeapon = async (weaponName: string): Promise<Weapon> => {
+		const entityManager = getManager();
+
+		const weapon = await entityManager.findOne(Weapon, { name: weaponName });
+
+		return weapon;
+	}
+
 	export const Get = async (weaponName: string): Promise<Weapon> => {
 		return await getWeapon(weaponName)
 	};
