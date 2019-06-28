@@ -85,7 +85,7 @@
 			"js"
 		],
 		"moduleNameMapper": {
-			"^@TestUtils": "<rootDir>/test/utils",
+			"^@(Test)(.*)$": "<rootDir>/test/$2",
 			"^@MicroServices": "<rootDir>/services/index.ts",
 			"^@([A-Z].*)$": "<rootDir>/src/$1"
 		},
@@ -96,7 +96,7 @@
 			"**/*.spec.(ts)"
 		],
 		"setupFiles": [
-			"<rootDir>/test/config/mock.setup.ts"
+			"<rootDir>/test/Config/mock.setup.ts"
 		],
 		"globals": {
 			"ts-jest": {

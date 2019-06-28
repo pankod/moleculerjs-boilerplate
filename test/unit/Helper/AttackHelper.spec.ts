@@ -1,6 +1,6 @@
 // Local Imports
 import { AttackHelper } from '@Helper';
-import { DummyContext } from '@TestUtils';
+import { DummyContext } from '@Test/Utils';
 import { AttackInDto } from '@Interfaces';
 
 describe('Weapon helper service helper constructor', () => {

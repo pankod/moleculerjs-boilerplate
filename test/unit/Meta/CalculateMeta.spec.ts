@@ -2,7 +2,7 @@
 import { getManager, getConnection } from 'typeorm';
 
 // Local Imports
-import setupDatabase from '../../config/SetupDatabase';
+import setupDatabase from '@Test/Config/SetupDatabase';
 import { CalculateMeta } from '@Meta';
 import { Planet, Weapon } from '@Entities';
 

@@ -2,7 +2,7 @@
 import { getManager, getConnection } from 'typeorm';
 
 // Local Imports
-import setupDatabase from '../../config/SetupDatabase';
+import setupDatabase from '@Test/Config/SetupDatabase';
 import { WeaponRepository } from '@Repositories';
 import { Weapon } from '@Entities';
 
