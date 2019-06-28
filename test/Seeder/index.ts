@@ -2,8 +2,8 @@ import PlanetSeeder from './PlanetSeeder';
 import AttackSeeder from './AttackSeeder';
 
 const seed = async (): Promise<void> => {
-    PlanetSeeder.seed();
-    AttackSeeder.seed();
+    await PlanetSeeder.seed();
+    await AttackSeeder.seed();
 };
 
 export default {
