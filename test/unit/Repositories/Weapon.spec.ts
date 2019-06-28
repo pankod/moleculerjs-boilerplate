@@ -6,13 +6,6 @@ import setupDatabase from '../../config/SetupDatabase';
 import { WeaponRepository } from '@Repositories';
 import { Weapon } from '@Entities';
 
-beforeEach(async () => {
-	await setupDatabase();
-});
-
-afterEach(async () => {
-	await getConnection().close();
-});
 
 describe('Test WeaponRepository constructor', () => {
 	it('should be defined', () => {
@@ -21,15 +14,32 @@ describe('Test WeaponRepository constructor', () => {
 });
 
 describe('Weapon Repository Methods', () => {
-	it('should fire', async () => {
+	beforeEach(async () => {
+		await setupDatabase();
+	});
+
+	afterEach(async () => {
+		await getConnection().close();
+	});
+
+	it('GetWeapon', async () => {
+		const weaponName = 'Death Star'
+
+		const weapon = await WeaponRepository.Get(weaponName)
+
+		expect(weapon.name).toEqual(weaponName)
+	})
+
+	it('Fire', async () => {
 		const entityManager = getManager();
 
-		const deathStar = await entityManager.findOne(Weapon, { name: 'Death Star' });
+		const weaponName = 'Death Star'
+		const weapon = await entityManager.findOne(Weapon, { name: weaponName });
 
-		const expected = deathStar.damage;
+		const expectedAmmo = weapon.ammo - 1
 
-		const result = await WeaponRepository.Fire();
+		const { remainingAmmo } = await WeaponRepository.Fire(weaponName);
 
-		expect(result.damage).toEqual(expected);
+		expect(remainingAmmo).toEqual(expectedAmmo);
 	});
 });
