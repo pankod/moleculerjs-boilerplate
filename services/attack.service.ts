@@ -14,14 +14,14 @@ import { AttackInDto, AttackOutDto } from '@Interfaces';
 import { PlanetHelper } from '@Helper';
 //#endregion Interface Imports
 
-@Path('deathstar')
+@Path('attack')
 @Accept('application/json; charset=utf-8')
 @Produces('application/json; charset=utf-8')
 @BodyOptions({ extended: true, type: 'application/json; charset=utf-8' })
-@Tags('DeathStarServices')
+@Tags('AttackServices')
 
 export class AttackService extends BaseSchema {
-	public name: string = 'weapon';
+	public name: string = 'attack';
 
 	@Action({
 		params: {
