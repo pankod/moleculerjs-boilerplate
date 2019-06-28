@@ -1,0 +1,23 @@
+{
+	"docs": {
+		"Introduction": [
+			"getting-started",
+			"features",
+			"setup",
+			"example-app",
+			"structure",
+			"deployment"
+		],
+		"Features": [
+			"styling",
+			"routing",
+			"unit-test",
+			"reverse-proxy",
+			"dotenv-usage"
+		],
+		"Project CLI": [
+			"cli-overview",
+			"cli-usage"
+		]
+	}
+}
