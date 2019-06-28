@@ -1,6 +1,7 @@
 // Local Imports
 import { AttackHelper } from '@Helper';
 import { DummyContext } from '@TestUtils';
+import { AttackInDto } from '@Interfaces';
 
 describe('Weapon helper service helper constructor', () => {
 	it('should be defined', async () => {
@@ -10,8 +11,9 @@ describe('Weapon helper service helper constructor', () => {
 
 describe('Weapon service helpers', () => {
 	it('should trigger Fire method', async () => {
-		const params: FireInDto = {
-			damage: 1000,
+		const params: AttackInDto = {
+			weaponName: 'Death Star',
+			planetName: 'Alderaan'
 		};
 
 		const result = await AttackHelper.Fire(DummyContext.getCall(params), params);
