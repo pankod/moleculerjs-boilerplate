@@ -1,13 +1,13 @@
 import * as inquirer from 'inquirer';
 import { Config } from '../../config';
 import { DefinitionsModel } from './Definition';
-import { Helper } from './helper';
+import { Helper } from './Helper';
 
 export const modelQuestion = {
 	showQuestions: async (): Promise<void> => {
 		const questions = [
 			{
-				message: 'Enter model name',
+				message: 'Enter entity name',
 				name: 'fileName',
 				type: 'input',
 				validate(val: string): string | boolean {
@@ -19,7 +19,7 @@ export const modelQuestion = {
 								true
 							)
 						) {
-							return 'Already added use new model name';
+							return 'Already added use new entity name';
 						}
 
 						return true;
@@ -34,7 +34,7 @@ export const modelQuestion = {
 
 		answers.fileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
 		answers.upperFileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
-		Helper.createModel(answers);
+		Helper.createRepository(answers);
 
 	}
 };

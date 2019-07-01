@@ -68,3 +68,6 @@ db.sqlite
 
 # macos
 .DS_Store
+
+# project cli builds
+/project-cli/dist

@@ -7,7 +7,6 @@ import { Example, IsInt, Produces, Response, Tags } from 'typescript-rest-swagge
 {{/isPrivate}}
 //#endregion Global Imports
 
-
 //#region Local Imports
 import { } from '@Helper';
 import { } from '@Repositories';
@@ -17,6 +16,7 @@ import { } from '@Services';
 //#region Interface Imports
 import { } from '@Interfaces';
 //#endregion Interface Imports
+
 {{#isPrivate}}
 @Path('{{fileName}}')
 @Accept('application/json; charset=utf-8')

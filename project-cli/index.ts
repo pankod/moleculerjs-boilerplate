@@ -6,8 +6,8 @@ import * as program from 'commander';
 import * as figlet from 'figlet';
 import * as inquirer from 'inquirer';
 
-import { modelQuestion } from './helper_scripts/definitions/model';
-import { serviceQuestion } from './helper_scripts/definitions/service';
+import { modelQuestion } from './helper_scripts/Definitions/Entity';
+import { serviceQuestion } from './helper_scripts/Definitions/Service';
 
 clear();
 
@@ -19,7 +19,7 @@ console.log(
 
 const questions = [
 	{
-		choices: ['model', 'service'],
+		choices: ['entity', 'service'],
 		message: 'What would you like to add?',
 		name: 'fileType',
 		type: 'list'
@@ -31,7 +31,7 @@ program
 		const answers: { fileType: string } = await inquirer.prompt(questions);
 
 		switch (answers.fileType) {
-			case 'model':
+			case 'entity':
 			await modelQuestion.showQuestions();
 				break;
 			case 'service':
