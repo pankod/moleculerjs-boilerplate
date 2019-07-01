@@ -22,15 +22,23 @@ describe('Weapon Repository Methods', () => {
 		await getConnection().close();
 	});
 
-	it('GetWeapon', async () => {
-		const weaponName = 'Death Star'
+	describe('GetWeapon', async () => {
+		it('should get weapon', async () => {
+			const weaponName = 'Death Star'
 
-		const weapon = await WeaponRepository.Get(weaponName)
+			const weapon = await WeaponRepository.Get(weaponName)
 
-		expect(weapon.name).toEqual(weaponName)
+			expect(weapon.name).toEqual(weaponName)
+		})
+
+		it('should throw an error if weapon not found', async () => {
+			const weaponName = `I don't exist`
+
+			expect(() => WeaponRepository.Get(weaponName)).toThrowError
+		})
 	})
 
-	it('Fire', async () => {
+	it('Decrease Ammo', async () => {
 		const entityManager = getManager();
 
 		const weaponName = 'Death Star'
@@ -38,7 +46,7 @@ describe('Weapon Repository Methods', () => {
 
 		const expectedAmmo = weapon.ammo - 1
 
-		const { remainingAmmo } = await WeaponRepository.Fire(weaponName);
+		const { remainingAmmo } = await WeaponRepository.DecreaseAmmo(weaponName);
 
 		expect(remainingAmmo).toEqual(expectedAmmo);
 	});

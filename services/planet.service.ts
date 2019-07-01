@@ -6,11 +6,13 @@ import { Produces, Tags } from 'typescript-rest-swagger';
 //#endregion Global Imports
 
 //#region Local Imports
-import { PlanetRepository } from '@Repositories';
+import { PlanetRepository, WeaponRepository } from '@Repositories';
 //#endregion Local Imports
 
 //#region Interface Imports
 import { DefendInDto, DefendOutDto } from '@Interfaces';
+import { Planet, Weapon } from '@Entities';
+import { CalculateMeta } from '@Meta';
 //#endregion Interface Imports
 @Path('planet')
 @Accept('application/json; charset=utf-8')
@@ -22,8 +24,8 @@ export class PlanetService extends BaseSchema {
 
 	@Action({
 		params: {
-			planetName: 'string',
-			weaponName: 'string'
+			weaponName: { type: 'string', min: 2 },
+			planetName: { type: 'string', min: 2 }
 		},
 	})
 	public async Defend(ctx: Context<DefendInDto>): Promise<DefendOutDto> {
@@ -36,7 +38,16 @@ export class PlanetService extends BaseSchema {
 	@POST
 	public async DefendMethod(ctx: Context<DefendInDto>): Promise<DefendOutDto> {
 		const { planetName, weaponName } = ctx.params
-		const { damage, remainingShield } = await PlanetRepository.Defend(weaponName, planetName);
+
+		const planet: Planet = await PlanetRepository.Get(planetName)
+		const weapon: Weapon = await WeaponRepository.Get(weaponName)
+
+		const { damage, remainingShield } = await CalculateMeta.Damage(
+			weapon,
+			planet,
+		);
+
+		await PlanetRepository.UpdateShield(planetName, remainingShield)
 
 		let message;
 
