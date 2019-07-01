@@ -1,0 +1,1 @@
+export { UpdateShieldOutDto } from './UpdateShieldOutDto';
