@@ -1,19 +1,13 @@
 // Global Imports
-import { ServiceBroker } from 'moleculer';
 import { getManager, getConnection } from 'typeorm';
 
 // Local Imports
 import setupDatabase from '@Test/Config/SetupDatabase';
 import { AttackHelper } from '@Helper';
-import { Planet, Weapon } from '@Entities';
+import { Weapon } from '@Entities';
+import { BrokerHelper } from '@Test/Utils';
 
-const AttackService = require('../../../services/attack.service');
-const PlanetService = require('../../../services/planet.service');
-
-const broker = new ServiceBroker({ logger: false });
-
-broker.createService(AttackService);
-broker.createService(PlanetService);
+const broker = BrokerHelper.setupBroker();
 
 beforeAll(async () => {
 	await broker.start();
