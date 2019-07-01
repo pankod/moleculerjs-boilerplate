@@ -1,9 +1,8 @@
 import { I{{fileName}} } from '@Interfaces';
-import { {{fileName}} } from '@Models';
+import { {{fileName}} } from '@Entities';
 
-export module {{fileName}}Repository {
-	export const example = async (): Promise<> => {
-		const model = await {{fileName}}.Model();
+export namespace {{fileName}}Repository {
+	export const exampleMethod = async (): Promise<I{{fileName}}> => {
 
 		return;
 	};

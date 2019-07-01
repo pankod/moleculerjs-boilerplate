@@ -33,8 +33,7 @@ export const modelQuestion = {
 		const answers: DefinitionsModel.IAnswers = await inquirer.prompt<{ fileName: string}>(questions);
 
 		answers.fileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
-		answers.upperFileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
-		Helper.createModel(answers);
+		Helper.createRepository(answers);
 
 	}
 };

@@ -88,13 +88,13 @@ export const Helper = {
 		const indexTemplate = './helper_scripts/Templates/Repositories/EntityIndex.mustache';
 
 		const writeFileProps: DefinitionsModel.IWriteFile = {
-			dirPath: `${Config.modelDir}/${answers.fileName}.ts`,
+			dirPath: `${Config.entityDir}/${answers.fileName}.ts`,
 			getFileContent: () => Helper.getTemplate(templatePath, templateProps),
 			message: 'Added new Entity Instance.'
 		};
 
 		const addIndexParams: DefinitionsModel.IAddIndex = {
-			dirPath: `${Config.modelDir}/index.ts`,
+			dirPath: `${Config.entityDir}/index.ts`,
 			getFileContent: () => Helper.getTemplate(indexTemplate, templateProps),
 			message: 'Entity added to index.ts.'
 		};
@@ -102,7 +102,6 @@ export const Helper = {
 		Helper.writeFile(writeFileProps);
 		Helper.addToIndex(addIndexParams);
 	},
-
 
 	createTest: (options: DefinitionsModel.ICreateTest): void => {
 
@@ -149,7 +148,7 @@ export const Helper = {
 		Helper.createTest(serviceHelperTestParams);
 	},
 
-	createModel: (answers: DefinitionsModel.IAnswers): void => {
+	createRepository: (answers: DefinitionsModel.IAnswers): void => {
 		const templatePath = './helper_scripts/Templates/Repositories/Repository.mustache';
 
 		const templateProps = {
