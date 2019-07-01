@@ -24,8 +24,8 @@ export class PlanetService extends BaseSchema {
 
 	@Action({
 		params: {
-			planetName: 'string',
-			weaponName: 'string'
+			weaponName: { type: 'string', min: 2 },
+			planetName: { type: 'string', min: 2 }
 		},
 	})
 	public async Defend(ctx: Context<DefendInDto>): Promise<DefendOutDto> {

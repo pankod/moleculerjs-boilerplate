@@ -25,8 +25,8 @@ export class AttackService extends BaseSchema {
 
 	@Action({
 		params: {
-			weaponName: 'string',
-			planetName: 'string'
+			weaponName: { type: 'string', min: 2 },
+			planetName: { type: 'string', min: 2 }
 		},
 	})
 	public async Fire(ctx: Context<AttackInDto>): Promise<AttackOutDto> {
