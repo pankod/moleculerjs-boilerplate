@@ -21,17 +21,28 @@ describe('Planet Repository Methods', () => {
 		await getConnection().close();
 	});
 
-	it('Defend', async () => {
-		const entityManager = getManager();
+	describe('Get', () => {
+		it('should get planet if there is any', async () => {
+			const planetName = "Alderaan"
 
-		const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
+			const planet = await PlanetRepository.Get(planetName)
 
+			expect(planet.name).toEqual(planetName)
+		})
+
+		it('should raise error', async () => {
+			const planetName = 'I dont exist'
+
+			expect(() => PlanetRepository.Get(planetName)).toThrowError
+		})
+	})
+
+	it('should update shield', async () => {
 		const planetName = 'Alderaan'
-		const weaponName = 'Death Star'
 
-		const { damage, remainingShield } = await PlanetRepository.Defend(weaponName, planetName);
+		const expectedShield = 1000
 
-		const expectedShield = planet.shield - damage
+		const { remainingShield } = await PlanetRepository.UpdateShield(planetName, expectedShield);
 
 		expect(remainingShield).toEqual(expectedShield);
 	});
