@@ -60,6 +60,7 @@ export const Helper = {
 	createInterface: (answers: DefinitionsModel.IAnswers, dirType: string) => {
 		const templatePath = './helper_scripts/Templates/Interfaces/Interface.mustache';
 		const indexInterfaceTemplate = './helper_scripts/Templates/Interfaces/index.mustache';
+		const folderIndexTemplate = './helper_scripts/Templates/Interfaces/FolderIndex.mustache';
 
 		const templateProps = { upperFileName: answers.upperFileName, dirType };
 		const interfaceFilePath = `${Config.interfaceDir}/${dirType}/${answers.upperFileName}/I${answers.upperFileName}.d.ts`;
@@ -77,9 +78,16 @@ export const Helper = {
 			message: 'Interface added to index.ts.'
 		};
 
+		const addFolderIndex: DefinitionsModel.IAddIndex = {
+			dirPath: `${Config.interfaceDir}/${dirType}/${answers.upperFileName}/index.ts`,
+			getFileContent: () => Helper.getTemplate(folderIndexTemplate, templateProps),
+			message: 'Interface added to folder index.ts.'
+		};
+
 		Helper.createFile(interfaceDirPath);
 		Helper.writeFile(writeFileProps);
 		Helper.addToIndex(addIndexParams);
+		Helper.addToIndex(addFolderIndex);
 	},
 
 	createEntityInstance: (answers: DefinitionsModel.IAnswers) => {
