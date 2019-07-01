@@ -6,11 +6,9 @@ import { getManager, getConnection } from 'typeorm';
 import setupDatabase from '@Test/Config/SetupDatabase';
 import { PlanetHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
+import { BrokerHelper } from '@Test/Utils';
 
-const PlanetService = require('../../../services/planet.service');
-
-const broker = new ServiceBroker({ logger: false });
-broker.createService(PlanetService);
+const broker = BrokerHelper.setupBroker()
 
 beforeAll(async () => {
 	await broker.start();
