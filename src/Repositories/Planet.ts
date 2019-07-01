@@ -1,10 +1,22 @@
+// Global Imports
+import { Errors } from 'moleculer'
+
+// Local Imports
 import { Planet } from '@Entities/Planet';
 import { getManager } from 'typeorm';
 import { UpdateShieldOutDto } from '@Interfaces';
 
+const { MoleculerError } = Errors;
+
 export namespace PlanetRepository {
 	const getPlanet = async (planetName: string): Promise<Planet> => {
-		return getManager().findOne(Planet, { name: planetName })
+		const planet = await getManager().findOne(Planet, { name: planetName })
+
+		if (!planet) {
+			throw new MoleculerError(`Planet '${planetName}' can't be found!`, 404, "Not Found")
+		}
+
+		return planet
 	}
 
 	export const Get = async (planetName: string): Promise<Planet> => {
