@@ -1,5 +1,3 @@
-export { DefendRepoOutDto } from "@Interfaces/Repositories/DefendRepoOutDto"
-
 export * from '@Interfaces/Meta'
 export * from '@Interfaces/Repositories/Planet';
 export * from '@Interfaces/Repositories/Weapon';
