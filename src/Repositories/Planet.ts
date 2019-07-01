@@ -10,9 +10,7 @@ export namespace PlanetRepository {
 	const getPlanet = async (planetName: string): Promise<Planet> => {
 		const planet = await getManager().findOne(Planet, { name: planetName })
 
-		if (!planet) {
-			Throw404(`Planet '${planetName}' can't be found!`)
-		}
+		Throw404(planet, `Planet '${planetName}' can't be found!`)
 
 		return planet
 	}

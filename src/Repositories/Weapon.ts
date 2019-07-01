@@ -10,9 +10,7 @@ export namespace WeaponRepository {
 	const getWeapon = async (weaponName: string): Promise<Weapon> => {
 		const weapon = await getManager().findOne(Weapon, { name: weaponName });
 
-		if (!weapon) {
-			Throw404(`Weapon '${weaponName}' can't be found!`)
-		}
+		Throw404(weapon, `Weapon '${weaponName}' can't be found!`)
 
 		return weapon
 	}
