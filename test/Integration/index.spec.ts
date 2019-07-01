@@ -1,35 +1,30 @@
-import { ServiceBroker, Context, ServiceSchema } from 'moleculer';
 import ApiGateway = require('moleculer-web');
+import setupDatabase from '@Test/Config/SetupDatabase';
+import { getConnection } from 'typeorm';
+import { BrokerHelper } from '@Test/Utils';
 
-const fs = require("fs");
-const http = require("http");
-const path = require("path");
 const request = require("supertest");
-const express = require("express");
+const broker = BrokerHelper.setupBroker();
+let server;
 
-const setup = (serviceName) => {
-    const broker = new ServiceBroker(Object.assign({}, { nodeID: undefined, logger: false }, {}));
-    broker.loadService(`./test/Services/${serviceName}.service`);
+beforeEach(async () => {
+    await setupDatabase();
+});
 
+afterEach(async () => {
+    await getConnection().close();
+});
+
+beforeAll(() => {
     const service = broker.createService(ApiGateway);
-    const server = service.server;
+    server = service.server;
+    return broker.start();
+});
 
-    return [broker, service, server];
-}
+afterAll(() => broker.stop());
 
-describe("Test Weapon service requests", () => {
-    let broker;
-    let service;
-    let server;
-
-    beforeAll(() => {
-        [broker, service, server] = setup('attack');
-        return broker.start();
-    });
-
-    afterAll(() => broker.stop());
-
-    it("POST /weapon/Fire with query", () => {
+describe("Test Attack service requests", () => {
+    it("Test POST request on attack service Fire method", () => {
 
         const params = {
             planetName: 'Alderaan',
@@ -38,43 +33,31 @@ describe("Test Weapon service requests", () => {
 
         return request(server)
             .post("/attack/Fire")
-            .query({ damage: params })
+            .query({ ...params })
             .then(res => {
                 expect(res.statusCode).toBe(200);
                 expect(res.headers["content-type"]).toBe("application/json; charset=utf-8");
-                console.log("res", res);
-                
-                expect(res.body).toBe(`Attack with ${params}!`);
+                expect(res.body.planetMessage).toContain('Planet took');
+                expect(res.body.weaponMessage).toContain('Death Star did');
             });
     });
 });
 
-/*  describe("Test Planet service requests", () => {
-	let broker;
-	let service;
-	let server;
+describe("Test Planet service requests", () => {
+    it("Test POST request on planet service Defend method", () => {
 
- 	beforeAll(() => {
-		[ broker, service, server] = setup('planet');
-		return broker.start();
-	});
+        const params = {
+			planetName: 'Alderaan',
+			weaponName: 'Death Star'
+		}
 
- 	afterAll(() => broker.stop());
-
- 	it("POST /planet/Defend with query", () => {
-
-         const params = {
-            damage: 1000
-        }
-
- 		return request(server)
-			.post("/planet/Defend")
-			.query({ damage: params.damage })
-			.then(res => {
-				expect(res.statusCode).toBe(200);
+        return request(server)
+            .post("/planet/Defend")
+            .query({ ...params })
+            .then(res => {
+                expect(res.statusCode).toBe(200);
                 expect(res.headers["content-type"]).toBe("application/json; charset=utf-8");
-
-                 expect(res.body).toBe(`Defend ${params.damage} attack!`);
-			});
-	});
-}); */
+                expect(res.body.planetMessage).toContain('Planet took');
+            });
+    });
+});
