@@ -57,13 +57,13 @@ export const Helper = {
 		);
 	},
 
-	createInterface: (answers: DefinitionsModel.IAnswers) => {
+	createInterface: (answers: DefinitionsModel.IAnswers, dirType: string) => {
 		const templatePath = './helper_scripts/Templates/Interfaces/Interface.mustache';
 		const indexInterfaceTemplate = './helper_scripts/Templates/Interfaces/index.mustache';
 
-		const templateProps = { fileName: answers.fileName, upperFileName: answers.upperFileName };
-		const interfaceFilePath = `${Config.interfaceDir}/${answers.upperFileName}/I${answers.upperFileName}.d.ts`;
-		const interfaceDirPath = `${Config.interfaceDir}/${answers.upperFileName}`;
+		const templateProps = { upperFileName: answers.upperFileName, dirType };
+		const interfaceFilePath = `${Config.interfaceDir}/${dirType}/${answers.upperFileName}/I${answers.upperFileName}.d.ts`;
+		const interfaceDirPath = `${Config.interfaceDir}/${dirType}/${answers.upperFileName}`;
 
 		const writeFileProps: DefinitionsModel.IWriteFile = {
 			dirPath: interfaceFilePath,
@@ -139,7 +139,7 @@ export const Helper = {
 			templatePath: './helper_scripts/Templates/Tests/ServiceHelper.mustache',
 			templateProps,
 			answers,
-			dirPath: `${Config.serviceHelperTestDir}/${answers.fileName}.spec.ts`,
+			dirPath: `${Config.serviceHelperTestDir}/${answers.upperFileName}.spec.ts`,
 			successMessage: 'Added new Micro Service Helper test.'
 		};
 
@@ -181,8 +181,9 @@ export const Helper = {
 		Helper.writeFile(writeFileProps);
 		Helper.addToIndex(addIndexParams);
 
+
 		if (!Helper.isAlreadyExist(Config.interfaceDir, answers.fileName)) {
-			Helper.createInterface(answers);
+			Helper.createInterface(answers, 'Repositories' );
 		}
 
 		Helper.createEntityInstance(answers);
@@ -223,7 +224,7 @@ export const Helper = {
 		Helper.addToIndex(addIndexParams);
 
 		if (!Helper.isAlreadyExist(Config.interfaceDir, answers.fileName)) {
-			Helper.createInterface(answers);
+			Helper.createInterface(answers, 'Services');
 		}
 
 		Helper.createServiceHelper(answers);

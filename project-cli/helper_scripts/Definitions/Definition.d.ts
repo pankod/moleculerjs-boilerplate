@@ -2,7 +2,7 @@
 export declare module DefinitionsModel {
 
 	export interface ITemplateProps {
-		fileName: string;
+		fileName?: string;
 		upperFileName?: string;
 		isPrivate?: boolean;
 	}
