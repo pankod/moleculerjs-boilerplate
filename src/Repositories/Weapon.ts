@@ -1,19 +1,17 @@
 // Global Imports
-import { Errors } from 'moleculer'
 
 // Local Imports
 import { Weapon } from '@Entities/Weapon';
 import { getManager } from 'typeorm';
 import { DecreaseAmmoOutDto } from '@Interfaces';
-
-const { MoleculerError } = Errors
+import { Throw404 } from './ErrorHelpers';
 
 export namespace WeaponRepository {
 	const getWeapon = async (weaponName: string): Promise<Weapon> => {
 		const weapon = await getManager().findOne(Weapon, { name: weaponName });
 
 		if (!weapon) {
-			throw new MoleculerError(`Weapon '${weaponName}' can't be found!`, 404, "Not Found")
+			Throw404(`Weapon '${weaponName}' can't be found!`)
 		}
 
 		return weapon
