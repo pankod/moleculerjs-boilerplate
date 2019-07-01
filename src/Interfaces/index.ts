@@ -1,13 +1,7 @@
-// Meta
-export { DamageMetaOutDto } from "@Interfaces/Meta/DamageMetaOutDto"
-
-// Repositories
 export { DefendRepoOutDto } from "@Interfaces/Repositories/DefendRepoOutDto"
-export { DecreaseAmmoOutDto } from "@Interfaces/Repositories/DecreaseAmmoOutDto"
-export { UpdateShieldOutDto } from "@Interfaces/Repositories/UpdateShieldOutDto"
 
-// Services
-export { AttackInDto } from '@Interfaces/Services/AttackInDto';
-export { AttackOutDto } from '@Interfaces/Services/AttackOutDto';
-export { DefendInDto } from "@Interfaces/Services/DefendInDto"
-export { DefendOutDto } from '@Interfaces/Services/DefendOutDto';
+export * from '@Interfaces/Meta'
+export * from '@Interfaces/Repositories/Planet';
+export * from '@Interfaces/Repositories/Weapon';
+export * from '@Interfaces/Services/Attack';
+export * from '@Interfaces/Services/Planet';
