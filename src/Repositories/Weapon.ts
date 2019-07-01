@@ -9,16 +9,16 @@ import { getResource } from './Shared';
 
 export namespace WeaponRepository {
 	export const Get = async (weaponName: string): Promise<Weapon> => {
-		return await getResource(Weapon, { name: weaponName })
+		return await getResource(Weapon, { name: weaponName });
 	};
 
 	export const DecreaseAmmo = async (weaponName: string): Promise<DecreaseAmmoOutDto> => {
-		const weapon = await getResource(Weapon, { name: weaponName })
+		const weapon = await getResource(Weapon, { name: weaponName });
 
-		weapon.ammo = weapon.ammo - 1
+		weapon.ammo = weapon.ammo - 1;
 
-		getManager().save(weapon)
+		getManager().save(weapon);
 
-		return { remainingAmmo: weapon.ammo }
-	}
+		return { remainingAmmo: weapon.ammo };
+	};
 }

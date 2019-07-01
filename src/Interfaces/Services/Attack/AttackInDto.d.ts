@@ -1,4 +1,4 @@
 export interface AttackInDto {
-	planetName: string
-	weaponName: string
+	planetName: string;
+	weaponName: string;
 }

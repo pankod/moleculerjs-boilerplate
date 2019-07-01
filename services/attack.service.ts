@@ -19,14 +19,13 @@ import { PlanetHelper } from '@Helper';
 @Produces('application/json; charset=utf-8')
 @BodyOptions({ extended: true, type: 'application/json; charset=utf-8' })
 @Tags('AttackServices')
-
 export class AttackService extends BaseSchema {
 	public name: string = 'attack';
 
 	@Action({
 		params: {
 			weaponName: { type: 'string', min: 2 },
-			planetName: { type: 'string', min: 2 }
+			planetName: { type: 'string', min: 2 },
 		},
 	})
 	public async Fire(ctx: Context<AttackInDto>): Promise<AttackOutDto> {
@@ -46,19 +45,22 @@ export class AttackService extends BaseSchema {
 			return {
 				planetMessage: 'Planet took no damage',
 				weaponMessage: 'This weapon has no ammo',
-			}
+			};
 		}
 
-		const { remainingAmmo } = await WeaponRepository.DecreaseAmmo(weaponName)
+		const { remainingAmmo } = await WeaponRepository.DecreaseAmmo(weaponName);
 
-		const { damage, planetMessage } = await PlanetHelper.Defend(ctx, { weaponName, planetName });
+		const { damage, planetMessage } = await PlanetHelper.Defend(ctx, {
+			weaponName,
+			planetName,
+		});
 
-		const weaponMessage = `${weapon.name} did ${damage} damage and left ${remainingAmmo} ammo.`
+		const weaponMessage = `${weapon.name} did ${damage} damage and left ${remainingAmmo} ammo.`;
 
 		return {
 			planetMessage,
 			weaponMessage,
-		}
+		};
 	}
 }
 

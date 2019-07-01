@@ -1,4 +1,4 @@
 export interface DefendInDto {
-	planetName: string
-	weaponName: string
+	planetName: string;
+	weaponName: string;
 }

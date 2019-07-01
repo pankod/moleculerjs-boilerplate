@@ -6,6 +6,6 @@ const seed = async (): Promise<void> => {
 	await entityManager.insert(Planet, { name: 'Alderaan', shield: 100000 });
 };
 
-export default { 
-	seed
+export default {
+	seed,
 };

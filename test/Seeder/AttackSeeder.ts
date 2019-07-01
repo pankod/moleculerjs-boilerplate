@@ -7,5 +7,5 @@ const seed = async (): Promise<void> => {
 };
 
 export default {
-	seed
+	seed,
 };

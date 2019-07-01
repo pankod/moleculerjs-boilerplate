@@ -13,7 +13,7 @@ describe('Weapon service helpers', () => {
 	it('should trigger Fire method', async () => {
 		const params: AttackInDto = {
 			weaponName: 'Death Star',
-			planetName: 'Alderaan'
+			planetName: 'Alderaan',
 		};
 
 		const result = await AttackHelper.Fire(DummyContext.getCall(params), params);

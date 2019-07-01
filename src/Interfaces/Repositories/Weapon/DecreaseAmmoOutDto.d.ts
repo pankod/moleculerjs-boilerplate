@@ -1,3 +1,3 @@
 export interface DecreaseAmmoOutDto {
-  remainingAmmo: number
+	remainingAmmo: number;
 }

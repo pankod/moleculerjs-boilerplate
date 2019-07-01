@@ -1,4 +1,4 @@
 export interface DefendOutDto {
-	damage: number
+	damage: number;
 	planetMessage: string;
 }

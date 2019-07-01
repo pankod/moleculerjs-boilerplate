@@ -9,16 +9,19 @@ import { getResource } from './Shared';
 
 export namespace PlanetRepository {
 	export const Get = async (planetName: string): Promise<Planet> => {
-		return await getResource(Planet, { name: planetName })
-	}
+		return await getResource(Planet, { name: planetName });
+	};
 
-	export const UpdateShield = async (planetName: string, remainingShield: number): Promise<UpdateShieldOutDto> => {
-		const planet = await getResource(Planet, { name: planetName })
+	export const UpdateShield = async (
+		planetName: string,
+		remainingShield: number,
+	): Promise<UpdateShieldOutDto> => {
+		const planet = await getResource(Planet, { name: planetName });
 
-		planet.shield = remainingShield
+		planet.shield = remainingShield;
 
-		await getManager().save(planet)
+		await getManager().save(planet);
 
-		return { remainingShield: planet.shield }
-	}
+		return { remainingShield: planet.shield };
+	};
 }
