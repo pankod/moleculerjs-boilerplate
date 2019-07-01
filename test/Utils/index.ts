@@ -1,2 +1,2 @@
 export { DummyContext } from './DummyContext';
-export { BrokerHelper } from './BrokerHelper'
+export { BrokerHelper } from './BrokerHelper';

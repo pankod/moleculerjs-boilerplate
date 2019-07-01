@@ -25,7 +25,7 @@ export class PlanetService extends BaseSchema {
 	@Action({
 		params: {
 			weaponName: { type: 'string', min: 2 },
-			planetName: { type: 'string', min: 2 }
+			planetName: { type: 'string', min: 2 },
 		},
 	})
 	public async Defend(ctx: Context<DefendInDto>): Promise<DefendOutDto> {
@@ -37,17 +37,14 @@ export class PlanetService extends BaseSchema {
 	@Method
 	@POST
 	public async DefendMethod(ctx: Context<DefendInDto>): Promise<DefendOutDto> {
-		const { planetName, weaponName } = ctx.params
+		const { planetName, weaponName } = ctx.params;
 
-		const planet: Planet = await PlanetRepository.Get(planetName)
-		const weapon: Weapon = await WeaponRepository.Get(weaponName)
+		const planet: Planet = await PlanetRepository.Get(planetName);
+		const weapon: Weapon = await WeaponRepository.Get(weaponName);
 
-		const { damage, remainingShield } = await CalculateMeta.Damage(
-			weapon,
-			planet,
-		);
+		const { damage, remainingShield } = await CalculateMeta.Damage(weapon, planet);
 
-		await PlanetRepository.UpdateShield(planetName, remainingShield)
+		await PlanetRepository.UpdateShield(planetName, remainingShield);
 
 		let message;
 

@@ -1,4 +1,4 @@
 export interface DamageMetaOutDto {
-  damage: number
-  remainingShield: number
+	damage: number;
+	remainingShield: number;
 }

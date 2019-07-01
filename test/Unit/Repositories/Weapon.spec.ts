@@ -6,7 +6,6 @@ import setupDatabase from '@Test/Config/SetupDatabase';
 import { WeaponRepository } from '@Repositories';
 import { Weapon } from '@Entities';
 
-
 describe('Test WeaponRepository constructor', () => {
 	it('should be defined', () => {
 		expect(WeaponRepository).toBeDefined();
@@ -24,27 +23,27 @@ describe('Weapon Repository Methods', () => {
 
 	describe('GetWeapon', async () => {
 		it('should get weapon', async () => {
-			const weaponName = 'Death Star'
+			const weaponName = 'Death Star';
 
-			const weapon = await WeaponRepository.Get(weaponName)
+			const weapon = await WeaponRepository.Get(weaponName);
 
-			expect(weapon.name).toEqual(weaponName)
-		})
+			expect(weapon.name).toEqual(weaponName);
+		});
 
 		it('should throw an error if weapon not found', async () => {
-			const weaponName = `I don't exist`
+			const weaponName = `I don't exist`;
 
-			expect(() => WeaponRepository.Get(weaponName)).toThrowError
-		})
-	})
+			expect(() => WeaponRepository.Get(weaponName)).toThrowError;
+		});
+	});
 
 	it('Decrease Ammo', async () => {
 		const entityManager = getManager();
 
-		const weaponName = 'Death Star'
+		const weaponName = 'Death Star';
 		const weapon = await entityManager.findOne(Weapon, { name: weaponName });
 
-		const expectedAmmo = weapon.ammo - 1
+		const expectedAmmo = weapon.ammo - 1;
 
 		const { remainingAmmo } = await WeaponRepository.DecreaseAmmo(weaponName);
 

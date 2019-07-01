@@ -13,7 +13,7 @@ describe('Planet service helpers', () => {
 	it('should trigger Defend method', async () => {
 		const params: DefendInDto = {
 			weaponName: 'Death Star',
-			planetName: 'Alderaan'
+			planetName: 'Alderaan',
 		};
 
 		const result = await PlanetHelper.Defend(DummyContext.getCall(params), params);

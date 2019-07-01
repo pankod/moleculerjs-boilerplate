@@ -1,4 +1,4 @@
 export interface AttackOutDto {
-	planetMessage: string
-	weaponMessage: string
+	planetMessage: string;
+	weaponMessage: string;
 }

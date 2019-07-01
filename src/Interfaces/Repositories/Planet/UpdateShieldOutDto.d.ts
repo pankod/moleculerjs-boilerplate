@@ -1,3 +1,3 @@
 export interface UpdateShieldOutDto {
-  remainingShield: number
+	remainingShield: number;
 }

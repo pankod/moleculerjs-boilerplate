@@ -6,7 +6,7 @@ export namespace CalculateMeta {
 		const { damage: weaponDamage } = weapon;
 		const { shield } = planet;
 
-		const damage = Math.floor(Math.random() * weaponDamage)
+		const damage = Math.floor(Math.random() * weaponDamage);
 
 		const remainingShield = shield - damage;
 

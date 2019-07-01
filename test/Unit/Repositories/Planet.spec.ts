@@ -23,24 +23,24 @@ describe('Planet Repository Methods', () => {
 
 	describe('Get', () => {
 		it('should get planet if there is any', async () => {
-			const planetName = "Alderaan"
+			const planetName = 'Alderaan';
 
-			const planet = await PlanetRepository.Get(planetName)
+			const planet = await PlanetRepository.Get(planetName);
 
-			expect(planet.name).toEqual(planetName)
-		})
+			expect(planet.name).toEqual(planetName);
+		});
 
 		it('should raise error', async () => {
-			const planetName = 'I dont exist'
+			const planetName = 'I dont exist';
 
-			expect(() => PlanetRepository.Get(planetName)).toThrowError
-		})
-	})
+			expect(() => PlanetRepository.Get(planetName)).toThrowError;
+		});
+	});
 
 	it('should update shield', async () => {
-		const planetName = 'Alderaan'
+		const planetName = 'Alderaan';
 
-		const expectedShield = 1000
+		const expectedShield = 1000;
 
 		const { remainingShield } = await PlanetRepository.UpdateShield(planetName, expectedShield);
 
