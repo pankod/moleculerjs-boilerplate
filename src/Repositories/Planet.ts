@@ -1,25 +1,23 @@
 import { Planet } from '@Entities/Planet';
-import { Weapon } from '@Entities/Weapon';
 import { getManager } from 'typeorm';
-import { CalculateMeta } from '@Meta';
-import { DefendRepoOutDto } from '@Interfaces';
+import { UpdateShieldOutDto } from '@Interfaces';
 
 export namespace PlanetRepository {
-	export const Defend = async (weaponName: string, planetName: string): Promise<DefendRepoOutDto> => {
-		const entityManager = getManager();
+	const getPlanet = async (planetName: string): Promise<Planet> => {
+		return getManager().findOne(Planet, { name: planetName })
+	}
 
-		const weapon = await entityManager.findOne(Weapon, { name: weaponName });
-		const planet = await entityManager.findOne(Planet, { name: planetName });
+	export const Get = async (planetName: string): Promise<Planet> => {
+		return await getPlanet(planetName)
+	}
 
-		const { damage, remainingShield } = await CalculateMeta.Damage(
-			weapon,
-			planet,
-		);
+	export const UpdateShield = async (planetName: string, remainingShield: number): Promise<UpdateShieldOutDto> => {
+		const planet = await getPlanet(planetName)
 
-		planet.shield = remainingShield;
+		planet.shield = remainingShield
 
-		await entityManager.save(planet);
+		await getManager().save(planet)
 
-		return { damage, remainingShield };
-	};
+		return { remainingShield: planet.shield }
+	}
 }

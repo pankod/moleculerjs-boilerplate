@@ -3,7 +3,8 @@ export { DamageMetaOutDto } from "@Interfaces/Meta/DamageMetaOutDto"
 
 // Repositories
 export { DefendRepoOutDto } from "@Interfaces/Repositories/DefendRepoOutDto"
-export { FireRepoOutDto } from "@Interfaces/Repositories/FireRepoOutDto"
+export { DecreaseAmmoOutDto } from "@Interfaces/Repositories/DecreaseAmmoOutDto"
+export { UpdateShieldOutDto } from "@Interfaces/Repositories/UpdateShieldOutDto"
 
 // Services
 export { AttackInDto } from '@Interfaces/Services/AttackInDto';

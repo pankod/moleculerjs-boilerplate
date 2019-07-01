@@ -49,7 +49,7 @@ export class AttackService extends BaseSchema {
 			}
 		}
 
-		const { remainingAmmo } = await WeaponRepository.Fire(weaponName)
+		const { remainingAmmo } = await WeaponRepository.DecreaseAmmo(weaponName)
 
 		const { damage, planetMessage } = await PlanetHelper.Defend(ctx, { weaponName, planetName });
 

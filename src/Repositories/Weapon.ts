@@ -1,22 +1,18 @@
 import { Planet } from '@Entities/Planet';
 import { Weapon } from '@Entities/Weapon';
 import { getManager } from 'typeorm';
-import { FireRepoOutDto } from '@Interfaces';
+import { DecreaseAmmoOutDto } from '@Interfaces';
 
 export namespace WeaponRepository {
 	const getWeapon = async (weaponName: string): Promise<Weapon> => {
-		const entityManager = getManager();
-
-		const weapon = await entityManager.findOne(Weapon, { name: weaponName });
-
-		return weapon;
+		return getManager().findOne(Weapon, { name: weaponName });
 	}
 
 	export const Get = async (weaponName: string): Promise<Weapon> => {
 		return await getWeapon(weaponName)
 	};
 
-	export const Fire = async (weaponName: string): Promise<FireRepoOutDto> => {
+	export const DecreaseAmmo = async (weaponName: string): Promise<DecreaseAmmoOutDto> => {
 		const weapon = await getWeapon(weaponName)
 
 		weapon.ammo = weapon.ammo - 1
