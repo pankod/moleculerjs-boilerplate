@@ -2,7 +2,7 @@
 import { Context } from 'moleculer';
 import { Action, BaseSchema, Method } from 'moleculer-decorators';
 import { Accept, BodyOptions, Path, POST } from 'typescript-rest';
-import { Produces, Tags } from 'typescript-rest-swagger';
+import { Produces, Tags, Example } from 'typescript-rest-swagger';
 //#endregion Global Imports
 
 //#region Local Imports
@@ -34,8 +34,13 @@ export class AttackService extends BaseSchema {
 		return response;
 	}
 
+	@Path('Fire')
 	@Method
 	@POST
+	@Example({
+		"planetMessage": "Planet took 442 damage and has 73481 shield left.",
+		"weaponMessage": "Death Star did 442 damage and left 928 ammo."
+	})
 	public async FireMethod(ctx: Context<AttackInDto>): Promise<AttackOutDto> {
 		const { planetName, weaponName } = ctx.params;
 

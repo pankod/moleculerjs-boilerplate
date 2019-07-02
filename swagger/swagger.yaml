@@ -1,96 +1,80 @@
 basePath: /api
 definitions:
-    WeaponSql:
+    AttackOutDto:
         description: ""
         properties:
-            id:
-                type: number
-                format: double
-                description: ""
-            name:
+            planetMessage:
                 type: string
                 description: ""
+            weaponMessage:
+                type: string
+                description: ""
+        type: object
+        required:
+            - planetMessage
+            - weaponMessage
+    ContextAttackInDto:
+        description: ""
+        properties:
+            planetName:
+                type: string
+                description: ""
+            weaponName:
+                type: string
+                description: ""
+        type: object
+        required:
+            - planetName
+            - weaponName
+    DefendOutDto:
+        description: ""
+        properties:
             damage:
                 type: number
                 format: double
                 description: ""
-            ammo:
-                type: number
-                format: double
+            planetMessage:
+                type: string
                 description: ""
         type: object
         required:
-            - id
-            - name
             - damage
-            - ammo
-    PlanetSql:
+            - planetMessage
+    ContextDefendInDto:
         description: ""
         properties:
-            id:
-                type: number
-                format: double
-                description: ""
-            name:
+            planetName:
                 type: string
                 description: ""
-            shield:
-                type: number
-                format: double
-                description: ""
-        type: object
-        required:
-            - id
-            - name
-            - shield
-    FireMethodOutDto:
-        description: ""
-        properties:
-            weapon:
-                $ref: '#/definitions/WeaponSql'
-            planet:
-                $ref: '#/definitions/PlanetSql'
-            message:
+            weaponName:
                 type: string
                 description: ""
         type: object
         required:
-            - weapon
-            - planet
-            - message
-    ContextDamageInDto:
-        description: ""
-        properties: {}
-        type: object
-    DefendOutDto:
-        description: ""
-        properties:
-            deathStar:
-                $ref: '#/definitions/WeaponSql'
-            alderaan:
-                $ref: '#/definitions/PlanetSql'
-        type: object
-        required:
-            - deathStar
-            - alderaan
+            - planetName
+            - weaponName
 info:
     description: 'My Moleculer microservices project'
     title: moleculerjs-boilerplate
     version: 1.0.0
 paths:
-    /deathstar:
+    /attack/Fire:
         post:
-            operationId: WeaponServiceFireMethod
+            operationId: AttackServiceFireMethod
             produces:
                 - 'application/json; charset=utf-8'
             responses:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/FireMethodOutDto'
+                        $ref: '#/definitions/AttackOutDto'
+                    examples:
+                        application/json:
+                            planetMessage: 'Planet took 442 damage and has 73481 shield left.'
+                            weaponMessage: 'Death Star did 442 damage and left 928 ammo.'
             description: ""
             tags:
-                - DeathStarServices
+                - AttackServices
             consumes:
                 - 'application/json; charset=utf-8'
             parameters:
@@ -100,8 +84,8 @@ paths:
                     name: ctx
                     required: true
                     schema:
-                        $ref: '#/definitions/ContextDamageInDto'
-    /planet:
+                        $ref: '#/definitions/ContextAttackInDto'
+    /planet/Defend:
         post:
             operationId: PlanetServiceDefendMethod
             produces:
@@ -111,6 +95,10 @@ paths:
                     description: Ok
                     schema:
                         $ref: '#/definitions/DefendOutDto'
+                    examples:
+                        application/json:
+                            damage: 442
+                            planetMessage: 'Planet took 442 damage and has 73481 shield left.'
             description: ""
             tags:
                 - PlanetServices
@@ -120,11 +108,10 @@ paths:
                 -
                     description: ""
                     in: body
-                    name: damage
+                    name: ctx
                     required: true
                     schema:
-                        type: number
-                    format: double
+                        $ref: '#/definitions/ContextDefendInDto'
 swagger: '2.0'
 securityDefinitions:
     api_key:
