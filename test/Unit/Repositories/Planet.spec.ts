@@ -1,10 +1,11 @@
-// Global Imports
-import { getManager, getConnection } from 'typeorm';
+//#region Global Imports
+import { getConnection } from 'typeorm';
+//#endregion Global Imports
 
-// Local Imports
+//#region Local Imports
 import setupDatabase from '@Test/Config/SetupDatabase';
 import { PlanetRepository } from '@Repositories';
-import { Planet } from '@Entities';
+//#endregion Local Imports
 
 describe('Planet Repository Constructor', () => {
 	it('should be defined', () => {

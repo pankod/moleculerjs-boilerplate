@@ -1,12 +1,13 @@
-// Global Imports
-import { ServiceBroker } from 'moleculer';
+//#region Global Imports
 import { getManager, getConnection } from 'typeorm';
+//#endregion Global Imports
 
-// Local Imports
+//#region Local Imports
 import setupDatabase from '@Test/Config/SetupDatabase';
 import { PlanetHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
 import { BrokerHelper } from '@Test/Utils';
+//#endregion Local Imports
 
 const broker = BrokerHelper.setupBroker();
 

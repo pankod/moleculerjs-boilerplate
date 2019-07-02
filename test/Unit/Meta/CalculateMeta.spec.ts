@@ -1,10 +1,12 @@
-// Global Imports
+//#region Global Imports
 import { getManager, getConnection } from 'typeorm';
+//#endregion Global Imports
 
-// Local Imports
+//#region Local Imports
 import setupDatabase from '@Test/Config/SetupDatabase';
 import { CalculateMeta } from '@Meta';
 import { Planet, Weapon } from '@Entities';
+//#endregion Local Imports
 
 describe('CalculateMeta constructor', () => {
 	it('should be defined', () => {

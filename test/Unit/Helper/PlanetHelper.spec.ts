@@ -1,7 +1,11 @@
-// Local Imports
+//#region Local Imports
 import { PlanetHelper } from '@Helper';
 import { DummyContext } from '@Test/Utils';
+//#region Local Imports
+
+//#region Interface Imports
 import { DefendInDto } from '@Interfaces';
+//#region Interface Imports
 
 describe('Planet service helper constructor', () => {
 	it('should be defined', async () => {

@@ -1,5 +1,10 @@
-import { getManager, ObjectType, FindOneOptions } from 'typeorm';
+//#region Global Imports
+import { getManager, ObjectType } from 'typeorm';
+//#endregion Global Imports
+
+//#region Local Imports
 import { Throw404 } from './ErrorHelpers';
+//#endregion Local Imports
 
 export const getResource = async <E extends {}>(
 	entityClass: ObjectType<E>,

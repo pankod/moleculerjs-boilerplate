@@ -7,13 +7,14 @@ import { Produces, Tags } from 'typescript-rest-swagger';
 
 //#region Local Imports
 import { PlanetRepository, WeaponRepository } from '@Repositories';
+import { CalculateMeta } from '@Meta';
+import { Planet, Weapon } from '@Entities';
 //#endregion Local Imports
 
 //#region Interface Imports
 import { DefendInDto, DefendOutDto } from '@Interfaces';
-import { Planet, Weapon } from '@Entities';
-import { CalculateMeta } from '@Meta';
 //#endregion Interface Imports
+
 @Path('planet')
 @Accept('application/json; charset=utf-8')
 @Produces('application/json; charset=utf-8')

@@ -1,5 +1,7 @@
+//#region Global Imports
 import { ServiceSchema } from 'moleculer';
 import ApiGateway = require('moleculer-web');
+//#endregion Global Imports
 
 const ApiService: ServiceSchema = {
 	name: 'api',

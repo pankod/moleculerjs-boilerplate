@@ -1,11 +1,15 @@
-// Global Imports
-
-// Local Imports
-import { Weapon } from '@Entities/Weapon';
+//#region Global Imports
 import { getManager } from 'typeorm';
-import { DecreaseAmmoOutDto } from '@Interfaces';
-import { Throw404 } from './ErrorHelpers';
+//#endregion Global Imports
+
+//#region Local Imports
+import { Weapon } from '@Entities/Weapon';
 import { getResource } from './Shared';
+//#endregion Local Imports
+
+//#region Interfaces Imports
+import { DecreaseAmmoOutDto } from '@Interfaces';
+//#endregion Interfaces Imports
 
 export namespace WeaponRepository {
 	export const Get = async (weaponName: string): Promise<Weapon> => {

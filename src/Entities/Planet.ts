@@ -1,4 +1,6 @@
+//#region Global Imports
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+//#endregion Global Imports
 
 @Entity()
 export class Planet {

@@ -1,7 +1,11 @@
-// Local Imports
+//#region Local Imports
 import { AttackHelper } from '@Helper';
 import { DummyContext } from '@Test/Utils';
+//#endregion Local Imports
+
+//#region Interface Imports
 import { AttackInDto } from '@Interfaces';
+//#region Interface Imports
 
 describe('Weapon helper service helper constructor', () => {
 	it('should be defined', async () => {

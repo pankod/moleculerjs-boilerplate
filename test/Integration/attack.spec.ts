@@ -1,7 +1,12 @@
+//#region Global Imports
 import ApiGateway = require('moleculer-web');
-import setupDatabase from '@Test/Config/SetupDatabase';
 import { getConnection } from 'typeorm';
+//#endregion Global Imports
+
+//#region Local Imports
+import setupDatabase from '@Test/Config/SetupDatabase';
 import { BrokerHelper } from '@Test/Utils';
+//#endregion Local Imports
 
 const request = require("supertest");
 const broker = BrokerHelper.setupBroker();
