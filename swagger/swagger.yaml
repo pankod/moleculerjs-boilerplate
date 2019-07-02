@@ -68,6 +68,10 @@ paths:
                     description: Ok
                     schema:
                         $ref: '#/definitions/AttackOutDto'
+                    examples:
+                        application/json:
+                            planetMessage: 'Planet took 442 damage and has 73481 shield left.'
+                            weaponMessage: 'Death Star did 442 damage and left 928 ammo.'
             description: ""
             tags:
                 - AttackServices
@@ -91,6 +95,10 @@ paths:
                     description: Ok
                     schema:
                         $ref: '#/definitions/DefendOutDto'
+                    examples:
+                        application/json:
+                            damage: 442
+                            planetMessage: 'Planet took 442 damage and has 73481 shield left.'
             description: ""
             tags:
                 - PlanetServices

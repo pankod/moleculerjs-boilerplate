@@ -2,7 +2,7 @@
 import { Context } from 'moleculer';
 import { Action, BaseSchema, Method } from 'moleculer-decorators';
 import { Accept, BodyOptions, Path, POST } from 'typescript-rest';
-import { Produces, Tags } from 'typescript-rest-swagger';
+import { Produces, Tags, Example } from 'typescript-rest-swagger';
 //#endregion Global Imports
 
 //#region Local Imports
@@ -38,6 +38,10 @@ export class PlanetService extends BaseSchema {
 	@Path('Defend')
 	@Method
 	@POST
+	@Example({
+		damage: 442,
+		"planetMessage": "Planet took 442 damage and has 73481 shield left.",
+	})
 	public async DefendMethod(ctx: Context<DefendInDto>): Promise<DefendOutDto> {
 		const { planetName, weaponName } = ctx.params;
 
