@@ -42,7 +42,6 @@
     "jest-teamcity": "^1.4.0",
     "moleculer-repl": "^0.5.3",
     "prettier": "^1.17.1",
-    "sqlite3": "^4.0.6",
     "supertest": "^4.0.2",
     "swagger-ui-express": "^4.0.2",
     "ts-jest": "^23.10.5",
@@ -59,7 +58,8 @@
     "moleculer-decorators": "^1.0.21",
     "moleculer-web": "^0.8.0",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.18"
+    "typeorm": "^0.2.18",
+    "sqlite3": "^4.0.6"
   },
   "engines": {
     "node": ">= 8.x.x"
