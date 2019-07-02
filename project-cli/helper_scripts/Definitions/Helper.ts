@@ -122,6 +122,17 @@ export const Helper = {
 		Helper.writeFile(writeFileProps);
 	},
 
+	createIntegrationTest: (options: DefinitionsModel.ICreateTest): void => {
+
+		const integrationProps: DefinitionsModel.IWriteFile = {
+			dirPath: options.dirPath,
+			getFileContent: () => Helper.getTemplate(options.templatePath, options.templateProps),
+			message: options.successMessage
+		};
+
+		Helper.writeFile(integrationProps);
+	},
+
 	createServiceHelper: (answers: DefinitionsModel.IAnswers): void => {
 		const templatePath = './helper_scripts/Templates/Services/Helper.mustache';
 		const indexTemplate = './helper_scripts/Templates/Services/HelperIndex.mustache';
@@ -179,21 +190,19 @@ export const Helper = {
 		};
 
 		const repositoryTestParams = {
-			templatePath: './helper_scripts/Templates/Tests/Repository.mustache',
-			templateProps,
 			answers,
 			dirPath: `${Config.repositoriesTestDir}/${answers.fileName}.spec.ts`,
-			successMessage: 'Added new Repository test.'
+			successMessage: 'Added new Repository test.',
+			templatePath: './helper_scripts/Templates/Tests/Repository.mustache',
+			templateProps
 		};
+
+		if (!Helper.isAlreadyExist(Config.interfaceDir, answers.fileName)) {
+			Helper.createInterface(answers, 'Repositories');
+		}
 
 		Helper.writeFile(writeFileProps);
 		Helper.addToIndex(addIndexParams);
-
-
-		if (!Helper.isAlreadyExist(Config.interfaceDir, answers.fileName)) {
-			Helper.createInterface(answers, 'Repositories' );
-		}
-
 		Helper.createEntityInstance(answers);
 		Helper.createTest(repositoryTestParams);
 	},
@@ -221,22 +230,29 @@ export const Helper = {
 		};
 
 		const serviceTestParams = {
-			templatePath: './helper_scripts/Templates/Tests/Service.mustache',
-			templateProps,
 			answers,
 			dirPath: `${Config.servicesTestDir}/${answers.fileName}.spec.ts`,
-			successMessage: 'Added new Microservice test.\n'
+			successMessage: 'Added new Microservice test.\n',
+			templatePath: './helper_scripts/Templates/Tests/Service.mustache',
+			templateProps
 		};
 
-		Helper.writeFile(writeFileProps);
-		Helper.addToIndex(addIndexParams);
+		const integrationTestParams = {
+			answers,
+			dirPath: `${Config.integrationTestDir}/${answers.fileName}.spec.ts`,
+			successMessage: 'Added new Integration test.\n',
+			templatePath: './helper_scripts/Templates/Tests/IntegrationTest.mustache',
+			templateProps
+		};
 
 		if (!Helper.isAlreadyExist(Config.interfaceDir, answers.fileName)) {
 			Helper.createInterface(answers, 'Services');
 		}
 
+		Helper.writeFile(writeFileProps);
+		Helper.addToIndex(addIndexParams);
 		Helper.createServiceHelper(answers);
 		Helper.createTest(serviceTestParams);
+		Helper.createIntegrationTest(integrationTestParams);
 	}
-
-}
+};

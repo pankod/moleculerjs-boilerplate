@@ -13,7 +13,7 @@
     "g": "npm run run-cli",
     "generate": "npm run run-cli",
     "ci": "jest --watch",
-    "test": "jest --coverage",
+    "test": "jest --coverage --runInBand",
     "lint": "eslint -c .eslintrc.js --ext .ts {services,src,test}/**",
     "format": "eslint -c .eslintrc.js --ext .ts --fix {services,src,test}/**",
     "dc:up": "docker-compose up --build -d",
@@ -96,9 +96,9 @@
     "testMatch": [
       "**/*.spec.(ts)"
     ],
-    "setupFiles": [
+    "setupTestFrameworkScriptFile": 
       "<rootDir>/test/Config/mock.setup.ts"
-    ],
+    ,
     "globals": {
       "ts-jest": {
         "tsConfig": "<rootDir>/tsconfig.json"
