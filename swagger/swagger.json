@@ -81,7 +81,7 @@
 		"version": "1.0.0"
 	},
 	"paths": {
-		"/attack": {
+		"/attack/Fire": {
 			"post": {
 				"operationId": "AttackServiceFireMethod",
 				"produces": [
@@ -115,7 +115,7 @@
 				]
 			}
 		},
-		"/planet": {
+		"/planet/Defend": {
 			"post": {
 				"operationId": "PlanetServiceDefendMethod",
 				"produces": [

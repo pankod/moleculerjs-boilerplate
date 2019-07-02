@@ -58,7 +58,7 @@ info:
     title: moleculerjs-boilerplate
     version: 1.0.0
 paths:
-    /attack:
+    /attack/Fire:
         post:
             operationId: AttackServiceFireMethod
             produces:
@@ -81,7 +81,7 @@ paths:
                     required: true
                     schema:
                         $ref: '#/definitions/ContextAttackInDto'
-    /planet:
+    /planet/Defend:
         post:
             operationId: PlanetServiceDefendMethod
             produces:

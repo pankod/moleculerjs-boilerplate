@@ -35,6 +35,7 @@ export class PlanetService extends BaseSchema {
 		return response;
 	}
 
+	@Path('Defend')
 	@Method
 	@POST
 	public async DefendMethod(ctx: Context<DefendInDto>): Promise<DefendOutDto> {

@@ -34,6 +34,7 @@ export class AttackService extends BaseSchema {
 		return response;
 	}
 
+	@Path('Fire')
 	@Method
 	@POST
 	public async FireMethod(ctx: Context<AttackInDto>): Promise<AttackOutDto> {
