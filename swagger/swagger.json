@@ -1,102 +1,77 @@
 {
 	"basePath": "/api",
 	"definitions": {
-		"WeaponSql": {
+		"AttackOutDto": {
 			"description": "",
 			"properties": {
-				"id": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				},
-				"name": {
+				"planetMessage": {
 					"type": "string",
 					"description": ""
 				},
+				"weaponMessage": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"planetMessage",
+				"weaponMessage"
+			]
+		},
+		"ContextAttackInDto": {
+			"description": "",
+			"properties": {
+				"planetName": {
+					"type": "string",
+					"description": ""
+				},
+				"weaponName": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"planetName",
+				"weaponName"
+			]
+		},
+		"DefendOutDto": {
+			"description": "",
+			"properties": {
 				"damage": {
 					"type": "number",
 					"format": "double",
 					"description": ""
 				},
-				"ammo": {
-					"type": "number",
-					"format": "double",
+				"planetMessage": {
+					"type": "string",
 					"description": ""
 				}
 			},
 			"type": "object",
 			"required": [
-				"id",
-				"name",
 				"damage",
-				"ammo"
+				"planetMessage"
 			]
 		},
-		"PlanetSql": {
+		"ContextDefendInDto": {
 			"description": "",
 			"properties": {
-				"id": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				},
-				"name": {
+				"planetName": {
 					"type": "string",
 					"description": ""
 				},
-				"shield": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				}
-			},
-			"type": "object",
-			"required": [
-				"id",
-				"name",
-				"shield"
-			]
-		},
-		"FireMethodOutDto": {
-			"description": "",
-			"properties": {
-				"weapon": {
-					"$ref": "#/definitions/WeaponSql"
-				},
-				"planet": {
-					"$ref": "#/definitions/PlanetSql"
-				},
-				"message": {
+				"weaponName": {
 					"type": "string",
 					"description": ""
 				}
 			},
 			"type": "object",
 			"required": [
-				"weapon",
-				"planet",
-				"message"
-			]
-		},
-		"ContextDamageInDto": {
-			"description": "",
-			"properties": {},
-			"type": "object"
-		},
-		"DefendOutDto": {
-			"description": "",
-			"properties": {
-				"deathStar": {
-					"$ref": "#/definitions/WeaponSql"
-				},
-				"alderaan": {
-					"$ref": "#/definitions/PlanetSql"
-				}
-			},
-			"type": "object",
-			"required": [
-				"deathStar",
-				"alderaan"
+				"planetName",
+				"weaponName"
 			]
 		}
 	},
@@ -106,9 +81,9 @@
 		"version": "1.0.0"
 	},
 	"paths": {
-		"/deathstar": {
+		"/attack": {
 			"post": {
-				"operationId": "WeaponServiceFireMethod",
+				"operationId": "AttackServiceFireMethod",
 				"produces": [
 					"application/json; charset=utf-8"
 				],
@@ -116,13 +91,13 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/FireMethodOutDto"
+							"$ref": "#/definitions/AttackOutDto"
 						}
 					}
 				},
 				"description": "",
 				"tags": [
-					"DeathStarServices"
+					"AttackServices"
 				],
 				"consumes": [
 					"application/json; charset=utf-8"
@@ -134,7 +109,7 @@
 						"name": "ctx",
 						"required": true,
 						"schema": {
-							"$ref": "#/definitions/ContextDamageInDto"
+							"$ref": "#/definitions/ContextAttackInDto"
 						}
 					}
 				]
@@ -165,12 +140,11 @@
 					{
 						"description": "",
 						"in": "body",
-						"name": "damage",
+						"name": "ctx",
 						"required": true,
 						"schema": {
-							"type": "number"
-						},
-						"format": "double"
+							"$ref": "#/definitions/ContextDefendInDto"
+						}
 					}
 				]
 			}

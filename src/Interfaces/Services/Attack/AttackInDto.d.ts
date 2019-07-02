@@ -1,4 +1,4 @@
-export interface AttackInDto {
+export interface Context<AttackInDto> {
 	planetName: string;
 	weaponName: string;
 }
