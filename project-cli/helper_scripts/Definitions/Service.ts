@@ -1,7 +1,12 @@
+//#region Global Imports
 import * as inquirer from 'inquirer';
+//#region Global Imports
+
+//#region Local Imports
 import { Config } from '../../config';
 import { DefinitionsModel } from './Definition';
 import { Helper } from './Helper';
+//#endregion Local Imports
 
 export const serviceQuestion = {
 	showQuestions: async (): Promise<void> => {

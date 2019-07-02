@@ -1,11 +1,13 @@
-// Global Imports
+//#region Global Imports
 import { getManager, getConnection } from 'typeorm';
+//#endregion Global Imports
 
-// Local Imports
+//#region Local Imports
 import setupDatabase from '@Test/Config/SetupDatabase';
 import { AttackHelper } from '@Helper';
 import { Weapon } from '@Entities';
 import { BrokerHelper } from '@Test/Utils';
+//#endregion Local Imports
 
 const broker = BrokerHelper.setupBroker();
 

@@ -1,4 +1,6 @@
+//#region Global Imports
 import { createConnection, Connection } from 'typeorm';
+//#region Global Imports
 
 export default async (): Promise<Connection> =>
 	createConnection({

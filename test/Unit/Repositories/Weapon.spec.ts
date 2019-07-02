@@ -1,10 +1,12 @@
-// Global Imports
+//#region Global Imports
 import { getManager, getConnection } from 'typeorm';
+//#region Global Imports
 
-// Local Imports
+//#region Local Imports
 import setupDatabase from '@Test/Config/SetupDatabase';
 import { WeaponRepository } from '@Repositories';
 import { Weapon } from '@Entities';
+//#endregion Local Imports
 
 describe('Test WeaponRepository constructor', () => {
 	it('should be defined', () => {

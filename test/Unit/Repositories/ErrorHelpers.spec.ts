@@ -1,8 +1,10 @@
-// Global Imports
+//#region Global Imports
 import { Errors } from 'moleculer';
+//#endregion Global Imports
 
-// Local Imports
+//#region Local Imports
 import { Throw404 } from '@Repositories/ErrorHelpers';
+//#endregion Local Imports
 
 describe('Throw 404', () => {
 	it('should be defined', () => {

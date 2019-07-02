@@ -1,4 +1,6 @@
+//#region Global Imports
 import { ServiceBroker } from 'moleculer';
+//#endregion Global Imports
 
 const AttackService = require('../../services/attack.service');
 const PlanetService = require('../../services/planet.service');

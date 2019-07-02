@@ -7,11 +7,11 @@ import { Produces, Tags } from 'typescript-rest-swagger';
 
 //#region Local Imports
 import { WeaponRepository } from '@Repositories';
+import { PlanetHelper } from '@Helper';
 //#endregion Local Imports
 
 //#region Interface Imports
 import { AttackInDto, AttackOutDto } from '@Interfaces';
-import { PlanetHelper } from '@Helper';
 //#endregion Interface Imports
 
 @Path('attack')

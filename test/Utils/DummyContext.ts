@@ -1,5 +1,6 @@
-// Global Imports
+//#region Global Imports
 import { Context, Endpoint, ServiceBroker } from 'moleculer';
+//#endregion Global Imports
 
 export namespace DummyContext {
 	const broker = new ServiceBroker({ logger: false, maxCallLevel: 5 });

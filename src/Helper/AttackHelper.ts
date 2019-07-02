@@ -1,8 +1,10 @@
-// Global Imports
+//#region Global Imports
 import { Context } from 'moleculer';
+//#endregion Global Imports
 
-// Local Imports
+//#region Interface Imports
 import { AttackInDto, AttackOutDto } from '@Interfaces';
+//#endregion Interface Imports
 
 export namespace AttackHelper {
 	const prefix: string = 'attack';

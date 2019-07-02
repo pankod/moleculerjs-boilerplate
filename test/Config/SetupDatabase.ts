@@ -1,5 +1,7 @@
+//#region Local Imports
 import Seeder from '../Seeder';
 import CreateConnection from './CreateConnection';
+//#region Local Imports
 
 const setupDatabase = async (): Promise<void> => {
 	await CreateConnection();

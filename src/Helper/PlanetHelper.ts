@@ -1,8 +1,10 @@
-// Global Imports
+//#region Global Imports
 import { Context } from 'moleculer';
-import { DefendInDto, DefendOutDto } from '@Interfaces';
+//#endregion Global Imports
 
-// Local Imports
+//#region Interface Imports
+import { DefendInDto, DefendOutDto } from '@Interfaces';
+//#endregion Interface Imports
 
 export namespace PlanetHelper {
 	const prefix: string = 'planet';

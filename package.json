@@ -29,11 +29,8 @@
   ],
   "author": "Pankod <info@pankod.com>",
   "devDependencies": {
-    "@types/bluebird": "^3.5.24",
     "@types/jest": "^23.1.1",
     "@types/node": "^10.12.12",
-    "@types/pg": "^7.4.13",
-    "@types/semver": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
     "eslint": "^5.16.0",
@@ -56,22 +53,12 @@
     "typescript-rest-swagger": "0.0.24"
   },
   "dependencies": {
-    "blueimp-md5": "^2.10.0",
     "cors": "^2.8.5",
-    "enum-values": "^1.2.1",
     "express": "^4.16.4",
-    "lodash": "^4.17.11",
     "moleculer": "^0.13.0",
     "moleculer-decorators": "^1.0.21",
-    "moleculer-elastic-apm": "0.0.2",
-    "moleculer-prometheus": "^0.2.0",
     "moleculer-web": "^0.8.0",
-    "moleculer-zipkin": "^0.2.0",
-    "moment": "^2.24.0",
-    "nats": "^1.2.2",
-    "pg": "^7.8.1",
     "reflect-metadata": "^0.1.13",
-    "semver": "^6.0.0",
     "typeorm": "^0.2.18"
   },
   "engines": {

@@ -1,11 +1,15 @@
-// Global Imports
-
-// Local Imports
-import { Planet } from '@Entities/Planet';
+//#region Global Imports
 import { getManager } from 'typeorm';
-import { UpdateShieldOutDto } from '@Interfaces';
-import { Throw404 } from './ErrorHelpers';
+//#endregion Global Imports
+
+//#region Local Imports
+import { Planet } from '@Entities/Planet';
 import { getResource } from './Shared';
+//#endregion Local Imports
+
+//#region Interface Imports
+import { UpdateShieldOutDto } from '@Interfaces';
+//#endregion Interface Imports
 
 export namespace PlanetRepository {
 	export const Get = async (planetName: string): Promise<Planet> => {
