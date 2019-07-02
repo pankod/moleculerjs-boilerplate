@@ -6,5 +6,6 @@ export const Config = {
 	servicesDir: './services',
 	servicesHelperDir: './src/Helper',
 	servicesTestDir: './test/Unit/MicroServices',
+	integrationTestDir: './test/Integration',
 	serviceHelperTestDir: './test/Unit/Helper'
 };
