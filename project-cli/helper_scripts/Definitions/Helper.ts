@@ -1,9 +1,14 @@
+//#region Global Imports
 import * as fs from 'fs';
 import * as logSymbols from 'log-symbols';
 import * as mustache from 'mustache';
 import * as path from 'path';
+//#endregion Global Imports
+
+//#region Local Imports
 import { Config } from '../../config';
 import { DefinitionsModel } from './Definition';
+//#endregion Local Imports
 
 export const Helper = {
 
