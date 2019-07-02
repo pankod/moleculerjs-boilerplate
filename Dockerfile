@@ -9,6 +9,5 @@ RUN npm install && npm run build && npm prune --production
 
 COPY ./ ./ 
 
-
 ENV NODE_ENV=production
 CMD ["npm", "run", "dev"]
