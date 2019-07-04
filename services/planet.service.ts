@@ -29,6 +29,31 @@ export class PlanetService extends BaseSchema {
 	}
 
 	@Method
+	/**
+	* @swagger
+	*
+	*  planet/Defend:
+	*    post:
+	*      description: Attacks to the planet with given weapon.
+	*      produces:
+	*        - application/json
+	*      parameters:
+	*        - name: weaponName
+	*          description: Which weapon to use.
+	*          in: formData
+	*          required: true
+	*          type: string
+	*        - name: planetName
+	*          description: Which planet to attack.
+	*          in: formData
+	*          required: true
+	*          type: string
+	*      responses:
+	*        200:
+	*          description: Example attack result
+	*        422:
+	*          description: Missing parameters
+	*/
 	public async DefendMethod(ctx: Context<DefendInDto>): Promise<DefendOutDto> {
 		const { planetName, weaponName } = ctx.params;
 

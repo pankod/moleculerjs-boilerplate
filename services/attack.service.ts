@@ -28,6 +28,31 @@ export class AttackService extends BaseSchema {
 	}
 
 	@Method
+	/**
+	* @swagger
+	*
+	*  attack/Fire:
+	*    post:
+	*      description: Attacks to the planet with given weapon.
+	*      produces:
+	*        - application/json
+	*      parameters:
+	*        - name: weaponName
+	*          description: Which weapon to use.
+	*          in: formData
+	*          required: true
+	*          type: string
+	*        - name: planetName
+	*          description: Which planet to attack.
+	*          in: formData
+	*          required: true
+	*          type: string
+	*      responses:
+	*        200:
+	*          description: Example attack result
+	*        422:
+	*          description: Missing parameters
+	*/
 	public async FireMethod(ctx: Context<AttackInDto>): Promise<AttackOutDto> {
 		const { planetName, weaponName } = ctx.params;
 
