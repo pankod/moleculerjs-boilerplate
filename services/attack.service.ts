@@ -34,13 +34,16 @@ export class AttackService extends BaseSchema {
 		return response;
 	}
 
-	@Path('Fire')
 	@Method
-	@POST
-	@Example({
-		"planetMessage": "Planet took 442 damage and has 73481 shield left.",
-		"weaponMessage": "Death Star did 442 damage and left 928 ammo."
-	})
+	/**
+	 * @swagger
+	 * /:
+	 *   post:
+	 *     description: Returns the homepage
+	 *     responses:
+	 *       200:
+	 *         description: hello world
+	 */
 	public async FireMethod(ctx: Context<AttackInDto>): Promise<AttackOutDto> {
 		const { planetName, weaponName } = ctx.params;
 
