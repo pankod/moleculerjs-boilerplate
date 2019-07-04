@@ -32,22 +32,27 @@ export class PlanetService extends BaseSchema {
 	/**
 	* @swagger
 	*
-	*  planet/Defend:
+	*  /planet/Defend:
 	*    post:
 	*      description: Attacks to the planet with given weapon.
 	*      produces:
 	*        - application/json
+	*      consumes:
+	*        - application/json
 	*      parameters:
-	*        - name: weaponName
-	*          description: Which weapon to use.
-	*          in: formData
-	*          required: true
-	*          type: string
-	*        - name: planetName
-	*          description: Which planet to attack.
-	*          in: formData
-	*          required: true
-	*          type: string
+	*        - in: body
+	*          name: params
+	*          schema:
+	*            type: object
+	*            required:
+	*              - weaponName
+	*              - planetName
+	*            properties:
+	*              weaponName:
+	*                type: string
+	*                default: Death Star
+	*              planetName:
+	*                type: string
 	*      responses:
 	*        200:
 	*          description: Example attack result
