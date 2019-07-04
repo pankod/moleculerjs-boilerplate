@@ -48,9 +48,7 @@
     "ts-jest": "^23.10.5",
     "ts-node": "^7.0.1",
     "tsconfig-paths": "^3.8.0",
-    "typescript": "^3.3.3333",
-    "typescript-rest": "^2.0.0",
-    "typescript-rest-swagger": "^1.0.3"
+    "typescript": "^3.3.3333"
   },
   "dependencies": {
     "cors": "^2.8.5",

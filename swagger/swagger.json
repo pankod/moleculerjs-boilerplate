@@ -7,18 +7,7 @@
   "host": "localhost:3000",
   "basePath": "/api",
   "swagger": "2.0",
-  "paths": {
-    "/": {
-      "post": {
-        "description": "Returns the homepage",
-        "responses": {
-          "200": {
-            "description": "hello world"
-          }
-        }
-      }
-    }
-  },
+  "paths": {},
   "definitions": {},
   "responses": {},
   "parameters": {},

@@ -1,8 +1,6 @@
 //#region Global Imports
 import { Context } from 'moleculer';
 import { Action, BaseSchema, Method } from 'moleculer-decorators';
-import { Accept, BodyOptions, Path, POST } from 'typescript-rest';
-import { Produces, Tags, Example } from 'typescript-rest-swagger';
 //#endregion Global Imports
 
 //#region Local Imports
@@ -14,11 +12,6 @@ import { PlanetHelper } from '@Helper';
 import { AttackInDto, AttackOutDto } from '@Interfaces';
 //#endregion Interface Imports
 
-@Path('attack')
-@Accept('application/json; charset=utf-8')
-@Produces('application/json; charset=utf-8')
-@BodyOptions({ extended: true, type: 'application/json; charset=utf-8' })
-@Tags('AttackServices')
 export class AttackService extends BaseSchema {
 	public name: string = 'attack';
 
@@ -35,15 +28,6 @@ export class AttackService extends BaseSchema {
 	}
 
 	@Method
-	/**
-	 * @swagger
-	 * /:
-	 *   post:
-	 *     description: Returns the homepage
-	 *     responses:
-	 *       200:
-	 *         description: hello world
-	 */
 	public async FireMethod(ctx: Context<AttackInDto>): Promise<AttackOutDto> {
 		const { planetName, weaponName } = ctx.params;
 
