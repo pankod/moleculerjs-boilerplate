@@ -117,11 +117,55 @@ export const Helper = {
 	},
 
 	createTest: (options: DefinitionsModel.ICreateTest): void => {
-
 		const writeFileProps: DefinitionsModel.IWriteFile = {
 			dirPath: options.dirPath,
 			getFileContent: () => Helper.getTemplate(options.templatePath, options.templateProps),
 			message: options.successMessage
+		};
+
+		Helper.writeFile(writeFileProps);
+
+	},
+
+	addBrokerHelper: (answers: DefinitionsModel.IAnswers): void => {
+		const brokerHelperImport = './helper_scripts/Templates/Tests/BrokerHelperImport.mustache';
+		const brokerHelperCreate = './helper_scripts/Templates/Tests/BrokerHelperCreate.mustache';
+
+		const templateProps = {
+			fileName: answers.fileName,
+			upperFileName: answers.upperFileName
+		};
+
+		const replaceBrokerImportParams: DefinitionsModel.IReplaceContent = {
+			fileDir: Config.brokerHelper,
+			filetoUpdate: fs.readFileSync(path.resolve('', Config.brokerHelper), 'utf8'),
+			getFileContent: () => Helper.getTemplate(brokerHelperImport, templateProps),
+			message: 'Service added to BrokerHelper Import',
+			regexKey: /\/\/\#endregion Local Imports/g
+		};
+
+		setTimeout(() => {
+			const replaceBrokerCreateParams: DefinitionsModel.IReplaceContent = {
+				fileDir: Config.brokerHelper,
+				filetoUpdate: fs.readFileSync(path.resolve('', Config.brokerHelper), 'utf8'),
+				getFileContent: () => Helper.getTemplate(brokerHelperCreate, templateProps),
+				message: 'Service added to BrokerHelper setupBroker.',
+				regexKey: /^\s*return broker;/gm
+			};
+			Helper.replaceContent(replaceBrokerCreateParams);
+		}, 1500);
+
+		Helper.replaceContent(replaceBrokerImportParams);
+
+	},
+
+	replaceContent: (params: DefinitionsModel.IReplaceContent): void => {
+		const replaceFile = params.filetoUpdate.replace(params.regexKey, params.getFileContent());
+
+		const writeFileProps: DefinitionsModel.IWriteFile = {
+			dirPath: params.fileDir,
+			getFileContent: () => replaceFile,
+			message: params.message
 		};
 
 		Helper.writeFile(writeFileProps);
@@ -237,7 +281,7 @@ export const Helper = {
 		const serviceTestParams = {
 			answers,
 			dirPath: `${Config.servicesTestDir}/${answers.fileName}.spec.ts`,
-			successMessage: 'Added new Microservice test.\n',
+			successMessage: 'Added new Microservice test.',
 			templatePath: './helper_scripts/Templates/Tests/Service.mustache',
 			templateProps
 		};
@@ -245,7 +289,7 @@ export const Helper = {
 		const integrationTestParams = {
 			answers,
 			dirPath: `${Config.integrationTestDir}/${answers.fileName}.spec.ts`,
-			successMessage: 'Added new Integration test.\n',
+			successMessage: 'Added new Integration test.',
 			templatePath: './helper_scripts/Templates/Tests/IntegrationTest.mustache',
 			templateProps
 		};
@@ -259,5 +303,6 @@ export const Helper = {
 		Helper.createServiceHelper(answers);
 		Helper.createTest(serviceTestParams);
 		Helper.createIntegrationTest(integrationTestParams);
+		Helper.addBrokerHelper(answers);
 	}
 };

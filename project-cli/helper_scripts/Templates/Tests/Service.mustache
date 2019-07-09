@@ -1,5 +1,4 @@
 //#region Global Imports
-import { ServiceBroker } from 'moleculer';
 //#endregion Global Imports
 
 //#region Local Imports
@@ -14,9 +13,6 @@ import { } from '@Interfaces';
 const broker = BrokerHelper.setupBroker();
 
 describe('Test {{upperFileName}} service', () => {
-
-	const broker = new ServiceBroker({ logger: false });
-	broker.createService({{upperFileName}});
 
 	beforeAll(() => broker.start());
 	afterAll(() => broker.stop());
