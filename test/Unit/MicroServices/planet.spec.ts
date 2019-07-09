@@ -7,6 +7,7 @@ import setupDatabase from '@Test/Config/SetupDatabase';
 import { PlanetHelper } from '@Helper';
 import { Planet } from '@Entities/Planet';
 import { BrokerHelper } from '@Test/Utils';
+import { IPlanet } from '@Interfaces';
 //#endregion Local Imports
 
 const broker = BrokerHelper.setupBroker();
@@ -29,7 +30,7 @@ afterAll(async () => {
 
 describe('Test Defend service', () => {
 	describe('Defend method', async () => {
-		const params = {
+		const params: IPlanet.DefendInDto = {
 			planetName: 'Alderaan',
 			weaponName: 'Death Star',
 		};
