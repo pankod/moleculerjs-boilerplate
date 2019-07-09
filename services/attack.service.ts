@@ -9,7 +9,7 @@ import { PlanetHelper } from '@Helper';
 //#endregion Local Imports
 
 //#region Interface Imports
-import { AttackInDto, AttackOutDto } from '@Interfaces';
+import { IAttack } from '@Interfaces';
 //#endregion Interface Imports
 
 export class AttackService extends BaseSchema {
@@ -21,7 +21,7 @@ export class AttackService extends BaseSchema {
 			planetName: { type: 'string', min: 2 },
 		},
 	})
-	public async Fire(ctx: Context<AttackInDto>): Promise<AttackOutDto> {
+	public async Fire(ctx: Context<IAttack.AttackInDto>): Promise<IAttack.AttackOutDto> {
 		const response = await this.FireMethod(ctx);
 
 		return response;
@@ -58,7 +58,7 @@ export class AttackService extends BaseSchema {
 	*        422:
 	*          description: Missing parameters
 	*/
-	public async FireMethod(ctx: Context<AttackInDto>): Promise<AttackOutDto> {
+	public async FireMethod(ctx: Context<IAttack.AttackInDto>): Promise<IAttack.AttackOutDto> {
 		const { planetName, weaponName } = ctx.params;
 
 		const weapon = await WeaponRepository.Get(weaponName);
