@@ -4,7 +4,7 @@ import { DummyContext } from '@Test/Utils';
 //#endregion Local Imports
 
 //#region Interface Imports
-import { AttackInDto } from '@Interfaces';
+import { IAttack } from '@Interfaces';
 //#region Interface Imports
 
 describe('Weapon helper service helper constructor', () => {
@@ -15,7 +15,7 @@ describe('Weapon helper service helper constructor', () => {
 
 describe('Weapon service helpers', () => {
 	it('should trigger Fire method', async () => {
-		const params: AttackInDto = {
+		const params: IAttack.AttackInDto = {
 			weaponName: 'Death Star',
 			planetName: 'Alderaan',
 		};

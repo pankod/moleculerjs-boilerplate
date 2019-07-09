@@ -62,8 +62,8 @@ export const Helper = {
 		);
 	},
 
-	createInterface: (answers: DefinitionsModel.IAnswers, dirType: string) => {
-		const templatePath = './helper_scripts/Templates/Interfaces/Interface.mustache';
+	createInterface: (answers: DefinitionsModel.IAnswers, dirType: string, prefix: string = '') => {
+		const templatePath = `./helper_scripts/Templates/Interfaces/${prefix}Interface.mustache`;
 		const indexInterfaceTemplate = './helper_scripts/Templates/Interfaces/index.mustache';
 		const folderIndexTemplate = './helper_scripts/Templates/Interfaces/FolderIndex.mustache';
 
@@ -251,7 +251,7 @@ export const Helper = {
 		};
 
 		if (!Helper.isAlreadyExist(Config.interfaceDir, answers.fileName)) {
-			Helper.createInterface(answers, 'Services');
+			Helper.createInterface(answers, 'Services', 'Service');
 		}
 
 		Helper.writeFile(writeFileProps);

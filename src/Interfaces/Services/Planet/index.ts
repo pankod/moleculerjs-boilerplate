@@ -1,2 +1,1 @@
-export { DefendInDto } from './DefendInDto';
-export { DefendOutDto } from './DefendOutDto';
+export { IPlanet } from './IPlanet'

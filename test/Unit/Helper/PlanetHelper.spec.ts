@@ -4,7 +4,7 @@ import { DummyContext } from '@Test/Utils';
 //#region Local Imports
 
 //#region Interface Imports
-import { DefendInDto } from '@Interfaces';
+import { IPlanet } from '@Interfaces';
 //#region Interface Imports
 
 describe('Planet service helper constructor', () => {
@@ -15,7 +15,7 @@ describe('Planet service helper constructor', () => {
 
 describe('Planet service helpers', () => {
 	it('should trigger Defend method', async () => {
-		const params: DefendInDto = {
+		const params: IPlanet.DefendInDto = {
 			weaponName: 'Death Star',
 			planetName: 'Alderaan',
 		};
