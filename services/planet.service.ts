@@ -10,7 +10,7 @@ import { Planet, Weapon } from '@Entities';
 //#endregion Local Imports
 
 //#region Interface Imports
-import { DefendInDto, DefendOutDto } from '@Interfaces';
+import { IPlanet } from '@Interfaces';
 //#endregion Interface Imports
 
 export class PlanetService extends BaseSchema {
@@ -22,7 +22,7 @@ export class PlanetService extends BaseSchema {
 			planetName: { type: 'string', min: 2 },
 		},
 	})
-	public async Defend(ctx: Context<DefendInDto>): Promise<DefendOutDto> {
+	public async Defend(ctx: Context<IPlanet.DefendInDto>): Promise<IPlanet.DefendOutDto> {
 		const response = await this.DefendMethod(ctx);
 
 		return response;
@@ -59,7 +59,7 @@ export class PlanetService extends BaseSchema {
 	*        422:
 	*          description: Missing parameters
 	*/
-	public async DefendMethod(ctx: Context<DefendInDto>): Promise<DefendOutDto> {
+	public async DefendMethod(ctx: Context<IPlanet.DefendInDto>): Promise<IPlanet.DefendOutDto> {
 		const { planetName, weaponName } = ctx.params;
 
 		const planet: Planet = await PlanetRepository.Get(planetName);
