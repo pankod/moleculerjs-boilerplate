@@ -19,7 +19,7 @@
     "dc:up": "docker-compose up --build -d",
     "dc:down": "docker-compose down",
     "swagger-run": "npm run swagger & npm run ui",
-    "swagger": "swaggerGen -c ./swaggerConfig.json -p ./tsconfig.json",
+    "swagger": "swagger-jsdoc -d swagger/config.js -o swagger/swagger.json services/*.service.ts",
     "ui": "node ./swagger/index.js",
     "setup-db": "cp db.sqlite.example db.sqlite"
   },
@@ -48,9 +48,7 @@
     "ts-jest": "^23.10.5",
     "ts-node": "^7.0.1",
     "tsconfig-paths": "^3.8.0",
-    "typescript": "^3.3.3333",
-    "typescript-rest": "^2.0.0",
-    "typescript-rest-swagger": "^1.0.3"
+    "typescript": "^3.3.3333"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -59,6 +57,7 @@
     "moleculer-decorators": "^1.0.21",
     "moleculer-web": "^0.8.0",
     "reflect-metadata": "^0.1.13",
+    "swagger-jsdoc": "^3.2.9",
     "typeorm": "^0.2.18"
   },
   "engines": {

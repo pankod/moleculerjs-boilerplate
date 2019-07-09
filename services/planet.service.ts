@@ -1,8 +1,6 @@
 //#region Global Imports
 import { Context } from 'moleculer';
 import { Action, BaseSchema, Method } from 'moleculer-decorators';
-import { Accept, BodyOptions, Path, POST } from 'typescript-rest';
-import { Produces, Tags, Example } from 'typescript-rest-swagger';
 //#endregion Global Imports
 
 //#region Local Imports
@@ -15,11 +13,6 @@ import { Planet, Weapon } from '@Entities';
 import { DefendInDto, DefendOutDto } from '@Interfaces';
 //#endregion Interface Imports
 
-@Path('planet')
-@Accept('application/json; charset=utf-8')
-@Produces('application/json; charset=utf-8')
-@BodyOptions({ extended: true, type: 'application/json; charset=utf-8' })
-@Tags('PlanetServices')
 export class PlanetService extends BaseSchema {
 	public name: string = 'planet';
 
@@ -35,13 +28,37 @@ export class PlanetService extends BaseSchema {
 		return response;
 	}
 
-	@Path('Defend')
 	@Method
-	@POST
-	@Example({
-		damage: 442,
-		"planetMessage": "Planet took 442 damage and has 73481 shield left.",
-	})
+	/**
+	* @swagger
+	*
+	*  /planet/Defend:
+	*    post:
+	*      description: Attacks to the planet with given weapon.
+	*      produces:
+	*        - application/json
+	*      consumes:
+	*        - application/json
+	*      parameters:
+	*        - in: body
+	*          name: params
+	*          schema:
+	*            type: object
+	*            required:
+	*              - weaponName
+	*              - planetName
+	*            properties:
+	*              weaponName:
+	*                type: string
+	*                default: Death Star
+	*              planetName:
+	*                type: string
+	*      responses:
+	*        200:
+	*          description: Example attack result
+	*        422:
+	*          description: Missing parameters
+	*/
 	public async DefendMethod(ctx: Context<DefendInDto>): Promise<DefendOutDto> {
 		const { planetName, weaponName } = ctx.params;
 
