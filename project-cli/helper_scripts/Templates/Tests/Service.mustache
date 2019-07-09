@@ -1,21 +1,18 @@
 //#region Global Imports
-import { ServiceBroker } from 'moleculer';
 //#endregion Global Imports
 
 //#region Local Imports
 import { {{upperFileName}}Helper } from '@Helper';
+import { BrokerHelper } from '@Test/Utils';
 //#endregion Local Imports
 
 //#region Interface Imports
 import { } from '@Interfaces';
 //#endregion Interface Imports
 
-const {{upperFileName}} = require('../../../services/{{fileName}}.service');
+const broker = BrokerHelper.setupBroker();
 
 describe('Test {{upperFileName}} service', () => {
-
-	const broker = new ServiceBroker({ logger: false });
-	broker.createService({{upperFileName}});
 
 	beforeAll(() => broker.start());
 	afterAll(() => broker.stop());

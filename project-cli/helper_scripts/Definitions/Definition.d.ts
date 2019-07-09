@@ -33,5 +33,13 @@ export declare module DefinitionsModel {
 		dirPath: string;
 		successMessage: string;
 	}
+
+	export interface IReplaceContent {
+		filetoUpdate: string;
+		fileDir: string;
+		regexKey: RegExp;
+		message: string;
+		getFileContent(): string;
+	}
 	
 }
