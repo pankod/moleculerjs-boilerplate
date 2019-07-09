@@ -163,7 +163,7 @@ export const Helper = {
 			templatePath: './helper_scripts/Templates/Tests/ServiceHelper.mustache',
 			templateProps,
 			answers,
-			dirPath: `${Config.serviceHelperTestDir}/${answers.upperFileName}.spec.ts`,
+			dirPath: `${Config.serviceHelperTestDir}/${answers.upperFileName}Helper.spec.ts`,
 			successMessage: 'Added new Micro Service Helper test.'
 		};
 
