@@ -1,8 +1,8 @@
 //#region Global Imports
-import { createConnection } from 'typeorm';
+import { createConnection, Connection } from 'typeorm';
 //#endregion Global Imports
 
-export const connectionInstance = async () =>
+export default async(): Promise<Connection> =>
 	await createConnection({
 		type: 'sqlite',
 		name: 'default',
