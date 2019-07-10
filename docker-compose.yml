@@ -25,3 +25,8 @@ services:
     env_file: docker-compose.env
     environment:
       SERVICES: planet
+
+  nats-server:
+    image: nats:latest
+    ports:
+      - "4222:4222"
