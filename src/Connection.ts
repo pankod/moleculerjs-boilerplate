@@ -7,6 +7,6 @@ export const connectionInstance = async () =>
 		type: 'sqlite',
 		name: 'default',
 		database: './db.sqlite',
-		entities: [__dirname + '/Entities/*.ts'],
+		entities: [__dirname + '/Entities/*'],
 		synchronize: true,
 	});

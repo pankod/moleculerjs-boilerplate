@@ -10,6 +10,7 @@
 			"jest",
 			"node"
 		],
+		"outDir": "dist",
 		"sourceMap": true,
 		"target": "es6",
 		"allowJs": true,

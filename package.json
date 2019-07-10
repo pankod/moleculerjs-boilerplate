@@ -7,7 +7,7 @@
     "watch": "tsc --watch",
     "dev": "ts-node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js --hot --repl --config moleculer.config.ts services/**/*.service.ts & npm run swagger-run",
     "cli": "moleculer connect  --config moleculer.config.ts services/**/*.service.ts",
-    "start": "node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js services",
+    "start": "TS_NODE_PROJECT=tsconfig.production.json node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js dist/services",
     "postinstall": "cd project-cli && npm i && npm run build",
     "run-cli": "node ./project-cli/dist/index.js",
     "g": "npm run run-cli",
