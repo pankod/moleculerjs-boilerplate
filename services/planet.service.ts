@@ -71,7 +71,7 @@ export class PlanetService extends BaseSchema {
 
 		const { damage, remainingShield } = await CalculateMeta.Damage(weapon, planet);
 
-		await PlanetRepository.UpdateShield(planetName, remainingShield);
+		await PlanetRepository.DecreaseShield(planetName, remainingShield);
 
 		let message;
 

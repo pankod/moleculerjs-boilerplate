@@ -8,7 +8,7 @@ import { getResource } from './Shared';
 //#endregion Local Imports
 
 //#region Interface Imports
-import { UpdateShieldOutDto } from '@Interfaces';
+import { DecreaseShieldOutDto } from '@Interfaces';
 //#endregion Interface Imports
 
 export namespace PlanetRepository {
@@ -16,10 +16,10 @@ export namespace PlanetRepository {
 		return await getResource(Planet, { name: planetName });
 	};
 
-	export const UpdateShield = async (
+	export const DecreaseShield = async (
 		planetName: string,
 		remainingShield: number,
-	): Promise<UpdateShieldOutDto> => {
+	): Promise<DecreaseShieldOutDto> => {
 		const planet = await getResource(Planet, { name: planetName });
 
 		planet.shield = remainingShield;
