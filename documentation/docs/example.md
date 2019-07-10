@@ -9,9 +9,9 @@ We've integrated microservice example to show how services connect together. The
 Running `npm run setup-db` will seed the database and create a planet and a weapon. Planet's name is `Alderaan`, weapon's name is `Death Star`.
 According to the story, Death Star will try to destroy Alderaan;
 
-- `Death Star`: A weapon to destroy planets.
+- **Death Star**: A weapon to destroy planets.
 
-- `Alderaan`: A planet far far away.
+- **Alderaan**: A planet far far away.
 
 TODO: Death Star is a planet destroyer weapon. It destroyed Alderaan.
 
@@ -19,13 +19,15 @@ TODO: Death Star is a planet destroyer weapon. It destroyed Alderaan.
 
 We have 2 services as seen below;
 
- - Attack service with `Fire Action` (`api/attack/Fire`)
+ - Attack service with **Fire Action** (**api/attack/Fire**)
 	
 	Death Star will use this service to attack another planet.
  
- - Planet service with `Defend Action` (`api/planet/Defend`)
+ - Planet service with **Defend Action** (**api/planet/Defend**)
 
 	Alderaan will use this service to defend itself.
+
+To get more information about **Actions**, visit [Moleculer Documentation](https://moleculer.services/docs/0.13/actions.html)
 
 ### Entities:
 
@@ -46,6 +48,8 @@ We have 2 services as seen below;
 }
 ```
 
+To get more information about `Entities`, visit [TypeOrm Documentation](https://typeorm.io/#/entities)
+
 ### Services
 
 Both services has a structure as seen below. We can make API request to these services;
@@ -53,6 +57,11 @@ Both services has a structure as seen below. We can make API request to these se
 Let's fire!
 
 #### Attack Service
+
+Attack service will get weapon and planet names as parameters. Then it will use this information to make request to Planet service to find out how much damage is done and how much shield planet has left. 
+You can see example of calling a service from another service below, in **Calling a service from another service** section.
+
+See example attack request;
 
 ```sh
 POST http://localhost:3000/api/attack/Fire
@@ -68,9 +77,14 @@ Response: {
 }
 ```
 
-Under the hood, Attack service will make request to Planet service to find out how much damage is done and how much shield planet has left.
+Then this service will decrease ammo of the given weapon and return messages about what damage is done and how much ammo left.
+You can see how we decrease the ammo of the weapon below, in **Repositories** section.
 
 #### Planet Service:
+
+Planet service will get weapon and planet name as parameters. Then, using **CalculateMeta** helper function, will calculate how much damage will be done.
+After getting the damage, service will decrease given planet's shield and return informing message about planet and how much damage is done.
+
 ```sh
 POST http://localhost:3000/api/planet/Defend
 
@@ -86,21 +100,31 @@ Response: {
 
 ```
 
+To get more information about `Moleculer Services`, please visit [Moleculer Documentation](https://moleculer.services/docs/0.13/services.html)
 
 ### Repositories
 
-In order to interact with the database, we are using `Repository` pattern. Every `Entity` has a corresponding `Repository`.
+In order to interact with the database, we are using **Repository** pattern. Every **Entity** has a corresponding **Repository**.
 
-For example, in order to fetch `Death Star Weapon` from the database, and make it ready to fire, we should do;
+For example, in order to fetch **Death Star Weapon** from the database, and make it ready to fire, we should;
 ```
 const deathStar = WeaponRepository.Get('Death Star')
 ```
 
-When `Death Star` fires, it loses 1 ammo. We should update the database properly by using repository.
+When a weapon fires, it loses 1 ammo. We should update the database properly by using repository.
 
 ```js
-const { remainingAmmo } = await WeaponRepository.DecreaseAmmo(weaponName);
+const { remainingAmmo } = await WeaponRepository.DecreaseAmmo('Death Star');
 ```
+
+If you want to update the shield of the planet;
+
+```ts
+const { remainingShield } = await PlanetRepository.UpdateShield('Alderaan', 5000);
+```
+
+
+To get more information about **Repository Pattern** please [visit here](https://deviq.com/repository-pattern/)
 
 ### Calling a service from another service
 
@@ -114,7 +138,7 @@ ctx.call("planet.Defend", params)
 ```
 
 As the codebase goes bigger, it becomes harder and harder to remember every single service name and their actions.
-To fix this, we introduced `Helpers` to call services. Every service has a helper;
+To fix this, we introduced **ServiceHelpers** to call services. Every service has a helper;
 ```
 export namespace AttackHelper {
 	const prefix: string = 'attack';
@@ -137,3 +161,7 @@ const { damage, planetMessage } = await PlanetHelper.Defend(ctx, { weaponName, p
 ```
 
 As you can see above, it's just invoking a function and getting variables back.
+
+### Meta
+
+These are simple helper functions.
