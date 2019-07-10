@@ -4,7 +4,7 @@ import { getManager, getConnection } from 'typeorm';
 
 //#region Local Imports
 import setupDatabase from '@Test/Config/SetupDatabase';
-import { AttackHelper } from '@Helper';
+import { AttackHelper } from '@ServiceHelpers';
 import { Weapon } from '@Entities';
 import { BrokerHelper } from '@Test/Utils';
 //#endregion Local Imports

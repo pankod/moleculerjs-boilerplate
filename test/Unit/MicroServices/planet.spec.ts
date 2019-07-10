@@ -4,7 +4,7 @@ import { getManager, getConnection } from 'typeorm';
 
 //#region Local Imports
 import setupDatabase from '@Test/Config/SetupDatabase';
-import { PlanetHelper } from '@Helper';
+import { PlanetHelper } from '@ServiceHelpers';
 import { Planet } from '@Entities/Planet';
 import { BrokerHelper } from '@Test/Utils';
 import { IPlanet } from '@Interfaces';
