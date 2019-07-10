@@ -57,9 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
-# next.js build output
-.next
-
 # history
 .history
 
@@ -69,5 +66,6 @@ db.sqlite
 # macos
 .DS_Store
 
-# project cli builds
+# builds
 /project-cli/dist
+dist/
