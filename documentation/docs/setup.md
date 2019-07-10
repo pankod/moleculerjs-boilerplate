@@ -31,18 +31,12 @@ npm run setup-db
  npm run dev
  ```
 
-You should run build when you change the code.
+This command will build and run services in the `services` directory. Also it will generate documentation and start swagger UI at port 3001.
+
+#### Running with Docker
 
 ```sh
-npm run build
-```
-or build automatically
-
-```
-npm run watch
+npm run dc:up
 ```
 
-
-
-
-
+This should start services independently at port 3000.
