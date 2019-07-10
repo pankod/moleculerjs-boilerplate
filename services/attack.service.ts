@@ -6,14 +6,19 @@ import { Action, BaseSchema, Method } from 'moleculer-decorators';
 //#region Local Imports
 import { WeaponRepository } from '@Repositories';
 import { PlanetHelper } from '@Helper';
+import { connectionInstance } from "../src/Connection"
+
 //#endregion Local Imports
 
 //#region Interface Imports
 import { IAttack } from '@Interfaces';
 //#endregion Interface Imports
 
-export class AttackService extends BaseSchema {
+export class AttackService {
 	public name: string = 'attack';
+	public started: Function = () => {
+		connectionInstance()
+	};
 
 	@Action({
 		params: {

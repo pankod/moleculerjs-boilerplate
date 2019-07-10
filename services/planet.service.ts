@@ -7,14 +7,18 @@ import { Action, BaseSchema, Method } from 'moleculer-decorators';
 import { PlanetRepository, WeaponRepository } from '@Repositories';
 import { CalculateMeta } from '@Meta';
 import { Planet, Weapon } from '@Entities';
+import { connectionInstance } from "../src/Connection"
 //#endregion Local Imports
 
 //#region Interface Imports
 import { IPlanet } from '@Interfaces';
 //#endregion Interface Imports
 
-export class PlanetService extends BaseSchema {
+export class PlanetService {
 	public name: string = 'planet';
+	public started: Function = () => {
+		connectionInstance()
+	};
 
 	@Action({
 		params: {
