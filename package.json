@@ -73,7 +73,7 @@
     "moduleNameMapper": {
       "^@(Test)(.*)$": "<rootDir>/test/$2",
       "@Entities/Connection": "<rootDir>/test/Config/Connection",
-      "^@MicroServices": "<rootDir>/services/index.ts",
+      "@MicroServices": "<rootDir>/services/index.ts",
       "^@([A-Z].*)$": "<rootDir>/src/$1"
     },
     "transform": {
