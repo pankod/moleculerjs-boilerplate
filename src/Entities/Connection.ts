@@ -7,6 +7,6 @@ export default async(): Promise<Connection> =>
 		type: 'sqlite',
 		name: 'default',
 		database: './db.sqlite',
-		entities: [__dirname + '/Entities/*'],
+		entities: [__dirname + '/*'],
 		synchronize: true,
 	});
