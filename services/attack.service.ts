@@ -14,7 +14,7 @@ import { connectionInstance } from "../src/Connection"
 import { IAttack } from '@Interfaces';
 //#endregion Interface Imports
 
-export class AttackService {
+export class AttackService extends BaseSchema {
 	public name: string = 'attack';
 	public started: Function = () => {
 		connectionInstance()

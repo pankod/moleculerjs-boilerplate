@@ -14,7 +14,7 @@ import { connectionInstance } from "../src/Connection"
 import { IPlanet } from '@Interfaces';
 //#endregion Interface Imports
 
-export class PlanetService {
+export class PlanetService extends BaseSchema {
 	public name: string = 'planet';
 	public started: Function = () => {
 		connectionInstance()
