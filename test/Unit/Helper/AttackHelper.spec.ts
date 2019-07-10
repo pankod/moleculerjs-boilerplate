@@ -1,5 +1,5 @@
 //#region Local Imports
-import { AttackHelper } from '@Helper';
+import { AttackHelper } from '@ServiceHelpers';
 import { DummyContext } from '@Test/Utils';
 //#endregion Local Imports
 

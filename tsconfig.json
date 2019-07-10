@@ -33,11 +33,11 @@
 			"@Repositories": [
 				"src/Repositories"
 			],
-			"@Helper/*": [
-				"src/Helper/*"
+			"@ServiceHelpers/*": [
+				"src/ServiceHelpers/*"
 			],
-			"@Helper": [
-				"src/Helper"
+			"@ServiceHelpers": [
+				"src/ServiceHelpers"
 			],
 			"@Meta/*": [
 				"src/Meta/*"

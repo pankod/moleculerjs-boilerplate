@@ -5,7 +5,7 @@ import { Action, BaseSchema, Method } from 'moleculer-decorators';
 
 //#region Local Imports
 import { WeaponRepository } from '@Repositories';
-import { PlanetHelper } from '@Helper';
+import { PlanetHelper } from '@ServiceHelpers';
 import { connectionInstance } from "../src/Connection"
 
 //#endregion Local Imports

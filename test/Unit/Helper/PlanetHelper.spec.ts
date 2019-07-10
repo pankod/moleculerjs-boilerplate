@@ -1,5 +1,5 @@
 //#region Local Imports
-import { PlanetHelper } from '@Helper';
+import { PlanetHelper } from '@ServiceHelpers';
 import { DummyContext } from '@Test/Utils';
 //#region Local Imports
 
