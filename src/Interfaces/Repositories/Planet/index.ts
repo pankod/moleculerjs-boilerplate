@@ -1,1 +1,1 @@
-export { UpdateShieldOutDto } from './UpdateShieldOutDto';
+export { DecreaseShieldOutDto } from './DecreaseShieldOutDto';
