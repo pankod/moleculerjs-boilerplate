@@ -11,7 +11,7 @@
 		"Features": [
 			"styling",
 			"routing",
-			"unit-test",
+			"testing",
 			"reverse-proxy",
 			"dotenv-usage"
 		],
