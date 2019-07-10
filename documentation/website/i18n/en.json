@@ -17,14 +17,6 @@
         "title": "Deployment",
         "sidebar_label": "Deployment"
       },
-      "dotenv-usage": {
-        "title": "Enviroment Variables(.env)",
-        "sidebar_label": "Enviroment Variables"
-      },
-      "dotenv": {
-        "title": "Environment Variables",
-        "sidebar_label": "Overview"
-      },
       "example-app": {
         "title": "Example App",
         "sidebar_label": "Example App"
@@ -36,24 +28,12 @@
         "title": "Getting Started",
         "sidebar_label": "Getting Started"
       },
-      "reverse-proxy": {
-        "title": "Reverse Proxy",
-        "sidebar_label": "Reverse Proxy"
-      },
-      "routing": {
-        "title": "Routing",
-        "sidebar_label": "Routing"
-      },
       "setup": {
         "title": "Setup"
       },
       "structure": {
         "title": "Structure",
         "sidebar_label": "Structure"
-      },
-      "styling": {
-        "title": "Styling",
-        "sidebar_label": "Styling"
       },
       "testing": {
         "title": "Testing",

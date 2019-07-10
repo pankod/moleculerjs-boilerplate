@@ -9,11 +9,7 @@
 			"deployment"
 		],
 		"Features": [
-			"styling",
-			"routing",
-			"testing",
-			"reverse-proxy",
-			"dotenv-usage"
+			"testing"
 		],
 		"Project CLI": [
 			"cli-overview",
