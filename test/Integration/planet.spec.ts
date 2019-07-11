@@ -29,7 +29,7 @@ beforeAll(() => {
 afterAll(() => broker.stop());
 
 describe('Test Planet service requests', () => {
-	it('Test POST request on planet service Defend method', () => {
+	it('Test POST request on planet service Defend method', async () => {
 		const params = {
 			planetName: 'Alderaan',
 			weaponName: 'Death Star',
