@@ -8,42 +8,41 @@ import setupDatabase from '@Test/Config/SetupDatabase';
 import { BrokerHelper } from '@Test/Utils';
 //#endregion Local Imports
 
-const request = require("supertest");
+const request = require('supertest');
 const broker = BrokerHelper.setupBroker();
 let server;
 
 beforeEach(async () => {
-    await setupDatabase();
+	await setupDatabase();
 });
 
 afterEach(async () => {
-    await getConnection().close();
+	await getConnection().close();
 });
 
 beforeAll(() => {
-    const service = broker.createService(ApiGateway);
-    server = service.server;
-    return broker.start();
+	const service = broker.createService(ApiGateway);
+	server = service.server;
+	return broker.start();
 });
 
 afterAll(() => broker.stop());
 
-describe("Test Attack service requests", () => {
-    it("Test POST request on attack service Fire method", () => {
+describe('Test Attack service requests', () => {
+	it('Test POST request on attack service Fire method', () => {
+		const params = {
+			planetName: 'Alderaan',
+			weaponName: 'Death Star',
+		};
 
-        const params = {
-            planetName: 'Alderaan',
-            weaponName: 'Death Star'
-        }
-
-        return request(server)
-            .post("/attack/Fire")
-            .query({ ...params })
-            .then(res => {
-                expect(res.statusCode).toBe(200);
-                expect(res.headers["content-type"]).toBe("application/json; charset=utf-8");
-                expect(res.body.planetMessage).toContain('Planet took');
-                expect(res.body.weaponMessage).toContain('Death Star did');
-            });
-    });
+		return request(server)
+			.post('/attack/Fire')
+			.query({ ...params })
+			.then(res => {
+				expect(res.statusCode).toBe(200);
+				expect(res.headers['content-type']).toBe('application/json; charset=utf-8');
+				expect(res.body.planetMessage).toContain('Planet took');
+				expect(res.body.weaponMessage).toContain('Death Star did');
+			});
+	});
 });

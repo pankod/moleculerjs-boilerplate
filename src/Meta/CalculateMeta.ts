@@ -18,4 +18,3 @@ export namespace CalculateMeta {
 		return { damage, remainingShield };
 	};
 }
-

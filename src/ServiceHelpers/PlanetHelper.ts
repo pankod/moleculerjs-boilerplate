@@ -9,6 +9,8 @@ import { IPlanet } from '@Interfaces';
 export namespace PlanetHelper {
 	const prefix: string = 'planet';
 
-	export const Defend = async (ctx: Context, params: IPlanet.DefendInDto): Promise<IPlanet.DefendOutDto> =>
-		await ctx.call(`${prefix}.Defend`, params);
+	export const Defend = async (
+		ctx: Context,
+		params: IPlanet.DefendInDto,
+	): Promise<IPlanet.DefendOutDto> => await ctx.call(`${prefix}.Defend`, params);
 }

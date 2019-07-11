@@ -43,7 +43,10 @@ describe('Planet Repository Methods', () => {
 
 		const expectedShield = 1000;
 
-		const { remainingShield } = await PlanetRepository.DecreaseShield(planetName, expectedShield);
+		const { remainingShield } = await PlanetRepository.DecreaseShield(
+			planetName,
+			expectedShield,
+		);
 
 		expect(remainingShield).toEqual(expectedShield);
 	});

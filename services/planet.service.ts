@@ -7,7 +7,7 @@ import { Action, BaseSchema, Method } from 'moleculer-decorators';
 import { PlanetRepository, WeaponRepository } from '@Repositories';
 import { CalculateMeta } from '@Meta';
 import { Planet, Weapon } from '@Entities';
-import connectionInstance from "@Entities/Connection"
+import connectionInstance from '@Entities/Connection';
 //#endregion Local Imports
 
 //#region Interface Imports
@@ -17,7 +17,7 @@ import { IPlanet } from '@Interfaces';
 export class PlanetService extends BaseSchema {
 	public name: string = 'planet';
 	public started: Function = () => {
-		connectionInstance()
+		connectionInstance();
 	};
 
 	@Action({
@@ -34,35 +34,35 @@ export class PlanetService extends BaseSchema {
 
 	@Method
 	/**
-	* @swagger
-	*
-	*  /planet/Defend:
-	*    post:
-	*      description: Attacks to the planet with given weapon.
-	*      produces:
-	*        - application/json
-	*      consumes:
-	*        - application/json
-	*      parameters:
-	*        - in: body
-	*          name: params
-	*          schema:
-	*            type: object
-	*            required:
-	*              - weaponName
-	*              - planetName
-	*            properties:
-	*              weaponName:
-	*                type: string
-	*                default: Death Star
-	*              planetName:
-	*                type: string
-	*      responses:
-	*        200:
-	*          description: Example attack result
-	*        422:
-	*          description: Missing parameters
-	*/
+	 * @swagger
+	 *
+	 *  /planet/Defend:
+	 *    post:
+	 *      description: Attacks to the planet with given weapon.
+	 *      produces:
+	 *        - application/json
+	 *      consumes:
+	 *        - application/json
+	 *      parameters:
+	 *        - in: body
+	 *          name: params
+	 *          schema:
+	 *            type: object
+	 *            required:
+	 *              - weaponName
+	 *              - planetName
+	 *            properties:
+	 *              weaponName:
+	 *                type: string
+	 *                default: Death Star
+	 *              planetName:
+	 *                type: string
+	 *      responses:
+	 *        200:
+	 *          description: Example attack result
+	 *        422:
+	 *          description: Missing parameters
+	 */
 	public async DefendMethod(ctx: Context<IPlanet.DefendInDto>): Promise<IPlanet.DefendOutDto> {
 		const { planetName, weaponName } = ctx.params;
 
