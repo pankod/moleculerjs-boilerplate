@@ -11,7 +11,10 @@
 			"deployment"
 		],
 		"Features": [
-			"testing"
+			"testing",
+			"swagger",
+			"eslint",
+			"typeorm"
 		],
 		"Project CLI": [
 			"cli-overview",

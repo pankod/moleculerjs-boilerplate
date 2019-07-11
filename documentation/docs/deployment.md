@@ -69,7 +69,6 @@ services:
     image: nats:latest
     ports:
       - "4222:4222"
-
 ```
 
 Refer to moleculer deployment documentation;

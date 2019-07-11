@@ -3,6 +3,12 @@ id: example-app
 title: Example App
 sidebar_label: Example App
 ---
+<br>
+<img src="assets/alderaan.png" align="center" />
+
+>>>*"The defense systems on Alderaan, despite the Senator's protestations to the contrary, were as strong as any in the Empire. I should conclude that our demonstration was as impressive as it was thorough."*
+―Darth Vader
+
 
 We've integrated microservice example to show how services connect together. The aim of this example is to demonstrate how two different services communicate with each other.
 
