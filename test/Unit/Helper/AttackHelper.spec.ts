@@ -15,7 +15,7 @@ describe('Weapon helper service helper constructor', () => {
 
 describe('Weapon service helpers', () => {
 	it('should trigger Fire method', async () => {
-		const params: IAttack.AttackInDto = {
+		const params: IAttack.FireInDto = {
 			weaponName: 'Death Star',
 			planetName: 'Alderaan',
 		};
