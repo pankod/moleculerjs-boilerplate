@@ -20,21 +20,21 @@ const users = [
 	},
 ];
 
-const organizationName = "pankod";
-const projectName = "moleculerjs-boilerplate";
-const packageName = "moleculerjs-boilerplate";
+const organizationName = 'pankod';
+const projectName = 'moleculerjs-boilerplate';
+const packageName = 'moleculerjs-boilerplate';
 const url = [
-
 	{
-		title: "Twitter",
-		url: "https://twitter.com/PankodDev"
-	}
-]
+		title: 'Twitter',
+		url: 'https://twitter.com/PankodDev',
+	},
+];
 
 const siteConfig = {
 	title: 'Pankod', // Title for your website.
-	headerTitle:'moleculerjs-boilerplate',
-	tagline: 'Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Clients, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects.',
+	headerTitle: 'moleculerjs-boilerplate',
+	tagline:
+		'Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Helpers, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects.',
 	url: 'https://pankod.github.io', // Your website URL
 	baseUrl: '/moleculerjs-boilerplate/', // Base URL for your project */
 	// For github.io type URLs, you would set the url and baseUrl like:
@@ -54,10 +54,10 @@ const siteConfig = {
 	// For no header links in the top nav bar -> headerLinks: [],
 	headerLinks: [
 		{ doc: 'getting-started', label: 'Docs' },
-/* 		{ page: 'users', label: 'Help' }, */
+		/* 		{ page: 'users', label: 'Help' }, */
 		{ href: 'https://github.com/pankod/' + packageName, label: 'Github' },
 		{ search: true },
-		{ languages: true }
+		{ languages: true },
 	],
 
 	// If you have users set above, you add it here:
@@ -93,7 +93,7 @@ const siteConfig = {
 
 	highlight: {
 		// Highlight.js theme to use for syntax highlighting in code blocks.
-		theme: 'tomorrow-night'
+		theme: 'tomorrow-night',
 	},
 
 	// Add custom scripts here that would be placed in <script> tags.
@@ -106,15 +106,15 @@ const siteConfig = {
 
 	// Open Graph and Twitter card images.
 	// Google Analytics id
-	gaTrackingId: "UA-141791772-1",
+	gaTrackingId: 'UA-141791772-1',
 
 	// Facebook settings
-	facebookAppId: "",
-	facebookPixelId: "",
+	facebookAppId: '',
+	facebookPixelId: '',
 	facebookComments: false,
 
 	// Twitter settings
-	twitter: "",
+	twitter: '',
 	ogImage: 'img/undraw_online.svg',
 	twitterImage: 'img/undraw_tweetstorm.svg',
 
@@ -126,10 +126,10 @@ const siteConfig = {
 
 	// You may provide arbitrary config keys to be used as needed by your
 	// template. For example, if you need your repo's URL...
-	repoUrl: "https://github.com/pankod/" + packageName,
+	repoUrl: 'https://github.com/pankod/' + packageName,
 
 	// Custom css
-	separateCss: []
+	separateCss: [],
 };
 
 module.exports = siteConfig;
