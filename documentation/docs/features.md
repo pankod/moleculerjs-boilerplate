@@ -14,5 +14,6 @@ moleculerjs-boilerplate project provides a lot of features out of the box. Below
 * **Swagger** - A framework backed by a large ecosystem of tools that helps developers design, build, document, and consume RESTful Web services.
 * **Jest** - Javascript testing framework , created by developers who created react
 * **TypeORM** - TypeORM is specifically an ORM that converts data between JavaScript / TypeScript to a variety of databases.
-* **Service Clients** - Her servisin nasıl kullanılacağına dair protocal yayınlar.
+* **Service Helpers** - Better way to consume services.
+* **Seeder** - Easy to integrate, well structured seeder for tests.
 

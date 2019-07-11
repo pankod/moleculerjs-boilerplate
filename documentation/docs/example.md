@@ -59,7 +59,7 @@ Let's fire!
 ### Attack Service
 
 Attack service will get weapon and planet names as parameters. Then it will use this information to make request to Planet service to find out how much damage is done and how much shield planet has left. 
-You can see example of calling a service from another service below, in **Calling a service from another service** section.
+You can see example of calling a service from another service below, in **Communication between services** section.
 
 See example attack request;
 
@@ -126,7 +126,7 @@ const { remainingShield } = await PlanetRepository.UpdateShield('Alderaan', 5000
 
 To get more information about **Repository Pattern** please [visit here](https://deviq.com/repository-pattern/)
 
-## Calling a service from another service
+## Communication between services
 
 In MoleculerJS we are calling other services with a simple string parameter where service name and method separated by dot.
 This is not useful. Since we don't have autocomplete, we need to remember every service and action name to call them.

@@ -30,8 +30,10 @@ To stop;
 ```js
 npm run dc:down
 ```
-
+<br>
 > We are using `NATS` for communication between microservices in Docker deployment.
+
+<br>
 
 *docker-compose.yaml*
 ```
@@ -70,4 +72,6 @@ services:
 
 ```
 
-Refer to moleculer deployment documentation; https://moleculer.services/docs/0.13/deploying.html
+Refer to moleculer deployment documentation;
+
+ https://moleculer.services/docs/0.13/deploying.html
