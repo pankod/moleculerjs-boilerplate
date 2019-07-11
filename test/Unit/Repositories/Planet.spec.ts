@@ -34,7 +34,7 @@ describe('Planet Repository Methods', () => {
 		it('should raise error', async () => {
 			const planetName = 'I dont exist';
 
-			expect(() => PlanetRepository.Get(planetName)).toThrowError;
+			expect(async () => PlanetRepository.Get(planetName)).toThrowError;
 		});
 	});
 
