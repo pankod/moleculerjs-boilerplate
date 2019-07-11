@@ -60,15 +60,14 @@ class HomeSplash extends React.Component {
 
 				</div>
 				<div className="top-badges">
-					<a href="https://codeclimate.com/github/pankod/next-boilerplate/maintainability">
+					<a href="https://codeclimate.com/github/pankod/moleculerjs-boilerplate/maintainability">
 						<img src="https://api.codeclimate.com/v1/badges/077c02d5cb9ec7d8a654/maintainability" />
 					</a>
-
-					<a href="https://codecov.io/gh/pankod/next-boilerplate">
-						<img src="https://codecov.io/gh/pankod/next-boilerplate/branch/master/graph/badge.svg" />
+					<a href="https://codeclimate.com/github/pankod/moleculerjs-boilerplate/test_coverage">
+						<img src="https://api.codeclimate.com/v1/badges/077c02d5cb9ec7d8a654/test_coverage" />
 					</a>
-					<a href="https://travis-ci.org/pankod/next-boilerplate">
-						<img src="https://travis-ci.org/pankod/next-boilerplate.svg?branch=master" alt="Build Status" />
+					<a href="https://travis-ci.org/pankod/moleculerjs-boilerplate">
+						<img src="https://travis-ci.org/pankod/moleculerjs-boilerplate.svg?branch=master" alt="Build Status" />
 					</a>
 					<a href="https://david-dm.org/pankod/moleculerjs-boilerplate">
 						<img src="https://david-dm.org/pankod/moleculerjs-boilerplate.svg" alt="Dependency Status" />
@@ -77,9 +76,6 @@ class HomeSplash extends React.Component {
 						<img src="https://david-dm.org/pankod/moleculerjs-boilerplate/dev-status.svg" alt="devDependency Status" />
 					</a>
 				</div>
-				{/* 	<PromoSection>
-					<Button href={docUrl('getting-start.html')}>GET STARTED</Button>
-				</PromoSection> */}
 			</SplashContainer>
 		);
 	}
@@ -154,72 +150,72 @@ class Index extends React.Component {
 
 		const Features = () => (
 			<React.Fragment>
-			<Block layout="fourColumn" align='center'>
-				{[
-					{
-						content: 'Progressive microservices framework for Node.js.',
-						image: `${baseUrl}img/moleculer-logo2.png`,
-						imageAlign: 'top',
-						title: 'Moleculer',
-					},
-					{
-						content: 'Superset of JavaScript which primarily provides optional static typing, classes and interfaces.',
-						image: `${baseUrl}img/typescript-logo.png`,
-						imageAlign: 'top',
-						title: 'TypeScript',
-					},
-					{
-						content: 'TypeORM is specifically an ORM that converts data between JavaScript / TypeScript to a variety of databases',
-						image: `${baseUrl}img/typeorm.png`,
-						imageAlign: 'top',
-						title: 'TypeORM',
-						className:'orm'
-					},
-					{
-						content: 'Create services, models and interfaces with one command by using built-in cli.',
-						image: `${baseUrl}img/cli-logo.png`,
-						imageAlign: 'top',
-						title: 'Project CLI',
-					}
-			
-		
+				<Block layout="fourColumn" align='center'>
+					{[
+						{
+							content: 'Progressive microservices framework for Node.js.',
+							image: `${baseUrl}img/moleculer-logo2.png`,
+							imageAlign: 'top',
+							title: 'Moleculer',
+						},
+						{
+							content: 'Superset of JavaScript which primarily provides optional static typing, classes and interfaces.',
+							image: `${baseUrl}img/typescript-logo.png`,
+							imageAlign: 'top',
+							title: 'TypeScript',
+						},
+						{
+							content: 'TypeORM is specifically an ORM that converts data between JavaScript / TypeScript to a variety of databases',
+							image: `${baseUrl}img/typeorm.png`,
+							imageAlign: 'top',
+							title: 'TypeORM',
+							className: 'orm'
+						},
+						{
+							content: 'Create services, models and interfaces with one command by using built-in cli.',
+							image: `${baseUrl}img/cli-logo.png`,
+							imageAlign: 'top',
+							title: 'Project CLI',
+						}
 
-				]}
-			</Block>
 
-			<Block layout="fourColumn" align='center'>
-				{[
-					
-					{
-						content: 'Jest is a testing tool from Facebook that makes it easy to perform unit testing in JavaScript.',
-						image: `${baseUrl}img/jest-logo.png`,
-						imageAlign: 'top',
-						title: 'Jest',
-					},
-					{
-						content: 'Create, deploy, and run applications by using docker containers.',
-						image: `${baseUrl}img/docker2.png`,
-						imageAlign: 'top',
-						title: 'Docker',
-					},
-					{
-						content: 'Tools that helps developers design, build, document, and consume RESTful Web services.',
-						image: `${baseUrl}img/swagger.png`,
-						imageAlign: 'top',
-						title: 'Swagger',
-					},
-					{
-						content: 'Linter for the JavaScript programming language.',
-						image: `${baseUrl}img/eslint-logo.png`,
-						imageAlign: 'top',
-						title: 'Eslint',
-					}
-				]}
-			</Block>
+
+					]}
+				</Block>
+
+				<Block layout="fourColumn" align='center'>
+					{[
+
+						{
+							content: 'Jest is a testing tool from Facebook that makes it easy to perform unit testing in JavaScript.',
+							image: `${baseUrl}img/jest-logo.png`,
+							imageAlign: 'top',
+							title: 'Jest',
+						},
+						{
+							content: 'Create, deploy, and run applications by using docker containers.',
+							image: `${baseUrl}img/docker2.png`,
+							imageAlign: 'top',
+							title: 'Docker',
+						},
+						{
+							content: 'Tools that helps developers design, build, document, and consume RESTful Web services.',
+							image: `${baseUrl}img/swagger.png`,
+							imageAlign: 'top',
+							title: 'Swagger',
+						},
+						{
+							content: 'Linter for the JavaScript programming language.',
+							image: `${baseUrl}img/eslint-logo.png`,
+							imageAlign: 'top',
+							title: 'Eslint',
+						}
+					]}
+				</Block>
 			</React.Fragment>
 		);
 
-	
+
 
 		return (
 			<div>
