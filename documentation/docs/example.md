@@ -15,7 +15,7 @@ According to the story, Death Star will try to destroy Alderaan;
 
 TODO: Death Star is a planet destroyer weapon. It destroyed Alderaan.
 
-### Overview
+## Overview
 
 We have 2 services as seen below;
 
@@ -29,9 +29,9 @@ We have 2 services as seen below;
 
 To get more information about **Actions**, visit [Moleculer Documentation](https://moleculer.services/docs/0.13/actions.html)
 
-### Entities:
+## Entities:
 
-#### Planet
+### Planet
 ```js
 {
 	name: 'Alderaan',
@@ -39,7 +39,7 @@ To get more information about **Actions**, visit [Moleculer Documentation](https
 }
 ```
 
-#### Weapon
+### Weapon
 ```js
 {
 	name: 'Death Star',
@@ -50,13 +50,13 @@ To get more information about **Actions**, visit [Moleculer Documentation](https
 
 To get more information about `Entities`, visit [TypeOrm Documentation](https://typeorm.io/#/entities)
 
-### Services
+## Services
 
 Both services has a structure as seen below. We can make API request to these services;
 
 Let's fire!
 
-#### Attack Service
+### Attack Service
 
 Attack service will get weapon and planet names as parameters. Then it will use this information to make request to Planet service to find out how much damage is done and how much shield planet has left. 
 You can see example of calling a service from another service below, in **Calling a service from another service** section.
@@ -80,7 +80,7 @@ Response: {
 Then this service will decrease ammo of the given weapon and return messages about what damage is done and how much ammo left.
 You can see how we decrease the ammo of the weapon below, in **Repositories** section.
 
-#### Planet Service:
+### Planet Service:
 
 Planet service will get weapon and planet name as parameters. Then, using **CalculateMeta** helper function, will calculate how much damage will be done.
 After getting the damage, service will decrease given planet's shield and return informing message about planet and how much damage is done.
@@ -102,7 +102,7 @@ Response: {
 
 To get more information about `Moleculer Services`, please visit [Moleculer Documentation](https://moleculer.services/docs/0.13/services.html)
 
-### Repositories
+## Repositories
 
 In order to interact with the database, we are using **Repository** pattern. Every **Entity** has a corresponding **Repository**.
 
@@ -126,7 +126,7 @@ const { remainingShield } = await PlanetRepository.UpdateShield('Alderaan', 5000
 
 To get more information about **Repository Pattern** please [visit here](https://deviq.com/repository-pattern/)
 
-### Calling a service from another service
+## Calling a service from another service
 
 In MoleculerJS we are calling other services with a simple string parameter where service name and method separated by dot.
 This is not useful. Since we don't have autocomplete, we need to remember every service and action name to call them.
@@ -162,6 +162,6 @@ const { damage, planetMessage } = await PlanetHelper.Defend(ctx, { weaponName, p
 
 As you can see above, it's just invoking a function and getting variables back.
 
-### Meta
+## Meta
 
 These are simple helper functions.

@@ -46,6 +46,7 @@
     },
     "categories": {
       "Introduction": "Introduction",
+      "Overview": "Overview",
       "Features": "Features",
       "Project CLI": "Project CLI"
     }

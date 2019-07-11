@@ -6,52 +6,68 @@ sidebar_label: Deployment
 
 ## Build
 
-Builds the app for production to the build folder.
-```
+Builds the app for production into the dist folder.
+```sh
 npm run build
 ```
 
-``` 
+Once you built the app, you can run microservices with;
+
+```sh
 npm run start
 ```
 
-
-
-
-
 ## Docker
 
-You should create a docker image from Dockerfile.
+If you want to run the app with Docker, we already included `docker-compose.yaml`, `docker-compose.env` files and scripts to start and stop Docker deployment.
+
+To start;
+```js
+npm run dc:up
+```
+
+To stop;
+```js
+npm run dc:down
+```
+
+> We are using `NATS` for communication between microservices in Docker deployment.
+
+*docker-compose.yaml*
+```
+version: "3.0"
+
+services:
+
+  api:
+    build: .
+    image: api
+    env_file: docker-compose.env
+    environment:
+      SERVICES: api
+      PORT: 3000
+    ports:
+      - "3000:3000"
+
+  attack:
+    build: .
+    image: attack
+    env_file: docker-compose.env
+    environment:
+      SERVICES: attack
+
+  planet:
+    build: .
+    image: planet
+    env_file: docker-compose.env
+    environment:
+      SERVICES: planet
+
+  nats-server:
+    image: nats:latest
+    ports:
+      - "4222:4222"
 
 ```
-docker build .
-```
 
-To start a container from image run the following command:
-
-
-``` 
-docker run -p 3000:3000 <image_id> 
-```
-This runs the container and mapping port 3000 to port host port 3000
-
-The app will be run on docker container at localhost:3000
-
-
-Dockerfile already included to project.
-
-```
-FROM node:alpine
-
-RUN mkdir -p /opt/app
-WORKDIR /app
-
-ENV NODE_ENV production
-
-WORKDIR /opt/app
-COPY . /opt/app
-
-RUN npm install --dev && npm run build
-
-CMD [ "npm", "start" ]
-```
+Refer to moleculer deployment documentation; https://moleculer.services/docs/0.13/deploying.html

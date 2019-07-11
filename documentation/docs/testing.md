@@ -6,7 +6,29 @@ sidebar_label: Testing
 
 This boilerplate uses [Jest](https://jestjs.io/docs/en/getting-started) for Unit Testing and [SuperTest](https://github.com/visionmedia/supertest) for integration tests.
 
-## Testing Service Helpers
+## Seeder
+We have included seeder to the project. Also we have a helper called `setupDatabase`, you can include this to `beforeEach` block of your tests.
+This helper will reset database and seed the database.
+
+Ideally, we are adding this setupDatabase helper to the `beforeEach` block. This will make sure that we run tests against freshly seeded database.
+
+```ts
+const setupDatabase = async (): Promise<void> => {
+	await CreateConnection();
+
+	await Seeder.seed();
+};
+```
+
+```ts
+beforeEach(async () => {
+	await setupDatabase();
+});
+```
+
+
+## Examples
+### Testing Service Helpers
 
 ```js
 	describe('Weapon service helpers', () => {
@@ -23,7 +45,7 @@ This boilerplate uses [Jest](https://jestjs.io/docs/en/getting-started) for Unit
 	});
 ```
 
-## Testing Metas
+### Testing Metas
 
 ```js
 	it('should calculate remaining shield', async () => {
@@ -38,7 +60,7 @@ This boilerplate uses [Jest](https://jestjs.io/docs/en/getting-started) for Unit
 	});
 ```
 
-## Testing Service Methods
+### Testing Service Methods
 
 ```typescript
 	const broker = BrokerHelper.setupBroker();
@@ -85,7 +107,7 @@ This boilerplate uses [Jest](https://jestjs.io/docs/en/getting-started) for Unit
 	});
 ```
 
-## Testing Repositories
+### Testing Repositories
 
 ```typescript
 	describe('Planet Repository Methods', () => {
@@ -125,7 +147,7 @@ This boilerplate uses [Jest](https://jestjs.io/docs/en/getting-started) for Unit
 	});
 ```
 
-## Integration Tests For Services
+### Integration Tests For Services
 
 ```typescript
 	const request = require("supertest");

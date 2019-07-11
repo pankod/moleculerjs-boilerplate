@@ -2,7 +2,9 @@
 	"docs": {
 		"Introduction": [
 			"getting-started",
-			"features",
+			"features"
+		],
+		"Overview": [
 			"setup",
 			"example-app",
 			"structure",
