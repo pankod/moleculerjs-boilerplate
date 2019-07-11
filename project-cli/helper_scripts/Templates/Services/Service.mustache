@@ -6,6 +6,7 @@ import { Action, BaseSchema, Method } from 'moleculer-decorators';
 //#region Local Imports
 import { } from '@Helper';
 import { } from '@Repositories';
+{{#hasDatabase}}import connectionInstance from "@Entities/Connection"{{/hasDatabase}}
 //#endregion Local Imports
 
 //#region Interface Imports
@@ -15,6 +16,11 @@ import { } from '@Interfaces';
 export class {{upperFileName}}Service extends BaseSchema {
 
 	public name: string = '{{fileName}}';
+{{#hasDatabase}}
+	public started: Function = () => {
+		connectionInstance()
+	};
+{{/hasDatabase}}
 
 {{#isPrivate}}
 	/**

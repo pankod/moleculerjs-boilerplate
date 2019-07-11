@@ -261,7 +261,8 @@ export const Helper = {
 		const templateProps = {
 			fileName: answers.fileName,
 			upperFileName: answers.upperFileName,
-			isPrivate: answers.isPrivate
+			isPrivate: answers.isPrivate,
+			hasDatabase: answers.hasDatabase
 		};
 
 		const indexTemplate = './helper_scripts/Templates/Services/index.mustache';
