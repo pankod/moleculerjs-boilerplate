@@ -11,7 +11,7 @@ export declare module DefinitionsModel {
 		fileName: string;
 		upperFileName: string;
 		isPrivate?: boolean;
-
+		hasDatabase?: boolean;
 	}
 
 	export interface IAddIndex {
