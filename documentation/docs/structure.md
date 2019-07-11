@@ -19,12 +19,9 @@ After the setup is complete, your app should have the following directory struct
 │   └── planet.service.ts
 ├── src
 │   ├── Entities
+│   │   ├── Connection.ts
 │   │   ├── Planet.ts
 │   │   ├── Weapon.ts
-│   │   └── index.ts
-│   ├── Helper
-│   │   ├── AttackHelper.ts
-│   │   ├── PlanetHelper.ts
 │   │   └── index.ts
 │   ├── Interfaces
 │   │   ├── Meta
@@ -32,7 +29,7 @@ After the setup is complete, your app should have the following directory struct
 │   │   │   └── index.ts
 │   │   ├── Repositories
 │   │   │   ├── Planet
-│   │   │   │   ├── UpdateShieldOutDto.d.ts
+│   │   │   │   ├── DecreaseShieldOutDto.d.ts
 │   │   │   │   └── index.ts
 │   │   │   └── Weapon
 │   │   │       ├── DecreaseAmmoOutDto.d.ts
@@ -54,13 +51,18 @@ After the setup is complete, your app should have the following directory struct
 │   │   ├── Shared.ts
 │   │   ├── Weapon.ts
 │   │   └── index.ts
-│   └── Connection.ts
+│   └── ServiceHelpers
+│       ├── AttackHelper.ts
+│       ├── PlanetHelper.ts
+│       └── index.ts
 ├── swagger
+│   ├── config.js
+│   ├── index.js
 │   ├── package.json
 │   └── swagger.json
 ├── test
 │   ├── Config
-│   │   ├── CreateConnection.ts
+│   │   ├── Connection.ts
 │   │   ├── SetupDatabase.ts
 │   │   └── mock.setup.ts
 │   ├── Integration
@@ -102,6 +104,6 @@ After the setup is complete, your app should have the following directory struct
 ├── package.json
 ├── swaggerConfig.json
 ├── tsconfig.json
+├── tsconfig.production.json
 └── tsoa.json
-
 ```
