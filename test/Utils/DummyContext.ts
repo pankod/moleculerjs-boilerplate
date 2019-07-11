@@ -15,6 +15,7 @@ export namespace DummyContext {
 
 	export const getCall = (data: object = {}) => {
 		const ctx = Context.create(broker, endpoint, data);
+		// eslint-disable-next-line
 		ctx.call = jest.fn(async () => (broker.Promise as any).resolve({}));
 
 		return ctx;
