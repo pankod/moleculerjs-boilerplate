@@ -1,7 +1,7 @@
 <img src="moleculerjs-cover.png" alt="Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Clients, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects." align="center" />
 
 <br/>
-<div align="center" >Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Clients, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects..
+<div align="center" >Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Helpers, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects..
 </div>
 <br/>
 
