@@ -3,7 +3,7 @@ import { createConnection, Connection } from 'typeorm';
 //#region Global Imports
 
 export default async (): Promise<Connection> =>
-	createConnection({
+	await createConnection({
 		type: 'sqlite',
 		name: 'default',
 		database: ':memory:',

@@ -7,7 +7,7 @@ import { Action, BaseSchema, Method } from 'moleculer-decorators';
 import { PlanetRepository, WeaponRepository } from '@Repositories';
 import { CalculateMeta } from '@Meta';
 import { Planet, Weapon } from '@Entities';
-import { connectionInstance } from "../src/Connection"
+import connectionInstance from "@Entities/Connection"
 //#endregion Local Imports
 
 //#region Interface Imports

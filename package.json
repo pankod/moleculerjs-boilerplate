@@ -12,7 +12,6 @@
     "run-cli": "node ./project-cli/dist/index.js",
     "g": "npm run run-cli",
     "generate": "npm run run-cli",
-    "ci": "jest --watch",
     "test": "jest --coverage --runInBand",
     "lint": "eslint -c .eslintrc.js --ext .ts {services,src,test}/**",
     "format": "eslint -c .eslintrc.js --ext .ts --fix {services,src,test}/**",
@@ -73,7 +72,7 @@
     ],
     "moduleNameMapper": {
       "^@(Test)(.*)$": "<rootDir>/test/$2",
-      "^@MicroServices": "<rootDir>/services/index.ts",
+      "@Entities/Connection": "<rootDir>/test/Config/Connection",
       "^@([A-Z].*)$": "<rootDir>/src/$1"
     },
     "transform": {
