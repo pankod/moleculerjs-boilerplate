@@ -1,17 +1,17 @@
-import CreateConnection from '../../../src/Entities/Connection'
+import CreateConnection from '../../../src/Entities/Connection';
 import { Connection, getConnection } from 'typeorm';
 
 describe('Connection', async () => {
 	it('should return connection and connect', async () => {
-		const connection = await CreateConnection()
+		const connection = await CreateConnection();
 
-		expect(connection).toBeInstanceOf(Connection)
-		expect(getConnection().isConnected).toBe(true)
-	})
+		expect(connection).toBeInstanceOf(Connection);
+		expect(getConnection().isConnected).toBe(true);
+	});
 
 	it('should not fail for 2nd connection', async () => {
-		await CreateConnection()
+		await CreateConnection();
 
-		expect(async () => await CreateConnection()).not.toThrow()
-	})
-})
+		expect(async () => await CreateConnection()).not.toThrow();
+	});
+});
