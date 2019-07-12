@@ -1,0 +1,15 @@
+//#region Global Imports
+import { Context } from 'moleculer';
+//#endregion Global Imports
+
+//#region Interface Imports
+import { } from '@Interfaces';
+//#endregion Interface Imports
+
+export module {{upperFileName}}Helper {
+
+	const prefix: string = '{{fileName}}';
+
+	export const methodName = async (ctx: Context, params: ): Promise<> => await ctx.call(`${prefix}.methodName`, params);
+
+}

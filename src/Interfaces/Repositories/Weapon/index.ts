@@ -1,0 +1,1 @@
+export { DecreaseAmmoOutDto } from './DecreaseAmmoOutDto';

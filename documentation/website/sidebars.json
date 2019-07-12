@@ -1,0 +1,24 @@
+{
+	"docs": {
+		"Introduction": [
+			"getting-started",
+			"features"
+		],
+		"Overview": [
+			"setup",
+			"example-app",
+			"structure",
+			"deployment"
+		],
+		"Features": [
+			"testing",
+			"swagger",
+			"eslint",
+			"typeorm"
+		],
+		"Project CLI": [
+			"cli-overview",
+			"cli-usage"
+		]
+	}
+}

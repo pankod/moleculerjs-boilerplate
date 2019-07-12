@@ -1,0 +1,1 @@
+export { DamageMetaOutDto } from './DamageMetaOutDto';

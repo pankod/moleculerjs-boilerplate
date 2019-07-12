@@ -57,5 +57,16 @@ typings/
 # dotenv environment variables file
 .env
 
-# next.js build output
-.next
+# history
+.history
+
+# sqlite
+db.sqlite
+
+# macos
+.DS_Store
+
+# builds
+/project-cli/dist
+dist/
+/documentation/website/build

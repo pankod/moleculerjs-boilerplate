@@ -1,0 +1,1 @@
+export { IPlanet } from './IPlanet';

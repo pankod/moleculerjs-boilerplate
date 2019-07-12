@@ -1,0 +1,99 @@
+{
+  "info": {
+    "title": "Pankod MoleculerJS Boilerplate",
+    "version": "1.0.0",
+    "description": "Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Clients, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects.."
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "swagger": "2.0",
+  "paths": {
+    "/attack/Fire": {
+      "post": {
+        "description": "Attacks to the planet with given weapon.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "params",
+            "schema": {
+              "type": "object",
+              "required": [
+                "weaponName",
+                "planetName"
+              ],
+              "properties": {
+                "weaponName": {
+                  "type": "string",
+                  "default": "Death Star"
+                },
+                "planetName": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Example attack result"
+          },
+          "422": {
+            "description": "Missing parameters"
+          }
+        }
+      }
+    },
+    "/planet/Defend": {
+      "post": {
+        "description": "Attacks to the planet with given weapon.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "params",
+            "schema": {
+              "type": "object",
+              "required": [
+                "weaponName",
+                "planetName"
+              ],
+              "properties": {
+                "weaponName": {
+                  "type": "string",
+                  "default": "Death Star"
+                },
+                "planetName": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Example attack result"
+          },
+          "422": {
+            "description": "Missing parameters"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {},
+  "tags": []
+}

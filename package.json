@@ -1,0 +1,89 @@
+{
+  "name": "moleculerjs-boilerplate",
+  "version": "1.0.0",
+  "description": "My Moleculer microservices project",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js --hot --repl --config moleculer.config.ts services/**/*.service.ts & npm run swagger",
+    "start": "TS_NODE_PROJECT=tsconfig.production.json node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js dist/services",
+    "postinstall": "cd project-cli && npm i && npm run build",
+    "g": "node ./project-cli/dist/index.js",
+    "test": "jest --coverage --runInBand",
+    "lint": "eslint -c .eslintrc.js --ext .ts {services,src,test}/**",
+    "format": "eslint -c .eslintrc.js --ext .ts --fix {services,src,test}/**",
+    "dc:up": "docker-compose up --build -d",
+    "dc:down": "docker-compose down",
+    "swagger": "swagger-jsdoc -d swagger/config.js -o swagger/swagger.json services/*.service.ts && node ./swagger/index.js",
+    "setup-db": "cp db.sqlite.example db.sqlite"
+  },
+  "keywords": [
+    "microservices",
+    "moleculer",
+    "typescript",
+    "typeorm",
+    "swagger",
+    "eslint",
+    "jest",
+    "supertest"
+  ],
+  "author": "Pankod <info@pankod.com>",
+  "devDependencies": {
+    "@types/jest": "^23.1.1",
+    "@types/node": "^10.12.12",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
+    "moleculer-repl": "^0.5.3",
+    "prettier": "^1.17.1",
+    "supertest": "^4.0.2",
+    "swagger-ui-express": "^4.0.2",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "moleculer": "^0.13.0",
+    "moleculer-decorators": "^1.0.21",
+    "moleculer-web": "^0.8.0",
+    "nats": "^1.3.0",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^4.0.6",
+    "swagger-jsdoc": "^3.2.9",
+    "tsconfig-paths": "^3.8.0",
+    "typeorm": "^0.2.18"
+  },
+  "engines": {
+    "node": ">= 8.x.x"
+  },
+  "jest": {
+    "coverageDirectory": "<rootDir>/coverage",
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "moduleNameMapper": {
+      "^@(Test)(.*)$": "<rootDir>/test/$2",
+      "@Entities/Connection": "<rootDir>/test/Config/Connection",
+      "^@([A-Z].*)$": "<rootDir>/src/$1"
+    },
+    "transform": {
+      "^.+\\.(ts)$": "ts-jest"
+    },
+    "testMatch": [
+      "**/*.spec.(ts)"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/test/Config/mock.setup.ts",
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "<rootDir>/tsconfig.json"
+      }
+    }
+  }
+}
