@@ -69,3 +69,4 @@ db.sqlite
 # builds
 /project-cli/dist
 dist/
+/documentation/website/build

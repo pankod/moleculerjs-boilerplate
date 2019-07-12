@@ -56,7 +56,7 @@ This boilerplate includes the latest powerfull tools.
 * **Swagger** - A framework backed by a large ecosystem of tools that helps developers design, build, document, and consume RESTful Web services.
 * **Jest** - Javascript testing framework , created by developers who created react
 * **TypeORM** - TypeORM is specifically an ORM that converts data between JavaScript / TypeScript to a variety of databases.
-* **Service Clients** - Her servisin nasıl kullanılacağına dair protocal yayınlar.
+* **Service Helpers** - Provides easy communication contract between services.
 <br/>
 
 
@@ -95,4 +95,4 @@ After answering questions it generates files in miliseconds.
  
 ## License
 
-Licensed under the MIT License, Copyright © 2018-present Pankod
+Licensed under the MIT License, Copyright © 2019-present Pankod

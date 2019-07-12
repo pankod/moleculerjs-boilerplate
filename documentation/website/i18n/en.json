@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Clients, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects.",
+    "tagline": "Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Helpers, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects.",
     "docs": {
       "cli-overview": {
         "title": "Overview",
@@ -17,13 +17,9 @@
         "title": "Deployment",
         "sidebar_label": "Deployment"
       },
-      "dotenv-usage": {
-        "title": "Enviroment Variables(.env)",
-        "sidebar_label": "Enviroment Variables"
-      },
-      "dotenv": {
-        "title": "Environment Variables",
-        "sidebar_label": "Overview"
+      "eslint": {
+        "title": "Usage",
+        "sidebar_label": "ESLint"
       },
       "example-app": {
         "title": "Example App",
@@ -36,14 +32,6 @@
         "title": "Getting Started",
         "sidebar_label": "Getting Started"
       },
-      "reverse-proxy": {
-        "title": "Reverse Proxy",
-        "sidebar_label": "Reverse Proxy"
-      },
-      "routing": {
-        "title": "Routing",
-        "sidebar_label": "Routing"
-      },
       "setup": {
         "title": "Setup"
       },
@@ -51,13 +39,17 @@
         "title": "Structure",
         "sidebar_label": "Structure"
       },
-      "styling": {
-        "title": "Styling",
-        "sidebar_label": "Styling"
+      "swagger": {
+        "title": "Usage",
+        "sidebar_label": "Swagger"
       },
-      "unit-test": {
-        "title": "Unit Testing",
-        "sidebar_label": "Unit Testing"
+      "testing": {
+        "title": "Testing",
+        "sidebar_label": "Testing"
+      },
+      "typeorm": {
+        "title": "TypeORM & Repository",
+        "sidebar_label": "TypeORM"
       }
     },
     "links": {
@@ -66,6 +58,7 @@
     },
     "categories": {
       "Introduction": "Introduction",
+      "Overview": "Overview",
       "Features": "Features",
       "Project CLI": "Project CLI"
     }

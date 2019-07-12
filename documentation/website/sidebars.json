@@ -2,18 +2,19 @@
 	"docs": {
 		"Introduction": [
 			"getting-started",
-			"features",
+			"features"
+		],
+		"Overview": [
 			"setup",
 			"example-app",
 			"structure",
 			"deployment"
 		],
 		"Features": [
-			"styling",
-			"routing",
-			"unit-test",
-			"reverse-proxy",
-			"dotenv-usage"
+			"testing",
+			"swagger",
+			"eslint",
+			"typeorm"
 		],
 		"Project CLI": [
 			"cli-overview",

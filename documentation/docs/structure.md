@@ -6,86 +6,104 @@ sidebar_label: Structure
 
 After the setup is complete, your app should have the following directory structure:
 
-```sh
+```js
 .
-├── project-cli
 ├── public
 │   ├── banner.png
 │   ├── favicon.ico
 │   └── index.html
 ├── services
 │   ├── api.service.ts
+│   ├── attack.service.ts
 │   ├── index.ts
-│   ├── planet.service.ts
-│   └── weapon.service.ts
+│   └── planet.service.ts
 ├── src
-│   ├── Helper
-│   │   ├── Mocks
-│   │   │   └── Context.ts
-│   │   ├── PlanetHelper.ts
-│   │   ├── WeaponHelper.ts
+│   ├── Entities
+│   │   ├── Connection.ts
+│   │   ├── Planet.ts
+│   │   ├── Weapon.ts
 │   │   └── index.ts
 │   ├── Interfaces
-│   │   ├── Fire
-│   │   │   ├── DamageInDto.d.ts
-│   │   │   ├── FireInDto.d.ts
-│   │   │   ├── FireMethodOutDto.ts
-│   │   │   ├── FireOutDto.d.ts
-│   │   │   ├── FireResult.d.ts
-│   │   │   └── WarMessageOutDto.d.ts
-│   │   ├── Planet
-│   │   │   ├── DefendOutDto.d.ts
-│   │   │   └── PlanetSql.d.ts
-│   │   ├── Weapon
-│   │   │   └── WeaponSql.d.ts
+│   │   ├── Meta
+│   │   │   ├── DamageMetaOutDto.d.ts
+│   │   │   └── index.ts
+│   │   ├── Repositories
+│   │   │   ├── Planet
+│   │   │   │   ├── DecreaseShieldOutDto.d.ts
+│   │   │   │   └── index.ts
+│   │   │   └── Weapon
+│   │   │       ├── DecreaseAmmoOutDto.d.ts
+│   │   │       └── index.ts
+│   │   ├── Services
+│   │   │   ├── Attack
+│   │   │   │   ├── IAttack.d.ts
+│   │   │   │   └── index.ts
+│   │   │   └── Planet
+│   │   │       ├── IPlanet.d.ts
+│   │   │       └── index.ts
 │   │   └── index.ts
 │   ├── Meta
 │   │   ├── CalculateMeta.ts
 │   │   └── index.ts
-│   ├── Models
-│   │   ├── Planet.mock.ts
+│   ├── Repositories
+│   │   ├── ErrorHelpers.ts
 │   │   ├── Planet.ts
-│   │   ├── Weapon.mock.ts
+│   │   ├── Shared.ts
 │   │   ├── Weapon.ts
 │   │   └── index.ts
-│   └── Repositories
-│       ├── Database.ts
-│       ├── Planet.ts
-│       ├── Weapon.ts
+│   └── ServiceHelpers
+│       ├── AttackHelper.ts
+│       ├── PlanetHelper.ts
 │       └── index.ts
 ├── swagger
+│   ├── config.js
 │   ├── index.js
 │   ├── package.json
-│   ├── swagger.json
-│   └── swagger.yaml
-├── swagger.json
-├── swaggerConfig.json
+│   └── swagger.json
 ├── test
-│   ├── config
-│   │   ├── Database.ts
-│   │   └── mock.setup.js
-│   └── unit
-│       ├── Helper
-│       │   ├── PlanetHelper.spec.ts
-│       │   └── WeaponHelper.spec.ts
-│       ├── Meta
-│       │   └── CalculateMeta.spec.ts
-│       ├── MicroServices
-│       │   ├── planet.spec.ts
-│       │   └── weapon.spec.ts
-│       └── Repositories
-│           ├── Planet.spec.ts
-│           └── Weapon.spec.ts
+│   ├── Config
+│   │   ├── Connection.ts
+│   │   ├── SetupDatabase.ts
+│   │   └── mock.setup.ts
+│   ├── Integration
+│   │   ├── attack.spec.ts
+│   │   └── planet.spec.ts
+│   ├── Seeder
+│   │   ├── AttackSeeder.ts
+│   │   ├── PlanetSeeder.ts
+│   │   └── index.ts
+│   ├── Unit
+│   │   ├── Helper
+│   │   │   ├── AttackHelper.spec.ts
+│   │   │   └── PlanetHelper.spec.ts
+│   │   ├── Meta
+│   │   │   └── CalculateMeta.spec.ts
+│   │   ├── MicroServices
+│   │   │   ├── attack.spec.ts
+│   │   │   └── planet.spec.ts
+│   │   └── Repositories
+│   │       ├── ErrorHelpers.spec.ts
+│   │       ├── Planet.spec.ts
+│   │       └── Weapon.spec.ts
+│   └── Utils
+│       ├── BrokerHelper.ts
+│       ├── DummyContext.ts
+│       └── index.ts
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
+├── banner.png
+├── cli.gif
+├── db.sqlite
 ├── db.sqlite.example
 ├── docker-compose.env
 ├── docker-compose.yml
 ├── moleculer.config.ts
+├── moleculerjs-cover.png
 ├── package-lock.json
 ├── package.json
+├── swaggerConfig.json
 ├── tsconfig.json
+├── tsconfig.production.json
 └── tsoa.json
-
 ```

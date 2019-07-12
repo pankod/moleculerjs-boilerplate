@@ -34,7 +34,7 @@ export const serviceQuestion = {
 			},
 			{
 				default: true,
-				message: 'Is service open to outside ?',
+				message: 'Is service open to outside?',
 				name: 'isPrivate',
 				type: 'confirm'
 			},

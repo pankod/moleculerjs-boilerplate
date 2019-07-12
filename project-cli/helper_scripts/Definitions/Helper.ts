@@ -149,7 +149,7 @@ export const Helper = {
 				fileDir: Config.brokerHelper,
 				filetoUpdate: fs.readFileSync(path.resolve('', Config.brokerHelper), 'utf8'),
 				getFileContent: () => Helper.getTemplate(brokerHelperCreate, templateProps),
-				message: 'Service added to BrokerHelper setupBroker.',
+				message: 'Service added to BrokerHelper setupBroker.\n',
 				regexKey: /^\s*return broker;/gm
 			};
 			Helper.replaceContent(replaceBrokerCreateParams);

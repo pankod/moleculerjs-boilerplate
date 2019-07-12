@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import * as chalk from 'chalk';
-import * as clear from 'clear';
 import * as program from 'commander';
 import * as figlet from 'figlet';
 import * as inquirer from 'inquirer';
@@ -9,7 +8,7 @@ import * as inquirer from 'inquirer';
 import { modelQuestion } from './helper_scripts/Definitions/Entity';
 import { serviceQuestion } from './helper_scripts/Definitions/Service';
 
-clear();
+console.clear();
 
 console.log(
 	chalk.default(
@@ -19,7 +18,7 @@ console.log(
 
 const questions = [
 	{
-		choices: ['entity', 'service'],
+		choices: ['Entity', 'Service'],
 		message: 'What would you like to add?',
 		name: 'fileType',
 		type: 'list'
@@ -31,10 +30,10 @@ program
 		const answers: { fileType: string } = await inquirer.prompt(questions);
 
 		switch (answers.fileType) {
-			case 'entity':
+			case 'Entity':
 			await modelQuestion.showQuestions();
 				break;
-			case 'service':
+			case 'Service':
 			await serviceQuestion.showQuestions();
 				break;
 			default:
