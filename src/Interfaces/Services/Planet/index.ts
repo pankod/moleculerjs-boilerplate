@@ -1,1 +1,1 @@
-export { IPlanet } from './IPlanet'
+export { IPlanet } from './IPlanet';

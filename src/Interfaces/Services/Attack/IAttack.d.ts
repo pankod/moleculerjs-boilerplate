@@ -1,11 +1,11 @@
 export namespace IAttack {
-	export interface AttackInDto {
-		planetName: string
-		weaponName: string
+	export interface FireInDto {
+		planetName: string;
+		weaponName: string;
 	}
 
-	export interface AttackOutDto {
-		planetMessage: string
-		weaponMessage: string
+	export interface FireOutDto {
+		planetMessage: string;
+		weaponMessage: string;
 	}
 }

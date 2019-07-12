@@ -1,5 +1,5 @@
 //#region Global Imports
-import { getManager, getConnection } from 'typeorm';
+import { getManager } from 'typeorm';
 //#endregion Global Imports
 
 //#region Local Imports
@@ -12,19 +12,12 @@ import { IPlanet } from '@Interfaces';
 
 const broker = BrokerHelper.setupBroker();
 
-beforeAll(async () => {
-	await broker.start();
-});
-
 beforeEach(async () => {
+	await broker.start();
 	await setupDatabase();
 });
 
 afterEach(async () => {
-	await getConnection().close();
-});
-
-afterAll(async () => {
 	await broker.stop();
 });
 
@@ -36,6 +29,7 @@ describe('Test Defend service', () => {
 		};
 
 		it('when shield is up', async () => {
+			// eslint-disable-next-line
 			const { planetMessage } = await PlanetHelper.Defend(broker as any, params);
 
 			expect(planetMessage).toContain('Planet took');
@@ -44,9 +38,11 @@ describe('Test Defend service', () => {
 		it('when shield is down', async () => {
 			getManager().update(Planet, { name: 'Alderaan' }, { shield: 1 });
 
+			/* eslint-disable */
 			// First fire to break shield entirely
 			await PlanetHelper.Defend(broker as any, params);
 			const { planetMessage } = await PlanetHelper.Defend(broker as any, params);
+			/* eslint-enable */
 
 			expect(planetMessage).toEqual('Planet shield ruined! war is lost!');
 		});

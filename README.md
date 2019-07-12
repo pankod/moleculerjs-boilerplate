@@ -1,7 +1,7 @@
 <img src="moleculerjs-cover.png" alt="Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Clients, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects." align="center" />
 
 <br/>
-<div align="center" >Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Clients, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects..
+<div align="center" >Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Helpers, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects..
 </div>
 <br/>
 
@@ -50,7 +50,7 @@ This boilerplate includes the latest powerfull tools.
 
 * **Moleculer** - Moleculer is a fast, modern and powerful microservices framework for Node.js.
 * **Typescript** - Superset of JavaScript which primarily provides optional static typing, classes and interfaces. path support(allias)
-* **Built-in Project CLI**- Create services, models, interfaces, and tests with one command by using built-in cli.
+* **Built-in Project CLI**- Create services, entities, interfaces, and tests with one command by using built-in cli.
 * **Docker** - A tool designed to make it easier to create, deploy, and run applications by using containers.
 * **Eslint** - The pluggable linting utility.
 * **Swagger** - A framework backed by a large ecosystem of tools that helps developers design, build, document, and consume RESTful Web services.
@@ -78,7 +78,7 @@ For more detailed documentation, check out https://pankod.github.io/moleculerjs-
 <br/>
 <br/>
 
-moleculerjs-boilerplate is shipped with a CLI tool to streamline the creation of new microservices. By using the CLI tool, you may easily add models, services to your project and have all the required interfaces and imports are automatically created for you.
+moleculerjs-boilerplate is shipped with a CLI tool to streamline the creation of new microservices. By using the CLI tool, you may easily add entities, services to your project and have all the required interfaces and imports are automatically created for you.
 <br />
 
 To start the CLI, you may run the following npm command:

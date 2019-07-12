@@ -34,7 +34,7 @@ describe('Planet Repository Methods', () => {
 		it('should raise error', async () => {
 			const planetName = 'I dont exist';
 
-			expect(() => PlanetRepository.Get(planetName)).toThrowError;
+			expect(async () => PlanetRepository.Get(planetName)).toThrowError;
 		});
 	});
 
@@ -43,7 +43,10 @@ describe('Planet Repository Methods', () => {
 
 		const expectedShield = 1000;
 
-		const { remainingShield } = await PlanetRepository.DecreaseShield(planetName, expectedShield);
+		const { remainingShield } = await PlanetRepository.DecreaseShield(
+			planetName,
+			expectedShield,
+		);
 
 		expect(remainingShield).toEqual(expectedShield);
 	});

@@ -9,6 +9,8 @@ import { IAttack } from '@Interfaces';
 export namespace AttackHelper {
 	const prefix: string = 'attack';
 
-	export const Fire = async (ctx: Context, params: IAttack.AttackInDto): Promise<IAttack.AttackOutDto> =>
-		await ctx.call(`${prefix}.Fire`, params);
+	export const Fire = async (
+		ctx: Context,
+		params: IAttack.FireInDto,
+	): Promise<IAttack.FireOutDto> => await ctx.call(`${prefix}.Fire`, params);
 }

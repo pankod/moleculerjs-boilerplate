@@ -4,27 +4,27 @@
   "description": "My Moleculer microservices project",
   "scripts": {
     "build": "tsc",
-    "watch": "tsc --watch",
-    "dev": "ts-node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js --hot --repl --config moleculer.config.ts services/**/*.service.ts & npm run swagger-run",
-    "cli": "moleculer connect  --config moleculer.config.ts services/**/*.service.ts",
+    "dev": "ts-node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js --hot --repl --config moleculer.config.ts services/**/*.service.ts & npm run swagger",
     "start": "TS_NODE_PROJECT=tsconfig.production.json node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js dist/services",
     "postinstall": "cd project-cli && npm i && npm run build",
-    "run-cli": "node ./project-cli/dist/index.js",
-    "g": "npm run run-cli",
-    "generate": "npm run run-cli",
+    "g": "node ./project-cli/dist/index.js",
     "test": "jest --coverage --runInBand",
     "lint": "eslint -c .eslintrc.js --ext .ts {services,src,test}/**",
     "format": "eslint -c .eslintrc.js --ext .ts --fix {services,src,test}/**",
     "dc:up": "docker-compose up --build -d",
     "dc:down": "docker-compose down",
-    "swagger-run": "npm run swagger & npm run ui",
-    "swagger": "swagger-jsdoc -d swagger/config.js -o swagger/swagger.json services/*.service.ts",
-    "ui": "node ./swagger/index.js",
+    "swagger": "swagger-jsdoc -d swagger/config.js -o swagger/swagger.json services/*.service.ts && node ./swagger/index.js",
     "setup-db": "cp db.sqlite.example db.sqlite"
   },
   "keywords": [
     "microservices",
-    "moleculer"
+    "moleculer",
+    "typescript",
+    "typeorm",
+    "swagger",
+    "eslint",
+    "jest",
+    "supertest"
   ],
   "author": "Pankod <info@pankod.com>",
   "devDependencies": {
@@ -35,10 +35,8 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.13.0",
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0",
-    "jest-teamcity": "^1.4.0",
     "moleculer-repl": "^0.5.3",
     "prettier": "^1.17.1",
     "supertest": "^4.0.2",
@@ -64,7 +62,6 @@
     "node": ">= 8.x.x"
   },
   "jest": {
-    "testResultsProcessor": "jest-teamcity",
     "coverageDirectory": "<rootDir>/coverage",
     "testEnvironment": "node",
     "moduleFileExtensions": [

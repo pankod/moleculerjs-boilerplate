@@ -38,10 +38,17 @@ export const serviceQuestion = {
 				name: 'isPrivate',
 				type: 'confirm'
 			},
+			{
+				default: true,
+				message: 'Are you going to have a database connection?',
+				name: 'hasDatabase',
+				type: 'confirm'
+			}
 		];
 
 		const answers: DefinitionsModel.IAnswers = await inquirer.prompt<{ fileName: string }>(questions);
 		answers.upperFileName = answers.fileName.replace(/\b\w/g, foo => foo.toUpperCase());
+
 		Helper.createService(answers);
 	}
 };

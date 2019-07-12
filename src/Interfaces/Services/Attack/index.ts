@@ -1,1 +1,1 @@
-export { IAttack } from './IAttack'
+export { IAttack } from './IAttack';
