@@ -12,7 +12,5 @@ export default async (): Promise<Connection> => {
 			synchronize: true,
 			dropSchema: true,
 		});
-	} catch (error) {
-		
-	}
-}
+	} catch (error) {}
+};

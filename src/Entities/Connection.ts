@@ -11,7 +11,5 @@ export default async (): Promise<Connection> => {
 			entities: [__dirname + '/*'],
 			synchronize: true,
 		});
-	} catch (error) {
-		
-	}
-}
+	} catch (error) {}
+};

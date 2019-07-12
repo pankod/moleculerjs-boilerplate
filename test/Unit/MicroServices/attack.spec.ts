@@ -1,5 +1,5 @@
 //#region Global Imports
-import { getManager, getConnection } from 'typeorm';
+import { getManager } from 'typeorm';
 //#endregion Global Imports
 
 //#region Local Imports
