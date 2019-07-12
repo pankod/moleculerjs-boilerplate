@@ -6,7 +6,7 @@ sidebar_label: Swagger
 
 `swagger-jsdoc` is a library which returns the validated OpenAPI specification as JSON or YAML.
 
-`moleculer-boilerplate` uses `swagger-jsdoc` for generating swagger.json file.
+`moleculerjs-boilerplate` uses `swagger-jsdoc` for generating swagger.json file.
 
 This code block shows swagger-jsdoc in **services/attack.service** of example app.
 
