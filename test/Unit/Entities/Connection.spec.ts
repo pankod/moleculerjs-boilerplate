@@ -12,6 +12,6 @@ describe('Connection', async () => {
 	it('should not fail for 2nd connection', async () => {
 		await CreateConnection()
 
-		expect(await CreateConnection()).not.toThrow
+		expect(async () => await CreateConnection()).not.toThrow()
 	})
 })
