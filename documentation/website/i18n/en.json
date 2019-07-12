@@ -48,7 +48,7 @@
         "sidebar_label": "Testing"
       },
       "typeorm": {
-        "title": "Usage",
+        "title": "TypeORM & Repository",
         "sidebar_label": "TypeORM"
       }
     },
