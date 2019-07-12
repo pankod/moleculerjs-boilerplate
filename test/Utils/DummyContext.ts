@@ -13,7 +13,7 @@ export namespace DummyContext {
 		state: false,
 	};
 
-	export const getCall = (data: object = {}) => {
+	export const getCall = (data: object) => {
 		const ctx = Context.create(broker, endpoint, data);
 		// eslint-disable-next-line
 		ctx.call = jest.fn(async () => (broker.Promise as any).resolve({}));
