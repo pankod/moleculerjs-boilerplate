@@ -104,6 +104,5 @@ After the setup is complete, your app should have the following directory struct
 ├── package.json
 ├── swaggerConfig.json
 ├── tsconfig.json
-├── tsconfig.production.json
-└── tsoa.json
+└── tsconfig.production.json
 ```
