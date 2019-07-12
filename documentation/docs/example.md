@@ -167,7 +167,3 @@ const { damage, planetMessage } = await PlanetHelper.Defend(ctx, { weaponName, p
 ```
 
 As you can see above, it's just invoking a function and getting variables back.
-
-## Meta
-
-These are simple helper functions.
