@@ -95,4 +95,4 @@ After answering questions it generates files in miliseconds.
  
 ## License
 
-Licensed under the MIT License, Copyright © 2018-present Pankod
+Licensed under the MIT License, Copyright © 2019-present Pankod

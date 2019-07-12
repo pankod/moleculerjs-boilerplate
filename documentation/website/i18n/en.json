@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Clients, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects.",
+    "tagline": "Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Helpers, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects.",
     "docs": {
       "cli-overview": {
         "title": "Overview",
