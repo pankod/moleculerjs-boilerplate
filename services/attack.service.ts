@@ -35,7 +35,7 @@ export class AttackService extends BaseSchema {
 	/**
 	 * @swagger
 	 *
-	 *  attack/Fire:
+	 *  /attack/Fire:
 	 *    post:
 	 *      description: Attacks to the planet with given weapon.
 	 *      produces:

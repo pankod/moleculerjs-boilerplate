@@ -8,7 +8,7 @@
   "basePath": "/api",
   "swagger": "2.0",
   "paths": {
-    "attack/Fire": {
+    "/attack/Fire": {
       "post": {
         "description": "Attacks to the planet with given weapon.",
         "produces": [
