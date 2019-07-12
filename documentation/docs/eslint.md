@@ -1,20 +1,20 @@
 ---
 id: eslint
-title: ESLint
+title: Usage
 sidebar_label: ESLint
 ---
 
 ESLint integrated to boilerplate for linting.
 
-Checks code for linting errors.
+Lints with Eslint. Useful for CI.
 ```SH
 npm run lint 
 ```
 
-Checks code linting errors and fix them if handles.
+Lints and fixes fixable problems.
  
 ```SH
 npm run format 
 ```
 
-More info about [ESlint]('https://eslint.org/')
+>Refer to [offical documentation](https://eslint.org/) for detailed usage.

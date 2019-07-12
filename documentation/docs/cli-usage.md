@@ -25,15 +25,15 @@ For example, let's go through the steps of the creation of a service.
 After answering questions it generates files and set imports which specified at the below.
 
  - Creates new service with given name into services directory.
- - Adds service export to ``services/index.ts`` file.
+ - Adds service export into ``services/index.ts`` file.
  - Creates a new interface file in `src/Interfaces/Services` directory.
- - Create index.ts file to service interface folder.
- - Adds file exports to `src/Interfaces/index.ts` file.
+ - Create index.ts file into service interface folder.
+ - Adds file exports into `src/Interfaces/index.ts` file.
  - Adds service import in `test/Utils/BrokerHelper.ts` file.
- - Adds service to setupBroker method in `test/Utils/BrokerHelper.ts` file.
- - Create service helper to `src/ServiceHelper` directory.
- - Adds service to index in `src/ServiceHelper/index.ts` file.
- - Create service helper test to `test/Unit/ServiceHelper` directory.
- - Create service test to `test/Unit/MicroService` directory.
- - Create integration test to `test/Integration` directory.
+ - Adds service into setupBroker method in `test/Utils/BrokerHelper.ts` file.
+ - Create service helper into `src/ServiceHelper` directory.
+ - Adds service into index in `src/ServiceHelper/index.ts` file.
+ - Create service helper test into `test/Unit/ServiceHelper` directory.
+ - Create service test into `test/Unit/MicroService` directory.
+ - Create integration test into `test/Integration` directory.
  

@@ -18,8 +18,8 @@
         "sidebar_label": "Deployment"
       },
       "eslint": {
-        "title": "ESlint",
-        "sidebar_label": "ESlint"
+        "title": "Usage",
+        "sidebar_label": "ESLint"
       },
       "example-app": {
         "title": "Example App",
@@ -40,7 +40,7 @@
         "sidebar_label": "Structure"
       },
       "swagger": {
-        "title": "Swagger",
+        "title": "Usage",
         "sidebar_label": "Swagger"
       },
       "testing": {
@@ -48,7 +48,7 @@
         "sidebar_label": "Testing"
       },
       "typeorm": {
-        "title": "TypeORM",
+        "title": "Usage",
         "sidebar_label": "TypeORM"
       }
     },
