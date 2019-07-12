@@ -65,19 +65,12 @@ beforeEach(async () => {
 ```typescript
 	const broker = BrokerHelper.setupBroker();
 
-	beforeAll(async () => {
-		await broker.start();
-	});
-
 	beforeEach(async () => {
+		await broker.start();
 		await setupDatabase();
 	});
 
 	afterEach(async () => {
-		await getConnection().close();
-	});
-
-	afterAll(async () => {
 		await broker.stop();
 	});
 
