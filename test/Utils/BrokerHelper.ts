@@ -2,12 +2,12 @@
 import { ServiceBroker } from 'moleculer';
 //#endregion Global Imports
 
-//#region Local Imports
 /* eslint-disable */
+//#region Local Imports
 const AttackService = require('../../services/attack.service');
 const PlanetService = require('../../services/planet.service');
-/* eslint-enable */
 //#endregion Local Imports
+/* eslint-enable */
 
 export namespace BrokerHelper {
 	export const setupBroker = () => {

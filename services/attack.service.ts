@@ -1,6 +1,7 @@
 //#region Global Imports
 import { Context } from 'moleculer';
 import { Action, BaseSchema, Method } from 'moleculer-decorators';
+import { getConnection } from 'typeorm';
 //#endregion Global Imports
 
 //#region Local Imports
@@ -16,9 +17,7 @@ import { IAttack } from '@Interfaces';
 
 export class AttackService extends BaseSchema {
 	public name: string = 'attack';
-	public started: Function = () => {
-		connectionInstance();
-	};
+	public started: Function = async () => await connectionInstance();
 
 	@Action({
 		params: {
@@ -89,6 +88,8 @@ export class AttackService extends BaseSchema {
 			weaponMessage,
 		};
 	}
+
+	public stopped: Function = async () => await getConnection().close();
 }
 
 module.exports = new AttackService();

@@ -1,6 +1,7 @@
 //#region Global Imports
 import { Context } from 'moleculer';
 import { Action, BaseSchema, Method } from 'moleculer-decorators';
+import { getConnection } from 'typeorm';
 //#endregion Global Imports
 
 //#region Local Imports
@@ -16,9 +17,7 @@ import { IPlanet } from '@Interfaces';
 
 export class PlanetService extends BaseSchema {
 	public name: string = 'planet';
-	public started: Function = () => {
-		connectionInstance();
-	};
+	public started: Function = async () => await connectionInstance();
 
 	@Action({
 		params: {
@@ -83,6 +82,8 @@ export class PlanetService extends BaseSchema {
 
 		return { damage, planetMessage: message };
 	}
+
+	public stopped: Function = async () => await getConnection().close();
 }
 
 module.exports = new PlanetService();
