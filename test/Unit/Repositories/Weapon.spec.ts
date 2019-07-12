@@ -35,7 +35,7 @@ describe('Weapon Repository Methods', () => {
 		it('should throw an error if weapon not found', async () => {
 			const weaponName = `I don't exist`;
 
-			expect(() => WeaponRepository.Get(weaponName)).toThrowError;
+			expect(async () => WeaponRepository.Get(weaponName)).toThrowError;
 		});
 	});
 

@@ -6,7 +6,7 @@ import { Action, BaseSchema, Method } from 'moleculer-decorators';
 //#region Local Imports
 import { WeaponRepository } from '@Repositories';
 import { PlanetHelper } from '@ServiceHelpers';
-import connectionInstance from "@Entities/Connection"
+import connectionInstance from '@Entities/Connection';
 
 //#endregion Local Imports
 
@@ -17,7 +17,7 @@ import { IAttack } from '@Interfaces';
 export class AttackService extends BaseSchema {
 	public name: string = 'attack';
 	public started: Function = () => {
-		connectionInstance()
+		connectionInstance();
 	};
 
 	@Action({
@@ -34,35 +34,35 @@ export class AttackService extends BaseSchema {
 
 	@Method
 	/**
-	* @swagger
-	*
-	*  attack/Fire:
-	*    post:
-	*      description: Attacks to the planet with given weapon.
-	*      produces:
-	*        - application/json
-	*      consumes:
-	*        - application/json
-	*      parameters:
-	*        - in: body
-	*          name: params
-	*          schema:
-	*            type: object
-	*            required:
-	*              - weaponName
-	*              - planetName
-	*            properties:
-	*              weaponName:
-	*                type: string
-	*                default: Death Star
-	*              planetName:
-	*                type: string
-	*      responses:
-	*        200:
-	*          description: Example attack result
-	*        422:
-	*          description: Missing parameters
-	*/
+	 * @swagger
+	 *
+	 *  attack/Fire:
+	 *    post:
+	 *      description: Attacks to the planet with given weapon.
+	 *      produces:
+	 *        - application/json
+	 *      consumes:
+	 *        - application/json
+	 *      parameters:
+	 *        - in: body
+	 *          name: params
+	 *          schema:
+	 *            type: object
+	 *            required:
+	 *              - weaponName
+	 *              - planetName
+	 *            properties:
+	 *              weaponName:
+	 *                type: string
+	 *                default: Death Star
+	 *              planetName:
+	 *                type: string
+	 *      responses:
+	 *        200:
+	 *          description: Example attack result
+	 *        422:
+	 *          description: Missing parameters
+	 */
 	public async FireMethod(ctx: Context<IAttack.FireInDto>): Promise<IAttack.FireOutDto> {
 		const { planetName, weaponName } = ctx.params;
 
