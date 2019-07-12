@@ -1,5 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Usage · Pankod</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Entities database connection providing with &lt;code&gt;createConnection&lt;/code&gt; method in  &lt;code&gt;src/Entities/Connection&lt;/code&gt; file.&lt;/p&gt;
-"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Usage · Pankod"/><meta property="og:type" content="website"/><meta property="og:url" content="https://pankod.github.io/moleculerjs-boilerplate/"/><meta property="og:description" content="&lt;p&gt;Entities database connection providing with &lt;code&gt;createConnection&lt;/code&gt; method in  &lt;code&gt;src/Entities/Connection&lt;/code&gt; file.&lt;/p&gt;
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>TypeORM &amp; Repository · Pankod</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;&lt;code&gt;createConnection&lt;/code&gt; method in  &lt;code&gt;src/Entities/Connection&lt;/code&gt; file is responsible for creating database connection.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="TypeORM &amp; Repository · Pankod"/><meta property="og:type" content="website"/><meta property="og:url" content="https://pankod.github.io/moleculerjs-boilerplate/"/><meta property="og:description" content="&lt;p&gt;&lt;code&gt;createConnection&lt;/code&gt; method in  &lt;code&gt;src/Entities/Connection&lt;/code&gt; file is responsible for creating database connection.&lt;/p&gt;
 "/><meta property="og:image" content="https://pankod.github.io/moleculerjs-boilerplate/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://pankod.github.io/moleculerjs-boilerplate/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/moleculerjs-boilerplate/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow-night.min.css"/><script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -58,9 +58,9 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Usage</h1></header><article><div><span><p>Entities database connection providing with <code>createConnection</code> method in  <code>src/Entities/Connection</code> file.</p>
-<p>After database connection repositories handles database process with <code>getManager</code> method of TypeORM.</p>
-<p>Here is a planet Entity example from example app.</p>
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">TypeORM &amp; Repository</h1></header><article><div><span><p><code>createConnection</code> method in  <code>src/Entities/Connection</code> file is responsible for creating database connection.</p>
+<p>Then, <code>Repositories</code> handles database interactions with <code>getManager</code> method of TypeORM.</p>
+<p>Here is a planet Entity example from example app;</p>
 <pre><code class="hljs"><span class="hljs-comment">//#region Global Imports</span>
 <span class="hljs-keyword">import</span> { Entity, Column, PrimaryGeneratedColumn } from <span class="hljs-string">'typeorm'</span>;
 <span class="hljs-comment">//#endregion Global Imports</span>
@@ -77,7 +77,40 @@ export <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
     shield: number;
 }
 </code></pre>
-<p><br></p>
+<p>And this is Planet repository;</p>
+<pre><code class="hljs"><span class="hljs-comment">//#region Global Imports</span>
+<span class="hljs-keyword">import</span> { getManager } <span class="hljs-keyword">from</span> <span class="hljs-string">'typeorm'</span>;
+<span class="hljs-comment">//#endregion Global Imports</span>
+
+<span class="hljs-comment">//#region Local Imports</span>
+<span class="hljs-keyword">import</span> { Planet } <span class="hljs-keyword">from</span> <span class="hljs-string">'@Entities/Planet'</span>;
+<span class="hljs-keyword">import</span> { getResource } <span class="hljs-keyword">from</span> <span class="hljs-string">'./Shared'</span>;
+<span class="hljs-comment">//#endregion Local Imports</span>
+
+<span class="hljs-comment">//#region Interface Imports</span>
+<span class="hljs-keyword">import</span> { DecreaseShieldOutDto } <span class="hljs-keyword">from</span> <span class="hljs-string">'@Interfaces'</span>;
+<span class="hljs-comment">//#endregion Interface Imports</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">namespace</span> PlanetRepository {
+    <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> Get = <span class="hljs-keyword">async</span> (planetName: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">Promise</span>&lt;Planet&gt; =&gt; {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> getResource(Planet, { name: planetName });
+    };
+
+    <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> DecreaseShield = <span class="hljs-keyword">async</span> (
+        planetName: <span class="hljs-built_in">string</span>,
+        remainingShield: <span class="hljs-built_in">number</span>,
+    ): <span class="hljs-built_in">Promise</span>&lt;DecreaseShieldOutDto&gt; =&gt; {
+        <span class="hljs-keyword">const</span> planet = <span class="hljs-keyword">await</span> getResource(Planet, { name: planetName });
+
+        planet.shield = remainingShield;
+
+        <span class="hljs-keyword">await</span> getManager().save(planet);
+
+        <span class="hljs-keyword">return</span> { remainingShield: planet.shield };
+    };
+}
+
+</code></pre>
 <blockquote>
 <p>Refer to <a href="https://typeorm.io/#/entities">offical documentation</a> for detailed usage.</p>
 </blockquote>
