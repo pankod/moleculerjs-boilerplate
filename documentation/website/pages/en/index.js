@@ -138,11 +138,10 @@ class Index extends React.Component {
 			<Block background="light">
 				{[
 					{
-						content:
-							'Her servisin nasıl kullanılacağına dair protocal yayınlar.',
+						content: 'Provides easy communication contract between services.',
 						image: `${baseUrl}img/clients.svg`,
 						imageAlign: 'right',
-						title: 'Service Clients'
+						title: 'Service Helpers'
 					},
 				]}
 			</Block>
