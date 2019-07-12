@@ -1,6 +1,7 @@
 //#region Global Imports
 import { Context } from 'moleculer';
 import { Action, BaseSchema, Method } from 'moleculer-decorators';
+import { getConnection } from 'typeorm';
 //#endregion Global Imports
 
 //#region Local Imports
@@ -17,9 +18,7 @@ export class {{upperFileName}}Service extends BaseSchema {
 
 	public name: string = '{{fileName}}';
 {{#hasDatabase}}
-	public started: Function = () => {
-		connectionInstance()
-	};
+	public started: Function = async () => await connectionInstance();
 {{/hasDatabase}}
 
 {{#isPrivate}}
@@ -50,6 +49,9 @@ export class {{upperFileName}}Service extends BaseSchema {
 	public async {{upperFileName}}Method(): Promise<> {
 	}
 
+{{#hasDatabase}}
+	public stopped: Function = async () => await getConnection().close();
+{{/hasDatabase}}
 }
 
 module.exports = new {{upperFileName}}Service();
