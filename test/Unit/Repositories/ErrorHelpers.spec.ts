@@ -12,7 +12,7 @@ describe('Throw 404', () => {
 	});
 
 	it('shouldnt throw error if resource is present', () => {
-		expect(() => Throw404({ resource: 'test' }, 'Test Error')).not.toThrow()
+		expect(() => Throw404({ resource: 'test' }, 'Test Error')).not.toThrow();
 	});
 
 	it('should throw error when resource not present', () => {
