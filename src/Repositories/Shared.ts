@@ -14,5 +14,5 @@ export const getResource = async <E extends {}>(
 
 	Throw404(resource, `Resource can't be found with options: ${JSON.stringify(options)}`);
 
-	return resource;
+	return <E> resource;
 };
