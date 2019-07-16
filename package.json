@@ -45,7 +45,7 @@
     "typescript": "^3.3.3333"
   },
   "dependencies": {
-    "@pankod/pankod-cli": "^0.1.1",
+    "@pankod/pankod-cli": "^0.1.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "moleculer": "^0.13.0",
