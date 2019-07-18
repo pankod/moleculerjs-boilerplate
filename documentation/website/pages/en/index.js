@@ -139,7 +139,7 @@ class Index extends React.Component {
 				{[
 					{
 						content: 'Provides easy communication contract between services.',
-						image: `${baseUrl}img/clients.svg`,
+						image: `${baseUrl}img/service-helpers.png`,
 						imageAlign: 'right',
 						title: 'Service Helpers'
 					},
