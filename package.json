@@ -15,7 +15,7 @@
     "swagger": "swagger-jsdoc -d swagger/config.js -o swagger/swagger.json services/*.service.ts && node ./swagger/index.js",
     "setup-db": "cp db.sqlite.example db.sqlite"
   },
-  "cli": {
+  "pankod": {
     "projectType": "moleculer"
   },
   "keywords": [
