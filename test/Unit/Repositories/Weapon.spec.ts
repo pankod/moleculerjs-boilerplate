@@ -35,7 +35,9 @@ describe('Weapon Repository Methods', () => {
 		it('should throw an error if weapon not found', async () => {
 			const weaponName = `I don't exist`;
 
-			expect(async () => WeaponRepository.Get(weaponName)).toThrowError;
+			await expect(WeaponRepository.Get(weaponName)).rejects.toThrow(
+				'{"name":"I don\'t exist"}',
+			);
 		});
 	});
 
@@ -45,7 +47,7 @@ describe('Weapon Repository Methods', () => {
 		const weaponName = 'Death Star';
 		const weapon = await entityManager.findOne(Weapon, { name: weaponName });
 
-		const expectedAmmo = weapon.ammo - 1;
+		const expectedAmmo = weapon!.ammo - 1;
 
 		const { remainingAmmo } = await WeaponRepository.DecreaseAmmo(weaponName);
 

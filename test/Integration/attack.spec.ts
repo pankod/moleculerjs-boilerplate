@@ -7,10 +7,11 @@ import request from 'supertest';
 //#region Local Imports
 import setupDatabase from '@Test/Config/SetupDatabase';
 import { BrokerHelper } from '@Test/Utils';
+import * as supertest from 'supertest';
 //#endregion Local Imports
 
 const broker = BrokerHelper.setupBroker();
-let server;
+let server: {};
 
 beforeEach(async () => {
 	await setupDatabase();
@@ -38,9 +39,9 @@ describe('Test Attack service requests', () => {
 		return request(server)
 			.post('/attack/Fire')
 			.query({ ...params })
-			.then(res => {
-				expect(res.statusCode).toBe(200);
-				expect(res.headers['content-type']).toBe('application/json; charset=utf-8');
+			.then((res: supertest.Response) => {
+				expect(res.status).toBe(200);
+				expect(res.header['content-type']).toBe('application/json; charset=utf-8');
 				expect(res.body.planetMessage).toContain('Planet took');
 				expect(res.body.weaponMessage).toContain('Death Star did');
 			});

@@ -2,7 +2,7 @@
 import { createConnection, Connection } from 'typeorm';
 //#region Global Imports
 
-export default async (): Promise<Connection> => {
+export default async (): Promise<Connection | undefined> => {
 	try {
 		return await createConnection({
 			type: 'sqlite',
@@ -12,5 +12,7 @@ export default async (): Promise<Connection> => {
 			synchronize: true,
 			dropSchema: true,
 		});
-	} catch (error) {}
+	} catch (error) {
+		return undefined;
+	}
 };
