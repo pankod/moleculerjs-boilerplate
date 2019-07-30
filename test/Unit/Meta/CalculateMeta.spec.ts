@@ -26,8 +26,8 @@ describe('CalculateMeta functions', () => {
 	it('should calculate remaining shield', async () => {
 		const entityManager = getManager();
 
-		const weapon = await entityManager.findOne(Weapon, { name: 'Death Star' });
-		const planet = await entityManager.findOne(Planet, { name: 'Alderaan' });
+		const weapon = await entityManager.findOne(Weapon, { where: { name: 'Death Star' } });
+		const planet = await entityManager.findOne(Planet, { where: { name: 'Alderaan' } });
 
 		const { damage, remainingShield } = await CalculateMeta.Damage(weapon, planet);
 

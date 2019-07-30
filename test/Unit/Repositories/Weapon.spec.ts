@@ -43,7 +43,7 @@ describe('Weapon Repository Methods', () => {
 		const entityManager = getManager();
 
 		const weaponName = 'Death Star';
-		const weapon = await entityManager.findOne(Weapon, { name: weaponName });
+		const weapon = await entityManager.findOne(Weapon, { where: { name: weaponName } });
 
 		const expectedAmmo = weapon.ammo - 1;
 
