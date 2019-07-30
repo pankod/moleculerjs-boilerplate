@@ -13,11 +13,11 @@ import { DecreaseAmmoOutDto } from '@Interfaces';
 
 export namespace WeaponRepository {
 	export const Get = async (weaponName: string): Promise<Weapon> => {
-		return await getResource(Weapon, { name: weaponName });
+		return await getResource(Weapon, { where: { name: weaponName } });
 	};
 
 	export const DecreaseAmmo = async (weaponName: string): Promise<DecreaseAmmoOutDto> => {
-		const weapon = await getResource(Weapon, { name: weaponName });
+		const weapon = await getResource(Weapon, { where: { name: weaponName } });
 
 		weapon.ammo = weapon.ammo - 1;
 
