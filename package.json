@@ -6,7 +6,7 @@
     "build": "tsc",
     "dev": "ts-node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js --hot --repl --config moleculer.config.ts services/**/*.service.ts & npm run swagger",
     "start": "TS_NODE_PROJECT=tsconfig.production.json node -r tsconfig-paths/register ./node_modules/moleculer/bin/moleculer-runner.js dist/services",
-    "cli": "pankod add",
+    "cli": "pankod-cli add",
     "test": "jest --coverage --runInBand",
     "lint": "eslint -c .eslintrc.js --ext .ts {services,src,test}/**",
     "format": "eslint -c .eslintrc.js --ext .ts --fix {services,src,test}/**",
@@ -30,7 +30,7 @@
   ],
   "author": "Pankod <info@pankod.com>",
   "devDependencies": {
-    "@pankod/pankod-cli": "^0.2.2",
+    "@pankod/pankod-cli": "^0.2.3",
     "@types/jest": "^23.1.1",
     "@types/node": "^10.12.12",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
