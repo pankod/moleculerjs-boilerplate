@@ -70,3 +70,7 @@ db.sqlite
 /project-cli/dist
 dist/
 /documentation/website/build
+
+# webstorm
+.idea/
+*.iml

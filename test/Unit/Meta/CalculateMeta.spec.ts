@@ -29,8 +29,8 @@ describe('CalculateMeta functions', () => {
 		const weapon = await entityManager.findOne(Weapon, { where: { name: 'Death Star' } });
 		const planet = await entityManager.findOne(Planet, { where: { name: 'Alderaan' } });
 
-		const { damage, remainingShield } = await CalculateMeta.Damage(weapon, planet);
+		const { damage, remainingShield } = await CalculateMeta.Damage(weapon!, planet!);
 
-		expect(remainingShield).toEqual(planet.shield - damage);
+		expect(remainingShield).toEqual(planet!.shield - damage);
 	});
 });

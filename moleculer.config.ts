@@ -1,6 +1,8 @@
 "use strict";
 import { BrokerOptions, Errors } from "moleculer";
 import 'reflect-metadata'
+import * as Moleculer from 'moleculer';
+import MoleculerRetryableError = Moleculer.Errors.MoleculerRetryableError;
 
 /**
  * Moleculer ServiceBroker configuration file
@@ -21,7 +23,7 @@ const brokerConfig: BrokerOptions = {
 	// Namespace of nodes to segment your nodes on the same network.
 	namespace: "",
 	// Unique node identifier. Must be unique in a namespace.
-	nodeID: null,
+	nodeID: undefined,
 
 	// Enable/disable logging or use custom logger. More info: https://moleculer.services/docs/0.13/logging.html
 	logger: true,
@@ -30,7 +32,7 @@ const brokerConfig: BrokerOptions = {
 	// Log formatter for built-in console logger. Available values: default, simple, short. It can be also a `Function`.
 	logFormatter: "default",
 	// Custom object & array printer for built-in console logger.
-	logObjectPrinter: null,
+	logObjectPrinter: undefined,
 
 	// Define transporter.
 	// More info: https://moleculer.services/docs/0.13/networking.html
@@ -62,7 +64,7 @@ const brokerConfig: BrokerOptions = {
 		// Backoff factor for delay. 2 means exponential backoff.
 		factor: 2,
 		// A function to check failed requests.
-		check: (err: Errors.MoleculerRetryableError) => err && !!err.retryable,
+		check: (err: Error) => err && err instanceof MoleculerRetryableError && !!err.retryable,
 	},
 
 	// Limit of calling level. If it reaches the limit, broker will throw an MaxCallLevelError error. (Infinite loop protection)
@@ -106,7 +108,7 @@ const brokerConfig: BrokerOptions = {
 		// Number of milliseconds to switch from open to half-open state
 		halfOpenTime: 10 * 1000,
 		// A function to check failed requests.
-		check: (err: Errors.MoleculerRetryableError) => err && err.code >= 500,
+		check: (err: Error) => err && err instanceof MoleculerRetryableError && err.code >= 500,
 	},
 
 	// Settings of bulkhead feature. More info: https://moleculer.services/docs/0.13/fault-tolerance.html#Bulkhead
@@ -122,7 +124,7 @@ const brokerConfig: BrokerOptions = {
 	// Enable parameters validation. More info: https://moleculer.services/docs/0.13/validating.html
 	validation: true,
 	// Custom Validator class for validation.
-	validator: null,
+	validator: undefined,
 
 	// Enable metrics function. More info: https://moleculer.services/docs/0.13/metrics.html
 	metrics: true,
@@ -155,7 +157,7 @@ const brokerConfig: BrokerOptions = {
 	},
 
 	// Register custom REPL commands.
-	replCommands: null,
+	replCommands: undefined,
 };
 
 export = brokerConfig;
