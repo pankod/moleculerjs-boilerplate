@@ -5,6 +5,10 @@
     "previous": "Previous",
     "tagline": "Moleculer JS Microservice Boilerplate with Typescript, TypeORM, CLI, Service Helpers, Swagger, Jest, Docker, Eslint support and everything you will ever need to deploy rock solid projects.",
     "docs": {
+      "cli-migration-guide": {
+        "title": "CLI Migrate Guide",
+        "sidebar_label": "Migration Guide"
+      },
       "cli-overview": {
         "title": "Overview",
         "sidebar_label": "Overview"
