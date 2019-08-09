@@ -18,8 +18,7 @@ moleculerjs-boilerplate is shipped with a CLI tool to streamline the creation of
 To start the CLI, you may run the following npm command:
 
 ```sh
-npm run g
+npm run cli
 ```
 
-
-After answering questions it generates files in miliseconds.
+After answering the questions, it will generate files in miliseconds.
