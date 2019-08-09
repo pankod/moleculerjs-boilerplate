@@ -13,14 +13,14 @@ import { DecreaseShieldOutDto } from '@Interfaces';
 
 export namespace PlanetRepository {
 	export const Get = async (planetName: string): Promise<Planet> => {
-		return await getResource(Planet, { name: planetName });
+		return await getResource(Planet, { where: { name: planetName } });
 	};
 
 	export const DecreaseShield = async (
 		planetName: string,
 		remainingShield: number,
 	): Promise<DecreaseShieldOutDto> => {
-		const planet = await getResource(Planet, { name: planetName });
+		const planet = await getResource(Planet, { where: { name: planetName } });
 
 		planet.shield = remainingShield;
 
