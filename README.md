@@ -84,7 +84,7 @@ moleculerjs-boilerplate is shipped with a CLI tool to streamline the creation of
 To start the CLI, you may run the following npm command:
 
 ```
-npm run g
+npm run cli
 ```
 
 
