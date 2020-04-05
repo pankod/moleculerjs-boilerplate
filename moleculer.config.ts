@@ -1,13 +1,13 @@
-"use strict";
-import { BrokerOptions, Errors } from "moleculer";
-import 'reflect-metadata'
+'use strict';
+import { BrokerOptions } from 'moleculer';
+import 'reflect-metadata';
 import * as Moleculer from 'moleculer';
 import MoleculerRetryableError = Moleculer.Errors.MoleculerRetryableError;
 
 /**
  * Moleculer ServiceBroker configuration file
  *
- * More info about options: https://moleculer.services/docs/0.13/broker.html#Broker-options
+ * More info about options: https://moleculer.services/docs/0.14/broker.html#Broker-options
  *
  * Overwrite options in production:
  * ================================
@@ -21,37 +21,37 @@ import MoleculerRetryableError = Moleculer.Errors.MoleculerRetryableError;
  */
 const brokerConfig: BrokerOptions = {
 	// Namespace of nodes to segment your nodes on the same network.
-	namespace: "",
+	namespace: '',
 	// Unique node identifier. Must be unique in a namespace.
 	nodeID: undefined,
 
-	// Enable/disable logging or use custom logger. More info: https://moleculer.services/docs/0.13/logging.html
+	// Enable/disable logging or use custom logger. More info: https://moleculer.services/docs/0.14/logging.html
 	logger: true,
 	// Log level for built-in console logger. Available values: trace, debug, info, warn, error, fatal
-	logLevel: "info",
+	logLevel: 'info',
 	// Log formatter for built-in console logger. Available values: default, simple, short. It can be also a `Function`.
-	logFormatter: "default",
+	logFormatter: 'default',
 	// Custom object & array printer for built-in console logger.
 	logObjectPrinter: undefined,
 
 	// Define transporter.
-	// More info: https://moleculer.services/docs/0.13/networking.html
+	// More info: https://moleculer.services/docs/0.14/networking.html
 	transporter: {
-        type: "TCP",
-        options: {
-            udpDiscovery: false
-		}
+		type: 'TCP',
+		options: {
+			udpDiscovery: false,
+		},
 	},
 
 	// Define a serializer.
 	// Available values: "JSON", "Avro", "ProtoBuf", "MsgPack", "Notepack", "Thrift".
-	// More info: https://moleculer.services/docs/0.13/networking.html
-	serializer: "JSON",
+	// More info: https://moleculer.services/docs/0.14/networking.html
+	serializer: 'JSON',
 
 	// Number of milliseconds to wait before reject a request with a RequestTimeout error. Disabled: 0
 	requestTimeout: 10 * 1000,
 
-	// Retry policy settings. More info: https://moleculer.services/docs/0.13/fault-tolerance.html#Retry
+	// Retry policy settings. More info: https://moleculer.services/docs/0.14/fault-tolerance.html#Retry
 	retryPolicy: {
 		// Enable feature
 		enabled: false,
@@ -75,7 +75,7 @@ const brokerConfig: BrokerOptions = {
 	// Number of seconds to wait before setting node to unavailable status.
 	heartbeatTimeout: 15,
 
-	// Tracking requests and waiting for running requests before shutdowning. More info: https://moleculer.services/docs/0.13/fault-tolerance.html
+	// Tracking requests and waiting for running requests before shutdowning. More info: https://moleculer.services/docs/0.14/fault-tolerance.html
 	tracking: {
 		// Enable feature
 		enabled: false,
@@ -86,16 +86,16 @@ const brokerConfig: BrokerOptions = {
 	// Disable built-in request & emit balancer. (Transporter must support it, as well.)
 	disableBalancer: false,
 
-	// Settings of Service Registry. More info: https://moleculer.services/docs/0.13/registry.html
+	// Settings of Service Registry. More info: https://moleculer.services/docs/0.14/registry.html
 	registry: {
 		// Define balancing strategy.
 		// Available values: "RoundRobin", "Random", "CpuUsage", "Latency"
-		strategy: "RoundRobin",
+		strategy: 'RoundRobin',
 		// Enable local action call preferring.
 		preferLocal: true,
 	},
 
-	// Settings of Circuit Breaker. More info: https://moleculer.services/docs/0.13/fault-tolerance.html#Circuit-Breaker
+	// Settings of Circuit Breaker. More info: https://moleculer.services/docs/0.14/fault-tolerance.html#Circuit-Breaker
 	circuitBreaker: {
 		// Enable feature
 		enabled: false,
@@ -111,7 +111,7 @@ const brokerConfig: BrokerOptions = {
 		check: (err: Error) => err && err instanceof MoleculerRetryableError && err.code >= 500,
 	},
 
-	// Settings of bulkhead feature. More info: https://moleculer.services/docs/0.13/fault-tolerance.html#Bulkhead
+	// Settings of bulkhead feature. More info: https://moleculer.services/docs/0.14/fault-tolerance.html#Bulkhead
 	bulkhead: {
 		// Enable feature.
 		enabled: false,
@@ -122,18 +122,16 @@ const brokerConfig: BrokerOptions = {
 	},
 
 	// Enable parameters validation. More info: https://moleculer.services/docs/0.13/validating.html
-	validation: true,
-	// Custom Validator class for validation.
-	validator: undefined,
+	validator: true,
 
-	// Enable metrics function. More info: https://moleculer.services/docs/0.13/metrics.html
-	metrics: true,
-	// Rate of metrics calls. 1 means to measure every request, 0 means to measure nothing.
-	metricsRate: 1,
+	// Enable metrics function. More info: https://moleculer.services/docs/0.14/metrics.html
+	metrics: {
+		enabled: true,
+	},
 
-	// Register internal services ("$node"). More info: https://moleculer.services/docs/0.13/services.html#Internal-services
+	// Register internal services ("$node"). More info: https://moleculer.services/docs/0.14/services.html#Internal-services
 	internalServices: true,
-	// Register internal middlewares. More info: https://moleculer.services/docs/0.13/middlewares.html#Internal-middlewares
+	// Register internal middlewares. More info: https://moleculer.services/docs/0.14/middlewares.html#Internal-middlewares
 	internalMiddlewares: true,
 
 	// Watch the loaded services and hot reload if they changed. You can also enable it in Moleculer Runner with `--hot` argument
@@ -143,18 +141,16 @@ const brokerConfig: BrokerOptions = {
 	middlewares: [],
 
 	// Called after broker created.
-	created(broker) {
-	},
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	created(broker) {},
 
 	// Called after broker starte.
-	started(broker) {
-
-	},
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	started(broker) {},
 
 	// Called after broker stopped.
-	stopped(broker) {
-
-	},
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	stopped(broker) {},
 
 	// Register custom REPL commands.
 	replCommands: undefined,
