@@ -57,7 +57,7 @@
     "moleculer-web": "^0.8.0",
     "nats": "^1.3.0",
     "reflect-metadata": "^0.1.13",
-    "sqlite3": "^4.0.6",
+    "sqlite3": "^4.1.1",
     "swagger-jsdoc": "^3.2.9",
     "tsconfig-paths": "^3.8.0",
     "typeorm": "^0.2.18"
