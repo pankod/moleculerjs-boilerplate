@@ -1,6 +1,6 @@
 //#region Global Imports
-import { Context } from 'moleculer';
-import { Action, BaseSchema, Method } from 'moleculer-decorators';
+import { Context, Service as MoleculerService } from 'moleculer';
+import { Action, Method, Service } from 'moleculer-decorators';
 import { getConnection } from 'typeorm';
 //#endregion Global Imports
 
@@ -15,9 +15,13 @@ import connectionInstance from '@Entities/Connection';
 import { IAttack } from '@Interfaces';
 //#endregion Interface Imports
 
-export class AttackService extends BaseSchema {
-	public name: string = 'attack';
-	public started: Function = async () => await connectionInstance();
+@Service({
+	name: 'attack',
+})
+class AttackService extends MoleculerService {
+	public async started() {
+		return await connectionInstance();
+	}
 
 	@Action({
 		params: {
@@ -53,9 +57,10 @@ export class AttackService extends BaseSchema {
 	 *            properties:
 	 *              weaponName:
 	 *                type: string
-	 *                default: Death Star
+	 *                example: Death Star
 	 *              planetName:
 	 *                type: string
+	 *                example: Alderaan
 	 *      responses:
 	 *        200:
 	 *          description: Example attack result
@@ -88,8 +93,9 @@ export class AttackService extends BaseSchema {
 			weaponMessage,
 		};
 	}
-
-	public stopped: Function = async () => await getConnection().close();
+	public async stopped() {
+		return await getConnection().close();
+	}
 }
 
-module.exports = new AttackService();
+module.exports = AttackService;

@@ -21,13 +21,13 @@ afterEach(async () => {
 	await getConnection().close();
 });
 
-beforeAll(() => {
+beforeAll(async () => {
 	const service = broker.createService(ApiGateway);
 	server = service.server;
 	return broker.start();
 });
 
-afterAll(() => broker.stop());
+afterAll(async () => broker.stop());
 
 describe('Test Attack service requests', () => {
 	it('Test POST request on attack service Fire method', async () => {

@@ -30,10 +30,11 @@
               "properties": {
                 "weaponName": {
                   "type": "string",
-                  "default": "Death Star"
+                  "example": "Death Star"
                 },
                 "planetName": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "Alderaan"
                 }
               }
             }
@@ -71,10 +72,11 @@
               "properties": {
                 "weaponName": {
                   "type": "string",
-                  "default": "Death Star"
+                  "example": "Death Star"
                 },
                 "planetName": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "Alderaan"
                 }
               }
             }
