@@ -16,7 +16,7 @@
     "setup-db": "cp db.sqlite.example db.sqlite"
   },
   "pankod": {
-    "projectType": "moleculer"
+    "project": "moleculer"
   },
   "keywords": [
     "microservices",
