@@ -19,10 +19,6 @@ import { IPlanet } from '@Interfaces';
 	name: 'planet',
 })
 class PlanetService extends MoleculerService {
-	public async started() {
-		return await connectionInstance();
-	}
-
 	@Action({
 		params: {
 			weaponName: { type: 'string', min: 2 },
@@ -86,6 +82,10 @@ class PlanetService extends MoleculerService {
 		}
 
 		return { damage, planetMessage: message };
+	}
+
+	public async started() {
+		return await connectionInstance();
 	}
 
 	public async stopped() {

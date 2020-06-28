@@ -8,7 +8,6 @@ import { getConnection } from 'typeorm';
 import { WeaponRepository } from '@Repositories';
 import { PlanetHelper } from '@ServiceHelpers';
 import connectionInstance from '@Entities/Connection';
-
 //#endregion Local Imports
 
 //#region Interface Imports
@@ -19,10 +18,6 @@ import { IAttack } from '@Interfaces';
 	name: 'attack',
 })
 class AttackService extends MoleculerService {
-	public async started() {
-		return await connectionInstance();
-	}
-
 	@Action({
 		params: {
 			weaponName: { type: 'string', min: 2 },
@@ -93,6 +88,11 @@ class AttackService extends MoleculerService {
 			weaponMessage,
 		};
 	}
+
+	public async started() {
+		return await connectionInstance();
+	}
+
 	public async stopped() {
 		return await getConnection().close();
 	}

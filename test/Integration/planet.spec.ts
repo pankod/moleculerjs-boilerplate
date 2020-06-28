@@ -11,7 +11,7 @@ import * as supertest from 'supertest';
 //#endregion Local Imports
 
 const broker = BrokerHelper.setupBroker();
-let server: {};
+let server: Record<string, unknown>;
 
 beforeEach(async () => {
 	await setupDatabase();

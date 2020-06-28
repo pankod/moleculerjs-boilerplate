@@ -1,7 +1,7 @@
 import CreateConnection from '../../../src/Entities/Connection';
 import { Connection, getConnection } from 'typeorm';
 
-describe('Connection', async () => {
+describe('Connection', () => {
 	it('should return connection and connect', async () => {
 		const connection = await CreateConnection();
 

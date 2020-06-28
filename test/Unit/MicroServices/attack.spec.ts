@@ -27,7 +27,7 @@ describe('Test attack service', () => {
 		weaponName: 'Death Star',
 	};
 
-	describe('Fire method', async () => {
+	describe('Fire method', () => {
 		it('when ammo is up', async () => {
 			// eslint-disable-next-line
 			const { planetMessage, weaponMessage } = await AttackHelper.Fire(broker as any, params);
