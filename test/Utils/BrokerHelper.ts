@@ -10,7 +10,7 @@ const PlanetService = require('../../services/planet.service');
 /* eslint-enable */
 
 export namespace BrokerHelper {
-	export const setupBroker = () => {
+	export const setupBroker = (): ServiceBroker => {
 		const broker = new ServiceBroker({ logger: false });
 
 		broker.createService(AttackService);

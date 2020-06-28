@@ -1,7 +1,7 @@
 import { DummyContext } from './DummyContext';
 import { Context } from 'moleculer';
 
-describe('Dummy Context', async () => {
+describe('Dummy Context', () => {
 	it('should define getCall', async () => {
 		const ctx = DummyContext.getCall({});
 

@@ -1,2 +1,4 @@
-export { AttackService } from './attack.service';
-export { PlanetService } from './planet.service';
+/* eslint-disable */
+export * as AttackService from './attack.service';
+export * as PlanetService from './planet.service';
+/* eslint-enable */

@@ -22,7 +22,7 @@ afterEach(async () => {
 });
 
 describe('Test Defend service', () => {
-	describe('Defend method', async () => {
+	describe('Defend method', () => {
 		const params: IPlanet.DefendInDto = {
 			planetName: 'Alderaan',
 			weaponName: 'Death Star',

@@ -23,7 +23,7 @@ describe('Weapon Repository Methods', () => {
 		await getConnection().close();
 	});
 
-	describe('GetWeapon', async () => {
+	describe('GetWeapon', () => {
 		it('should get weapon', async () => {
 			const weaponName = 'Death Star';
 
