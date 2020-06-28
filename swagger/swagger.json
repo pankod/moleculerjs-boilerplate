@@ -11,6 +11,9 @@
     "/attack/Fire": {
       "post": {
         "description": "Attacks to the planet with given weapon.",
+        "tags": [
+          "Attack Service"
+        ],
         "produces": [
           "application/json"
         ],
@@ -19,40 +22,31 @@
         ],
         "parameters": [
           {
-            "in": "body",
-            "name": "params",
-            "schema": {
-              "type": "object",
-              "required": [
-                "weaponName",
-                "planetName"
-              ],
-              "properties": {
-                "weaponName": {
-                  "type": "string",
-                  "example": "Death Star"
-                },
-                "planetName": {
-                  "type": "string",
-                  "example": "Alderaan"
-                }
-              }
-            }
+            "$ref": "#/parameters/AttackPlanetParams"
           }
         ],
         "responses": {
           "200": {
-            "description": "Example attack result"
+            "$ref": "#/responses/AttackResponse"
+          },
+          "404": {
+            "$ref": "#/responses/EntityNotFound"
           },
           "422": {
-            "description": "Missing parameters"
+            "$ref": "#/responses/UnprocessableEntity"
+          },
+          "5XX": {
+            "$ref": "#/responses/UncaughtError"
           }
         }
       }
     },
     "/planet/Defend": {
       "post": {
-        "description": "Attacks to the planet with given weapon.",
+        "description": "A planet defends an attack from a given weapon.",
+        "tags": [
+          "Planet Service"
+        ],
         "produces": [
           "application/json"
         ],
@@ -61,41 +55,313 @@
         ],
         "parameters": [
           {
-            "in": "body",
-            "name": "params",
-            "schema": {
-              "type": "object",
-              "required": [
-                "weaponName",
-                "planetName"
-              ],
-              "properties": {
-                "weaponName": {
-                  "type": "string",
-                  "example": "Death Star"
-                },
-                "planetName": {
-                  "type": "string",
-                  "example": "Alderaan"
-                }
-              }
-            }
+            "$ref": "#/parameters/AttackPlanetParams"
           }
         ],
         "responses": {
           "200": {
-            "description": "Example attack result"
+            "$ref": "#/responses/DefendResponse"
+          },
+          "404": {
+            "$ref": "#/responses/EntityNotFound"
           },
           "422": {
-            "description": "Missing parameters"
+            "$ref": "#/responses/UnprocessableEntity"
+          },
+          "5XX": {
+            "$ref": "#/responses/UncaughtError"
           }
         }
       }
     }
   },
-  "definitions": {},
-  "responses": {},
-  "parameters": {},
+  "definitions": {
+    "ErrorEntityNotFound": {
+      "type": "object",
+      "required": [
+        "name",
+        "message",
+        "code",
+        "type"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "MoleculerError"
+        },
+        "message": {
+          "type": "string",
+          "example": "Resource can't be found with options: {\"where\":{\"name\":\"Pew Pew\"}}"
+        },
+        "code": {
+          "type": "integer",
+          "example": 404
+        },
+        "type": {
+          "type": "string",
+          "example": "Not Found"
+        }
+      }
+    },
+    "ErrorUnprocessableEntity": {
+      "type": "object",
+      "required": [
+        "name",
+        "message",
+        "code",
+        "type",
+        "data"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "required"
+        },
+        "message": {
+          "type": "string",
+          "example": "Parameters validation error!"
+        },
+        "code": {
+          "type": "integer",
+          "example": 422
+        },
+        "type": {
+          "type": "string",
+          "example": "VALIDATION_ERROR"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ErrorUnprocessableEntityData"
+          }
+        }
+      }
+    },
+    "ErrorUnprocessableEntityData": {
+      "type": "object",
+      "required": [
+        "type",
+        "message",
+        "field",
+        "nodeID",
+        "action"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "required"
+        },
+        "message": {
+          "type": "string",
+          "example": "The 'planetName' field is required."
+        },
+        "field": {
+          "type": "string",
+          "example": "planetName"
+        },
+        "nodeID": {
+          "type": "string",
+          "example": "asus-ubuntu-3505"
+        },
+        "action": {
+          "type": "string",
+          "example": "attack.Fire"
+        }
+      }
+    },
+    "ErrorUncaught": {
+      "type": "object",
+      "required": [
+        "name",
+        "message",
+        "code"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "MoleculerError"
+        },
+        "message": {
+          "type": "string",
+          "example": ""
+        },
+        "code": {
+          "type": "integer",
+          "example": 500
+        }
+      }
+    },
+    "AttackResponseBody": {
+      "in": "body",
+      "required": [
+        "planetMessage",
+        "weaponMessage"
+      ],
+      "properties": {
+        "planetMessage": {
+          "type": "string",
+          "example": "Planet took 233 damage and has 87552 shield left."
+        },
+        "weaponMessage": {
+          "type": "string",
+          "example": "Death Star did 89 damage and left 986 ammo."
+        }
+      }
+    },
+    "DefendResponseBody": {
+      "in": "body",
+      "required": [
+        "damage",
+        "planetMessage"
+      ],
+      "properties": {
+        "damage": {
+          "type": "integer",
+          "example": 119
+        },
+        "planetMessage": {
+          "type": "string",
+          "example": "Planet took 119 damage and has 86711 shield left."
+        }
+      }
+    }
+  },
+  "responses": {
+    "UnprocessableEntity": {
+      "description": "The request could not be processed.",
+      "headers": {
+        "content-type": {
+          "description": "The Content-Type entity header is used to indicate the media type of the resource.",
+          "schema": {
+            "type": "string",
+            "example": "application/json; charset=utf-8"
+          }
+        }
+      },
+      "schema": {
+        "$ref": "#/definitions/ErrorUnprocessableEntity"
+      }
+    },
+    "EntityNotFound": {
+      "description": "The requested entity could not be found.",
+      "headers": {
+        "content-type": {
+          "description": "The Content-Type entity header is used to indicate the media type of the resource.",
+          "schema": {
+            "type": "string",
+            "example": "application/json; charset=utf-8"
+          }
+        }
+      },
+      "schema": {
+        "$ref": "#/definitions/ErrorEntityNotFound"
+      }
+    },
+    "UncaughtError": {
+      "description": "The server encountered an unhandled error.",
+      "headers": {
+        "content-type": {
+          "description": "The Content-Type entity header is used to indicate the media type of the resource.",
+          "schema": {
+            "type": "string",
+            "example": "application/json; charset=utf-8"
+          }
+        }
+      },
+      "schema": {
+        "$ref": "#/definitions/ErrorUncaught"
+      }
+    },
+    "AttackResponse": {
+      "description": "Ok",
+      "headers": {
+        "content-type": {
+          "description": "The Content-Type entity header is used to indicate the media type of the resource.",
+          "schema": {
+            "type": "string",
+            "example": "application/json; charset=utf-8"
+          }
+        },
+        "content-length": {
+          "description": "The Content-Length entity-header field indicates the size of the entity-body.",
+          "schema": {
+            "type": "integer",
+            "example": 132
+          }
+        }
+      },
+      "schema": {
+        "type": "object",
+        "$ref": "#/definitions/AttackResponseBody"
+      }
+    },
+    "DefendResponse": {
+      "description": "Ok",
+      "headers": {
+        "content-type": {
+          "description": "The Content-Type entity header is used to indicate the media type of the resource.",
+          "schema": {
+            "type": "string",
+            "example": "application/json; charset=utf-8"
+          }
+        },
+        "content-length": {
+          "description": "The Content-Length entity-header field indicates the size of the entity-body.",
+          "schema": {
+            "type": "integer",
+            "example": 132
+          }
+        }
+      },
+      "schema": {
+        "type": "object",
+        "$ref": "#/definitions/DefendResponseBody"
+      }
+    }
+  },
+  "parameters": {
+    "weaponName": {
+      "type": "string",
+      "name": "weaponName",
+      "example": "Death Star",
+      "description": "The weapon being used to attack."
+    },
+    "planetName": {
+      "type": "string",
+      "name": "planetName",
+      "example": "Alderaan",
+      "description": "The planet being attacked."
+    },
+    "AttackPlanetParams": {
+      "in": "body",
+      "name": "params",
+      "required": [
+        "weaponName",
+        "planetName"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "weaponName": {
+            "$ref": "#/parameters/weaponName"
+          },
+          "planetName": {
+            "$ref": "#/parameters/planetName"
+          }
+        }
+      },
+      "description": "The weapon being used and planet being attacked."
+    }
+  },
   "securityDefinitions": {},
-  "tags": []
+  "tags": [
+    {
+      "name": "Attack Service",
+      "description": "Attacks to the planet with given weapon."
+    },
+    {
+      "name": "Planet Service",
+      "description": "Planet defends an attack from a given weapon."
+    }
+  ]
 }
