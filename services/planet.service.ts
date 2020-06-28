@@ -25,49 +25,49 @@ import { IPlanet } from '@Interfaces';
 	name: 'planet',
 })
 class PlanetService extends MoleculerService {
-  /**
-   * @swagger
-   * 
-   * definitions:
-   * 
-   *   DefendResponseBody:
-   *     in: body
-   *     required:
-   *       - damage
-   *       - planetMessage
-   *     properties:
-   *       damage:
-   *         type: integer
-   *         example: 119
-   *       planetMessage:
-   *         type: string
-   *         example: "Planet took 119 damage and has 86711 shield left."
-   * 
-   * responses:
-   * 
-   *   DefendResponse:
-   *     description: Ok
-   *     headers:
-   *       content-type:
-   *         description: The Content-Type entity header is used to indicate the media type of the resource.
-   *         schema:
-   *           type: string
-   *           example: 'application/json; charset=utf-8'
-   *       content-length:
-   *         description: The Content-Length entity-header field indicates the size of the entity-body.
-   *         schema:
-   *           type: integer
-   *           example: 132
-   *     schema:
-   *       type: object
-   *       $ref: '#/definitions/DefendResponseBody'
-   * 
-   * paths:
+	/**
+	 * @swagger
+	 *
+	 * definitions:
+	 *
+	 *   DefendResponseBody:
+	 *     in: body
+	 *     required:
+	 *       - damage
+	 *       - planetMessage
+	 *     properties:
+	 *       damage:
+	 *         type: integer
+	 *         example: 119
+	 *       planetMessage:
+	 *         type: string
+	 *         example: "Planet took 119 damage and has 86711 shield left."
+	 *
+	 * responses:
+	 *
+	 *   DefendResponse:
+	 *     description: Ok
+	 *     headers:
+	 *       content-type:
+	 *         description: The Content-Type entity header is used to indicate the media type of the resource.
+	 *         schema:
+	 *           type: string
+	 *           example: 'application/json; charset=utf-8'
+	 *       content-length:
+	 *         description: The Content-Length entity-header field indicates the size of the entity-body.
+	 *         schema:
+	 *           type: integer
+	 *           example: 132
+	 *     schema:
+	 *       type: object
+	 *       $ref: '#/definitions/DefendResponseBody'
+	 *
+	 * paths:
 	 *
 	 *  /planet/Defend:
 	 *    post:
 	 *      description: A planet defends an attack from a given weapon.
-   *      tags: [Planet Service]
+	 *      tags: [Planet Service]
 	 *      produces:
 	 *        - application/json
 	 *      consumes:
@@ -78,11 +78,11 @@ class PlanetService extends MoleculerService {
 	 *        200:
 	 *          $ref: '#/responses/DefendResponse'
 	 *        404:
-   *          $ref: '#/responses/EntityNotFound'
+	 *          $ref: '#/responses/EntityNotFound'
 	 *        422:
-   *          $ref: '#/responses/UnprocessableEntity'
+	 *          $ref: '#/responses/UnprocessableEntity'
 	 *        5XX:
-   *          $ref: '#/responses/UncaughtError'
+	 *          $ref: '#/responses/UncaughtError'
 	 */
 	@Action({
 		params: {
@@ -94,7 +94,7 @@ class PlanetService extends MoleculerService {
 		const response = await this.DefendMethod(ctx);
 
 		return response;
-  }
+	}
 
 	@Method
 	public async DefendMethod(ctx: Context<IPlanet.DefendInDto>): Promise<IPlanet.DefendOutDto> {

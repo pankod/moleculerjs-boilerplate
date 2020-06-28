@@ -12,7 +12,6 @@ import connectionInstance from '@Entities/Connection';
 
 //#region Interface Imports
 import { IAttack } from '@Interfaces';
-import { exit } from 'process';
 //#endregion Interface Imports
 
 /**
@@ -25,63 +24,63 @@ import { exit } from 'process';
 	name: 'attack',
 })
 class AttackService extends MoleculerService {
-  /**
-   * @swagger
-   * definitions:
-   * 
-   *   AttackResponseBody:
-   *     in: body
-   *     required:
-   *       - planetMessage
-   *       - weaponMessage
-   *     properties:
-   *       planetMessage:
-   *         type: string
-   *         example: 'Planet took 233 damage and has 87552 shield left.'
-   *       weaponMessage:
-   *         type: string
-   *         example: 'Death Star did 89 damage and left 986 ammo.'
-   * 
-   * responses:
-   * 
-   *   AttackResponse:
-   *     description: Ok
-   *     headers:
-   *       content-type:
-   *         description: The Content-Type entity header is used to indicate the media type of the resource.
-   *         schema:
-   *           type: string
-   *           example: 'application/json; charset=utf-8'
-   *       content-length:
-   *         description: The Content-Length entity-header field indicates the size of the entity-body.
-   *         schema:
-   *           type: integer
-   *           example: 132
-   *     schema:
-   *       type: object
-   *       $ref: '#/definitions/AttackResponseBody'
-   * 
+	/**
+	 * @swagger
+	 * definitions:
+	 *
+	 *   AttackResponseBody:
+	 *     in: body
+	 *     required:
+	 *       - planetMessage
+	 *       - weaponMessage
+	 *     properties:
+	 *       planetMessage:
+	 *         type: string
+	 *         example: 'Planet took 233 damage and has 87552 shield left.'
+	 *       weaponMessage:
+	 *         type: string
+	 *         example: 'Death Star did 89 damage and left 986 ammo.'
+	 *
+	 * responses:
+	 *
+	 *   AttackResponse:
+	 *     description: Ok
+	 *     headers:
+	 *       content-type:
+	 *         description: The Content-Type entity header is used to indicate the media type of the resource.
+	 *         schema:
+	 *           type: string
+	 *           example: 'application/json; charset=utf-8'
+	 *       content-length:
+	 *         description: The Content-Length entity-header field indicates the size of the entity-body.
+	 *         schema:
+	 *           type: integer
+	 *           example: 132
+	 *     schema:
+	 *       type: object
+	 *       $ref: '#/definitions/AttackResponseBody'
+	 *
 	 * paths:
-   * 
+	 *
 	 *  /attack/Fire:
 	 *    post:
 	 *      description: Attacks to the planet with given weapon.
-   *      tags: [Attack Service]
+	 *      tags: [Attack Service]
 	 *      produces:
 	 *        - application/json
 	 *      consumes:
 	 *        - application/json
 	 *      parameters:
-   *        - $ref: '#/parameters/AttackPlanetParams'
+	 *        - $ref: '#/parameters/AttackPlanetParams'
 	 *      responses:
 	 *        200:
 	 *          $ref: '#/responses/AttackResponse'
 	 *        404:
-   *          $ref: '#/responses/EntityNotFound'
+	 *          $ref: '#/responses/EntityNotFound'
 	 *        422:
-   *          $ref: '#/responses/UnprocessableEntity'
+	 *          $ref: '#/responses/UnprocessableEntity'
 	 *        5XX:
-   *          $ref: '#/responses/UncaughtError'
+	 *          $ref: '#/responses/UncaughtError'
 	 */
 	@Action({
 		params: {
@@ -93,13 +92,11 @@ class AttackService extends MoleculerService {
 		const response = await this.FireMethod(ctx);
 
 		return response;
-  }
+	}
 
 	@Method
 	public async FireMethod(ctx: Context<IAttack.FireInDto>): Promise<IAttack.FireOutDto> {
-    const { planetName, weaponName } = ctx.params;
-    
-    throw new Error();
+		const { planetName, weaponName } = ctx.params;
 
 		const weapon = await WeaponRepository.Get(weaponName);
 
