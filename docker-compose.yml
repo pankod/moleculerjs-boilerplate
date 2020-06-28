@@ -1,10 +1,13 @@
 version: "3.0"
 
 services:
-
   api:
     build: .
     image: api
+    depends_on:
+        - 'attack'
+        - 'planet'
+        - 'nats-server'
     env_file: docker-compose.env
     environment:
       SERVICES: api
@@ -15,6 +18,8 @@ services:
   attack:
     build: .
     image: attack
+    depends_on:
+        - 'nats-server'
     env_file: docker-compose.env
     environment:
       SERVICES: attack
@@ -22,6 +27,8 @@ services:
   planet:
     build: .
     image: planet
+    depends_on:
+        - 'nats-server'
     env_file: docker-compose.env
     environment:
       SERVICES: planet
