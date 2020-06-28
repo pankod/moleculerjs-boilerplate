@@ -83,7 +83,9 @@
     "testMatch": [
       "**/*.spec.(ts)"
     ],
-    "setupFilesAfterEnv": ["<rootDir>/test/Config/mock.setup.ts"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/Config/mock.setup.ts"
+    ],
     "globals": {
       "ts-jest": {
         "tsConfig": "<rootDir>/tsconfig.json"
