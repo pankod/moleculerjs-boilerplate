@@ -5,9 +5,9 @@ import * as ApiGateway from 'moleculer-web';
 
 /**
  * @swagger
- * 
+ *
  * definitions:
- * 
+ *
  *   ErrorEntityNotFound:
  *     type: object
  *     required:
@@ -28,7 +28,7 @@ import * as ApiGateway from 'moleculer-web';
  *       type:
  *         type: string
  *         example: "Not Found"
- * 
+ *
  *   ErrorUnprocessableEntity:
  *     type: object
  *     required:
@@ -54,7 +54,7 @@ import * as ApiGateway from 'moleculer-web';
  *         type: array
  *         items:
  *           $ref: '#/definitions/ErrorUnprocessableEntityData'
- * 
+ *
  *   ErrorUnprocessableEntityData:
  *     type: object
  *     required:
@@ -79,7 +79,7 @@ import * as ApiGateway from 'moleculer-web';
  *       action:
  *         type: string
  *         example: "attack.Fire"
- * 
+ *
  *   ErrorUncaught:
  *     type: object
  *     required:
@@ -96,21 +96,21 @@ import * as ApiGateway from 'moleculer-web';
  *       code:
  *         type: integer
  *         example: 500
- * 
+ *
  * parameters:
- * 
+ *
  *   weaponName:
  *     type: string
  *     name: weaponName
  *     example: 'Death Star'
  *     description: The weapon being used to attack.
- * 
+ *
  *   planetName:
  *     type: string
  *     name: planetName
  *     example: 'Alderaan'
  *     description: The planet being attacked.
- * 
+ *
  *   AttackPlanetParams:
  *     in: body
  *     name: params
@@ -125,9 +125,9 @@ import * as ApiGateway from 'moleculer-web';
  *         planetName:
  *           $ref: '#/parameters/planetName'
  *     description: The weapon being used and planet being attacked.
- * 
+ *
  * responses:
- * 
+ *
  *   UnprocessableEntity:
  *     description: The request could not be processed.
  *     headers:
@@ -138,7 +138,7 @@ import * as ApiGateway from 'moleculer-web';
  *           example: 'application/json; charset=utf-8'
  *     schema:
  *       $ref: '#/definitions/ErrorUnprocessableEntity'
- * 
+ *
  *   EntityNotFound:
  *     description: The requested entity could not be found.
  *     headers:
@@ -149,7 +149,7 @@ import * as ApiGateway from 'moleculer-web';
  *           example: 'application/json; charset=utf-8'
  *     schema:
  *       $ref: '#/definitions/ErrorEntityNotFound'
- * 
+ *
  *   UncaughtError:
  *     description: The server encountered an unhandled error.
  *     headers:
