@@ -60,7 +60,7 @@
     "sqlite3": "^4.1.1",
     "swagger-jsdoc": "^3.2.9",
     "tsconfig-paths": "^3.8.0",
-    "typeorm": "^0.2.18"
+    "typeorm": "^0.2.25"
   },
   "engines": {
     "node": ">= 8.x.x"
