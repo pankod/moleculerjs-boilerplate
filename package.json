@@ -39,8 +39,8 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "jest": "^23.6.0",
-    "jest-cli": "^23.6.0",
+    "jest": "^29.3.1",
+    "jest-cli": "^29.3.1",
     "moleculer-repl": "^0.5.3",
     "prettier": "^1.17.1",
     "supertest": "^4.0.2",
@@ -59,7 +59,7 @@
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^4.1.1",
     "swagger-jsdoc": "^3.2.9",
-    "tsconfig-paths": "^3.8.0",
+    "tsconfig-paths": "^3.10.1",
     "typeorm": "^0.2.18"
   },
   "engines": {
